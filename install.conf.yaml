@@ -1,0 +1,16 @@
+- defaults:
+    link:
+        relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.zshrc: zshrc
+    ~/.config/nvim/init.vim: init.vim
+
+- create:
+    - ~/.hushlogin
+
+- shell:
+  - ['git clone https://github.com/tarjoilija/zgen.git ${HOME}/.zgen', Cloning Dotbot]
+  - [git submodule update --init --recursive, Installing submodules]
