@@ -10,7 +10,7 @@
     ~/.config/nvim/init.vim: init.vim
     ~/.gitconfig: git/git.config
     ~/.gitignore: git/git.ignore
-    ~/.git/darwin.gitconfig: git/darwin.gitconfig
+    ~/.git/darwin.gitconfig: git/darwin.config
     ~/.git/linux.gitconfig: git/linux.config
 
 - create:
