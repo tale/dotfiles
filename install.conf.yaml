@@ -17,5 +17,5 @@
     - ~/.hushlogin
 
 - shell:
-  - ['git clone https://github.com/tarjoilija/zgen.git ${HOME}/.zgen', Cloning Dotbot]
+  - [git clone https://github.com/tarjoilija/zgen.git ~/.zgen, Cloning Dotbot]
   - [git submodule update --init --recursive, Installing submodules]
