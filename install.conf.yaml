@@ -12,6 +12,7 @@
     ~/.gitignore: git/git.ignore
     ~/.git/darwin.gitconfig: git/darwin.config
     ~/.git/linux.gitconfig: git/linux.config
+    ~/.nvm/default-packages: nvm/default-packages
 
 - create:
     - ~/.hushlogin
