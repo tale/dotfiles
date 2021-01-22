@@ -10,7 +10,7 @@ if ! zgen saved; then
 	zgen load zsh-users/zsh-completions
 	zgen load zsh-users/zsh-syntax-highlighting
 	zgen load zsh-users/zsh-history-substring-search
-	zgen load subnixr/minimal	
+	zgen load subnixr/minimal
 	zgen save
 fi
 
@@ -18,6 +18,7 @@ export NVM_DIR="$HOME/.nvm"
 declare -a NODE_GLOBALS=(`find ~/.nvm/versions/node -maxdepth 3 -type l -wholename '*/bin/*' | xargs -n1 basename | sort | uniq`)
 NODE_GLOBALS+=("node")
 NODE_GLOBALS+=("nvm")
+NODE_GLOBALS+=("devspace")
 
 
 load_nvm_darwin () {
