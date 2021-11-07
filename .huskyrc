@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+# Husky automatically sources ~/.huskyrc before running its local hooks
+# As a result we can force husky to source our global hooks
+# Also this needs to run as sh because husky does too
+
+HOOKS_DIR=$(git config --global core.hooksPath)
+HOOK_PATH="$HOOKS_DIR/$hook_name"
+
+# hook_name is from the husky script
+if [ -f "$HOOK_PATH" ]; then
+	source "$HOOK_PATH"
+fi

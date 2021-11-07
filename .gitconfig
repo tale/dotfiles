@@ -1,0 +1,23 @@
+[user]
+	email = aarnav@tale.me
+	name = Aarnav Tale
+	signingkey = 31C78284
+	github = tale
+[tag]
+	forceSignAnnotated = true
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
+[core]
+	editor = nvim
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[pull]
+	rebase = true
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
