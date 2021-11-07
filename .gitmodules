@@ -1,6 +1,6 @@
 [submodule "vendor/sf-mono-nerd-font"]
 	path = vendor/sf-mono-nerd-font
-	url = git@github.com:shaunsingh/SFMono-Nerd-Font-Ligaturized.git
+	url = https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized.git
 [submodule "vendor/zinit"]
 	path = vendor/zinit
-	url = git@github.com:zdharma/zinit.git
+	url = https://github.com/zdharma-continuum/zinit

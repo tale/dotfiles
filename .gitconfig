@@ -12,6 +12,8 @@
 [core]
 	editor = nvim
 	pager = diff-so-fancy | less --tabs=4 -RFX
+	excludesfile = /Users/tale/.dotfiles/.gitignore
+	hooksPath = /Users/tale/.dotfiles/githooks
 [pull]
 	rebase = true
 [init]
