@@ -33,6 +33,8 @@ else
 	command git clone https://github.com/tale/dotfiles "$DOTDIR"
 fi
 
+command touch "$HOME/.hushlogin"
+
 # Configure git config
 command rm -rf "$HOME/.gitconfig"
 command ln -s "$DOTDIR/.gitconfig" "$HOME/.gitconfig"
