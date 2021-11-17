@@ -1,4 +1,4 @@
-DOTDIR="$HOME/.dotfiles"
+export DOTDIR="$HOME/.dotfiles"
 
 # Load zinit
 source "$DOTDIR/vendor/zinit/zinit.zsh"
@@ -11,6 +11,7 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
 
+source "$DOTDIR/zshrc.d/dotfunctions.zsh"
 # Platform specific configuration
 if [[ $(uname -s) == "Darwin" ]];
 then
