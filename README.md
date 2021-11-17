@@ -6,3 +6,4 @@ The following dotfiles are here:
 - Git hooks + Husky fix
 - Theos (https://github.com/theos/theos)
 - Brew + Bundle (see Brewfile)
+- Small (but useful) functions for maintaining the dotfiles
