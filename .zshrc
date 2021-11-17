@@ -18,7 +18,7 @@ then
 fi
 
 # Random Globals
-#setopt correct
+setopt correct
 
 export FZF_DEFAULT_COMMAND='fd --type f'
 export BAT_THEME="TwoDark"
