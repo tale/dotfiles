@@ -12,10 +12,14 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
 
 source "$DOTDIR/zshrc.d/dotfunctions.zsh"
+
 # Platform specific configuration
-if [[ $(uname -s) == "Darwin" ]];
-then
+if [[ $(uname -s) == "Darwin" ]]; then
 	source "$DOTDIR/zshrc.d/macos.zsh"
+fi
+
+if [[ $(uname -s) == "Linux" ]]; then
+	source "$DOTDIR/zshrc.d/linux.zsh"
 fi
 
 # Random Globals
