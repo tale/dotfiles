@@ -15,17 +15,14 @@ else
 	SUDO=0
 fi
 
-if [[ -d $DOTDIR ]];
-then
+if [[ -d $DOTDIR ]]; then
 	echo "$DOTDIR already exists and may not be empty"
 	echo -n "Continue, exit, or overwrite directory (c,e,o): "
 	read CHOICE
 
-	if [[ $CHOICE == "e" ]];
-	then
+	if [[ $CHOICE == "e" ]]; then
 		exit 1
-	elif [[ $CHOICE == "o" ]];
-	then
+	elif [[ $CHOICE == "o" ]]; then
 		command rm -rf $DOTDIR
 	fi
 else
@@ -46,7 +43,6 @@ command rm -rf "$HOME/.huskyrc"
 command ln -s "$DOTDIR/.huskyrc" "$HOME/.huskyrc"
 echo "source ~/.dotfiles/.zshrc" > "$HOME/.zshrc"
 
-if [[ $(uname -s) == "Darwin" ]];
-then
+if [[ $(uname -s) == "Darwin" ]]; then
 	source "$DOTDIR/configure/macos.sh"
 fi

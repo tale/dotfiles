@@ -25,8 +25,7 @@ command curl -L https://iterm2.com/shell_integration/zsh -o "$HOME/.extra/iterm.
 # Install and Configure Theos
 notify "Installing Theos"
 THEOS="$HOME/Library/Theos"
-if [[ ! -d $THEOS ]];
-then
+if [[ ! -d $THEOS ]]; then
 	command git clone --recursive https://github.com/theos/theos.git $THEOS
 else
 	echo "$THEOS already exists. Not cloning again."

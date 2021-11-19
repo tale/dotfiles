@@ -19,7 +19,6 @@ export PATH="$BREW_PREFIX/opt/gnu-tar/libexec/gnubin:$PATH"
 export PATH="$BREW_PREFIX/opt/ruby/bin:$PATH"
 
 # iTerm2 Integrations
-if [[ $LC_TERMINAL == "iTerm2" ]];
-then
+if [[ $LC_TERMINAL == "iTerm2" ]]; then
 	source "$HOME/.extra/iterm.zsh"
 fi
