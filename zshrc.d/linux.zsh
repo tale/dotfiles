@@ -1,2 +1,2 @@
-
-export GPG_TTY=$(tty) # Workaround a weird GPG issue
+# Workaround a weird GPG issue
+export GPG_TTY=$(tty)

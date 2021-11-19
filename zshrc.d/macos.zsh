@@ -1,4 +1,3 @@
-
 export THEOS="$HOME/Library/Theos"
 export HOMEBREW_NO_AUTO_UPDATE=1
 
