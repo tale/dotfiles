@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
-launchdload() {
-	command launchctl unload $1
-	command launchctl load $1
-}
-
 echo "Installing brew & formulae from Brewfile"
 command curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 command brew tap homebrew/bundle
@@ -49,7 +44,17 @@ command rm -rf "$HOME/.bashrc"
 notify "Linking Launch Agents"
 command mkdir -p "$HOME/Library/LaunchAgents"
 
+# Cleanup Task
 command rm -rf "$HOME/Library/LaunchAgents/me.tale.cleanup.plist"
 command ln -s "$DOTDIR/launchd/me.tale.cleanup.plist" "$HOME/Library/LaunchAgents/me.tale.cleanup.plist"
 command chmod +x "$DOTDIR/launchd/me.tale.cleanup.sh"
-launchdload "$HOME/Library/LaunchAgents/me.tale.cleanup.plist"
+command launchctl unload "$HOME/Library/LaunchAgents/me.tale.cleanup.plist"
+command launchctl load "$HOME/Library/LaunchAgents/me.tale.cleanup.plist"
+
+# Network Interface Stream Fix
+command mkdir -p "/Library/LaunchDaemons"
+command sudo ln -s "$DOTDIR/launchd/me.tale.streamfix.plist" "/Library/LaunchDaemons/me.tale.streamfix.plist"
+command sudo chmod +x "$DOTDIR/launchd/me.tale.streamfix.sh"
+command sudo chown root:admin "/Library/LaunchDaemons/me.tale.streamfix.plist"
+command sudo launchctl unload "/Library/LaunchDaemons/me.tale.streamfix.plist"
+command sudo launchctl load "/Library/LaunchDaemons/me.tale.streamfix.plist"
