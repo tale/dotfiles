@@ -11,12 +11,12 @@
 		<key>EnvironmentVariables</key>
 		<dict>
 			<key>PATH</key>
-			<string>/bin:/usr/bin:/usr/local/bin</string>
+			<string>/bin:/sbin:/usr/bin:/usr/local/bin</string>
 		</dict>
 		<key>StandardOutPath</key>
-		<string>/tmp/me.tale.streamfix.log</string>
+		<string>/tmp/launchd.log</string>
 		<key>StandardErrorPath</key>
-		<string>/tmp/me.tale.streamfix.log</string>
+		<string>/tmp/launchd.log</string>
 		<key>StartInterval</key>
 		<integer>60</integer>
 	</dict>

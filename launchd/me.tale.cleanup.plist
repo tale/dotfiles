@@ -16,9 +16,9 @@
 			<string>/bin:/usr/bin:/usr/local/bin</string>
 		</dict>
 		<key>StandardOutPath</key>
-		<string>/tmp/me.tale.cleanup.log</string>
+		<string>/tmp/launchd.log</string>
 		<key>StandardErrorPath</key>
-		<string>/tmp/me.tale.cleanup.log</string>
+		<string>/tmp/launchd.log</string>
 		<key>StartCalendarInterval</key>
 		<dict>
 			<key>Hour</key>
