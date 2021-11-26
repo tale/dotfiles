@@ -32,6 +32,7 @@ alias p='pnpm'
 alias cat='bat'
 alias d='docker'
 alias k='kubectl'
+alias find='fd'
 alias redo='sudo $(fc -ln -1)'
 
 alias l='exa'
