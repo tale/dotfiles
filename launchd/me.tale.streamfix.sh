@@ -14,3 +14,16 @@ else
 		printf '[%s] (%s) %s\n' "me.tale.streamfix" "$(date '+%H:%M:%S')" "'awdl0' enabled after Parsec shutdown"
 	fi
 fi
+
+if test $(pgrep Moonlight); then
+	# Moonlight is a normal app and only runs one instance.
+	if ifconfig awdl0 | grep "status: active" > /dev/null; then
+		ifconfig awdl0 down
+		printf '[%s] (%s) %s\n' "me.tale.streamfix" "$(date '+%H:%M:%S')" "'awdl0' disabled after Moonlight startup"
+	fi
+else
+	if ifconfig awdl0 | grep "status: inactive" > /dev/null; then
+		ifconfig awdl0 up
+		printf '[%s] (%s) %s\n' "me.tale.streamfix" "$(date '+%H:%M:%S')" "'awdl0' enabled after Moonlight shutdown"
+	fi
+fi
