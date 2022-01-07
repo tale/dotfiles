@@ -24,7 +24,7 @@ command echo "$($PROGRAM --list-keys $KEY)" | grep "<$EMAIL>" > /dev/null 2>&1
 STATUS=$?
 
 if [[ ! $STATUS == "0" ]]; then
-	error "Mistmatch between git email and GPG email"
+	error "Mismatch between git email and GPG email"
 	exit 1
 fi
 
