@@ -9,3 +9,7 @@ dotdate() {
 	command git stash pop
 	builtin cd -
 }
+
+dotcode() {
+	command code "$DOTDIR"
+}
