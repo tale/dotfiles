@@ -27,13 +27,3 @@ if [[ ! $STATUS == "0" ]]; then
 	error "Mismatch between git email and GPG email"
 	exit 1
 fi
-
-info "Signing with $NAME <$EMAIL>\n"
-info "Key: $KEY\n"
-info "Proceed ([y]/n): "
-read CHOICE
-
-if [[ $CHOICE == "n" ]]; then
-	error "Aborted."
-	exit 1
-fi
