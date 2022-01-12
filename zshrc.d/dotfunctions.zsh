@@ -6,7 +6,7 @@ dotdate() {
 	builtin cd "$DOTDIR"
 	command git pull
 	builtin cd -
-	dotsource
+	source "$HOME/.zshrc"
 }
 
 dotcode() {
