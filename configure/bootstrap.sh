@@ -39,8 +39,6 @@ command touch "$HOME/.hushlogin"
 # Configure git config
 command rm -rf "$HOME/.gitconfig"
 command ln -s "$DOTDIR/.gitconfig" "$HOME/.gitconfig"
-command git config --global core.excludesfile $DOTDIR/.gitignore
-command git config --global core.hooksPath $DOTDIR/githooks
 command chmod +x $DOTDIR/githooks/* # Can't be in quotes to fix bashisms in Linux
 
 command rm -rf "$HOME/.huskyrc"
