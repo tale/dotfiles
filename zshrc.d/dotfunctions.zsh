@@ -4,10 +4,9 @@ dotsource() {
 
 dotdate() {
 	builtin cd "$DOTDIR"
-	command git stash
 	command git pull
-	command git stash pop
 	builtin cd -
+	dotsource
 }
 
 dotcode() {
