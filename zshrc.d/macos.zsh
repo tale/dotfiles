@@ -22,3 +22,8 @@ export PATH="$BREW_PREFIX/opt/ruby/bin:$PATH"
 if [[ $LC_TERMINAL == "iTerm2" ]]; then
 	source "$HOME/.extra/iterm.zsh"
 fi
+
+function plsdns() {
+	command sudo dscacheutil -flushcache
+	command sudo killall -HUP mDNSResponder
+}
