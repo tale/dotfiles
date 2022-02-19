@@ -3,6 +3,8 @@ dotsource() {
 }
 
 dotdate() {
-	command git pull -C "$DOTDIR"
+	builtin cd "$DOTDIR"
+	command git pull
+	builtin cd -
 	source "$HOME/.zshrc"
 }

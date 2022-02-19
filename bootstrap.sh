@@ -24,7 +24,10 @@ if [[ ! -d "$DOTDIR/bootstrap.sh" ]]; then
 	exit 1
 fi
 
-command git submodule update --init -C "$DOTDIR"
+builtin cd "$DOTDIR"
+command git submodule update --init
+builtin cd -
+
 command touch "$HOME/.hushlogin"
 
 # Configure git config
