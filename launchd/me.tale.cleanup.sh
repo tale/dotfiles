@@ -13,7 +13,6 @@ command rm -rf "$HOME/.bundle"
 command rm -rf "$HOME/Library/Developer/Xcode/DerivedData"
 command rm -rf "$HOME/Library/Logs/DiagnosticReports"
 
-command rm -rf $HOME/Trash/*
 command rm -rf $HOME/.pnpm-store/v3/tmp/*
 command rm -rf $HOME/.kube/cache/http/*
 command brew cleanup

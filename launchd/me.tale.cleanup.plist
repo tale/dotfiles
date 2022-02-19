@@ -6,9 +6,7 @@
 		<string>me.tale.cleanup</string>
 		<key>ProgramArguments</key>
 		<array>
-			<string>/bin/bash</string>
-			<string>-c</string>
-			<string>exec $HOME/.dotfiles/launchd/me.tale.cleanup.sh</string>
+			<string>/Users/tale/.dotfiles/launchd/me.tale.streamfix.sh</string>
 		</array>
 		<key>EnvironmentVariables</key>
 		<dict>
