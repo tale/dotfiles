@@ -18,6 +18,9 @@ export PATH="$BREW_PREFIX/opt/make/libexec/gnubin:$PATH"
 export PATH="$BREW_PREFIX/opt/gnu-tar/libexec/gnubin:$PATH"
 export PATH="$BREW_PREFIX/opt/ruby/bin:$PATH"
 
+# Cheating lowercase Developer folder shortcut
+export d="$HOME/Developer"
+
 # iTerm2 Integrations
 if [[ $LC_TERMINAL == "iTerm2" ]]; then
 	source "$HOME/.extra/iterm.zsh"

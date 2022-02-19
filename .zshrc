@@ -33,7 +33,6 @@ alias cat='bat'
 alias d='docker'
 alias k='kubectl'
 alias find='fd'
-alias redo='sudo $(fc -ln -1)'
 
 alias l='exa'
 alias la='exa -a'
@@ -45,6 +44,3 @@ alias c='clear'
 alias nano='vi'
 alias vi='nvim'
 alias vim='nvim'
-
-# Shows a nice preview window on the side, useful for code projects
-alias fp="fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
