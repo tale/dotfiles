@@ -36,6 +36,8 @@ command rm -rf "$HOME/.huskyrc"
 command ln -s "$DOTDIR/.huskyrc" "$HOME/.huskyrc"
 command ln -s "$DOTDIR/.zshrc" "$HOME/.zshrc"
 
+echo "Include ~/.dotfiles/ssh.config" | sudo tee -a "$HOME/.ssh/config"
+
 if [[ $(uname -s) == "Darwin" ]]; then
 	source "$DOTDIR/bootstrap/macos.sh"
 fi
