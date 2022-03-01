@@ -19,11 +19,6 @@ else
 	SUDO=0
 fi
 
-if [[ ! -d "$DOTDIR/bootstrap.sh" ]]; then
-	error "Unexpected bootstrap location. Please use $HOME/.dotfiles"
-	exit 1
-fi
-
 builtin cd "$DOTDIR"
 command git submodule update --init
 builtin cd -
