@@ -1,5 +1,6 @@
 export THEOS="$HOME/Library/Theos"
 export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_ENV_HINTS=1
 
 # Better than brew --prefix because it isn't slow
 if [[ $CPUTYPE == "x86_64" ]];
