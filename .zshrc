@@ -28,6 +28,7 @@ export BAT_THEME="TwoDark"
 
 # Aliases
 alias g='git'
+alias t='task'
 alias p='pnpm'
 alias cat='bat'
 alias d='docker'
