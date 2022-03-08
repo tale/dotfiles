@@ -13,15 +13,6 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 
 source "$DOTDIR/zshrc.d/dotfunctions.zsh"
 
-# Platform specific configuration
-if [[ $(uname -s) == "Darwin" ]]; then
-	source "$DOTDIR/zshrc.d/macos.zsh"
-fi
-
-if [[ $(uname -s) == "Linux" ]]; then
-	source "$DOTDIR/zshrc.d/linux.zsh"
-fi
-
 # Random Globals
 export FZF_DEFAULT_COMMAND='fd --type f'
 export BAT_THEME="TwoDark"
@@ -45,3 +36,12 @@ alias c='clear'
 alias nano='vi'
 alias vi='nvim'
 alias vim='nvim'
+
+# Platform specific configuration
+if [[ $(uname -s) == "Darwin" ]]; then
+	source "$DOTDIR/zshrc.d/macos.zsh"
+fi
+
+if [[ $(uname -s) == "Linux" ]]; then
+	source "$DOTDIR/zshrc.d/linux.zsh"
+fi
