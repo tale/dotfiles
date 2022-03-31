@@ -31,18 +31,24 @@ command ln -s "$DOTDIR/.theosrc" "$HOME/.theosrc"
 
 # Disable unnecessary dotfile creations
 notify "Configuring Unnecessary Dotfiles"
-if [[ $SUDO == 1 ]]; then
+if [[ $SUDO != "UNSET" ]]; then
 	if [[ $(awk '/./{line=$0} END{print line}' /etc/bashrc) != "unset HISTFILE" ]]; then
-		echo "unset HISTFILE" | sudo tee -a "/etc/bashrc"
+		echo "unset HISTFILE" | $SUDO tee -a "/etc/bashrc"
 	fi
 fi
 
 export LESSHISTFILE=-
 command rm -rf "$HOME/.bashrc"
 
+if [[ $SUDO == "UNSET" ]]; then
+	error "Cannot configure Launch Agents without sudo"
+	exit 3
+fi
+
 # Link launchd jobs
 notify "Linking Launch Agents"
 command mkdir -p "$HOME/Library/LaunchAgents"
+
 
 # Cleanup Task
 command rm -rf "$HOME/Library/LaunchAgents/me.tale.cleanup.plist"
@@ -53,8 +59,8 @@ command launchctl load "$HOME/Library/LaunchAgents/me.tale.cleanup.plist"
 
 # Network Interface Stream Fix
 command mkdir -p "/Library/LaunchDaemons"
-command sudo ln -s "$DOTDIR/launchd/me.tale.streamfix.plist" "/Library/LaunchDaemons/me.tale.streamfix.plist"
-command sudo chmod +x "$DOTDIR/launchd/me.tale.streamfix.sh"
-command sudo chown root:admin "/Library/LaunchDaemons/me.tale.streamfix.plist"
-command sudo launchctl unload "/Library/LaunchDaemons/me.tale.streamfix.plist"
-command sudo launchctl load "/Library/LaunchDaemons/me.tale.streamfix.plist"
+command $SUDO ln -s "$DOTDIR/launchd/me.tale.streamfix.plist" "/Library/LaunchDaemons/me.tale.streamfix.plist"
+command $SUDO chmod +x "$DOTDIR/launchd/me.tale.streamfix.sh"
+command $SUDO chown root:admin "/Library/LaunchDaemons/me.tale.streamfix.plist"
+command $SUDO launchctl unload "/Library/LaunchDaemons/me.tale.streamfix.plist"
+command $SUDO launchctl load "/Library/LaunchDaemons/me.tale.streamfix.plist"

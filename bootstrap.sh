@@ -13,10 +13,12 @@ error() {
 DOTDIR="$HOME/.dotfiles"
 
 # Check for sudo
-if $(sudo -v); then
-	SUDO=1
-else
-	SUDO=0
+if [[ $UID != 0 ]]; then
+	if $(sudo -v); then
+		SUDO=sudo
+	else
+		SUDO="UNSET"
+	fi
 fi
 
 builtin cd "$DOTDIR"
