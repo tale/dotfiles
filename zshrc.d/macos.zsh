@@ -19,6 +19,11 @@ export PATH="$BREW_PREFIX/opt/make/libexec/gnubin:$PATH"
 export PATH="$BREW_PREFIX/opt/gnu-tar/libexec/gnubin:$PATH"
 export PATH="$BREW_PREFIX/opt/ruby/bin:$PATH"
 
+# Golang environment
+export GOPATH=$HOME/go
+export GOROOT="$BREW_PREFIX/opt/go/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
 # Cheating lowercase Developer folder shortcut
 export d="$HOME/Developer"
 
