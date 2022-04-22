@@ -17,6 +17,9 @@ notify "Setting up iTerm Shell Integrations"
 command mkdir -p "$HOME/.extra" && rm -rf "$HOME/.extra/iterm.zsh"
 command curl -L https://iterm2.com/shell_integration/zsh -o "$HOME/.extra/iterm.zsh"
 
+# Configure fnm
+fnm ls-remote | grep Gallium | tail -n1 > ~/.node-version
+
 # Install and Configure Theos
 notify "Installing Theos"
 THEOS="$HOME/Library/Theos"
