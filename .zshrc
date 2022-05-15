@@ -17,6 +17,9 @@ source "$DOTDIR/zshrc.d/dotfunctions.zsh"
 export FZF_DEFAULT_COMMAND='fd --type f'
 export BAT_THEME="TwoDark"
 
+export PNPM_HOME="$HOME/.pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
 # Aliases
 alias g='git'
 alias t='task'
