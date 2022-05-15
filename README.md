@@ -13,3 +13,6 @@ The following dotfiles are here:
 - Brew + Bundle (see Brewfile)
 - Small (but useful) functions for maintaining the dotfiles
 - macOS and Linux bootstrap files
+- A simple Golang environment
+- Dart support
+- Node version management
