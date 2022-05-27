@@ -39,6 +39,7 @@ alias c='clear'
 alias nano='vi'
 alias vi='nvim'
 alias vim='nvim'
+alias devc='devcontainer'
 
 # Platform specific configuration
 if [[ $(uname -s) == "Darwin" ]]; then
