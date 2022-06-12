@@ -52,13 +52,19 @@ fi
 notify "Linking Launch Agents"
 command mkdir -p "$HOME/Library/LaunchAgents"
 
-
 # Cleanup Task
 command rm -rf "$HOME/Library/LaunchAgents/me.tale.cleanup.plist"
 command ln -s "$DOTDIR/launchd/me.tale.cleanup.plist" "$HOME/Library/LaunchAgents/me.tale.cleanup.plist"
 command chmod +x "$DOTDIR/launchd/me.tale.cleanup.sh"
 command launchctl unload "$HOME/Library/LaunchAgents/me.tale.cleanup.plist"
 command launchctl load "$HOME/Library/LaunchAgents/me.tale.cleanup.plist"
+
+# Appearance Task
+command rm -rf "$HOME/Library/LaunchAgents/me.tale.appearance.plist"
+command ln -s "$DOTDIR/launchd/me.tale.appearance.plist" "$HOME/Library/LaunchAgents/me.tale.appearance.plist"
+command chmod +x "$DOTDIR/launchd/me.tale.appearance.sh"
+command launchctl unload "$HOME/Library/LaunchAgents/me.tale.appearance.plist"
+command launchctl load "$HOME/Library/LaunchAgents/me.tale.appearance.plist"
 
 # Network Interface Stream Fix
 command mkdir -p "/Library/LaunchDaemons"
