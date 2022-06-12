@@ -11,7 +11,7 @@
 	program = gpg
 [core]
 	editor = nvim
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = delta
 	excludesfile = ~/.dotfiles/.gitignore
 	hooksPath = ~/.dotfiles/githooks
 [pull]
@@ -26,3 +26,12 @@
 	ui = auto
 [alias]
 	redo = commit --amend -S
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	light = false
+[merge]
+	conflictstyle = diff3
+[diff]
+	colorMoved = default
