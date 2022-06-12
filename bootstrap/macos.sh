@@ -6,8 +6,9 @@ command brew bundle --no-lock --file "$DOTDIR/Brewfile"
 
 # Post-brew installations
 notify "Running post-brew configurations"
-command curl -f https://get.pnpm.io/v6.16.js | node - add --global pnpm
+command curl -fsSL https://get.pnpm.io/install.sh | sh -
 command pnpm add -g pnpm # Upgrade pnpm after installation
+command pnpm env use --global 18
 
 command mkdir -p "$HOME/.gnupg" && rm -rf "$HOME/.gnupg/gpg-agent.conf" # Reconfigure gpg-agent.conf
 echo -e "pinentry-program /usr/local/bin/pinentry-mac\nenable-ssh-support" >> "$HOME/.gnupg/gpg-agent.conf"
@@ -16,9 +17,6 @@ echo -e "pinentry-program /usr/local/bin/pinentry-mac\nenable-ssh-support" >> "$
 notify "Setting up iTerm Shell Integrations"
 command mkdir -p "$HOME/.extra" && rm -rf "$HOME/.extra/iterm.zsh"
 command curl -L https://iterm2.com/shell_integration/zsh -o "$HOME/.extra/iterm.zsh"
-
-# Configure fnm
-fnm ls-remote | grep Gallium | tail -n1 > ~/.node-version
 
 # Install and Configure Theos
 notify "Installing Theos"

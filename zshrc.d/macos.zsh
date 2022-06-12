@@ -25,9 +25,6 @@ export GOPATH=$HOME/go
 export GOROOT="$BREW_PREFIX/opt/go/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
-# Evaluate fnm
-eval "$(fnm env --use-on-cd)"
-
 # Cheating lowercase Developer folder shortcut
 export d="$HOME/Developer"
 
