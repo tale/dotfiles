@@ -1,15 +1,25 @@
 export DOTDIR="$HOME/.dotfiles"
 
-# Load zinit
-source "$DOTDIR/vendor/zinit/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
+# Instantly load Pure Prompt
+fpath+=($DOTDIR/vendor/pure)
+autoload -U promptinit; promptinit
 
-zinit ice pick"async.zsh" src"pure.zsh"
-zinit light sindresorhus/pure
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light zdharma-continuum/fast-syntax-highlighting
+zstyle :prompt:pure:git:stash show yes
+zstyle :prompt:pure:environment:nix-shell show no
+zstyle :prompt:pure:path color cyan
+zstyle :prompt:pure:prompt:success color 242
+
+prompt pure
+
+source "$DOTDIR/vendor/lscolors/lscolors.sh"
+
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "$HOME/Library/Caches/zsh/.zcompcache"
+zstyle ':completion:*' menu select
+zstyle ':completion:*' file-list all
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+zstyle ':completion:*' completer _extensions _complete _approximate
 
 source "$DOTDIR/zshrc.d/dotfunctions.zsh"
 
@@ -20,6 +30,9 @@ export BAT_THEME="TwoDark"
 export PNPM_HOME="$HOME/.pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
+# Laziness
+export dd="$DOTDIR"
+
 # Aliases
 alias g='git'
 alias t='task'
@@ -29,10 +42,10 @@ alias d='docker'
 alias k='kubectl'
 alias find='fd'
 
-alias l='exa'
-alias la='exa -a'
+alias l='exa -l'
+alias la='exa -la'
 alias ll='exa -lah'
-alias ls='exa --color=auto'
+alias ls='exa -l'
 
 alias f='fzf'
 alias c='clear'
@@ -49,3 +62,9 @@ fi
 if [[ $(uname -s) == "Linux" ]]; then
 	source "$DOTDIR/zshrc.d/linux.zsh"
 fi
+
+# Load completions and suggestions at the end
+fpath+=($DOTDIR/vendor/zsh-completions/src)
+autoload -U compinit; compinit
+
+source "$DOTDIR/VENDOR/zsh-autosuggestions/zsh-autosuggestions.zsh"
