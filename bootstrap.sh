@@ -49,8 +49,8 @@ if [[ $(uname -s) == "Linux" ]]; then
 		exit 2
 	fi
 
-	if [[ $VERSION_ID != "22.04" && $VERSION_ID != "20.04" ]]; then
-		error "Not running on Focal Fossa (20.04) or Jammy Jellyfish (22.04)"
+	if [[ $VERSION_ID != "22.04" ]]; then
+		error "Not running on Ubuntu Jammy Jellyfish (22.04)"
 		exit 3
 	fi
 
