@@ -16,4 +16,5 @@ command rm -rf "$HOME/Library/Logs/DiagnosticReports"
 command rm -rf $HOME/.pnpm-store/v3/tmp/*
 command rm -rf $HOME/.kube/cache/http/*
 command brew cleanup
+command brew update
 printf '[%s] (%s) %s\n' "me.tale.cleanup" "$(date '+%H:%M:%S')" "Finished daily cleanup task"
