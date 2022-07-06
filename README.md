@@ -3,7 +3,7 @@ Aarnav's files with dots in them.<br>
 While these are mostly for me you may find them useful<br>
 Just download the `configure` folder and run `bootstrap.sh`<br>
 The following dotfiles are here:
-- Zsh + Zinit Configuration
+- Zsh plugins without a manager
 - Pure Theme by Sindresorhus
 - Launchd Tasks
 	- Cleanup task to remove daily files
@@ -16,3 +16,4 @@ The following dotfiles are here:
 - A simple Golang environment
 - Dart support
 - Node version management
+- Epic aliases and laziness variables
