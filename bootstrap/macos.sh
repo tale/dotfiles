@@ -30,6 +30,10 @@ fi
 command rm -rf "$HOME/.theosrc"
 command ln -s "$DOTDIR/.theosrc" "$HOME/.theosrc"
 
+# Install Rust and dufs
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+cargo install dufs
+
 # Disable unnecessary dotfile creations
 notify "Configuring Unnecessary Dotfiles"
 if [[ $SUDO != "UNSET" ]]; then
