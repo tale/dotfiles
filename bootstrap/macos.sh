@@ -78,3 +78,15 @@ command $SUDO chmod +x "$DOTDIR/launchd/me.tale.streamfix.sh"
 command $SUDO chown root:admin "/Library/LaunchDaemons/me.tale.streamfix.plist"
 command $SUDO launchctl unload "/Library/LaunchDaemons/me.tale.streamfix.plist"
 command $SUDO launchctl load "/Library/LaunchDaemons/me.tale.streamfix.plist"
+
+# Defaults
+defaults write com.apple.screencapture type jpg
+
+defaults write com.apple.dock autohide-delay -float 0
+defaults write com.apple.dock autohide-time-modifier -int 0.5
+
+defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="small-spacer-tile";}'
+defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="small-spacer-tile";}'
+defaults write com.apple.Dock showhidden -bool TRUE
+
+killall Dock
