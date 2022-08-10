@@ -80,7 +80,7 @@ command $SUDO launchctl unload "/Library/LaunchDaemons/me.tale.streamfix.plist"
 command $SUDO launchctl load "/Library/LaunchDaemons/me.tale.streamfix.plist"
 
 # Defaults
-defaults write com.apple.screencapture type jpg
+defaults write com.apple.screencapture type png
 
 defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock autohide-time-modifier -int 0.5
