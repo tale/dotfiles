@@ -17,6 +17,11 @@ export GOPATH=$HOME/go
 export GOROOT="$HOMEBREW_PREFIX/opt/go/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
+# Bun enviroment
+[ -s "/Users/tale/.bun/_bun" ] && source "/Users/tale/.bun/_bun"
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 # Cheating lowercase Developer folder shortcut
 export d="$HOME/Developer"
 
