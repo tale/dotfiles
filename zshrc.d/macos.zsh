@@ -1,3 +1,8 @@
+# Yubikey SSH via GPG
+export "GPG_TTY=$(tty)"
+export "SSH_AUTH_SOCK=${HOME}/.gnupg/S.gpg-agent.ssh"
+gpgconf --launch gpg-agent
+
 export THEOS="$HOME/Library/Theos"
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_INSTALL_FROM_API=1
