@@ -29,6 +29,7 @@ export BAT_THEME="TwoDark"
 
 export PNPM_HOME="$HOME/.pnpm"
 export PATH="$PNPM_HOME:$PATH"
+export PATH=/Users/tale/.local/bin:$PATH
 
 # Laziness
 export dd="$DOTDIR"
@@ -71,3 +72,6 @@ fpath+=($DOTDIR/vendor/zsh-completions/src)
 autoload -U compinit; compinit
 
 source "$DOTDIR/VENDOR/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
+# bun completions
+[ -s "/Users/tale/.bun/_bun" ] && source "/Users/tale/.bun/_bun"
