@@ -36,6 +36,9 @@ command rm -rf "$HOME/.huskyrc"
 command ln -s "$DOTDIR/.huskyrc" "$HOME/.huskyrc"
 command ln -s "$DOTDIR/.zshrc" "$HOME/.zshrc"
 
+command rm -rf "$HOME/.tmux.conf"
+command ln -s "$DOTDIR/.tmux.conf" "$HOME/.tmux.conf"
+
 echo "Include ~/.dotfiles/ssh.config" | sudo tee -a "$HOME/.ssh/config"
 
 if [[ $(uname -s) == "Darwin" ]]; then
