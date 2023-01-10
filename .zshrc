@@ -56,7 +56,7 @@ alias vim='nvim'
 
 alias mk='minikube'
 alias devc='devcontainer'
-alias mkmk='minikube start --driver=docker --kubernetes-version=v1.24.1'
+alias mkmk='minikube start --driver=docker --kubernetes-version=v1.25.0'
 
 # Platform specific configuration
 if [[ $(uname -s) == "Darwin" ]]; then
