@@ -7,6 +7,7 @@ export THEOS="$HOME/Library/Theos"
 export HOMEBREW_NO_AUTO_UPDATE=1
 export HOMEBREW_INSTALL_FROM_API=1
 export HOMEBREW_NO_ENV_HINTS=1
+export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
 
 # Brew path for manual linking overrides
 export PATH="$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin:$PATH"
