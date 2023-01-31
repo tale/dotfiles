@@ -1,0 +1,18 @@
+shell:
+  program: /opt/homebrew/bin/tmux
+  args:
+    - attach
+window:
+  dimensions:
+   columns: 80
+   lines: 24
+font:
+  size: 13.0
+  normal:
+    family: Liga SFMono Nerd Font
+    style: Regular
+cursor:
+  style:
+    shape: Beam
+  vi_mode_style:
+    shape: Block

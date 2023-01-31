@@ -29,6 +29,8 @@ fi
 
 command rm -rf "$HOME/.theosrc"
 command ln -s "$DOTDIR/.theosrc" "$HOME/.theosrc"
+command rm -rf "$HOME/.alacritty.yml"
+command ln -s "$DOTDIR/.alacritty.yaml" "$HOME/.alacritty.yml"
 
 # Install dufs
 DUFS_TARBALL="https://github.com/sigoden/dufs/releases/download/v0.25.0/dufs-v0.25.0-aarch64-apple-darwin.tar.gz"
