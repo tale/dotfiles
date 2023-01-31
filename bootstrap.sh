@@ -35,6 +35,7 @@ command chmod +x $DOTDIR/githooks/* # Can't be in quotes to fix Linux glob behav
 command rm -rf "$HOME/.huskyrc"
 command ln -s "$DOTDIR/.huskyrc" "$HOME/.huskyrc"
 command ln -s "$DOTDIR/.zshrc" "$HOME/.zshrc"
+command ln -s "$DOTDIR/.zlogin" "$HOME/.zlogin"
 
 command rm -rf "$HOME/.tmux.conf"
 command ln -s "$DOTDIR/.tmux.conf" "$HOME/.tmux.conf"

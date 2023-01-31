@@ -69,7 +69,12 @@ fi
 
 # Load completions and suggestions at the end
 fpath+=($DOTDIR/vendor/zsh-completions/src)
-autoload -U compinit; compinit
+autoload -Uz compinit
+if [ $(date +'%j') != $(/usr/bin/stat -f '%Sm' -t '%j' ${ZDOTDIR:-$HOME}/.zcompdump) ]; then
+	compinit
+else
+	compinit -C
+fi
 
 source "$DOTDIR/VENDOR/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
