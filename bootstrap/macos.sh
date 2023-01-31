@@ -32,13 +32,6 @@ command ln -s "$DOTDIR/.theosrc" "$HOME/.theosrc"
 command rm -rf "$HOME/.alacritty.yml"
 command ln -s "$DOTDIR/.alacritty.yaml" "$HOME/.alacritty.yml"
 
-# Install dufs
-DUFS_TARBALL="https://github.com/sigoden/dufs/releases/download/v0.25.0/dufs-v0.25.0-aarch64-apple-darwin.tar.gz"
-
-curl -Lo /tmp/dufs.tar.gz $DUFS_TARBALL
-tar -xvf /tmp/dufs.tar.gz
-sudo mv dufs /usr/local/bin
-
 # Disable unnecessary dotfile creations
 notify "Configuring Unnecessary Dotfiles"
 if [[ $SUDO != "UNSET" ]]; then
