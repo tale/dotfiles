@@ -13,11 +13,6 @@ command pnpm env use --global 18
 command mkdir -p "$HOME/.gnupg" && rm -rf "$HOME/.gnupg/gpg-agent.conf" # Reconfigure gpg-agent.conf
 echo -e "pinentry-program /usr/local/bin/pinentry-mac\nenable-ssh-support" >> "$HOME/.gnupg/gpg-agent.conf"
 
-# Install iTerm2 Integrations
-notify "Setting up iTerm Shell Integrations"
-command mkdir -p "$HOME/.extra" && rm -rf "$HOME/.extra/iterm.zsh"
-command curl -L https://iterm2.com/shell_integration/zsh -o "$HOME/.extra/iterm.zsh"
-
 # Install and Configure Theos
 notify "Installing Theos"
 THEOS="$HOME/Library/Theos"
