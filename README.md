@@ -30,6 +30,7 @@ When creating these dotfiles, I had a few requirements:
 - A [Homebrew](https://brew.sh) installation and bundle to install all the tools I use on macOS
 - Automated installation of all the dotfiles through a bootstrap script
 - Ligature SF Mono Nerd Font for editors and terminals
+- A custom configuration for [Alacritty](https://alacritty.org)
 
 ## Installation
 
