@@ -21,7 +21,7 @@ export PATH="$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/ruby/bin:$PATH"
 
 # Golang environment
-export GOPATH=$HOME/go
+export GOPATH=$HOME/.config/go
 export GOROOT="$HOMEBREW_PREFIX/opt/go/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 

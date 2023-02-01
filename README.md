@@ -24,8 +24,8 @@ When creating these dotfiles, I had a few requirements:
 - Development Environments
   - [Node.js](https://nodejs.org) and [PNPM](https://pnpm.io) for JavaScript development
   - [Theos](https://github.com/theos/theos) installation on macOS for iOS development
-  - [Golang](https://golang.org) installation on macOS and Linux
   - [Rust](https://www.rust-lang.org) installation on macOS and Linux
+  - [Golang](https://golang.org) installation on macOS
 - A [`launchd`](https://www.launchd.info) to automatically run a daily maintenance script on macOS
 - A [Homebrew](https://brew.sh) installation and bundle to install all the tools I use on macOS
 - Automated installation of all the dotfiles through a bootstrap script
