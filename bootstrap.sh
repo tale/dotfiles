@@ -95,7 +95,7 @@ done
 
 notify "Installing pnpm"
 command curl -fsSL https://get.pnpm.io/install.sh | sh -
-source "$HOME/.zshrc"
+source "${ZDOTDIR:-$HOME}/.zshrc"
 
 command pnpm add -g pnpm # Upgrade pnpm after installation
 command pnpm env use --global lts
