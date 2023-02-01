@@ -13,6 +13,10 @@ command brew tap homebrew/bundle
 notify "Installing Homebrew packages"
 command brew bundle --no-lock --file "$DOTDIR/Brewfile"
 
+notify "Installing bun"
+command curl -fsSL https://bun.sh/install | bash
+tail -n 3 "$ZDOTDIR/.zshrc" | wc -c | xargs -I {} truncate "$ZDOTDIR/.zshrc" -s -{} # Cut last 3 lines that bun adds
+
 notify "Configuring GnuPG"
 command mkdir -p "$HOME/.gnupg"
 command ln -sf "$DOTDIR/config/gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"

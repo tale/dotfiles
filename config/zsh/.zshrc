@@ -66,6 +66,8 @@ fi
 
 # Load completions and suggestions at the end
 fpath+=($DOTDIR/vendor/zsh-completions/src)
+[ -s $"HOME/.bun/_bun" ] && fpath+=($HOME/.bun) # This is only on macOS
+
 autoload -Uz compinit
 if [ $(date +"%j") != $(/usr/bin/stat -f "%Sm" -t "%j" ${ZDOTDIR:-$HOME}/.zcompdump) ]; then
 	compinit
