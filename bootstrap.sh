@@ -83,7 +83,7 @@ if [[ ! -f "$HOME/.ssh/config" ]]; then
 	command touch "$HOME/.ssh/config"
 fi
 
-grep -qxF "Include ~/.config/dotfiles/config/ssh.config" "$HOME/.ssh/config" || echo "Include ~/.dotfiles/ssh.config" | sudo tee -a "$HOME/.ssh/config"
+grep -qxF "Include ~/.config/dotfiles/config/ssh.config" "$HOME/.ssh/config" || echo "Include ~/.config/dotfiles/config/ssh.config" | sudo tee -a "$HOME/.ssh/config"
 
 command touch "$HOME/.hushlogin"
 command ln -sf "$DOTDIR/config/.huskyrc" "$HOME/.huskyrc"
