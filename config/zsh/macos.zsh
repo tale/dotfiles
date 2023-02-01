@@ -41,3 +41,7 @@ function plsdns() {
 	command sudo dscacheutil -flushcache
 	command sudo killall -HUP mDNSResponder
 }
+
+function brewdump() {
+	command brew bundle dump --force
+}
