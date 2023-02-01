@@ -10,6 +10,7 @@ zstyle :prompt:pure:prompt:success color 242
 prompt pure
 
 source "$DOTDIR/vendor/lscolors/lscolors.sh"
+source "$HOME/.cargo/env" # Rust environment
 
 zstyle ":completion:*" use-cache on
 zstyle ":completion:*" menu select

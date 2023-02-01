@@ -72,6 +72,10 @@ source "$HOME/.zshrc"
 command pnpm add -g pnpm # Upgrade pnpm after installation
 command pnpm env use --global lts
 
+notify "Installing rust"
+command curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify-path -y
+command rustup default stable
+
 # Configure dirty dotfiles
 notify "Configuring shared dotfiles"
 
