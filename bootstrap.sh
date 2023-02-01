@@ -65,6 +65,13 @@ fi
 notify "Cloning dotfiles from '$DOTFILES_REPO'"
 command git clone --recursive "$DOTFILES_REPO" "$DOTDIR"
 
+notify "Installing pnpm"
+command curl -fsSL https://get.pnpm.io/install.sh | sh -
+source "$HOME/.zshrc"
+
+command pnpm add -g pnpm # Upgrade pnpm after installation
+command pnpm env use --global lts
+
 # Configure dirty dotfiles
 notify "Configuring shared dotfiles"
 
@@ -92,13 +99,6 @@ command ln -sf "$DOTDIR/config/git/hooks" "$HOME/.config/git/hooks"
 for hook in "$DOTDIR/config/git/hooks/"*; do
 	command chmod +x "$hook"
 done
-
-notify "Installing pnpm"
-command curl -fsSL https://get.pnpm.io/install.sh | sh -
-source "${ZDOTDIR:-$HOME}/.zshrc"
-
-command pnpm add -g pnpm # Upgrade pnpm after installation
-command pnpm env use --global lts
 
 if [[ "$OS" == "Darwin" ]]; then
 	source "$DOTDIR/bootstrap/macos.sh"
