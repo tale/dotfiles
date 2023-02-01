@@ -24,7 +24,7 @@ if [[ ! -d $THEOS ]]; then
 else
 	warn "$THEOS already exists. Updating instead."
 	command git -C "$THEOS" pull
-file
+fi
 
 notify "Disabling unnecessary dotfile creations"
 if [[ $SUDO != "UNSET" ]]; then
