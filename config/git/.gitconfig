@@ -12,7 +12,7 @@
 [core]
 	editor = nvim
 	pager = delta
-	excludesfile = ~/config/git/.gitignore
+	excludesfile = ~/.config/git/.gitignore
 	hooksPath = ~/.config/git/hooks
 [pull]
 	rebase = true
