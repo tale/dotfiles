@@ -18,3 +18,8 @@ command $SUDO apt-get update && $SUDO apt-get dist-upgrade -yq
 notify "Installing $APT_LIST"
 command $SUDO apt-get install -yq $APT_LIST
 command chsh -s $(which zsh)
+
+notify "Finished configuration (maybe restart?)"
+source "$HOME/.zshenv"
+source "$HOME/.zshrc"
+source "$HOME/.zlogin"
