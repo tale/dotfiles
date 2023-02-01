@@ -29,6 +29,7 @@ When creating these dotfiles, I had a few requirements:
 - A [`launchd`](https://www.launchd.info) to automatically run a daily maintenance script on macOS
 - A [Homebrew](https://brew.sh) installation and bundle to install all the tools I use on macOS
 - Automated installation of all the dotfiles through a bootstrap script
+- Ligature SF Mono Nerd Font for editors and terminals
 
 ## Installation
 
