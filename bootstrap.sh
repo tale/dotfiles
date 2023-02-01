@@ -76,7 +76,7 @@ notify "Configuring zsh"
 command ln -sf "$DOTDIR/config/zsh/.zshenv" "$HOME/.zshenv"
 source "$HOME/.zshenv" # Loads $ZDOTDIR
 
-command rm -rf "$ZDOTDIR"
+command rm -rf "$ZDOTDIR" && mkdir -p "$ZDOTDIR"
 command ln -sf "$DOTDIR/config/zsh/.zshrc" "$ZDOTDIR/.zshrc"
 command ln -sf "$DOTDIR/config/zsh/.zlogin" "$ZDOTDIR/.zlogin"
 
