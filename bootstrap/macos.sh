@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 notify "Configuring macOS dotfiles"
+source "$HOME/.zshenv"
+
 command ln -sf "$DOTDIR/config/.theosrc" "$HOME/.theosrc"
 command ln -sf "$DOTDIR/config/.alacritty.yaml" "$HOME/.alacritty.yml"
 
@@ -59,3 +61,4 @@ defaults write com.apple.Dock showhidden -bool TRUE
 # Finish
 killall Dock
 notify "Finished configuration (maybe restart?)"
+
