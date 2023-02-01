@@ -56,7 +56,7 @@ alias mkmk="minikube start --driver=docker --kubernetes-version=v1.25.0"
 
 # Platform specific configuration
 if [[ "$OS" == "Darwin" ]]; then
-	source "$DOTDIR/config/zsh/mac.zsh"
+	source "$DOTDIR/config/zsh/macos.zsh"
 fi
 
 if [[ "$OS" == "Linux" ]]; then
