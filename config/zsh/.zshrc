@@ -18,6 +18,10 @@ zstyle ":completion:*" file-list all
 zstyle ":completion:*:default" list-colors ${(s.:.)LS_COLORS}
 zstyle ":completion:*" completer _extensions _complete _approximate
 
+zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
+zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+
 if [[ "$OS" == "Darwin" ]]; then # Different cache path for macOS
 	zstyle ":completion:*" cache-path "$HOME/Library/Caches/zsh/.zcompcache"
 else
@@ -66,9 +70,8 @@ fi
 
 # Load completions and suggestions at the end
 fpath+=($DOTDIR/vendor/zsh-completions/src)
-[ -s $"HOME/.bun/_bun" ] && fpath+=($HOME/.bun) # This is only on macOS
-
 autoload -Uz compinit
+
 if [ $(date +"%j") != $(/usr/bin/stat -f "%Sm" -t "%j" ${ZDOTDIR:-$HOME}/.zcompdump) ]; then
 	compinit
 else

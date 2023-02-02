@@ -49,3 +49,7 @@ function brewdump() {
 
 # Configure pinentry for GPG if it is messed up (backgrounded)
 pinentry-touchid -check &>/dev/null || pinentry-touchid -fix &>/dev/null &
+
+# Configure completions
+fpath+=($HOME/.bun)
+fpath+=($HOMEBREW_PREFIX/share/zsh/site-functions)
