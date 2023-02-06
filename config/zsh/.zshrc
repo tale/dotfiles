@@ -80,19 +80,26 @@ fi
 
 source "$DOTDIR/VENDOR/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
-# Helper functions for managing dotfiles
-dotsource() {
-	source "$ZDOTDIR/.zlogin"
-	source "$ZDOTDIR/.zshrc"
-	source "$HOME/.zshenv"
+# Helper function to maintain dotfiles
+dotfiles() {
+	case "$1" in
+		"source")
+			source "$ZDOTDIR/.zlogin"
+			source "$ZDOTDIR/.zshrc"
+			source "$HOME/.zshenv"
+			;;
+		"update")
+			command git -C "$DOTDIR" stash
+			command git -C "$DOTDIR" pull
+			command git -C "$DOTDIR" stash pop
+
+			source "$ZDOTDIR/.zlogin"
+			source "$ZDOTDIR/.zshrc"
+			source "$HOME/.zshenv"
+			;;
+		*)
+			echo "Usage: dotfiles [source|date]"
+			;;
+	esac
 }
 
-dotdate() {
-	command git -C "$DOTDIR" stash
-	command git -C "$DOTDIR" pull
-	command git -C "$DOTDIR" stash pop
-
-	source "$ZDOTDIR/.zlogin"
-	source "$ZDOTDIR/.zshrc"
-	source "$HOME/.zshenv"
-}
