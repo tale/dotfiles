@@ -58,8 +58,6 @@ notify "Configuring macOS defaults"
 defaults write com.apple.screencapture type png
 defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock autohide-time-modifier -int 0.5
-defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="small-spacer-tile";}'
-defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="small-spacer-tile";}'
 defaults write com.apple.Dock showhidden -bool TRUE
 
 # Finish
