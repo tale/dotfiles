@@ -97,8 +97,12 @@ dotfiles() {
 			source "$ZDOTDIR/.zshrc"
 			source "$HOME/.zshenv"
 			;;
+		"reset")
+			command git -C "$DOTDIR" reset --hard
+			command git -C "$DOTDIR" clean -fd
+			;;
 		*)
-			echo "Usage: dotfiles [source|date]"
+			echo "Usage: dotfiles <source|update|reset>"
 			;;
 	esac
 }
