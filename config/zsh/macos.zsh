@@ -1,9 +1,4 @@
-# Yubikey SSH via GPG
-export "GPG_TTY=$(tty)"
 export "SSH_AUTH_SOCK=${HOME}/.gnupg/S.gpg-agent.ssh"
-gpgconf --launch gpg-agent
-alias pinentry='pinentry-mac'
-
 export THEOS="$HOME/Library/Theos"
 
 # Source brew shellenv
@@ -47,8 +42,9 @@ function brewdump() {
 	command brew bundle dump --force
 }
 
-# Configure pinentry for GPG if it is messed up (backgrounded)
-pinentry-touchid -check &>/dev/null || pinentry-touchid -fix &>/dev/null &
+# Start gpg-agent for SSH
+export "GPG_TTY=$(tty)"
+gpgconf --launch gpg-agent
 
 # Configure completions
 fpath+=($HOME/.bun)

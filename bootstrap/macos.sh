@@ -19,7 +19,13 @@ tail -n 3 "$ZDOTDIR/.zshrc" | wc -c | xargs -I {} truncate "$ZDOTDIR/.zshrc" -s 
 
 notify "Configuring GnuPG"
 command mkdir -p "$HOME/.gnupg"
+command chown -R $(whoami) "$HOME/.gnupg"
+command chmod 600 "$HOME/.gnupg/*"
+command chmod 700 "$HOME/.gnupg"
+
 command ln -sf "$DOTDIR/config/gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
+command ln -sf "$DOTDIR/config/gnupg/dirmngr.conf" "$HOME/.gnupg/dirmngr.conf"
+command ln -sf "$DOTDIR/config/gnupg/gpg.conf" "$HOME/.gnupg/gpg.conf"
 
 notify "Installing Theos"
 THEOS="$HOME/Library/Theos"

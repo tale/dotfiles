@@ -34,6 +34,7 @@ export BAT_THEME="TwoDark"
 
 # Laziness
 export dd="$DOTDIR"
+export gpg="$HOME/.gnupg"
 
 # Aliases
 alias g="git"
