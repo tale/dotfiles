@@ -1,7 +1,3 @@
-shell:
-  program: /opt/homebrew/bin/tmux
-  args:
-    - attach
 window:
   dimensions:
    columns: 80
