@@ -52,9 +52,11 @@ alias ll="exa -lah"
 alias ls="exa -l"
 
 alias f="fzf"
-alias nano="vi"
-alias vi="nvim"
+alias n="vimr"
+alias nano="nvim"
+alias vi="vimr"
 alias vim="nvim"
+alias code="vimr"
 
 alias mk="minikube"
 alias devc="devcontainer"
