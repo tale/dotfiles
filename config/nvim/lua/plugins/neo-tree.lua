@@ -24,6 +24,9 @@ return {
 					hide_dotfiles = false,
 					never_show = {
 						".DS_Store"
+					},
+					never_show_by_pattern = {
+						"*.class"
 					}
 				}
 			}
