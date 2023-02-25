@@ -29,7 +29,6 @@ else
 fi
 
 # Random Globals
-export FZF_DEFAULT_COMMAND="fd --type f"
 export BAT_THEME="TwoDark"
 
 # Laziness
@@ -52,11 +51,11 @@ alias ll="exa -lah"
 alias ls="exa -l"
 
 alias f="fzf"
-alias n="vimr"
+alias n="neovide --maximized --notabs --multigrid"
 alias nano="nvim"
-alias vi="vimr"
+alias vi="neovide --maximized --notabs --multigrid"
 alias vim="nvim"
-alias code="vimr"
+alias code="neovide --maximized --notabs --multigrid"
 
 alias mk="minikube"
 alias devc="devcontainer"
@@ -103,6 +102,9 @@ dotfiles() {
 		"reset")
 			command git -C "$DOTDIR" reset --hard
 			command git -C "$DOTDIR" clean -fd
+			;;
+		"bundle")
+			command brew bundle dump --force --file="$DOTDIR/Brewfile"
 			;;
 		*)
 			echo "Usage: dotfiles <source|update|reset>"

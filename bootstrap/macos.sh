@@ -56,7 +56,8 @@ command rm -rf "$HOME/.config/nvim"
 command mkdir -p "$HOME/.config/nvim"
 command ln -sf "$DOTDIR/config/nvim/lua" "$HOME/.config/nvim/lua"
 command ln -sf "$DOTDIR/config/nvim/init.lua" "$HOME/.config/nvim/init.lua"
-command nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+command ln -sf "$DOTDIR/config/lazygit.yaml" "$HOME/Library/Application Support/lazygit/config.yml"
+
 notify "Configure VimR manually"
 
 notify "Linking Launch Agents"
