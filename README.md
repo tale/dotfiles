@@ -17,6 +17,25 @@ When creating these dotfiles, I had a few requirements:
   - Faster `compinit` by only using `zcompdump` in login shells
   - Different ZSH configuration directory in `~/.config/zsh`
   - Conditional loading of configs based on the OS
+- Neovim
+  - [Lazy.nvim](https://github.com/folke/lazy.nvim) for plugin management and fast startup
+  - Sensible keybindings using the Command key on macOS with usage via a GUI like Neovide
+  - Automated LSP installation and configuration with [Mason](https://github.com/williamboman/mason.nvim)
+  - Tab-based completions via LSP using [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+  - File and fuzzy searching using [Telescope](https://github.com/nvim-telescope/telescope.nvim) and the native `fzf` integration
+  - File explorer through [neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim) and status-line via [lualine](https://github.com/nvim-lualine/lualine.nvim)
+  - Multi-cursor support similar to Visual Studio Code using [vim-visual-multi](https://github.com/mg979/vim-visual-multi)
+  - Integrated terminal like Visual Studio Code using [toggleterm](https://github.com/akinsho/toggleterm.nvim)
+  - Better syntax highlighting using [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+  - [Catppuccin](https://github.com/catppuccin/nvim) colorscheme *(Machiatto variant)*
+  - [Comment.nvim](https://github.com/numToStr/Comment.nvim) to simplify commenting blocks of code
+  - [Copilot.lua](https://github.com/zbirenbaum/copilot.lua) a faster version of GitHub Copilot for Neovim
+  - [Devcontainer support](https://codeberg.org/esensar/nvim-dev-container) through remote attaching
+  - [Diffview.nvim](https://github.com/sindrets/diffview.nvim) for git diffs
+  - Floating git management TUI using [lazygit](https://github.com/jesseduffield/lazygit) and [FTerm](https://github.com/numToStr/FTerm.nvim)
+  - Git status markers on the left via [gitsigns](https://github.com/lewis6991/gitsigns.nvim) and virtual blame via [gitblame.nvim](https://github.com/f-person/git-blame.nvim)
+  - Indent guides and ruler through [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
+  - Wakatime integration with the official Vim wakatime plugin
 - Git Configuration
   - Global [`gitignore`](./config/git/.gitignore) for macOS and Linux
   - Git hooks that ensure GPG and committer email match and that commits are conventional
