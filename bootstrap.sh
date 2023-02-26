@@ -151,6 +151,6 @@ notify "Finished configuration (maybe restart?)"
 command rm -rf "$HOME/.zshrc"
 command rm -rf "$HOME/.zlogin"
 
-source "$ZDOTDIR/.zshenv"
+source "$HOME/.zshenv"
 source "$ZDOTDIR/.zshrc"
 source "$ZDOTDIR/.zlogin"
