@@ -96,6 +96,8 @@ command pnpm env use --global lts
 
 notify "Installing rust"
 command curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify-path -y
+
+source "$HOME/.cargo/env"
 command rustup default stable
 
 # Configure dirty dotfiles
@@ -107,7 +109,7 @@ if [[ ! -f "$HOME/.ssh/config" ]]; then
 	command touch "$HOME/.ssh/config"
 fi
 
-grep -qxF "Include ~/.config/dotfiles/config/ssh.config" "$HOME/.ssh/config" || echo "Include ~/.config/dotfiles/config/ssh.config" | sudo tee -a "$HOME/.ssh/config"
+grep -qxF "Include ~/.config/dotfiles/config/ssh.config" "$HOME/.ssh/config" || echo "Include ~/.config/dotfiles/config/ssh.config" | $SUDO tee -a "$HOME/.ssh/config"
 
 command touch "$HOME/.hushlogin"
 command ln -sf "$DOTDIR/config/.huskyrc" "$HOME/.huskyrc"
