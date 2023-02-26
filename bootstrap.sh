@@ -91,8 +91,8 @@ notify "Installing pnpm"
 command curl -fsSL https://get.pnpm.io/install.sh | SHELL=`which zsh` sh -
 source "$HOME/.zshrc"
 
-command pnpm add -g pnpm # Upgrade pnpm after installation
 command pnpm env use --global lts
+command pnpm add -g pnpm # Upgrade pnpm after installation
 
 notify "Installing rust"
 command curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --no-modify-path -y
