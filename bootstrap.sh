@@ -38,15 +38,20 @@ fi
 cd "$HOME"
 
 # Check if sudo is available
-if [[ -z "$NO_SUDO" && $UID != 0 ]]; then
-	if $(sudo -v); then
+if [[ -z "$NO_SUDO" ]]; then
+	notify "Checking for 'sudo' permissions"
+	if [[ $UID == 0 ]]; then
+		notify "Running as root"
+		SUDO=""
+	elif $(sudo -v); then
+		notify "Got 'sudo' permissions"
 		SUDO=sudo
 	else
-		error "Failed to get 'sudo' permissions"
-		exit 1
+		warn "Failed to get 'sudo' permissions"
+		warn "Skipping because \$NO_SUDO is not set"
+		SUDO="UNSET"
 	fi
 else
-	warn "Configuring without 'sudo' permissions"
 	warn "Skipping because \$NO_SUDO is set"
 	SUDO="UNSET"
 fi
@@ -65,6 +70,25 @@ fi
 notify "Cloning dotfiles from '$DOTFILES_REPO'"
 command git clone --recursive "$DOTFILES_REPO" "$DOTDIR"
 
+if [[ "$OS" == "Darwin" ]]; then
+		source "$DOTDIR/bootstrap/macos.sh"
+fi
+
+if [[ "$OS" == "Linux" ]]; then
+		source /etc/os-release
+		if [[ $ID != "ubuntu" && $ID_LIKE != "debian" ]]; then
+			error "Not running on Ubuntu"
+			exit 1
+		fi
+
+		if [[ $VERSION_ID != "22.04" ]]; then
+			error "Not running on Ubuntu Jammy Jellyfish (22.04)"
+			exit 1
+		fi
+
+		source "$DOTDIR/bootstrap/linux.sh"
+fi
+
 notify "Installing pnpm"
 command curl -fsSL https://get.pnpm.io/install.sh | sh -
 source "$HOME/.zshrc"
@@ -80,14 +104,13 @@ command rustup default stable
 notify "Configuring shared dotfiles"
 
 if [[ ! -f "$HOME/.ssh/config" ]]; then
-	command touch "$HOME/.ssh/config"
+command touch "$HOME/.ssh/config"
 fi
 
 grep -qxF "Include ~/.config/dotfiles/config/ssh.config" "$HOME/.ssh/config" || echo "Include ~/.config/dotfiles/config/ssh.config" | sudo tee -a "$HOME/.ssh/config"
 
 command touch "$HOME/.hushlogin"
 command ln -sf "$DOTDIR/config/.huskyrc" "$HOME/.huskyrc"
-command ln -sf "$DOTDIR/config/.tmux.conf" "$HOME/.tmux.conf"
 
 notify "Configuring zsh"
 command ln -sf "$DOTDIR/config/zsh/.zshenv" "$HOME/.zshenv"
@@ -107,24 +130,6 @@ command ln -sf "$DOTDIR/config/git/.gitignore" "$HOME/.config/git/.gitignore"
 
 command ln -sf "$DOTDIR/config/git/hooks" "$HOME/.config/git/hooks"
 for hook in "$DOTDIR/config/git/hooks/"*; do
-	command chmod +x "$hook"
+command chmod +x "$hook"
 done
 
-if [[ "$OS" == "Darwin" ]]; then
-	source "$DOTDIR/bootstrap/macos.sh"
-fi
-
-if [[ "$OS" == "Linux" ]]; then
-	source /etc/os-release
-	if [[ $ID != "ubuntu" && $ID_LIKE != "debian" ]]; then
-		error "Not running on Ubuntu"
-		exit 1
-	fi
-
-	if [[ $VERSION_ID != "22.04" ]]; then
-		error "Not running on Ubuntu Jammy Jellyfish (22.04)"
-		exit 1
-	fi
-
-	source "$DOTDIR/bootstrap/linux.sh"
-fi
