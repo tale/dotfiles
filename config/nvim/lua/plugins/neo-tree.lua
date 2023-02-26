@@ -18,6 +18,9 @@ return {
 		vim.keymap.set("n", "<D-s-e>", ":Neotree<CR>")
 
 		require("neo-tree").setup({
+			window = {
+				position = "right"
+			},
 			filesystem = {
 				use_libuv_file_watcher = true,
 				filtered_items = {
