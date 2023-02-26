@@ -132,8 +132,20 @@ command ln -sf "$DOTDIR/config/git/.gitignore" "$HOME/.config/git/.gitignore"
 
 command ln -sf "$DOTDIR/config/git/hooks" "$HOME/.config/git/hooks"
 for hook in "$DOTDIR/config/git/hooks/"*; do
-command chmod +x "$hook"
+	command chmod +x "$hook"
 done
+
+notify "Configuring Neovim"
+command rm -rf "$HOME/.config/nvim"
+command mkdir -p "$HOME/.config/nvim"
+command ln -sf "$DOTDIR/config/nvim/lua" "$HOME/.config/nvim/lua"
+command ln -sf "$DOTDIR/config/nvim/init.lua" "$HOME/.config/nvim/init.lua"
+
+if [[ "$OS" == "Darwin" ]]; then
+	command ln -sf "$DOTDIR/config/lazygit.yaml" "$HOME/Library/Application Support/lazygit/config.yml"
+else
+	command ln -sf "$DOTDIR/config/lazygit.yaml" "$HOME/.config/lazygit/config.yml"
+fi
 
 notify "Finished configuration (maybe restart?)"
 command rm -rf "$HOME/.zshrc"
