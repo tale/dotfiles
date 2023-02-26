@@ -88,7 +88,7 @@ else
 fi
 
 notify "Installing pnpm"
-command curl -fsSL https://get.pnpm.io/install.sh | sh -
+command curl -fsSL https://get.pnpm.io/install.sh | SHELL=`which zsh` sh -
 source "$HOME/.zshrc"
 
 command pnpm add -g pnpm # Upgrade pnpm after installation
@@ -101,8 +101,10 @@ command rustup default stable
 # Configure dirty dotfiles
 notify "Configuring shared dotfiles"
 
+command mkdir -p "$HOME/.ssh"
+
 if [[ ! -f "$HOME/.ssh/config" ]]; then
-command touch "$HOME/.ssh/config"
+	command touch "$HOME/.ssh/config"
 fi
 
 grep -qxF "Include ~/.config/dotfiles/config/ssh.config" "$HOME/.ssh/config" || echo "Include ~/.config/dotfiles/config/ssh.config" | sudo tee -a "$HOME/.ssh/config"
@@ -131,3 +133,7 @@ for hook in "$DOTDIR/config/git/hooks/"*; do
 command chmod +x "$hook"
 done
 
+notify "Finished configuration (maybe restart?)"
+source "$HOME/.zshenv"
+source "$HOME/.zshrc"
+source "$HOME/.zlogin"

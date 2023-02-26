@@ -77,7 +77,3 @@ defaults write com.apple.Dock showhidden -bool TRUE
 
 # Finish
 killall Dock
-notify "Finished configuration (maybe restart?)"
-source "$HOME/.zshenv"
-source "$HOME/.zshrc"
-source "$HOME/.zlogin"

@@ -25,7 +25,3 @@ command $SUDO dpkg -i /tmp/delta.deb
 command $SUDO apt-get install -yq $APT_LIST
 command chsh -s $(which zsh)
 
-notify "Finished configuration (maybe restart?)"
-source "$HOME/.zshenv"
-source "$HOME/.zshrc"
-source "$HOME/.zlogin"
