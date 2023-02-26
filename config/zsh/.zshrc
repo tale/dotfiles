@@ -80,7 +80,7 @@ else
 	compinit -C
 fi
 
-source "$DOTDIR/VENDOR/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$DOTDIR/vendor/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # Helper function to maintain dotfiles
 dotfiles() {
