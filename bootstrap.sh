@@ -136,7 +136,6 @@ command chmod +x "$hook"
 done
 
 notify "Finished configuration (maybe restart?)"
-command rm -rf "$HOME/.zshenv"
 command rm -rf "$HOME/.zshrc"
 command rm -rf "$HOME/.zlogin"
 
