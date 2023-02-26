@@ -50,7 +50,8 @@ vim.keymap.set("i", "<D-v>", "<C-R>+")
 vim.api.nvim_set_keymap("n", "<D-a>", "ggVG<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "<D-a>", "ggVG<CR>", { noremap = true, silent = true })
 
--- Configure undo/redo/save commands using Command key on macOS
+-- Configure undo/redo/save/new commands using Command key on macOS
+vim.api.nvim_set_keymap("n", "<D-n>", ":enew<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<D-s>", ":w<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<D-z>", ":u<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<D-y>", ":redo<CR>", { noremap = true, silent = true })
