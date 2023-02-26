@@ -72,9 +72,7 @@ command git clone --recursive "$DOTFILES_REPO" "$DOTDIR"
 
 if [[ "$OS" == "Darwin" ]]; then
 		source "$DOTDIR/bootstrap/macos.sh"
-fi
-
-if [[ "$OS" == "Linux" ]]; then
+else
 		source /etc/os-release
 		if [[ $ID != "ubuntu" && $ID_LIKE != "debian" ]]; then
 			error "Not running on Ubuntu"
