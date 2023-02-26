@@ -136,6 +136,10 @@ command chmod +x "$hook"
 done
 
 notify "Finished configuration (maybe restart?)"
-source "$HOME/.zshenv"
-source "$HOME/.zshrc"
-source "$HOME/.zlogin"
+command rm -rf "$HOME/.zshenv"
+command rm -rf "$HOME/.zshrc"
+command rm -rf "$HOME/.zlogin"
+
+source "$ZDOTDIR/.zshenv"
+source "$ZDOTDIR/.zshrc"
+source "$ZDOTDIR/.zlogin"
