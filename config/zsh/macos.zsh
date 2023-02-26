@@ -12,8 +12,9 @@ export PATH="$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/findutils/libexec/gnubin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/gnu-which/libexec/gnubin:$PATH"
-export PATH="$HOMEBREW_PREFIX/opt/make/libexec/gnubin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/make/libexec/gnubin:$PATH"
+export PATH="$HOMEBREW_PREFIX/opt/curl/bin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/ruby/bin:$PATH"
 
 # Golang environment
