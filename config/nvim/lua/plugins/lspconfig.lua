@@ -41,6 +41,8 @@ return {
 					vim.keymap.set(mode, lhs, rhs, opts)
 				end
 
+				vim.api.nvim_set_keymap("n", "<D-.>", ":lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
+
 				bufmap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>")
 				bufmap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
 				bufmap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>")
@@ -51,7 +53,6 @@ return {
 				bufmap("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>")
 				bufmap("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>")
 				bufmap("x", "<F4>", "<cmd>lua vim.lsp.buf.range_code_action()<cr>")
-				bufmap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<cr>")
 				bufmap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
 				bufmap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
 			end
