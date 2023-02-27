@@ -24,6 +24,7 @@ vim.opt.cursorline = true
 -- Automatically update buffers when files change
 vim.opt.autoread = true
 vim.opt.autowrite = true
+vim.opt.fillchars.diff = "/"
 
 -- Move between splits using Command keys
 -- "Hide VimR" was disabled via System Settings
