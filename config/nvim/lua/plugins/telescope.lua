@@ -48,6 +48,14 @@ return {
 						vim.cmd("silent! edit")
 					end
 				end
+			},
+			{
+				desc = "Settings: Manage Language Servers",
+				cmd = "<CMD>Mason<CR>"
+			},
+			{
+				desc = "Settings: Manage Plugins",
+				cmd = "<CMD>Lazy<CR>"
 			}
 		})
 
