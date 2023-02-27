@@ -4,6 +4,12 @@ return {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		{
+			"folke/neoconf.nvim",
+			config = function()
+				require("neoconf").setup({})
+			end
+		},
+		{
 			"folke/neodev.nvim",
 			config = function()
 				require("neodev").setup({
@@ -21,7 +27,7 @@ return {
 		require("mason").setup()
 		require("mason-lspconfig").setup()
 		require("mason-lspconfig").setup_handlers({
-			function (server_name)
+			function(server_name)
 				require("lspconfig")[server_name].setup {}
 			end
 		})
@@ -33,6 +39,20 @@ return {
 			require("cmp_nvim_lsp").default_capabilities()
 		)
 
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			desc = "Format on Save",
+			callback = function()
+				local client = vim.lsp.get_active_clients({ name = "eslint" })
+
+				if client then
+					vim.cmd("silent! EslintFixAll")
+				else
+					vim.lsp.buf.format({ async = true })
+				end
+			end,
+			pattern = { "*" }
+		})
+
 		vim.api.nvim_create_autocmd("LspAttach", {
 			desc = "LSP actions",
 			callback = function()
@@ -41,7 +61,8 @@ return {
 					vim.keymap.set(mode, lhs, rhs, opts)
 				end
 
-				vim.api.nvim_set_keymap("n", "<D-.>", ":lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
+				vim.keymap.set("n", "<D-.>", vim.diagnostic.open_float, { noremap = true, silent = true })
+				vim.keymap.set("n", "<S-D-s>", vim.lsp.buf.code_action, { noremap = true, silent = true })
 
 				bufmap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>")
 				bufmap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
