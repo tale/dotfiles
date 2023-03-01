@@ -19,4 +19,4 @@ exec 1> /dev/null
 
 source ~/.zshenv &> /dev/null
 source "$ZDOTDIR/.zshrc" &> /dev/null
-command /Applications/Neovim.app/Contents/MacOS/nvim-qt --maximized $(eval echo "$1") &> /dev/null
+command /Applications/Neovim.app/Contents/MacOS/Neovim --maximized $(eval echo "$1") &> /dev/null
