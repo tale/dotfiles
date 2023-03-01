@@ -30,6 +30,12 @@ return {
 				end
 			},
 			{
+				desc = "YAML: Select Schema",
+				cmd = function()
+					vim.cmd("silent! Telescope yaml_schema")
+				end
+			},
+			{
 				desc = "Language: Restart LSP Server",
 				cmd = function()
 					vim.lsp.stop_client(vim.lsp.get_active_clients(), true)
