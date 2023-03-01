@@ -1,6 +1,3 @@
-[submodule "vendor/sf-mono-nerd-font"]
-	path = vendor/sf-mono-nerd-font
-	url = https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized.git
 [submodule "vendor/pure"]
 	path = vendor/pure
 	url = https://github.com/sindresorhus/pure.git
