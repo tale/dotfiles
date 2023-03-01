@@ -1,5 +1,6 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
+	lazy = false,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons",
@@ -19,10 +20,10 @@ return {
 		-- Disable v1 commands from neo-tree
 		vim.g.neo_tree_remove_legacy_commands = 1
 
-		vim.fn.sign_define("DiagnosticSignError", {text = " ", texthl = "DiagnosticSignError"})
-		vim.fn.sign_define("DiagnosticSignWarn", {text = " ", texthl = "DiagnosticSignWarn"})
-		vim.fn.sign_define("DiagnosticSignInfo", {text = " ", texthl = "DiagnosticSignInfo"})
-		vim.fn.sign_define("DiagnosticSignHint", {text = "", texthl = "DiagnosticSignHint"})
+		vim.fn.sign_define("DiagnosticSignError", {text = "", texthl = "DiagnosticSignError"})
+		vim.fn.sign_define("DiagnosticSignWarn", {text = "", texthl = "DiagnosticSignWarn"})
+		vim.fn.sign_define("DiagnosticSignInfo", {text = "", texthl = "DiagnosticSignInfo"})
+		vim.fn.sign_define("DiagnosticSignHint", {text = "", texthl = "DiagnosticSignHint"})
 
 		-- Command + Shift + E for file explorer
 		vim.keymap.set("n", "<D-s-e>", ":Neotree<CR>")
@@ -67,6 +68,27 @@ return {
 					},
 					never_show_by_pattern = {
 						"*.class"
+					}
+				}
+			},
+			default_component_configs = {
+				icon = {
+					folder_closed = "",
+					folder_open = "",
+					folder_empty = "",
+					default = ""
+				},
+				git_status = {
+					symbols = {
+						added = "",
+						modified = "",
+						deleted = "",
+						renamed = "➜",
+						untracked = "",
+						ignored = "◌",
+						unstaged = "✗",
+						staged = "✓",
+						confligt = ""
 					}
 				}
 			}
