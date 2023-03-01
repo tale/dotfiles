@@ -19,4 +19,4 @@ exec 1> /dev/null
 
 source ~/.zshenv &> /dev/null
 source "$ZDOTDIR/.zshrc" &> /dev/null
-command /Applications/Neovide.app/Contents/MacOS/neovide --maximized --notabs --multigrid $(eval echo "$1") &> /dev/null
+command /Applications/Neovim.app/Contents/MacOS/nvim-qt --maximized $(eval echo "$1") &> /dev/null
