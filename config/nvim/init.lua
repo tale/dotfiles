@@ -27,17 +27,13 @@ vim.opt.autowrite = true
 vim.opt.fillchars.diff = "/"
 
 -- Move between splits using Command keys
--- "Hide VimR" was disabled via System Settings
+-- "Hide Neovim" was disabled via System Settings
 vim.keymap.set("n", "<D-h>", "<c-w>h")
 vim.keymap.set("n", "<D-j>", "<c-w>j")
 vim.keymap.set("n", "<D-k>", "<c-w>k")
 vim.keymap.set("n", "<D-l>", "<c-w>l")
 
-if vim.g.neovide then
-	vim.opt.guifont = "JetBrainsMonoNL Nerd Font Mono:h13"
-	vim.g.neovide_input_macos_alt_is_meta = true
-	vim.g.neovide_input_use_logo = true
-end
+vim.opt.guifont = "JetBrainsMonoNL Nerd Font Mono:h13"
 
 -- Configure cut/copy/paste commands using Command key on macOS
 vim.keymap.set("v", "<D-x>", "\"+x")

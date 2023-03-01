@@ -93,9 +93,9 @@ return {
 		vim.keymap.set("n", "<D-p>", builtin.find_files, { silent = true })
 
 		-- Command + Shift + F opens the live grep
-		vim.keymap.set("n", "<D-s-f>", builtin.live_grep, { silent = true })
+		vim.keymap.set("n", "<D-S-F>", builtin.live_grep, { silent = true })
 
 		-- Command + Shift + P opens the command center
-		vim.keymap.set("n", "<D-s-p>", ":Telescope command_center<CR>", { silent = true })
+		vim.keymap.set("n", "<D-S-P>", ":Telescope command_center<CR>", { silent = true })
 	end
 }

@@ -26,7 +26,7 @@ return {
 		vim.fn.sign_define("DiagnosticSignHint", {text = "", texthl = "DiagnosticSignHint"})
 
 		-- Command + Shift + E for file explorer
-		vim.keymap.set("n", "<D-s-e>", ":Neotree<CR>")
+		vim.keymap.set("n", "<D-S-E>", ":Neotree<CR>")
 		vim.api.nvim_create_autocmd("BufEnter", {
 			pattern = { "*" },
 			desc = "Open a blank buffer to preserve the window picker layout",
