@@ -6,6 +6,12 @@ return {
 	config = function()
 		require("command_center").add({
 			{
+				desc = "File: Format Document",
+				cmd = function()
+					vim.lsp.buf.format({ async = true })
+				end
+			},
+			{
 				desc = "File: Save without formatting",
 				cmd = function()
 					vim.opt.eventignore = { "BufWritePre" }
