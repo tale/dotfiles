@@ -52,3 +52,14 @@ vim.api.nvim_set_keymap("n", "<D-n>", ":enew<CR>", { noremap = true, silent = tr
 vim.api.nvim_set_keymap("n", "<D-s>", ":w<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<D-z>", ":u<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<D-y>", ":redo<CR>", { noremap = true, silent = true })
+
+-- Go back in the buffer history using Command + W
+vim.api.nvim_set_keymap("n", "<D-w>", "<C-o>", { noremap = true, silent = true })
+
+-- Map Tab and Shift tab for indentation
+vim.api.nvim_set_keymap("n", "<Tab>", ">>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<S-Tab>", "<<", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<Tab>", ">>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<S-Tab>", "<<", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<Tab>", "<C-t>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<S-Tab>", "<C-d>", { noremap = true, silent = true })
