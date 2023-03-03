@@ -20,10 +20,10 @@ return {
 		-- Disable v1 commands from neo-tree
 		vim.g.neo_tree_remove_legacy_commands = 1
 
-		vim.fn.sign_define("DiagnosticSignError", {text = "", texthl = "DiagnosticSignError"})
-		vim.fn.sign_define("DiagnosticSignWarn", {text = "", texthl = "DiagnosticSignWarn"})
-		vim.fn.sign_define("DiagnosticSignInfo", {text = "", texthl = "DiagnosticSignInfo"})
-		vim.fn.sign_define("DiagnosticSignHint", {text = "", texthl = "DiagnosticSignHint"})
+		vim.fn.sign_define("DiagnosticSignError", { text = "", texthl = "DiagnosticSignError" })
+		vim.fn.sign_define("DiagnosticSignWarn", { text = "", texthl = "DiagnosticSignWarn" })
+		vim.fn.sign_define("DiagnosticSignInfo", { text = "", texthl = "DiagnosticSignInfo" })
+		vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
 		-- Command + Shift + E for file explorer
 		vim.keymap.set("n", "<D-S-E>", ":Neotree<CR>")
@@ -86,7 +86,7 @@ return {
 						renamed = "➜",
 						untracked = "",
 						ignored = "◌",
-						unstaged = "✗",
+						unstaged = "",
 						staged = "✓",
 						confligt = ""
 					}
