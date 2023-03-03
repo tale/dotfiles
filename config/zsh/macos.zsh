@@ -50,3 +50,6 @@ gpgconf --launch gpg-agent
 # Configure completions
 fpath+=($HOME/.bun)
 fpath+=($HOMEBREW_PREFIX/share/zsh/site-functions)
+
+command launchctl setenv PATH "$PATH"
+command launchctl setenv SSH_AUTH_SOCK "$SSH_AUTH_SOCK"
