@@ -48,7 +48,7 @@ return {
 			callback = function()
 				local client = vim.lsp.get_active_clients({ name = "eslint" })
 
-				if client then
+				if client and #client > 0 then
 					vim.cmd("silent! EslintFixAll")
 				else
 					vim.lsp.buf.format({ async = true })
