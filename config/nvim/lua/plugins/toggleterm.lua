@@ -4,7 +4,7 @@ return {
 		require("toggleterm").setup({
 			size = 20,
 			open_mapping = [[<c-`>]],
-			shade_terminals = false,
+			shade_terminals = true,
 			shell = "zsh"
 		})
 	end
