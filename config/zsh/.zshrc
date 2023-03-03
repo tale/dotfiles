@@ -107,7 +107,7 @@ dotfiles() {
 			command brew bundle dump --force --file="$DOTDIR/Brewfile"
 			;;
 		*)
-			echo "Usage: dotfiles <source|update|reset>"
+			echo "Usage: dotfiles <source|update|reset|bundle>"
 			;;
 	esac
 }
