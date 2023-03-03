@@ -27,7 +27,7 @@ When creating these dotfiles, I had a few requirements:
   - Multi-cursor support similar to Visual Studio Code using [vim-visual-multi](https://github.com/mg979/vim-visual-multi)
   - Integrated terminal like Visual Studio Code using [toggleterm](https://github.com/akinsho/toggleterm.nvim)
   - Better syntax highlighting using [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-  - [Catppuccin](https://github.com/catppuccin/nvim) colorscheme *(Machiatto variant)*
+  - Soothing color scheme from [Sonokai](https://github.com/sainnhe/sonokai) with the Shusia variant
   - [Comment.nvim](https://github.com/numToStr/Comment.nvim) to simplify commenting blocks of code
   - [Copilot.lua](https://github.com/zbirenbaum/copilot.lua) a faster version of GitHub Copilot for Neovim
   - [Devcontainer support](https://codeberg.org/esensar/nvim-dev-container) through remote attaching
