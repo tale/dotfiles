@@ -13,6 +13,16 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
+
+-- Create a global function to easily bind keys
+vim.g.bind_keys = function(bindings)
+	for _, binding in ipairs(bindings) do
+		local opts = { noremap = true, silent = true }
+		vim.keymap.set(binding[1], binding[2], binding[3], opts)
+	end
+end
+
+-- Plugins use the bind_keys() function
 require("lazy").setup("plugins")
 
 -- Set tab size to 4 and show cursor line highlight
@@ -25,41 +35,38 @@ vim.opt.cursorline = true
 vim.opt.autoread = true
 vim.opt.autowrite = true
 vim.opt.fillchars.diff = "/"
-
--- Move between splits using Command keys
--- "Hide Neovim" was disabled via System Settings
-vim.keymap.set("n", "<D-h>", "<c-w>h")
-vim.keymap.set("n", "<D-j>", "<c-w>j")
-vim.keymap.set("n", "<D-k>", "<c-w>k")
-vim.keymap.set("n", "<D-l>", "<c-w>l")
-
 vim.opt.guifont = "JetBrainsMonoNL Nerd Font Mono:h13"
 
--- Configure cut/copy/paste commands using Command key on macOS
-vim.keymap.set("v", "<D-x>", "\"+x")
-vim.keymap.set("v", "<D-c>", "\"+y")
-vim.keymap.set("n", "<D-v>", "\"+P")
-vim.keymap.set("v", "<D-v>", "\"+P")
-vim.keymap.set("c", "<D-v>", "<C-R>+")
-vim.keymap.set("i", "<D-v>", "<C-R>+")
+vim.g.bind_keys({
+	-- Move between splits and buffers
+	-- "Hide Neovim" needs to be rebinded via Preferences
+	{ { "n", "i", "t" }, "<D-h>",   "<C-\\><C-N><C-w>h" },
+	{ { "n", "i", "t" }, "<D-j>",   "<C-\\><C-N><C-w>j" },
+	{ { "n", "i", "t" }, "<D-k>",   "<C-\\><C-N><C-w>k" },
+	{ { "n", "i", "t" }, "<D-l>",   "<C-\\><C-N><C-w>l" },
 
--- Select all text using Command + A
-vim.api.nvim_set_keymap("n", "<D-a>", "ggVG<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<D-a>", "ggVG<CR>", { noremap = true, silent = true })
+	-- Configure undo, redo, save, and new window commands
+	{ { "n", "i" },      "<D-n>",   "<CMD>enew<CR>" },
+	{ { "n", "i" },      "<D-s>",   "<CMD>w<CR>" },
+	{ { "n", "i" },      "<D-z>",   "<CMD>u<CR>" },
+	{ { "n", "i" },      "<D-S-Z>", "<CMD>redo<CR>" },
 
--- Configure undo/redo/save/new commands using Command key on macOS
-vim.api.nvim_set_keymap("n", "<D-n>", ":enew<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<D-s>", ":w<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<D-z>", ":u<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<D-y>", ":redo<CR>", { noremap = true, silent = true })
+	-- Indentation using Tab and Shift Tab
+	{ { "n" },           "<Tab>",   ">>" },
+	{ { "n" },           "<S-Tab>", "<<" },
+	{ { "i" },           "<Tab>",   "<C-t>" },
+	{ { "i" },           "<S-Tab>", "<C-d>" },
+	{ { "v" },           "<Tab>",   ">gv" },
+	{ { "v" },           "<S-Tab>", "<gv" },
 
--- Go back in the buffer history using Command + W
-vim.api.nvim_set_keymap("n", "<D-w>", "<C-o>", { noremap = true, silent = true })
+	-- Cut, copy, paste bindings in all modes
+	{ { "n", "v" },      "<D-x>",   "\"+x" },
+	{ { "n", "v" },      "<D-c>",   "\"+y" },
+	{ { "n", "v" },      "<D-v>",   "\"+P" },
+	{ { "c" },           "<D-v>",   "<C-R>+" },
+	{ { "t" },           "<D-v>",   "<C-\\><C-N>\"+p<CR>i" },
+	{ { "i" },           "<D-v>",   "<CMD>set paste<CR><C-R>+<CMD>set nopaste<CR>" },
 
--- Map Tab and Shift tab for indentation
-vim.api.nvim_set_keymap("n", "<Tab>", ">>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<S-Tab>", "<<", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<Tab>", ">>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<S-Tab>", "<<", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("i", "<Tab>", "<C-t>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("i", "<S-Tab>", "<C-d>", { noremap = true, silent = true })
+	-- Select all text using Command + A
+	{ { "n", "v" },      "<D-a>",   "ggVG<CR>" },
+})
