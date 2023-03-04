@@ -4,6 +4,8 @@ return {
 		"nvim-treesitter/nvim-treesitter"
 	},
 	config = function()
-		vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>", { noremap = true, silent = true })
+		vim.g.bind_keys({
+			{ { "n", "v" }, "<D-m>", "<CMD>CellularAutomaton make_it_rain<CR>" },
+		})
 	end
 }

@@ -12,12 +12,10 @@ return {
 			}
 		})
 
-		vim.keymap.set("n", "<D-S-G>", function()
-			git:toggle()
-		end)
-
-		vim.keymap.set("t", "<D-S-G>", function()
-			git:toggle()
-		end)
+		vim.g.bind_keys({
+			{ { "n", "v", "t" }, "<D-S-G>", function()
+				git:toggle()
+			end },
+		})
 	end
 }

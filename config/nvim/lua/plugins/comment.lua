@@ -3,7 +3,8 @@ return {
 	config = function()
 		require("Comment").setup()
 
-		vim.keymap.set("n", "<D-/>", require("Comment.api").toggle.linewise.current, { noremap = true, silent = true })
-		vim.keymap.set("v", "<D-/>", require("Comment.api").toggle.linewise.current, { noremap = true, silent = true })
+		vim.g.bind_keys({
+			{ { "n", "v" }, "<D-/>", require("Comment.api").toggle.linewise.current },
+		})
 	end
 }

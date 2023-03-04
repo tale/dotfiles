@@ -38,13 +38,10 @@ return {
 
 		local builtin = require("telescope.builtin")
 
-		-- Command + P opens the file finder
-		vim.keymap.set("n", "<D-p>", builtin.find_files, { silent = true })
-
-		-- Command + Shift + F opens the live grep
-		vim.keymap.set("n", "<D-S-F>", builtin.live_grep, { silent = true })
-
-		-- Command + Shift + P opens the command center
-		vim.keymap.set("n", "<D-S-P>", ":Telescope command_center<CR>", { silent = true })
+		vim.g.bind_keys({
+			{ { "n", "i", "t" }, "<D-p>",   builtin.find_files },
+			{ { "n", "i", "t" }, "<D-S-F>", builtin.live_grep },
+			{ { "n", "i", "t" }, "<D-S-P>", ":Telescope command_center<CR>" },
+		})
 	end
 }

@@ -6,14 +6,16 @@ return {
 	},
 	config = function()
 		require("diffview").setup()
-		vim.keymap.set("n", "<D-d>", function()
-			local view = require("diffview.lib").get_current_view()
+		vim.g.bind_keys({
+			{ { "n", "v" }, "<D-d>", function()
+				local view = require("diffview.lib").get_current_view()
 
-			if view then
-				vim.cmd("DiffviewClose")
-			else
-				vim.cmd("DiffviewOpen")
-			end
-		end, { noremap = true, silent = true })
+				if view then
+					vim.cmd("DiffviewClose")
+				else
+					vim.cmd("DiffviewOpen")
+				end
+			end },
+		})
 	end
 }
