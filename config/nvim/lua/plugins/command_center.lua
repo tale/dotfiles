@@ -12,6 +12,18 @@ return {
 				end
 			},
 			{
+				desc = "File: Disable Formatting",
+				cmd = function()
+					vim.opt.eventignore = { "BufWritePre" }
+				end
+			},
+			{
+				desc = "File: Enable Formatting",
+				cmd = function()
+					vim.opt.eventignore = {}
+				end
+			},
+			{
 				desc = "File: Save without formatting",
 				cmd = function()
 					vim.opt.eventignore = { "BufWritePre" }
