@@ -4,9 +4,6 @@
 [submodule "vendor/zsh-completions"]
 	path = vendor/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
-[submodule "vendor/lscolors"]
-	path = vendor/lscolors
-	url = https://github.com/trapd00r/LS_COLORS.git
 [submodule "vendor/zsh-autosuggestions"]
 	path = vendor/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git

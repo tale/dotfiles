@@ -13,7 +13,6 @@ When creating these dotfiles, I had a few requirements:
 - ZSH (no plugin manager)
   - Using the [Pure](https://github.com/sindresorhus/pure) prompt by [Sindre Sorhus](https://sindresorhus.com)
   - [ZSH Completions](https://github.com/zsh-users/zsh-completions) and [ZSH Autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
-  - Custom [LS colors](https://github.com/trapd00r/LS_COLORS) for terminals
   - Faster `compinit` by only using `zcompdump` in login shells
   - Different ZSH configuration directory in `~/.config/zsh`
   - Conditional loading of configs based on the OS

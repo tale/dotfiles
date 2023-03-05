@@ -9,13 +9,11 @@ zstyle :prompt:pure:prompt:success color 242
 
 prompt pure
 
-source "$DOTDIR/vendor/lscolors/lscolors.sh"
 source "$HOME/.cargo/env" # Rust environment
 
 zstyle ":completion:*" use-cache on
 zstyle ":completion:*" menu select
 zstyle ":completion:*" file-list all
-zstyle ":completion:*:default" list-colors ${(s.:.)LS_COLORS}
 zstyle ":completion:*" completer _extensions _complete _approximate
 
 zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
