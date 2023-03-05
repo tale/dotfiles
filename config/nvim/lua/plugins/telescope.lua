@@ -20,11 +20,18 @@ return {
 					i = {
 						["<esc>"] = require("telescope.actions").close
 					}
+				},
+				file_ignore_patterns = {
+					".git/",
+					"node_modules/",
+					"%.class"
 				}
 			},
-			find_files = {
-				hidden = true,
-				smart_cwd = true
+			pickers = {
+				find_files = {
+					hidden = true,
+					smart_cwd = true
+				},
 			},
 			extensions = {
 				fzf = {
