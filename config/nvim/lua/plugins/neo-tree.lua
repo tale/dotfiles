@@ -64,6 +64,7 @@ return {
 					hide_dotfiles = false,
 					visible = true,
 					never_show = {
+						".git",
 						".DS_Store"
 					},
 					never_show_by_pattern = {
