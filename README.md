@@ -11,7 +11,7 @@ When creating these dotfiles, I had a few requirements:
 ## Features
 
 - ZSH (no plugin manager)
-  - Using the [Pure](https://github.com/sindresorhus/pure) prompt by [Sindre Sorhus](https://sindresorhus.com)
+  - Using an asynchronous minimal prompt called [Typewritten](https://typewritten.dev/#/)
   - [ZSH Completions](https://github.com/zsh-users/zsh-completions) and [ZSH Autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
   - Faster `compinit` by only using `zcompdump` in login shells
   - Different ZSH configuration directory in `~/.config/zsh`
@@ -24,14 +24,13 @@ When creating these dotfiles, I had a few requirements:
   - File and fuzzy searching using [Telescope](https://github.com/nvim-telescope/telescope.nvim) and the native `fzf` integration
   - File explorer through [neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim) and status-line via [lualine](https://github.com/nvim-lualine/lualine.nvim)
   - Multi-cursor support similar to Visual Studio Code using [vim-visual-multi](https://github.com/mg979/vim-visual-multi)
-  - Integrated terminal like Visual Studio Code using [toggleterm](https://github.com/akinsho/toggleterm.nvim)
   - Better syntax highlighting using [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-  - Soothing color scheme from [Sonokai](https://github.com/sainnhe/sonokai) with the Shusia variant
+  - Darker color scheme using [Rose Pine](https://github.com/rose-pine/neovim)
   - [Comment.nvim](https://github.com/numToStr/Comment.nvim) to simplify commenting blocks of code
   - [Copilot.lua](https://github.com/zbirenbaum/copilot.lua) a faster version of GitHub Copilot for Neovim
   - [Devcontainer support](https://codeberg.org/esensar/nvim-dev-container) through remote attaching
   - [Diffview.nvim](https://github.com/sindrets/diffview.nvim) for git diffs
-  - Floating git management TUI using [lazygit](https://github.com/jesseduffield/lazygit) and [FTerm](https://github.com/numToStr/FTerm.nvim)
+  - Integrated terminal and floating git management TUI using [lazygit](https://github.com/jesseduffield/lazygit) and [FTerm](https://github.com/numToStr/FTerm.nvim)
   - Git status markers on the left via [gitsigns](https://github.com/lewis6991/gitsigns.nvim) and virtual blame via [gitblame.nvim](https://github.com/f-person/git-blame.nvim)
   - Indent guides and ruler through [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
   - Wakatime integration with the official Vim wakatime plugin
