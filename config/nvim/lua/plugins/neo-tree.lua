@@ -52,8 +52,7 @@ return {
 					nowait = true
 				},
 				mappings = {
-					["<CR>"] = "open_with_window_picker",
-					["w"] = "open",
+					["<CR>"] = "open_or_window",
 					["<C-x>"] = "open_split",
 					["<C-v>"] = "open_vsplit"
 				}
@@ -71,6 +70,19 @@ return {
 					never_show_by_pattern = {
 						"*.class"
 					}
+				},
+				commands = {
+					open_or_window = function(state)
+						local wrap = require("neo-tree.utils").wrap
+						local commands = require("neo-tree.sources.common.commands")
+						local toggle_directory = require("neo-tree.sources.filesystem").toggle_directory
+
+						if vim.fn.winnr("$") == 1 and vim.bo.filetype == "neo-tree" then
+							commands.open(state, wrap(toggle_directory, state))
+						else
+							commands.open_with_window_picker(state, wrap(toggle_directory, state))
+						end
+					end
 				}
 			},
 			default_component_configs = {
