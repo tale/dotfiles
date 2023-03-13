@@ -36,6 +36,7 @@ return {
 
 		vim.g.bind_keys({
 			{ { "n", "v", "t" }, "<D-S-G>", function()
+				require("neo-tree.sources.manager").refresh("filesystem")
 				git:toggle()
 			end },
 		})
