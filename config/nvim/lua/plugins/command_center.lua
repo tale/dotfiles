@@ -1,5 +1,8 @@
 return {
 	"FeiyouG/command_center.nvim",
+	keys = {
+		"<D-p>"
+	},
 	dependencies = {
 		"nvim-telescope/telescope.nvim"
 	},

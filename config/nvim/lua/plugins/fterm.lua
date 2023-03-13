@@ -1,5 +1,8 @@
 return {
 	"numToStr/FTerm.nvim",
+	keys = {
+		"<D-S-G>"
+	},
 	config = function()
 		local fterm = require("FTerm")
 		local git = fterm:new({

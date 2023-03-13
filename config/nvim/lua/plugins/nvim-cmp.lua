@@ -1,5 +1,6 @@
 return {
 	"hrsh7th/nvim-cmp",
+	event = "BufEnter",
 	dependencies = {
 		"neovim/nvim-lspconfig",
 		"hrsh7th/cmp-nvim-lsp",
@@ -44,7 +45,7 @@ return {
 				{ name = "path" },
 				{ name = "copilot" },
 				{ name = "nvim_lsp" },
-				{ name = "buffer", keyword_length = 2 },
+				{ name = "buffer",  keyword_length = 2 },
 				{ name = "luasnip", keyword_length = 2 }
 			},
 			window = {
@@ -72,7 +73,7 @@ return {
 				["<Down>"] = cmp.mapping.select_next_item(select_opts),
 				["<C-p>"] = cmp.mapping.select_prev_item(select_opts),
 				["<C-n>"] = cmp.mapping.select_next_item(select_opts),
-				["<C-u>"] = cmp.mapping.scroll_docs(-4),
+				["<C-u>"] = cmp.mapping.scroll_docs( -4),
 				["<C-d>"] = cmp.mapping.scroll_docs(4),
 				["<C-e>"] = cmp.mapping.abort(),
 
@@ -83,7 +84,7 @@ return {
 					else
 						fallback()
 					end
-				end, {"i", "s"}),
+				end, { "i", "s" }),
 
 				-- Tab based autocompletion --
 				["<Tab>"] = cmp.mapping(function(fallback)
@@ -96,7 +97,7 @@ return {
 					else
 						cmp.complete()
 					end
-				end, {"i", "s"}),
+				end, { "i", "s" }),
 			}
 		})
 	end

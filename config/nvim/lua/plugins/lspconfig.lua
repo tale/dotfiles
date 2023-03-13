@@ -1,5 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
+	event = "BufEnter",
 	dependencies = {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
@@ -72,6 +73,8 @@ return {
 					{ { "n" }, "gr",      vim.lsp.buf.references },
 					{ { "n" }, "gs",      vim.lsp.buf.signature_help },
 					{ { "n" }, "K",       vim.lsp.buf.hover },
+					{ { "n" }, "<C-p>",   vim.diagnostic.goto_prev },
+					{ { "n" }, "<C-n>",   vim.diagnostic.goto_next }
 				})
 			end
 		})

@@ -1,5 +1,10 @@
 return {
 	"nvim-telescope/telescope.nvim",
+	keys = {
+		"<D-p>",
+		"<D-S-F>",
+		"<D-S-P>"
+	},
 	tag = "0.1.1",
 	dependencies = {
 		"nvim-lua/plenary.nvim",

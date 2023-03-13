@@ -27,21 +27,21 @@ return {
 
 		-- Command + Shift + E for file explorer
 		vim.keymap.set("n", "<D-S-E>", ":Neotree<CR>")
-		vim.api.nvim_create_autocmd("BufEnter", {
-			pattern = { "*" },
-			desc = "Open a blank buffer to preserve the window picker layout",
-			callback = function()
-				-- Runs only when the last window is neo-tree
-				if vim.fn.winnr("$") == 1 and vim.bo.filetype == "neo-tree" then
-					local winid = vim.api.nvim_get_current_win()
-
-					vim.schedule_wrap(function()
-						vim.cmd("vnew")
-						vim.api.nvim_win_set_width(winid, 30)
-					end)()
-				end
-			end
-		})
+		-- vim.api.nvim_create_autocmd("BufEnter", {
+		-- 	pattern = { "*" },
+		-- 	desc = "Open a blank buffer to preserve the window picker layout",
+		-- 	callback = function()
+		-- 		-- Runs only when the last window is neo-tree
+		-- 		if vim.fn.winnr("$") == 1 and vim.bo.filetype == "neo-tree" then
+		-- 			local winid = vim.api.nvim_get_current_win()
+		--
+		-- 			vim.schedule_wrap(function()
+		-- 				vim.cmd("vnew")
+		-- 				vim.api.nvim_win_set_width(winid, 30)
+		-- 			end)()
+		-- 		end
+		-- 	end
+		-- })
 
 		require("neo-tree").setup({
 			window = {
@@ -60,6 +60,7 @@ return {
 			},
 			filesystem = {
 				use_libuv_file_watcher = true,
+				follow_current_file = true,
 				filtered_items = {
 					hide_dotfiles = false,
 					visible = true,

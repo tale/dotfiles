@@ -30,6 +30,7 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.shiftround = true
 vim.opt.cursorline = true
+vim.opt.number = true
 
 -- Automatically update buffers when files change
 vim.opt.autoread = true
