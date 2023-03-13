@@ -59,10 +59,11 @@ alias mkmk="minikube start --driver=docker --kubernetes-version=v1.25.0"
 # Platform specific configuration
 if [[ "$OS" == "Darwin" ]]; then
 	source "$DOTDIR/config/zsh/macos.zsh"
-	COMPINIT_STAT=$(/usr/bin/stat -f "%Sm" -t "%j" ${ZDOTDIR:-$HOME}/.zcompdump)
+	
+	[[ -f ${ZDOTDIR:-$HOME}/.zcompdump ]] && COMPINIT_STAT=$(/usr/bin/stat -f "%Sm" -t "%j" ${ZDOTDIR:-$HOME}/.zcompdump)
 else
 	source "$DOTDIR/config/zsh/linux.zsh"
-	COMPINIT_STAT=$(/usr/bin/stat -c "%Y" ${ZDOTDIR:-$HOME}/.zcompdump | date +"%j")
+	[[ -f ${ZDOTDIR:-$HOME}/.zcompdump ]] && COMPINIT_STAT=$(/usr/bin/stat -c "%Y" ${ZDOTDIR:-$HOME}/.zcompdump | date +"%j")
 fi
 
 # Load completions and suggestions at the end
