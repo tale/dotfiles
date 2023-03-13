@@ -1,9 +1,28 @@
 return {
 	"numToStr/FTerm.nvim",
 	keys = {
+		"<C-`>",
 		"<D-S-G>"
 	},
 	config = function()
+		require("FTerm").setup({
+			border = "rounded",
+			ft = "terminal",
+			-- Pin to the bottom of the window
+			dimensions = {
+				x = 0.0,
+				y = 1.0,
+				height = 0.4,
+				width = 1.0
+			},
+		})
+
+		vim.g.bind_keys({
+			{ { "n", "x" }, "<C-`>", require("FTerm").toggle },
+			{ { "t" },      "<C-`>", "<C-\\><C-n><CMD>lua require(\"FTerm\").toggle()<CR>" }
+		})
+
+
 		local fterm = require("FTerm")
 		local git = fterm:new({
 			ft = "lazygit",
