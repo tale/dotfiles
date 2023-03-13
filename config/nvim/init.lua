@@ -32,10 +32,15 @@ vim.opt.shiftround = true
 vim.opt.cursorline = true
 vim.opt.number = true
 
+-- Split buffers onto the second child (right and bottom)
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
 -- Automatically update buffers when files change
 vim.opt.autoread = true
 vim.opt.autowrite = true
 vim.opt.fillchars.diff = "/"
+vim.opt.fillchars:append("eob: ")
 vim.opt.guifont = "JetBrainsMonoNL Nerd Font Mono:h13"
 
 vim.g.bind_keys({
