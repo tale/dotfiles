@@ -1,13 +1,10 @@
-# Instantly load Pure Prompt
-fpath+=($DOTDIR/vendor/pure)
+# Instantly load typewritten prompt
+fpath+=($DOTDIR/vendor/typewritten)
 autoload -U promptinit; promptinit
 
-zstyle :prompt:pure:git:stash show yes
-zstyle :prompt:pure:environment:nix-shell show no
-zstyle :prompt:pure:path color cyan
-zstyle :prompt:pure:prompt:success color 242
-
-prompt pure
+export TYPEWRITTEN_ARROW_SYMBOL="➜"
+export TYPEWRITTEN_RELATIVE_PATH="home"
+prompt typewritten
 
 source "$HOME/.cargo/env" # Rust environment
 
