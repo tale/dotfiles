@@ -4,7 +4,7 @@ return {
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
-				theme = "sonokai"
+				theme = "rose-pine"
 			},
 			sections = {
 				lualine_a = { 'mode' },
