@@ -4,7 +4,8 @@ return {
 	lazy = false,
 	config = function()
 		require("rose-pine").setup({
-			variant = "main",
+			variant = "auto",
+			dark_variant = "moon",
 			bold_vert_split = true
 		})
 

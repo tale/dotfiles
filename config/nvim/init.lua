@@ -30,7 +30,10 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.shiftround = true
 vim.opt.cursorline = true
+
+-- Relative line numbers
 vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- Split buffers onto the second child (right and bottom)
 vim.opt.splitbelow = true

@@ -18,6 +18,7 @@ return {
 	config = function()
 		require("telescope").load_extension("fzf")
 		require("telescope").load_extension("command_center")
+		local command_center = require("command_center")
 
 		require("telescope").setup({
 			defaults = {
@@ -44,6 +45,17 @@ return {
 					override_generic_sorter = false,
 					override_file_sorter = true,
 					case_mode = "smart_case"
+				},
+				command_center = {
+					components = {
+						command_center.component.DESC,
+						command_center.component.KEYS,
+					},
+					sort_by = {
+						command_center.component.DESC,
+						command_center.component.KEYS,
+					},
+					auto_replace_desc_with_cmd = false,
 				}
 			}
 		})
