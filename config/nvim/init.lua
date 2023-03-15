@@ -22,7 +22,8 @@ vim.g.bind_keys = function(bindings)
 	end
 end
 
--- Plugins use the bind_keys() function
+-- Plugins use the bind_keys() function and mapleader
+vim.g.mapleader = " "
 require("lazy").setup("plugins")
 
 -- Set tab size to 4 and show cursor line highlight
@@ -78,4 +79,10 @@ vim.g.bind_keys({
 
 	-- Select all text using Command + A
 	{ { "n", "v" },      "<D-a>",   "ggVG<CR>" },
+
+	-- Center on the screen so the code scrolls instead
+	{ { "n" },           "<C-d>",   "<C-d>zz" },
+	{ { "n" },           "<C-u>",   "<C-u>zz" },
+	{ { "n" },           "n",       "nzzzv" },
+	{ { "n" },           "N",       "Nzzzv" }
 })
