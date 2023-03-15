@@ -46,11 +46,9 @@ alias ll="exa -lah"
 alias ls="exa -l"
 
 alias f="fzf"
-alias n="/Applications/Neovim.app/Contents/MacOS/Neovim --maximized"
 alias nano="nvim"
-alias vi="/Applications/Neovim.app/Contents/MacOS/Neovim --maximized"
 alias vim="nvim"
-alias code="/Applications/Neovim.app/Contents/MacOS/Neovim --maximized"
+alias code="vimr -s"
 
 alias mk="minikube"
 alias devc="devcontainer"
