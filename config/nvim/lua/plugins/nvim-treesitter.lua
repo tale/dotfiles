@@ -4,6 +4,7 @@ return {
 	dependencies = {
 		"windwp/nvim-ts-autotag",
 		"JoosepAlviste/nvim-ts-context-commentstring",
+		"nvim-treesitter/nvim-treesitter-context"
 	},
 	config = function()
 		local update = require("nvim-treesitter.install").update({ with_sync = true })
@@ -12,6 +13,7 @@ return {
 		require("nvim-treesitter.configs").setup({
 			highlight = {
 				enable = true,
+				additional_vim_regex_highlighting = false
 			},
 			incremental_selection = {
 				enable = true,
