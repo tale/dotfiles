@@ -2,7 +2,7 @@ return {
 	"numToStr/FTerm.nvim",
 	keys = {
 		"<C-`>",
-		"<D-S-G>"
+		"<D-S-g>"
 	},
 	config = function()
 		require("FTerm").setup({
@@ -35,7 +35,7 @@ return {
 		})
 
 		vim.g.bind_keys({
-			{ { "n", "v", "t" }, "<D-S-G>", function()
+			{ { "n", "v", "t" }, "<D-S-g>", function()
 				require("neo-tree.sources.manager").refresh("filesystem")
 				git:toggle()
 			end },

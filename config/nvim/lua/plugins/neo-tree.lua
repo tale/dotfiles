@@ -26,7 +26,7 @@ return {
 		vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 
 		-- Command + Shift + E for file explorer
-		vim.keymap.set("n", "<D-S-E>", ":Neotree<CR>")
+		vim.keymap.set("n", "<D-S-e>", ":Neotree<CR>")
 		require("neo-tree").setup({
 			window = {
 				position = "right",

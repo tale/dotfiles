@@ -2,8 +2,8 @@ return {
 	"nvim-telescope/telescope.nvim",
 	keys = {
 		"<D-p>",
-		"<D-S-F>",
-		"<D-S-P>"
+		"<D-S-f>",
+		"<D-S-p>"
 	},
 	tag = "0.1.1",
 	dependencies = {
@@ -64,8 +64,8 @@ return {
 
 		vim.g.bind_keys({
 			{ { "n", "i", "t" }, "<D-p>",   builtin.find_files },
-			{ { "n", "i", "t" }, "<D-S-F>", builtin.live_grep },
-			{ { "n", "i", "t" }, "<D-S-P>", ":Telescope command_center<CR>" },
+			{ { "n", "i", "t" }, "<D-S-f>", builtin.live_grep },
+			{ { "n", "i", "t" }, "<D-S-p>", ":Telescope command_center<CR>" },
 		})
 	end
 }

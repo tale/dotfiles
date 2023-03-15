@@ -55,12 +55,6 @@ vim.g.bind_keys({
 	{ { "n", "i", "t" }, "<D-k>",   "<C-\\><C-N><C-w>k" },
 	{ { "n", "i", "t" }, "<D-l>",   "<C-\\><C-N><C-w>l" },
 
-	-- Configure undo, redo, save, and new window commands
-	{ { "n", "i" },      "<D-n>",   "<CMD>enew<CR>" },
-	{ { "n", "i" },      "<D-s>",   "<CMD>w<CR>" },
-	{ { "n", "i" },      "<D-z>",   "<CMD>u<CR>" },
-	{ { "n", "i" },      "<D-S-Z>", "<CMD>redo<CR>" },
-
 	-- Indentation using Tab and Shift Tab
 	{ { "n" },           "<Tab>",   ">>" },
 	{ { "n" },           "<S-Tab>", "<<" },
@@ -77,12 +71,10 @@ vim.g.bind_keys({
 	{ { "t" },           "<D-v>",   "<C-\\><C-N>\"+p<CR>i" },
 	{ { "i" },           "<D-v>",   "<CMD>set paste<CR><C-R>+<CMD>set nopaste<CR>" },
 
-	-- Select all text using Command + A
-	{ { "n", "v" },      "<D-a>",   "ggVG<CR>" },
-
 	-- Center on the screen so the code scrolls instead
 	{ { "n" },           "<C-d>",   "<C-d>zz" },
 	{ { "n" },           "<C-u>",   "<C-u>zz" },
 	{ { "n" },           "n",       "nzzzv" },
 	{ { "n" },           "N",       "Nzzzv" }
 })
+

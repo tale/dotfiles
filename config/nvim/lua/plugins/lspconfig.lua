@@ -5,17 +5,11 @@ return {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		{
-			"folke/neoconf.nvim",
-			config = function()
-				require("neoconf").setup({})
-			end
-		},
-		{
 			"folke/neodev.nvim",
 			config = function()
 				require("neodev").setup({
 					override = function(root_dir, library)
-						if require("neodev.util").has_file(root_dir, "~/.config/dotfiles") then
+						if require("neodev.util").has_file(root_dir, "config/dotfiles") then
 							library.enabled = true
 							library.plugins = true
 						end
@@ -63,8 +57,8 @@ return {
 			callback = function()
 				vim.g.bind_keys({
 					{ { "n" }, "<D-.>",   vim.diagnostic.open_float },
-					{ { "n" }, "<S-D-S>", vim.lsp.buf.code_action },
-					{ { "v" }, "<S-D-S>", vim.lsp.buf.range_code_action },
+					{ { "n" }, "<S-D-s>", vim.lsp.buf.code_action },
+					{ { "v" }, "<S-D-s>", vim.lsp.buf.range_code_action },
 					{ { "n" }, "<F2>",    vim.lsp.buf.rename },
 					{ { "n" }, "gd",      vim.lsp.buf.definition },
 					{ { "n" }, "gD",      vim.lsp.buf.declaration },
