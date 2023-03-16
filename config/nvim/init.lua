@@ -63,14 +63,6 @@ vim.g.bind_keys({
 	{ { "v" },           "<Tab>",   ">gv" },
 	{ { "v" },           "<S-Tab>", "<gv" },
 
-	-- Cut, copy, paste bindings in all modes
-	{ { "n", "v" },      "<D-x>",   "\"+x" },
-	{ { "n", "v" },      "<D-c>",   "\"+y" },
-	{ { "n", "v" },      "<D-v>",   "\"+P" },
-	{ { "c" },           "<D-v>",   "<C-R>+" },
-	{ { "t" },           "<D-v>",   "<C-\\><C-N>\"+p<CR>i" },
-	{ { "i" },           "<D-v>",   "<CMD>set paste<CR><C-R>+<CMD>set nopaste<CR>" },
-
 	-- Center on the screen so the code scrolls instead
 	{ { "n" },           "<C-d>",   "<C-d>zz" },
 	{ { "n" },           "<C-u>",   "<C-u>zz" },
