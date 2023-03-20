@@ -3,6 +3,9 @@ git:
     colorArg: always
     pager: delta --dark --paging=never
 gui:
+  showIcons: true
+  showBottomLine: false
+  border: hidden
   theme:
     lightTheme: false
     activeBorderColor:
@@ -22,3 +25,11 @@ gui:
       - "#89b4fa" # Blue
     unstagedChangesColor:
       - red # Red
+customCommands:
+  - key: "<c-r>" # Control + R
+    prompts:
+    - type: "input"
+      title: "Commit message"
+      initialValue: "{{.SelectedLocalCommit.Name}}"
+    command: "git commit --amend -S -m '{{index .PromptResponses 0}}'"
+    context: "global"
