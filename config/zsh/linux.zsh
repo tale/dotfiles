@@ -8,3 +8,5 @@ alias bat='batcat'
 
 alias fd='fdfind' # fd(1) is named as fdfind on Ubuntu
 alias find='fdfind'
+
+alias motd='cat /run/motd.dynamic'
