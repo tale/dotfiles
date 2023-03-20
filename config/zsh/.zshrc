@@ -49,6 +49,7 @@ alias f="fzf"
 alias nano="nvim"
 alias vim="nvim"
 alias code="vimr -s"
+alias htop="btop"
 
 alias mk="minikube"
 alias devc="devcontainer"
