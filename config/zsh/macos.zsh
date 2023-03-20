@@ -17,11 +17,6 @@ export PATH="$HOMEBREW_PREFIX/opt/make/libexec/gnubin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/curl/bin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/ruby/bin:$PATH"
 
-# Golang environment
-export GOPATH=$HOME/.config/go
-export GOROOT="$HOMEBREW_PREFIX/opt/go/libexec"
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
-
 # JS environment
 [ -s "/Users/tale/.bun/_bun" ] && source "/Users/tale/.bun/_bun"
 export BUN_INSTALL="$HOME/.bun"
