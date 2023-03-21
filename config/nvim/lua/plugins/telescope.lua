@@ -63,9 +63,10 @@ return {
 		local builtin = require("telescope.builtin")
 
 		vim.g.bind_keys({
-			{ { "n", "i", "t" }, "<D-p>",   builtin.find_files },
-			{ { "n", "i", "t" }, "<D-S-f>", builtin.live_grep },
-			{ { "n", "i", "t" }, "<D-S-p>", ":Telescope command_center<CR>" },
+			{ { "n", "i", "t" }, "<D-p>",      builtin.find_files },
+			{ { "n", "i", "t" }, "<D-S-f>",    builtin.live_grep },
+			{ { "n", "i", "v" }, "<Leader>vo", builtin.diagnostics },
+			{ { "n", "i", "t" }, "<D-S-p>",    ":Telescope command_center<CR>" },
 		})
 	end
 }
