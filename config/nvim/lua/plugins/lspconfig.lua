@@ -50,7 +50,8 @@ return {
 				if client and #client > 0 then
 					vim.cmd("silent! EslintFixAll")
 				else
-					vim.lsp.buf.format({ async = true })
+					vim.lsp.buf.format({ async = false })
+					vim.cmd("silent! write")
 				end
 			end,
 			pattern = { "*" }

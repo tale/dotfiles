@@ -49,11 +49,10 @@ vim.opt.guifont = "JetBrainsMonoNL Nerd Font Mono:h13"
 
 vim.g.bind_keys({
 	-- Move between splits and buffers
-	-- "Hide Neovim" needs to be rebinded via Preferences
-	{ { "n", "i", "t" }, "<D-h>",   "<C-\\><C-N><C-w>h" },
-	{ { "n", "i", "t" }, "<D-j>",   "<C-\\><C-N><C-w>j" },
-	{ { "n", "i", "t" }, "<D-k>",   "<C-\\><C-N><C-w>k" },
-	{ { "n", "i", "t" }, "<D-l>",   "<C-\\><C-N><C-w>l" },
+	{ { "n", "i", "t" }, "<C-h>",   "<C-\\><C-N><C-w>h" },
+	{ { "n", "i", "t" }, "<C-j>",   "<C-\\><C-N><C-w>j" },
+	{ { "n", "i", "t" }, "<C-k>",   "<C-\\><C-N><C-w>k" },
+	{ { "n", "i", "t" }, "<C-l>",   "<C-\\><C-N><C-w>l" },
 
 	-- Indentation using Tab and Shift Tab
 	{ { "n" },           "<Tab>",   ">>" },
@@ -69,4 +68,3 @@ vim.g.bind_keys({
 	{ { "n" },           "n",       "nzzzv" },
 	{ { "n" },           "N",       "Nzzzv" }
 })
-

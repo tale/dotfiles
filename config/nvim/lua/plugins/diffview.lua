@@ -1,7 +1,7 @@
 return {
 	"sindrets/diffview.nvim",
 	keys = {
-		"<D-d>"
+		"<Leader>df"
 	},
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
@@ -10,7 +10,7 @@ return {
 	config = function()
 		require("diffview").setup()
 		vim.g.bind_keys({
-			{ { "n", "v" }, "<D-d>", function()
+			{ { "n", "v" }, "<Leader>df", function()
 				local view = require("diffview.lib").get_current_view()
 
 				if view then

@@ -5,7 +5,7 @@ return {
 	},
 	config = function()
 		vim.g.bind_keys({
-			{ { "n", "v" }, "<D-m>", "<CMD>CellularAutomaton make_it_rain<CR>" },
+			{ { "n", "v" }, "<Leader>woe", "<CMD>CellularAutomaton make_it_rain<CR>" },
 		})
 	end
 }

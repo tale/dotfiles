@@ -1,9 +1,10 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	keys = {
-		"<D-p>",
-		"<D-S-f>",
-		"<D-S-p>"
+		"<Leader>gt",
+		"<Leader>ff",
+		"<Leader>fi",
+		"<Leader>cc"
 	},
 	tag = "0.1.1",
 	dependencies = {
@@ -63,10 +64,10 @@ return {
 		local builtin = require("telescope.builtin")
 
 		vim.g.bind_keys({
-			{ { "n", "i", "t" }, "<D-p>",      builtin.find_files },
-			{ { "n", "i", "t" }, "<D-S-f>",    builtin.live_grep },
-			{ { "n", "i", "v" }, "<Leader>vo", builtin.diagnostics },
-			{ { "n", "i", "t" }, "<D-S-p>",    ":Telescope command_center<CR>" },
+			{ { "n", "i", "t" }, "<Leader>gt", builtin.find_files },
+			{ { "n", "i", "t" }, "<Leader>ff", builtin.find_files },
+			{ { "n", "i", "t" }, "<Leader>fi", builtin.live_grep },
+			{ { "n", "i", "t" }, "<Leader>cc", require("telescope").extensions.command_center.command_center },
 		})
 	end
 }
