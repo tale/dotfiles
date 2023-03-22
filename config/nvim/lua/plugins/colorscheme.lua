@@ -8,6 +8,6 @@ return {
 
 		vim.opt.termguicolors = true
 		vim.o.background = "dark"
-		require("ayu").colorscheme()
+		vim.cmd.colorscheme("ayu")
 	end
 }

@@ -4,10 +4,23 @@ return {
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
-				theme = "auto",
+				component_separators = "|",
+				section_separators = {
+					left = "",
+					right = ""
+				},
+				theme = "ayu",
 			},
 			sections = {
-				lualine_a = { "mode" },
+				lualine_a = {
+					{
+						"mode",
+						right_padding = 2,
+						separator = {
+							left = "",
+						},
+					}
+				},
 				lualine_b = { "filename", "branch" },
 				lualine_x = {},
 				lualine_y = {
@@ -20,7 +33,15 @@ return {
 					},
 					"filetype"
 				},
-				lualine_z = { "location" }
+				lualine_z = {
+					{
+						"location",
+						left_padding = 2,
+						separator = {
+							right = "",
+						},
+					}
+				}
 			},
 			inactive_sections = {
 				lualine_a = { "filename" },
