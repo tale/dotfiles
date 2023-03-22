@@ -24,7 +24,21 @@ end
 
 -- Plugins use the bind_keys() function and mapleader
 vim.g.mapleader = " "
-require("lazy").setup("plugins")
+require("lazy").setup({
+	spec = {
+		{ import = "plugins" }
+	},
+	install = {
+		missing = true,
+		colorscheme = { "ayu" }
+	},
+	checker = {
+		enabled = true
+	},
+	ui = {
+		border = "rounded"
+	}
+})
 
 -- Set tab size to 4 and show cursor line highlight
 vim.opt.tabstop = 4
