@@ -1,16 +1,13 @@
 return {
-	"marko-cerovac/material.nvim",
+	"Shatur/neovim-ayu",
 	lazy = false,
 	config = function()
-		require("material").setup({
-			lualine_style = "stealth",
-			contrast = {
-				cursor_line = true,
-			},
+		require("ayu").setup({
+			mirage = true
 		})
 
 		vim.opt.termguicolors = true
-		vim.g.material_style = "palenight"
-		vim.cmd.colorscheme("material")
+		vim.o.background = "dark"
+		require("ayu").colorscheme()
 	end
 }
