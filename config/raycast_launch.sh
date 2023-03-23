@@ -14,9 +14,9 @@
 # @raycast.author Aarnav Tale
 # @raycast.authorURL https://aarnavtale.com
 
-# disable all output
-exec 1> /dev/null
-
+exec 1>/dev/null 2>&1
 source ~/.zshenv &> /dev/null
 source "$ZDOTDIR/.zshrc" &> /dev/null
-command vimr -s $(eval echo "$1") &> /dev/null
+
+ARGUMENT=$(eval echo "$1")
+command open -a Alacritty --args -e /opt/homebrew/bin/zsh -c "nvim $ARGUMENT" &> /dev/null 
