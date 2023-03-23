@@ -135,16 +135,19 @@ for hook in "$DOTDIR/config/git/hooks/"*; do
 	command chmod +x "$hook"
 done
 
-notify "Configuring Neovim"
+notify "Configuring Neovim and Tmux"
 command rm -rf "$HOME/.config/nvim"
 command mkdir -p "$HOME/.config/nvim"
 command ln -sf "$DOTDIR/config/nvim/lua" "$HOME/.config/nvim/lua"
 command ln -sf "$DOTDIR/config/nvim/init.lua" "$HOME/.config/nvim/init.lua"
 
+command nvim --headless "+Lazy! sync" +qa # Installs plugins via Lazy
+command ln -sf "$DOTDIR/config/tui/tmux.conf" "$HOME/.tmux.conf"
+
 if [[ "$OS" == "Darwin" ]]; then
-	command ln -sf "$DOTDIR/config/lazygit.yaml" "$HOME/Library/Application Support/lazygit/config.yml"
+	command ln -sf "$DOTDIR/config/tui/lazygit.yaml" "$HOME/Library/Application Support/lazygit/config.yml"
 else
-	command ln -sf "$DOTDIR/config/lazygit.yaml" "$HOME/.config/lazygit/config.yml"
+	command ln -sf "$DOTDIR/config/tui/lazygit.yaml" "$HOME/.config/lazygit/config.yml"
 fi
 
 notify "Finished configuration (maybe restart?)"
