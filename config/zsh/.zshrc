@@ -48,7 +48,7 @@ alias ls="exa -l"
 alias f="fzf"
 alias nano="nvim"
 alias vim="nvim"
-alias code="vimr -s"
+alias code="nvim"
 alias htop="btop"
 
 alias mk="minikube"
