@@ -65,10 +65,10 @@ return {
 		local builtin = require("telescope.builtin")
 
 		vim.g.bind_keys({
-			{ { "n", "i", "t" }, "<Leader>gt", builtin.find_files },
-			{ { "n", "i", "t" }, "<Leader>ff", builtin.find_files },
-			{ { "n", "i", "t" }, "<Leader>fi", builtin.live_grep },
-			{ { "n", "i", "t" }, "<Leader>cc", require("telescope").extensions.command_center.command_center },
+			{ { "n", "t" }, "<Leader>gt", builtin.find_files },
+			{ { "n", "t" }, "<Leader>ff", builtin.find_files },
+			{ { "n", "t" }, "<Leader>fi", builtin.live_grep },
+			{ { "n", "t" }, "<Leader>cc", require("telescope").extensions.command_center.command_center },
 		})
 	end
 }
