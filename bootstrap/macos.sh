@@ -66,5 +66,9 @@ defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock autohide-time-modifier -int 0.5
 defaults write com.apple.Dock showhidden -bool TRUE
 
+# Application Settings
+notify "Configuring macOS application defaults"
+command ln -sf "$DOTDIR/config/alacritty.yaml" "$HOME/.alacritty.yml"
+
 # Finish
 killall Dock

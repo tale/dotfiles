@@ -1,0 +1,80 @@
+env:
+  TERM: xterm-256color
+
+window:
+  dimensions:
+    columns: 80
+    lines: 24
+  padding:
+    x: 16
+    y: 16
+  decorations_theme_variant: Dark
+  decorations: buttonless
+  option_as_alt: OnlyLeft
+
+scrolling:
+  history: 10000
+  multiplier: 2
+    
+font:
+  size: 13.0
+  normal:
+    family: JetbrainsMonoNL Nerd Font Mono
+    style: Regular
+  bold:
+    family: JetbrainsMonoNL Nerd Font Mono
+    style: Bold
+  italic:
+    family: JetbrainsMonoNL Nerd Font Mono
+    style: Italic
+  bold_italic:
+    family: JetbrainsMonoNL Nerd Font Mono
+    style: Bold Italic
+
+bell:
+  duration: 10
+  animation: EaseOutExpo
+
+colors:
+  primary:
+    background: '#1f2430'
+    foreground: '#cbccc6'
+    bright_foreground: '#f28779'
+  normal:
+    black:   '#212733'
+    red:     '#f08778'
+    green:   '#53bf97'
+    yellow:  '#fdcc60'
+    blue:    '#60b8d6' 
+    magenta: '#ec7171'
+    cyan:    '#98e6ca'
+    white:   '#fafafa'
+  bright:
+    black: '#686868'
+    red: '#f58c7d'
+    green: '#58c49c'
+    yellow: '#ffd165'
+    blue: '#65bddb'
+    magenta: '#f17676'
+    cyan: '#9debcf'
+    white: '#ffffff'
+
+cursor:
+  style:
+    shape: Block
+    blinking: On
+  blink_interval: 500
+  unfocused_hollow: true
+
+shell:
+  program: /opt/homebrew/bin/zsh
+  args:
+    - --login
+
+key_bindings:
+  - { key: V, mods: Command, action: Paste }
+  - { key: C, mods: Command, action: Copy }
+  - { key: F, mods: Command, action: SearchForward }
+  - { key: F, mods: Command|Shift, action: SearchBackward }
+  - { key: Comma, mods: Command, command: { program: "sh", args: ['-c', 'open -na Alacritty --args -T Preferences -e zsh -c "nvim $DOTDIR/config/alacritty.yaml"' ] } }
+
