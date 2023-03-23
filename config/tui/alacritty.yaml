@@ -67,14 +67,38 @@ cursor:
   unfocused_hollow: true
 
 shell:
-  program: /opt/homebrew/bin/zsh
+  program: /opt/homebrew/bin/tmux
   args:
-    - --login
+    - new-session
+    - -A
+    - -s
+    - main
 
 key_bindings:
   - { key: V, mods: Command, action: Paste }
   - { key: C, mods: Command, action: Copy }
   - { key: F, mods: Command, action: SearchForward }
   - { key: F, mods: Command|Shift, action: SearchBackward }
-  - { key: Comma, mods: Command, command: { program: "sh", args: ['-c', 'open -na Alacritty --args -T Preferences -e zsh -c "nvim $DOTDIR/config/alacritty.yaml"' ] } }
 
+  # Command + 1-9 to switch to windows
+  - { key: Key1, mods: Command, chars: "\x02\x31" }
+  - { key: Key2, mods: Command, chars: "\x02\x32" }
+  - { key: Key3, mods: Command, chars: "\x02\x33" }
+  - { key: Key4, mods: Command, chars: "\x02\x34" }
+  - { key: Key5, mods: Command, chars: "\x02\x35" }
+  - { key: Key6, mods: Command, chars: "\x02\x36" }
+  - { key: Key7, mods: Command, chars: "\x02\x37" }
+  - { key: Key8, mods: Command, chars: "\x02\x38" }
+  - { key: Key9, mods: Command, chars: "\x02\x39" }
+
+  # Command + , for preferences on macOS
+  - key: Comma
+    mods: Command
+    command:
+      program: tmux
+      args:
+        - popup
+        - -E
+        - -w 50%
+        - -h 50%
+        - nvim ~/.config/alacritty/alacritty.yml

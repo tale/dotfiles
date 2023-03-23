@@ -3,8 +3,9 @@
 notify "Configuring macOS dotfiles"
 source "$HOME/.zshenv"
 
+command mkdir -p "$HOME/.config/alacritty"
+command ln -sf "$DOTDIR/config/tui/alacritty.yaml" "$HOME/.config/alacritty/alacritty.yml"
 command ln -sf "$DOTDIR/config/.theosrc" "$HOME/.theosrc"
-command ln -sf "$DOTDIR/config/.alacritty.yaml" "$HOME/.alacritty.yml"
 
 notify "Installing Homebrew"
 command curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
