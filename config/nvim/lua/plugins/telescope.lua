@@ -1,5 +1,6 @@
 return {
 	"nvim-telescope/telescope.nvim",
+	event = "VimEnter",
 	keys = {
 		"<Leader>gt",
 		"<Leader>ff",
