@@ -66,6 +66,9 @@ vim.opt.relativenumber = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
+-- Use the system clipboard by default
+vim.opt.clipboard = "unnamedplus"
+
 -- Automatically update buffers when files change
 vim.opt.autoread = true
 vim.opt.autowrite = true
