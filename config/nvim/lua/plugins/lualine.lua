@@ -11,7 +11,8 @@ return {
 				disabled_filetypes = {
 					"neo-tree",
 					"terminal",
-					"lazygit"
+					"lazygit",
+					""
 				},
 				component_separators = "|",
 				section_separators = {
@@ -31,12 +32,7 @@ return {
 					}
 				},
 				lualine_b = { "filename", "branch" },
-				lualine_c = {
-					{
-						require("lazy.status").updates,
-						cond = require("lazy.status").has_updates,
-					}
-				},
+				lualine_c = {},
 				lualine_x = {},
 				lualine_y = {
 					{
@@ -71,7 +67,11 @@ return {
 						colored = true,
 						update_in_insert = true,
 					},
-					"filetype"
+					"filetype",
+					{
+						require("lazy.status").updates,
+						cond = require("lazy.status").has_updates,
+					}
 				},
 				lualine_z = {
 					{
@@ -83,14 +83,7 @@ return {
 					}
 				}
 			},
-			inactive_sections = {
-				lualine_a = { "filename" },
-				lualine_b = {},
-				lualine_c = {},
-				lualine_x = {},
-				lualine_y = {},
-				lualine_z = { "location" }
-			},
+			inactive_sections = {},
 			tabline = {},
 			extensions = {}
 		})
