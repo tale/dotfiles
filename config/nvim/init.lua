@@ -33,7 +33,19 @@ require("lazy").setup({
 		colorscheme = { "ayu" }
 	},
 	checker = {
-		enabled = true
+		enabled = true,
+		notify = false
+	},
+	change_detection = {
+		enabled = true,
+		notify = false
+	},
+	rtp = {
+		disabled_plugins = {
+			"netrwPlugin",
+			"tohtml",
+			"tutor"
+		}
 	},
 	ui = {
 		border = "rounded"
