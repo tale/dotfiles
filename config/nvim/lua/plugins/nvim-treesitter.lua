@@ -6,9 +6,7 @@ return {
 		"nvim-treesitter/nvim-treesitter-context"
 	},
 	config = function()
-		local update = require("nvim-treesitter.install").update({ with_sync = true })
-		update()
-
+		vim.cmd("silent! TSUpdate")
 		require("nvim-treesitter.configs").setup({
 			auto_install = true,
 			highlight = {
