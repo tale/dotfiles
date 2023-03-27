@@ -65,11 +65,9 @@ cursor:
   unfocused_hollow: true
 
 shell:
-  program: /opt/homebrew/bin/tmux
+  program: /opt/homebrew/bin/zsh
   args:
-    - new-session
-    - -t
-    - main
+    - --login
 
 key_bindings:
   - { key: V, mods: Command, action: Paste }

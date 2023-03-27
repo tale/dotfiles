@@ -1,12 +1,6 @@
 export "SSH_AUTH_SOCK=${HOME}/.gnupg/S.gpg-agent.ssh"
 export THEOS="$HOME/Library/Theos"
 
-# Source brew shellenv
-eval "$(/opt/homebrew/bin/brew shellenv)"
-export HOMEBREW_NO_AUTO_UPDATE=1
-export HOMEBREW_INSTALL_FROM_API=1
-export HOMEBREW_NO_ENV_HINTS=1
-
 # Brew path for manual linking overrides
 export PATH="$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
