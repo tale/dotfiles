@@ -1,6 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
-	event = "LspAttach",
+	event = "VimEnter",
 	dependencies = {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
