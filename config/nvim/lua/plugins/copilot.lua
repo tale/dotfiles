@@ -1,6 +1,6 @@
 return {
 	"zbirenbaum/copilot.lua",
-	event = "BufEnter",
+	event = "LspAttach",
 	dependencies = {
 		"neovim/nvim-lspconfig",
 	},

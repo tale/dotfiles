@@ -1,5 +1,6 @@
 return {
 	"eandrju/cellular-automaton.nvim",
+	event = "BufRead",
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter"
 	},

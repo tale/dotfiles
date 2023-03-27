@@ -1,5 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
+	event = "VimEnter",
 	dependencies = {
 		"j-hui/fidget.nvim"
 	},

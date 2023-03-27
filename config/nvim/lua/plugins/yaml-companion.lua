@@ -1,6 +1,6 @@
 return {
 	"someone-stole-my-name/yaml-companion.nvim",
-	event = "BufRead",
+	event = "LspAttach",
 	dependencies = {
 		"neovim/nvim-lspconfig",
 		"nvim-lua/plenary.nvim",
@@ -11,7 +11,8 @@ return {
 			schemas = {
 				{
 					name = "Kubernetes 1.26.1",
-					uri = "https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.1-standalone-strict/all.json"
+					uri =
+					"https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.1-standalone-strict/all.json"
 				}
 			}
 		})

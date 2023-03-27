@@ -1,6 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
-	event = "BufEnter",
+	event = "LspAttach",
 	dependencies = {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
@@ -56,27 +56,21 @@ return {
 			end,
 			pattern = { "*" }
 		})
-
-		vim.api.nvim_create_autocmd("LspAttach", {
-			desc = "LSP actions",
-			callback = function()
-				vim.g.bind_keys({
-					{ { "n" }, "<Leader>vd",  vim.diagnostic.open_float },
-					{ { "n" }, "<Leader>vws", vim.lsp.buf.workspace_symbol },
-					{ { "n" }, "<Leader>vca", vim.lsp.buf.code_action },
-					{ { "v" }, "<Leader>vca", vim.lsp.buf.range_code_action },
-					{ { "n" }, "<Leader>rn",  vim.lsp.buf.rename },
-					{ { "n" }, "gd",          vim.lsp.buf.definition },
-					{ { "n" }, "gD",          vim.lsp.buf.declaration },
-					{ { "n" }, "gi",          vim.lsp.buf.implementation },
-					{ { "n" }, "go",          vim.lsp.buf.type_definition },
-					{ { "n" }, "gr",          vim.lsp.buf.references },
-					{ { "i" }, "<C-h>",       vim.lsp.buf.signature_help },
-					{ { "n" }, "K",           vim.lsp.buf.hover },
-					{ { "n" }, "]d",          vim.diagnostic.goto_prev },
-					{ { "n" }, "[d",          vim.diagnostic.goto_next }
-				})
-			end
+		vim.g.bind_keys({
+			{ { "n" }, "<Leader>vd",  vim.diagnostic.open_float },
+			{ { "n" }, "<Leader>vws", vim.lsp.buf.workspace_symbol },
+			{ { "n" }, "<Leader>vca", vim.lsp.buf.code_action },
+			{ { "v" }, "<Leader>vca", vim.lsp.buf.range_code_action },
+			{ { "n" }, "<Leader>rn",  vim.lsp.buf.rename },
+			{ { "n" }, "gd",          vim.lsp.buf.definition },
+			{ { "n" }, "gD",          vim.lsp.buf.declaration },
+			{ { "n" }, "gi",          vim.lsp.buf.implementation },
+			{ { "n" }, "go",          vim.lsp.buf.type_definition },
+			{ { "n" }, "gr",          vim.lsp.buf.references },
+			{ { "i" }, "<C-h>",       vim.lsp.buf.signature_help },
+			{ { "n" }, "K",           vim.lsp.buf.hover },
+			{ { "n" }, "]d",          vim.diagnostic.goto_prev },
+			{ { "n" }, "[d",          vim.diagnostic.goto_next }
 		})
 	end
 }
