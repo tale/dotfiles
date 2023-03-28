@@ -1,12 +1,16 @@
 export "SSH_AUTH_SOCK=${HOME}/.gnupg/S.gpg-agent.ssh"
 export THEOS="$HOME/Library/Theos"
 
+# Configure brew shellenv
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export HOMEBREW_INSTALL_FROM_API=1
+export HOMEBREW_NO_ENV_HINTS=1
+
 # Brew path for manual linking overrides
 export PATH="$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/findutils/libexec/gnubin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/gnu-which/libexec/gnubin:$PATH"
-export PATH="$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/make/libexec/gnubin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/curl/bin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/ruby/bin:$PATH"
@@ -42,3 +46,11 @@ fpath+=($HOMEBREW_PREFIX/share/zsh/site-functions)
 
 command launchctl setenv PATH "$PATH"
 command launchctl setenv SSH_AUTH_SOCK "$SSH_AUTH_SOCK"
+
+# If ALACRITTY_SOCKET is set, we are running in Alacritty
+# Automatically attach to a tmux session in Alacritty
+if [[ -n "$ALACRITTY_SOCKET" ]]; then
+	if [[ -z "$TMUX" ]]; then
+		command tmux new-session -t main
+	fi
+fi

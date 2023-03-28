@@ -1,10 +1,4 @@
-# If ALACRITTY_SOCKET is set, we are running in Alacritty
-# Automatically attach to a tmux session in Alacritty
-if [[ -n "$ALACRITTY_SOCKET" ]]; then
-	if [[ -z "$TMUX" ]]; then
-		command tmux new-session -t main
-	fi
-fi
+
 
 # Instantly load typewritten prompt
 fpath+=($DOTDIR/vendor/typewritten)
