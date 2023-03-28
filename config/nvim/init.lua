@@ -92,6 +92,8 @@ vim.g.bind_keys({
 	{ { "v" },           "<S-Tab>", "<gv" },
 
 	-- Center on the screen so the code scrolls instead
+	{ { "n" },           "k",       "kzz" },
+	{ { "n" },           "j",       "jzz" },
 	{ { "n" },           "<C-d>",   "<C-d>zz" },
 	{ { "n" },           "<C-u>",   "<C-u>zz" },
 	{ { "n" },           "n",       "nzzzv" },
