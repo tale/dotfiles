@@ -91,7 +91,7 @@ return {
 		})
 
 		vim.g.bind_keys({
-			{ { "n", "i", "t", "v", "x" }, "<C-e>", "<CMD>Neotree<CR>" }
+			{ { "n", "i", "t", "v", "x" }, "<C-e>", "<CMD>Neotree toggle<CR>" }
 		})
 	end
 }
