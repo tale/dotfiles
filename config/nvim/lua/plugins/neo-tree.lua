@@ -41,6 +41,7 @@ return {
 			},
 			filesystem = {
 				use_libuv_file_watcher = true,
+				hijack_netrw_behavior = "disabled",
 				follow_current_file = true,
 				filtered_items = {
 					hide_dotfiles = false,
@@ -80,8 +81,8 @@ return {
 						modified = "",
 						deleted = "",
 						renamed = "➜",
-						untracked = "",
-						ignored = "◌",
+						untracked = "",
+						ignored = "",
 						unstaged = "",
 						staged = "✓",
 						conflict = ""

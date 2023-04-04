@@ -13,6 +13,8 @@ return {
 					"neo-tree",
 					"terminal",
 					"lazygit",
+					"DiffviewFiles",
+					"alpha",
 					""
 				},
 				component_separators = "|",
