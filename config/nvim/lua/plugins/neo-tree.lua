@@ -41,7 +41,6 @@ return {
 			},
 			filesystem = {
 				use_libuv_file_watcher = true,
-				hijack_netrw_behavior = "disabled",
 				follow_current_file = true,
 				filtered_items = {
 					hide_dotfiles = false,
@@ -66,6 +65,30 @@ return {
 							commands.open_with_window_picker(state, wrap(toggle_directory, state))
 						end
 					end
+				},
+				components = {
+					harpoon_index = function(config, node, state)
+						local Marked = require("harpoon.mark")
+						local path = node:get_id()
+						local succuss, index = pcall(Marked.get_index_of, path)
+						if succuss and index and index > 0 then
+							return {
+								text = string.format("󰁃 %d", index),
+								highlight = config.highlight or "NeoTreeDirectoryIcon",
+							}
+						else
+							return {}
+						end
+					end
+				},
+				renderers = {
+					file = {
+						{ "icon" },
+						{ "name",         use_git_status_colors = true },
+						{ "harpoon_index" },
+						{ "diagnostics" },
+						{ "git_status",   highlight = "NeoTreeDimText" },
+					}
 				}
 			},
 			default_component_configs = {
