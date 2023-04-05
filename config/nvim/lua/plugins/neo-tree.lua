@@ -39,6 +39,30 @@ return {
 					["<C-v>"] = "open_vsplit"
 				}
 			},
+			event_handlers = {
+				{
+					event = "file_opened",
+					handler = function(_state)
+						require("neo-tree").close_all()
+					end
+				},
+				{
+					event = "neo_tree_window_after_open",
+					handler = function(args)
+						if args.position == "left" or args.position == "right" then
+							vim.cmd("wincmd =")
+						end
+					end
+				},
+				{
+					event = "neo_tree_window_after_close",
+					handler = function(args)
+						if args.position == "left" or args.position == "right" then
+							vim.cmd("wincmd =")
+						end
+					end
+				}
+			},
 			filesystem = {
 				use_libuv_file_watcher = true,
 				follow_current_file = true,
