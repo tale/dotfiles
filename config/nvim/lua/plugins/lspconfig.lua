@@ -56,21 +56,22 @@ return {
 			end,
 			pattern = { "*" }
 		})
+
 		vim.g.bind_keys({
-			{ { "n" }, "<Leader>vd",  vim.diagnostic.open_float },
-			{ { "n" }, "<Leader>vws", vim.lsp.buf.workspace_symbol },
-			{ { "n" }, "<Leader>vca", vim.lsp.buf.code_action },
-			{ { "v" }, "<Leader>vca", vim.lsp.buf.range_code_action },
-			{ { "n" }, "<Leader>rn",  vim.lsp.buf.rename },
-			{ { "n" }, "gd",          vim.lsp.buf.definition },
-			{ { "n" }, "gD",          vim.lsp.buf.declaration },
-			{ { "n" }, "gi",          vim.lsp.buf.implementation },
-			{ { "n" }, "go",          vim.lsp.buf.type_definition },
-			{ { "n" }, "gr",          vim.lsp.buf.references },
-			{ { "i" }, "<C-h>",       vim.lsp.buf.signature_help },
-			{ { "n" }, "K",           vim.lsp.buf.hover },
-			{ { "n" }, "]d",          vim.diagnostic.goto_prev },
-			{ { "n" }, "[d",          vim.diagnostic.goto_next }
+			{ { "n" }, "<Leader>vd",  function() vim.diagnostic.open_float() end },
+			{ { "n" }, "<Leader>vws", function() vim.lsp.buf.workspace_symbol() end },
+			{ { "n" }, "<Leader>vca", function() vim.lsp.buf.code_action() end },
+			{ { "v" }, "<Leader>vca", function() vim.lsp.buf.range_code_action() end },
+			{ { "n" }, "<Leader>rn",  function() vim.lsp.buf.rename() end },
+			{ { "n" }, "gd",          function() vim.lsp.buf.definition() end },
+			{ { "n" }, "gD",          function() vim.lsp.buf.declaration() end },
+			{ { "n" }, "gi",          function() vim.lsp.buf.implementation() end },
+			{ { "n" }, "go",          function() vim.lsp.buf.type_definition() end },
+			{ { "n" }, "gr",          function() vim.lsp.buf.references() end },
+			{ { "i" }, "<C-h>",       function() vim.lsp.buf.signature_help() end },
+			{ { "n" }, "K",           function() vim.lsp.buf.hover() end },
+			{ { "n" }, "]d",          function() vim.diagnostic.goto_prev() end },
+			{ { "n" }, "[d",          function() vim.diagnostic.goto_next() end }
 		})
 	end
 }
