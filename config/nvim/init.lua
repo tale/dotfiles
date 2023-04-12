@@ -91,11 +91,13 @@ vim.g.bind_keys({
 	{ { "v" },           "<Tab>",   ">gv" },
 	{ { "v" },           "<S-Tab>", "<gv" },
 
-	-- Center on the screen so the code scrolls instead
-	{ { "n" },           "k",       "kzz" },
-	{ { "n" },           "j",       "jzz" },
-	{ { "n" },           "<C-d>",   "<C-d>zz" },
-	{ { "n" },           "<C-u>",   "<C-u>zz" },
+	-- Center the cursor on the screen so the code scrolls instead
+	{ { "n", "v" },      "k",       "kzz" },
+	{ { "n", "v" },      "j",       "jzz" },
+	{ { "n", "v" },      "<C-d>",   "<C-d>zz" },
+	{ { "n", "v" },      "<C-u>",   "<C-u>zz" },
 	{ { "n" },           "n",       "nzzzv" },
-	{ { "n" },           "N",       "Nzzzv" }
+	{ { "n" },           "N",       "Nzzzv" },
+	{ { "n" },           "u",       "uzz" },
+	{ { "n" },           "<C-r>",   "<C-r>zz" }
 })
