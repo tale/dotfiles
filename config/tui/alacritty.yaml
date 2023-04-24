@@ -17,16 +17,16 @@ scrolling:
 font:
   size: 13.0
   normal:
-    family: JetbrainsMonoNL Nerd Font Mono
+    family: SauceCodePro Nerd Font Mono
     style: Regular
   bold:
-    family: JetbrainsMonoNL Nerd Font Mono
+    family: SauceCodePro Nerd Font Mono
     style: Bold
   italic:
-    family: JetbrainsMonoNL Nerd Font Mono
+    family: SauceCodePro Nerd Font Mono
     style: Italic
   bold_italic:
-    family: JetbrainsMonoNL Nerd Font Mono
+    family: SauceCodePro Nerd Font Mono
     style: Bold Italic
 
 bell:
