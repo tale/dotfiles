@@ -1,5 +1,3 @@
-
-
 # Instantly load typewritten prompt
 fpath+=($DOTDIR/vendor/typewritten)
 autoload -U promptinit; promptinit
@@ -85,6 +83,14 @@ else
 fi
 
 source "$DOTDIR/vendor/zsh-autosuggestions/zsh-autosuggestions.zsh"
+
+# Load the timeout hook
+export TMOUT=600
+TRAPALRM() {
+	tty-clock -Scf '%A, %B %d, %Y'
+}
+
+alias idle="tty-clock -Scf '%A, %B %d, %Y'"
 
 # Helper function to maintain dotfiles
 dotfiles() {
