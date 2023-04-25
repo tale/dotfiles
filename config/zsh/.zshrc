@@ -2,6 +2,14 @@
 fpath+=($DOTDIR/vendor/typewritten)
 autoload -U promptinit; promptinit
 
+# Enable shared history
+HISTSIZE=50000
+SAVEHIST=10000
+setopt appendhistory
+setopt extendedhistory
+setopt sharehistory
+setopt incappendhistory
+
 export TYPEWRITTEN_ARROW_SYMBOL="➜"
 export TYPEWRITTEN_RELATIVE_PATH="home"
 prompt typewritten
@@ -83,14 +91,6 @@ else
 fi
 
 source "$DOTDIR/vendor/zsh-autosuggestions/zsh-autosuggestions.zsh"
-
-# Load the timeout hook
-export TMOUT=600
-TRAPALRM() {
-	tty-clock -Scf '%A, %B %d, %Y'
-}
-
-alias idle="tty-clock -Scf '%A, %B %d, %Y'"
 
 # Helper function to maintain dotfiles
 dotfiles() {
