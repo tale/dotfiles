@@ -7,7 +7,7 @@ if [[ -z $d || ! -d $d ]]; then
 fi
 
 # Open the fzf menu in the developer directory
-dir=$(fd -d 2 -t d . $d | fzf --ansi --preview 'et --icons {}')
+dir=$(fd -d 2 -t d . $d | fzf --ansi --preview 'erd --icons -C {}')
 if [[ -z $dir ]]; then
 	exit 0
 fi
