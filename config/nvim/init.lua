@@ -77,27 +77,21 @@ vim.opt.fillchars:append("eob: ")
 vim.opt.guifont = "JetBrainsMonoNL Nerd Font Mono:h13"
 
 vim.g.bind_keys({
-	-- Move between splits and buffers
-	{ { "n", "i", "t" }, "<C-h>",   "<C-\\><C-N><C-w>h" },
-	{ { "n", "i", "t" }, "<C-j>",   "<C-\\><C-N><C-w>j" },
-	{ { "n", "i", "t" }, "<C-k>",   "<C-\\><C-N><C-w>k" },
-	{ { "n", "i", "t" }, "<C-l>",   "<C-\\><C-N><C-w>l" },
-
 	-- Indentation using Tab and Shift Tab
-	{ { "n" },           "<Tab>",   ">>" },
-	{ { "n" },           "<S-Tab>", "<<" },
-	{ { "i" },           "<Tab>",   "<C-t>" },
-	{ { "i" },           "<S-Tab>", "<C-d>" },
-	{ { "v" },           "<Tab>",   ">gv" },
-	{ { "v" },           "<S-Tab>", "<gv" },
+	{ { "n" },      "<Tab>",   ">>" },
+	{ { "n" },      "<S-Tab>", "<<" },
+	{ { "i" },      "<Tab>",   "<C-t>" },
+	{ { "i" },      "<S-Tab>", "<C-d>" },
+	{ { "v" },      "<Tab>",   ">gv" },
+	{ { "v" },      "<S-Tab>", "<gv" },
 
 	-- Center the cursor on the screen so the code scrolls instead
-	{ { "n", "v" },      "k",       "kzz" },
-	{ { "n", "v" },      "j",       "jzz" },
-	{ { "n", "v" },      "<C-d>",   "<C-d>zz" },
-	{ { "n", "v" },      "<C-u>",   "<C-u>zz" },
-	{ { "n" },           "n",       "nzzzv" },
-	{ { "n" },           "N",       "Nzzzv" },
-	{ { "n" },           "u",       "uzz" },
-	{ { "n" },           "<C-r>",   "<C-r>zz" }
+	{ { "n", "v" }, "k",       "kzz" },
+	{ { "n", "v" }, "j",       "jzz" },
+	{ { "n", "v" }, "<C-d>",   "<C-d>zz" },
+	{ { "n", "v" }, "<C-u>",   "<C-u>zz" },
+	{ { "n" },      "n",       "nzzzv" },
+	{ { "n" },      "N",       "Nzzzv" },
+	{ { "n" },      "u",       "uzz" },
+	{ { "n" },      "<C-r>",   "<C-r>zz" }
 })
