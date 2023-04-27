@@ -64,6 +64,14 @@ alias mk="minikube"
 alias devc="devcontainer"
 alias mkmk="minikube start --driver=docker --kubernetes-version=v1.25.0"
 
+launch() {
+	if [[ -z $TMUX ]]; then
+		"$dd/config/tui/tmux_launch.sh"
+	else
+		tmux popup -EE -w 60% -h 60% "$dd/config/tui/tmux_launch.sh"
+	fi
+}
+
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
  --color=fg:#cbccc6,bg:#1f2430,hl:#707a8c
  --color=fg+:#707a8c,bg+:#191e2a,hl+:#ffcc66

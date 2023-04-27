@@ -51,6 +51,6 @@ command launchctl setenv SSH_AUTH_SOCK "$SSH_AUTH_SOCK"
 # Automatically attach to a tmux session in Alacritty
 if [[ -n "$ALACRITTY_SOCKET" ]]; then
 	if [[ -z "$TMUX" ]]; then
-		command tmux new-session -t main
+		launch
 	fi
 fi
