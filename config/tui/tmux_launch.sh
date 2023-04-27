@@ -37,17 +37,23 @@ if [[ $dir == "$dd" ]]; then
 fi
 
 # Tmux is not running, start the session here
-if [[ -z $TMUX && -z $tmux_running ]]; then
+if [[ -z $tmux_running ]]; then
 	tmux new-session -s "$session_name" -c "$dir"
+	tmux attach -t "$session_name"
 	exit 0
 fi
 
-# Tmux is running, check if the session exists
+# Create the session if it doesn't already exist
 if ! tmux has-session -t "$session_name" 2>/dev/null; then
-	# Session does not exist, create it
 	tmux new-session -ds "$session_name" -c "$dir"
 fi
 
-# Attach to the session
+# Attach to session if tmux client isn't running
+if [[ -z $TMUX ]]; then
+	tmux attach -t "$session_name"
+	exit 0
+fi
+
+# Attach to session if tmux client is running
 tmux switch-client -t "$session_name"
 
