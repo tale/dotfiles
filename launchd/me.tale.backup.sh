@@ -1,10 +1,11 @@
 #!/usr/bin/env zsh
 
 export RESTIC_PASSWORD=$(security find-generic-password -s restic-pass -w)
+export B2_ACCOUNT_ID=$(security find-generic-password -s b2-id -w)
+export B2_ACCOUNT_KEY=$(security find-generic-password -s b2-key -w)
+
 RESTIC_EXCLUDE="$DOTDIR/config/restic/excludes.txt"
 DEVELOPER_PATH="$HOME/Developer"
-
-echo $(date +"%Y-%m-%d %T") "Starting backup."
 
 if [[ ! -d $DEVELOPER_PATH ]]; then
 	echo $(date +"%Y-%m-%d %T") "Developer path not found."
@@ -21,9 +22,11 @@ if [[ ! -f /opt/homebrew/bin/restic ]]; then
 	exit 1
 fi
 
-if [[ $(pmset -g ps | head -1) =~ "Battery" ]]; then
-	echo $(date +"%Y-%m-%d %T") "Computer is not connected to the power source."
-	exit 1
+if [[ -z $OVERRIDE_BATTERY ]]; then
+	if [[ $(pmset -g ps | head -1) =~ "Battery" ]]; then
+		echo $(date +"%Y-%m-%d %T") "Computer is not connected to the power source."
+		exit 1
+	fi
 fi
 
 if [[ -z $RESTIC_PASSWORD ]]; then
@@ -31,9 +34,13 @@ if [[ -z $RESTIC_PASSWORD ]]; then
 	exit 1
 fi
 
+echo $(date +"%Y-%m-%d %T") "Starting backup to SFTP"
 command restic -r sftp:ftp.tale.me:/tale/restic backup $DEVELOPER_PATH \
 	--exclude-file $RESTIC_EXCLUDE \
 	--verbose
 
-echo $(date +"%Y-%m-%d %T") "Backup finished."
+echo $(date +"%Y-%m-%d %T") "Starting backup to B2"
+command restic -r b2:tale-ftp:/tale/restic backup $DEVELOPER_PATH \
+	--exclude-file $RESTIC_EXCLUDE \
+	--verbose
 
