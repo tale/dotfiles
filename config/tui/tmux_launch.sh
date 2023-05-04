@@ -8,33 +8,34 @@ fi
 
 # Add an option for raw folders
 dirs=$(fd -d 2 -t d . $d)
-dirs="~\n$dirs\n$dd"
+dirs="- dotfiles\n$dirs"
 
 # Open the fzf menu in the developer directory
 dir=$(echo $dirs | fzf --ansi \
 	--border none \
 	--no-scrollbar \
 	--preview-window border-left:60% \
-	--preview "exa --color=always -TD --git-ignore {}")
+	--preview "if [[ {} == '- dotfiles' ]]; then
+		exa -TD --git-ignore $dd
+	else
+		exa -TD --git-ignore {}
+		fi")
+
 if [[ -z $dir ]]; then
 	exit 0
 fi
 
-# Takes the directory and creates a session name from the last 2 parts
-session_dir_prefix=$(basename "$(dirname "$dir")")
-session_name="$session_dir_prefix-$(basename "$dir")"
-tmux_running="$(pgrep tmux)"
-
 # Custom session names
-if [[ $dir == "~" ]]; then
+if [[ $dir == "- dotfiles" ]]; then
 	session_name="main"
-	dir="$HOME"
+	dir="$dd"
+else
+	# Takes the directory and creates a session name from the last 2 parts
+	session_dir_prefix=$(basename "$(dirname "$dir")")
+	session_name="$session_dir_prefix-$(basename "$dir")"
 fi
 
-if [[ $dir == "$dd" ]]; then
-	session_name="dotfiles"
-	dir="$dd"
-fi
+tmux_running="$(pgrep tmux)"
 
 # Tmux is not running, start the session here
 if [[ -z $tmux_running ]]; then
