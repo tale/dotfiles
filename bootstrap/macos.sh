@@ -54,10 +54,18 @@ fi
 
 notify "Linking Launch Agents"
 command mkdir -p "$HOME/Library/LaunchAgents"
+
 command ln -sf "$DOTDIR/launchd/me.tale.cleanup.plist" "$HOME/Library/LaunchAgents/me.tale.cleanup.plist"
 command chmod +x "$DOTDIR/launchd/me.tale.cleanup.sh"
+
+command ln -sf "$DOTDIR/launchd/me.tale.backup.plist" "$HOME/Library/LaunchAgents/me.tale.backup.plist"
+command chmod +x "$DOTDIR/launchd/me.tale.backup.sh"
+
 command launchctl unload "$HOME/Library/LaunchAgents/me.tale.cleanup.plist"
 command launchctl load "$HOME/Library/LaunchAgents/me.tale.cleanup.plist"
+
+command launchctl unload "$HOME/Library/LaunchAgents/me.tale.backup.plist"
+command launchctl load "$HOME/Library/LaunchAgents/me.tale.backup.plist"
 
 # Defaults
 notify "Configuring macOS defaults"
