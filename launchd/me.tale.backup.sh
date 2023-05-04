@@ -29,13 +29,6 @@ if [[ ! -f /opt/homebrew/bin/restic ]]; then
 	exit 1
 fi
 
-if [[ -z $OVERRIDE_BATTERY ]]; then
-	if [[ $(pmset -g ps | head -1) =~ "Battery" ]]; then
-		ledger "Skipping due to battery power."
-		exit 1
-	fi
-fi
-
 if [[ -z $RESTIC_PASSWORD ]]; then
 	ledger "Restic password not found."
 	exit 1
