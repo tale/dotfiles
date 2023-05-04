@@ -5,7 +5,7 @@ git:
 gui:
   showIcons: true
   showBottomLine: false
-  border: hidden
+  border: rounded
   theme:
     lightTheme: false
     activeBorderColor:
@@ -28,8 +28,8 @@ gui:
 customCommands:
   - key: "<c-r>" # Control + R
     prompts:
-    - type: "input"
-      title: "Commit message"
-      initialValue: "{{.SelectedLocalCommit.Name}}"
+      - type: "input"
+        title: "Commit message"
+        initialValue: "{{.SelectedLocalCommit.Name}}"
     command: "git commit --amend -S -m '{{index .PromptResponses 0}}'"
     context: "global"
