@@ -4,19 +4,17 @@
 	<dict>
 		<key>Label</key>
 		<string>me.tale.cleanup</string>
-		<key>ProgramArguments</key>
-		<array>
-			<string>/Users/tale/.dotfiles/launchd/me.tale.cleanup.sh</string>
-		</array>
+		<key>Program</key>
+		<string>/Users/tale/.config/dotfiles/launchd/me.tale.cleanup.sh</string>
 		<key>EnvironmentVariables</key>
 		<dict>
 			<key>PATH</key>
 			<string>/bin:/usr/bin:/usr/local/bin:/opt/homebrew/bin</string>
 		</dict>
 		<key>StandardOutPath</key>
-		<string>/tmp/launchd.log</string>
+		<string>/tmp/launchd/cleanup.log</string>
 		<key>StandardErrorPath</key>
-		<string>/tmp/launchd.log</string>
+		<string>/tmp/launchd/cleanup.log</string>
 		<key>StartCalendarInterval</key>
 		<dict>
 			<key>Hour</key>

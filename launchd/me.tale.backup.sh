@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+LEDGER_PATH="/tmp/launchd.log"
 
 export RESTIC_PASSWORD=$(security find-generic-password -s restic-pass -w)
 export B2_ACCOUNT_ID=$(security find-generic-password -s b2-id -w)
@@ -7,40 +8,57 @@ export B2_ACCOUNT_KEY=$(security find-generic-password -s b2-key -w)
 RESTIC_EXCLUDE="$DOTDIR/config/restic/excludes.txt"
 DEVELOPER_PATH="$HOME/Developer"
 
+ledger () {
+	printf '[%s] (%s) %s\n' "me.tale.backup" \
+		"$(date '+%Y-%m-%d %H:%M:%S')" "$1" >> $LEDGER_PATH
+	exit 1
+}
+
 if [[ ! -d $DEVELOPER_PATH ]]; then
-	echo $(date +"%Y-%m-%d %T") "Developer path not found."
+	ledger "Developer path not found."
 	exit 1
 fi
 
 if [[ ! -f $RESTIC_EXCLUDE ]]; then
-	echo $(date +"%Y-%m-%d %T") "Restic exclude file not found."
+	ledger "Restic exclude file not found."
 	exit 1
 fi
 
 if [[ ! -f /opt/homebrew/bin/restic ]]; then
-	echo $(date +"%Y-%m-%d %T") "Restic not found."
+	ledger "Restic not found."
 	exit 1
 fi
 
 if [[ -z $OVERRIDE_BATTERY ]]; then
 	if [[ $(pmset -g ps | head -1) =~ "Battery" ]]; then
-		echo $(date +"%Y-%m-%d %T") "Computer is not connected to the power source."
+		ledger "Skipping due to battery power."
 		exit 1
 	fi
 fi
 
 if [[ -z $RESTIC_PASSWORD ]]; then
-	echo $(date +"%Y-%m-%d %T") "Restic password not found."
+	ledger "Restic password not found."
 	exit 1
 fi
 
-echo $(date +"%Y-%m-%d %T") "Starting backup to SFTP"
 command restic -r sftp:ftp.tale.me:/tale/restic backup $DEVELOPER_PATH \
 	--exclude-file $RESTIC_EXCLUDE \
 	--verbose
 
-echo $(date +"%Y-%m-%d %T") "Starting backup to B2"
+if [[ $? -ne 0 ]]; then
+	ledger "SFTP Backup failed."
+	exit 1
+else
+	ledger "SFTP Backup succeeded."
+fi
+
 command restic -r b2:tale-ftp:/tale/restic backup $DEVELOPER_PATH \
 	--exclude-file $RESTIC_EXCLUDE \
 	--verbose
 
+if [[ $? -ne 0 ]]; then
+	ledger "B2 Backup failed."
+	exit 1
+else
+	ledger "B2 Backup succeeded."
+fi
