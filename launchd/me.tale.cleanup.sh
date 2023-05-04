@@ -21,4 +21,4 @@ command brew cleanup
 command brew update
 
 printf '[%s] (%s) %s\n' "me.tale.cleanup" \
-	"$(date '+%H:%M:%S')" "Completed cleanup task." >> $LEDGER_PATH
+	"$(date '+%Y-%m-%d %H:%M:%S')" "Completed cleanup task." >> $LEDGER_PATH
