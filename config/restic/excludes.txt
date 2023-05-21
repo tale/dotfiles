@@ -1,3 +1,23 @@
 node_modules
 dist
 target
+.cache
+
+.Trash
+Applications
+Library/Application Support/Arc
+Library/Application Support/Bruh
+Library/Application Support/Code
+Library/Application Support/Microsoft
+Library/Application Support/MobileSync
+Library/Application Support/Spotify
+Library/Caches
+Library/Containers/com.apple.ScreenSaver.Engine.legacyScreenSaver
+Library/Containers/com.docker.docker
+Library/Developer
+Library/Mail
+Library/Messages
+Library/Photos
+Library/pnpm
+Music
+Pictures/Photos Library.photoslibrary
