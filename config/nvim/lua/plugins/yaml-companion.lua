@@ -10,9 +10,9 @@ return {
 		require("yaml-companion").setup({
 			schemas = {
 				{
-					name = "Kubernetes 1.26.1",
+					name = "Kubernetes 1.27.0",
 					uri =
-					"https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.1-standalone-strict/all.json"
+					"https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.27.0-standalone-strict/all.json"
 				}
 			}
 		})
