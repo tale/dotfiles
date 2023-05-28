@@ -19,6 +19,7 @@ command rm -rf $HOME/.pnpm-store/v3/tmp/*
 command rm -rf $HOME/.kube/cache/http/*
 command brew cleanup
 command brew update
+command pnpm add -g pnpm
 
 printf '[%s] (%s) %s\n' "me.tale.cleanup" \
 	"$(date '+%Y-%m-%d %H:%M:%S')" "Completed cleanup task." >> $LEDGER_PATH
