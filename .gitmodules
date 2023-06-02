@@ -7,3 +7,6 @@
 [submodule "vendor/typewritten"]
 	path = vendor/typewritten
 	url = https://github.com/reobin/typewritten.git
+[submodule "vendor/zsh-vi-mode"]
+	path = vendor/zsh-vi-mode
+	url = https://github.com/jeffreytse/zsh-vi-mode.git

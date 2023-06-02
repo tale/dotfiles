@@ -14,6 +14,7 @@ export TYPEWRITTEN_ARROW_SYMBOL="➜"
 export TYPEWRITTEN_RELATIVE_PATH="home"
 prompt typewritten
 
+source "$DOTDIR/vendor/zsh-vi-mode/zsh-vi-mode.plugin.zsh" # Source vim style keybindings
 source "$HOME/.cargo/env" # Rust environment
 
 zstyle ":completion:*" use-cache on
