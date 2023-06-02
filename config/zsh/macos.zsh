@@ -44,6 +44,10 @@ gpgconf --launch gpg-agent
 fpath+=($HOME/.bun)
 fpath+=($HOMEBREW_PREFIX/share/zsh/site-functions)
 
+# Source the gcloud CLI (need a better way to do this)
+if [ -f '/Users/tale/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/tale/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/tale/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/tale/google-cloud-sdk/completion.zsh.inc'; fi
+
 command launchctl setenv PATH "$PATH"
 command launchctl setenv SSH_AUTH_SOCK "$SSH_AUTH_SOCK"
 
