@@ -30,7 +30,7 @@ When building my dotfiles, I stick to the following philosophies and requirement
 
 - **Neovim**:
   - Plugin management via [Lazy.nvim](https://github.com/folke/lazy.nvim)
-  - Beautiful [ayu mirage](https://github.com/Shatur/neovim-ayu) color scheme
+  - GitHub Dark theme via [projectk0n's themes](https://github.com/projekt0n/github-nvim-theme)
   - Terminal friendly keybindings and user interface
   - LSP configuration and automated [completions](https://github.com/hrsh7th/nvim-cmp))
   - Searching and navigation through [Telescope](https://github.com/nvim-telescope/telescope.nvim)

@@ -8,6 +8,9 @@ return {
 	},
 	config = function()
 		require("yaml-companion").setup({
+			builtin_matchers = {
+				kubernetes = { enabled = true }
+			},
 			schemas = {
 				{
 					name = "Kubernetes 1.27.0",

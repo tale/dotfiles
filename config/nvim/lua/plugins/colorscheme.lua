@@ -1,13 +1,14 @@
 return {
-	"Shatur/neovim-ayu",
+	"projekt0n/github-nvim-theme",
 	lazy = false,
+	priority = 1000,
 	config = function()
-		require("ayu").setup({
-			mirage = true
+		require("github-theme").setup({
+			options = {
+				transparent = true
+			}
 		})
 
-		vim.opt.termguicolors = true
-		vim.o.background = "dark"
-		vim.cmd.colorscheme("ayu")
+		vim.cmd.colorscheme("github_dark_dimmed")
 	end
 }

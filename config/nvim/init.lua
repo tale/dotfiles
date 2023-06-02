@@ -30,7 +30,7 @@ require("lazy").setup({
 	},
 	install = {
 		missing = true,
-		colorscheme = { "ayu" }
+		colorscheme = { "github_dark" }
 	},
 	checker = {
 		enabled = true,

@@ -22,7 +22,6 @@ return {
 					left = "",
 					right = ""
 				},
-				theme = "ayu",
 			},
 			sections = {
 				lualine_a = {
