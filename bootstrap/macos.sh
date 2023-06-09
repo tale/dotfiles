@@ -47,6 +47,12 @@ fi
 export LESSHISTFILE=-
 command rm -rf "$HOME/.bashrc"
 
+
+if [[ $SUDO != "UNSET" ]]; then
+	notify "Disabling Smartcard pairing prompts"
+	$SUDO defaults write /Library/Preferences/com.apple.security.smartcard UserPairing -bool false
+fi
+
 if [[ $SUDO == "UNSET" ]]; then
 	warning "Skipping Launch Agent configuration without sudo"
 	exit 0
