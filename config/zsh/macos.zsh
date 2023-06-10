@@ -44,6 +44,14 @@ gpgconf --launch gpg-agent
 fpath+=($HOME/.bun)
 fpath+=($HOMEBREW_PREFIX/share/zsh/site-functions)
 
+# Support pbcopy yanking for ZSH Vim
+# https://github.com/jeffreytse/zsh-vi-mode/issues/19#issuecomment-1009256071
+function zvm_vi_yank() {
+	zvm_yank
+	echo ${CUTBUFFER} | pbcopy
+	zvm_exit_visual_mode
+}
+
 # Source the gcloud CLI (need a better way to do this)
 if [ -f '/Users/tale/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/tale/google-cloud-sdk/path.zsh.inc'; fi
 if [ -f '/Users/tale/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/tale/google-cloud-sdk/completion.zsh.inc'; fi
