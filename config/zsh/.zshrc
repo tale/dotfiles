@@ -14,6 +14,10 @@ export TYPEWRITTEN_ARROW_SYMBOL="➜"
 export TYPEWRITTEN_RELATIVE_PATH="home"
 prompt typewritten
 
+function zvm_config() {
+	ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+}
+
 source "$DOTDIR/vendor/zsh-vi-mode/zsh-vi-mode.plugin.zsh" # Source vim style keybindings
 source "$HOME/.cargo/env" # Rust environment
 
