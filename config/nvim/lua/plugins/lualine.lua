@@ -33,7 +33,14 @@ return {
 						},
 					}
 				},
-				lualine_b = { "filename", "branch" },
+				lualine_b = {
+					{
+						"filename",
+						path = 1,
+						shorting_target = 50,
+					},
+					"branch"
+				},
 				lualine_c = {},
 				lualine_x = {},
 				lualine_y = {
