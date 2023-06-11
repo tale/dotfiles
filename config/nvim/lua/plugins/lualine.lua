@@ -2,10 +2,26 @@ return {
 	"nvim-lualine/lualine.nvim",
 	event = "VimEnter",
 	dependencies = {
-		"j-hui/fidget.nvim"
+		"nvim-tree/nvim-web-devicons",
+		"linrongbin16/lsp-progress.nvim",
 	},
 	config = function()
-		require("fidget").setup({})
+		require("lsp-progress").setup({
+			client_format = function(client_name, spinner, series_messages)
+				if #series_messages == 0 then
+					return client_name
+				end
+
+				return (client_name .. " (" .. spinner .. " " .. table.concat(series_messages, ", ")) .. ")"
+			end,
+			format = function(client_messages)
+				if #client_messages == 0 then
+					return ""
+				end
+
+				return table.concat(client_messages, " ")
+			end,
+		})
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
@@ -44,6 +60,27 @@ return {
 				lualine_c = {},
 				lualine_x = {},
 				lualine_y = {
+					{
+						function()
+							return require("lsp-progress").progress()
+						end,
+						cond = function()
+							local filetype = vim.api.nvim_buf_get_option(0, "filetype")
+							local clients = vim.lsp.get_active_clients()
+							if next(clients) == nil then
+								return false
+							end
+
+							for _, client in ipairs(clients) do
+								local filetypes = client.config.filetypes
+								if filetypes and vim.fn.index(filetypes, filetype) ~= -1 then
+									return true
+								end
+							end
+
+							return false
+						end,
+					},
 					{
 						function()
 							return "No LSP"
