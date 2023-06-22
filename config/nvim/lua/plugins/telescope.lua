@@ -68,6 +68,9 @@ return {
 			{ { "n", "t" }, "<Leader>gt", builtin.find_files },
 			{ { "n", "t" }, "<Leader>ff", builtin.find_files },
 			{ { "n", "t" }, "<Leader>fi", builtin.live_grep },
+			{ { "n" },      "gr",         builtin.lsp_references },
+			{ { "n" },      "gi",         builtin.lsp_implementations },
+			{ { "n" },      "gd",         builtin.lsp_definitions },
 			{ { "n", "t" }, "<Leader>cc", require("telescope").extensions.command_center.command_center },
 		})
 	end
