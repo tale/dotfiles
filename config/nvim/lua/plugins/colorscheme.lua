@@ -5,10 +5,25 @@ return {
 	config = function()
 		require("github-theme").setup({
 			options = {
-				transparent = true
+				styles = {
+					comments = "italic",
+					keywords = "bold"
+				},
+				modules = {
+					"cmp",
+					"diagnostic",
+					"fzf",
+					"gitsigns",
+					"indent_blankline",
+					"native_lsp",
+					"neotree",
+					"telescope",
+					"treesitter",
+					"treesitter_context"
+				}
 			}
 		})
 
-		vim.cmd.colorscheme("github_dark_dimmed")
+		vim.cmd.colorscheme("github_dark_tritanopia")
 	end
 }
