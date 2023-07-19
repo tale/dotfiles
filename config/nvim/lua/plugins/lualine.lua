@@ -26,11 +26,10 @@ return {
 			options = {
 				icons_enabled = true,
 				disabled_filetypes = {
-					"neo-tree",
+					"oil",
 					"terminal",
 					"lazygit",
 					"DiffviewFiles",
-					"alpha",
 					""
 				},
 				component_separators = "|",
@@ -43,19 +42,15 @@ return {
 				lualine_a = {
 					{
 						"mode",
-						right_padding = 2,
-						separator = {
-							left = "",
-						},
+						fmt = function(string) return string:sub(1, 1) end
 					}
 				},
 				lualine_b = {
 					{
 						"filename",
 						path = 1,
-						shorting_target = 50,
+						shorting_target = 50
 					},
-					"branch"
 				},
 				lualine_c = {},
 				lualine_x = {},
@@ -82,6 +77,16 @@ return {
 						end,
 					},
 					{
+						"diagnostics",
+						sources = { "nvim_lsp" },
+						sections = { "error", "warn", "info", "hint" },
+						colored = true,
+						update_in_insert = true,
+					},
+					-- "filetype"
+				},
+				lualine_z = {
+					{
 						function()
 							return "No LSP"
 						end,
@@ -103,30 +108,10 @@ return {
 						end,
 						color = {
 							fg = "#ea6c6d",
+							bg = "#2d2d2d",
 							gui = "bold",
 						},
 					},
-					{
-						"diagnostics",
-						sources = { "nvim_lsp" },
-						sections = { "error", "warn", "info", "hint" },
-						colored = true,
-						update_in_insert = true,
-					},
-					"filetype",
-					{
-						require("lazy.status").updates,
-						cond = require("lazy.status").has_updates,
-					}
-				},
-				lualine_z = {
-					{
-						"location",
-						left_padding = 2,
-						separator = {
-							right = "",
-						},
-					}
 				}
 			},
 			inactive_sections = {},
