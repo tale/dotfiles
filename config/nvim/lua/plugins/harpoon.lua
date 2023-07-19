@@ -11,7 +11,7 @@ return {
 				"TelescopePrompt",
 				"TelescopeResults",
 				"TelescopePreview",
-				"neo-tree",
+				"oil",
 				"terminal"
 			}
 		})
