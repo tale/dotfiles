@@ -11,6 +11,7 @@ return {
 	config = function()
 		require("diffview").setup()
 		require("neogit").setup({
+			kind = "replace",
 			integrations = {
 				diffview = true
 			}
