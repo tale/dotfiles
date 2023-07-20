@@ -4,6 +4,7 @@ return {
 	dependencies = {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
+		"pmizio/typescript-tools.nvim",
 		{
 			"folke/neodev.nvim",
 			config = function()
@@ -24,6 +25,8 @@ return {
 				border = "rounded"
 			}
 		})
+
+		require("typescript-tools").setup()
 
 		require("mason-lspconfig").setup({
 			automatic_installation = true
