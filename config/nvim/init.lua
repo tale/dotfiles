@@ -95,3 +95,18 @@ vim.g.bind_keys({
 	{ { "n" },      "u",       "uzz" },
 	{ { "n" },      "<C-r>",   "<C-r>zz" }
 })
+
+-- Hack for invoking Neogit via the command line
+vim.api.nvim_create_user_command('NeogitThenQuit', function()
+	require("neogit").open()
+
+	local function watch_quit()
+		if vim.bo.filetype:match("^Neogit") then
+			vim.defer_fn(watch_quit, 100)
+		else
+			vim.cmd("qa!")
+		end
+	end
+
+	vim.defer_fn(watch_quit, 100)
+end, {})

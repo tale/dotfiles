@@ -144,12 +144,6 @@ command ln -sf "$DOTDIR/config/nvim/init.lua" "$HOME/.config/nvim/init.lua"
 command nvim --headless "+Lazy! sync" +qa # Installs plugins via Lazy
 command ln -sf "$DOTDIR/config/tui/tmux.conf" "$HOME/.tmux.conf"
 
-if [[ "$OS" == "Darwin" ]]; then
-	command ln -sf "$DOTDIR/config/tui/lazygit.yaml" "$HOME/Library/Application Support/lazygit/config.yml"
-else
-	command ln -sf "$DOTDIR/config/tui/lazygit.yaml" "$HOME/.config/lazygit/config.yml"
-fi
-
 notify "Finished configuration (maybe restart?)"
 command rm -rf "$HOME/.zshrc"
 command rm -rf "$HOME/.zlogin"

@@ -28,8 +28,8 @@ return {
 				disabled_filetypes = {
 					"oil",
 					"terminal",
-					"lazygit",
 					"DiffviewFiles",
+					"NeogitStatus",
 					""
 				},
 				component_separators = "|",
