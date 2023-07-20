@@ -26,7 +26,7 @@ return {
 			}
 		})
 
-		require("typescript-tools").setup()
+		require("typescript-tools").setup({})
 
 		require("mason-lspconfig").setup({
 			automatic_installation = true
@@ -73,5 +73,12 @@ return {
 			{ { "n" }, "]d",          function() vim.diagnostic.goto_prev() end },
 			{ { "n" }, "[d",          function() vim.diagnostic.goto_next() end }
 		})
+
+		-- Command to save without formatting
+		vim.api.nvim_create_user_command('Wf', function()
+			vim.opt.eventignore = { "BufWritePre" }
+			vim.cmd("silent! write")
+			vim.opt.eventignore = {}
+		end, {})
 	end
 }
