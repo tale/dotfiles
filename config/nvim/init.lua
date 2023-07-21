@@ -101,7 +101,7 @@ vim.api.nvim_create_user_command('NeogitThenQuit', function()
 	require("neogit").open()
 
 	local function watch_quit()
-		if vim.bo.filetype:match("^Neogit") then
+		if vim.bo.filetype:match("^Neogit") or vim.bo.filetype:match("^Diffview") then
 			vim.defer_fn(watch_quit, 100)
 		else
 			vim.cmd("qa!")
