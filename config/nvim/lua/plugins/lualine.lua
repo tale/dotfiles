@@ -29,6 +29,11 @@ return {
 					"oil",
 					"terminal",
 					"DiffviewFiles",
+					"NeogitCommitMessage",
+					"NeogitCommitView",
+					"NeogitLog",
+					"NeogitMergeMessage",
+					"NeogitRebaseTodo",
 					"NeogitStatus",
 					""
 				},
