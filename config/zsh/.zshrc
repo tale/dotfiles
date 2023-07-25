@@ -1,6 +1,24 @@
-# Instantly load typewritten prompt
-fpath+=($DOTDIR/vendor/typewritten)
-autoload -U promptinit; promptinit
+# Load custom prompt
+autoload -Uz vcs_info
+zstyle ":vcs_info:git:*" check-for-changes true
+zstyle ":vcs_info:git:*" formats "%F{red}(%b) "
+
+# Open the tmux session launcher if not in a tmux session
+precmd() {
+	if [[ -z $TMUX ]]; then
+		"$dd/config/tui/tmux_launch.sh"
+	else
+		vcs_info
+	fi
+}
+
+# Show the username and hostname on SSH connections
+[[ $SSH_CONNECTION ]] && local user_host="%F{green}%n@%m%f "
+
+setopt prompt_subst
+PROMPT='${user_host}%F{cyan}%~%f ${vcs_info_msg_0_}%f➜ '
+
+source "$DOTDIR/config/zsh/lscolors.zsh"
 
 # Enable shared history
 HISTSIZE=50000
@@ -9,10 +27,15 @@ setopt appendhistory
 setopt extendedhistory
 setopt sharehistory
 setopt incappendhistory
+setopt hist_ignore_dups
+setopt hist_ignore_space
 
-export TYPEWRITTEN_ARROW_SYMBOL="➜"
-export TYPEWRITTEN_RELATIVE_PATH="home"
-prompt typewritten
+setopt autocd
+setopt interactive_comments
+setopt complete_in_word
+setopt prompt_subst
+setopt globdots
+setopt cd_silent
 
 function zvm_config() {
 	ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
@@ -53,11 +76,9 @@ alias d="docker"
 alias k="kubectl"
 alias find="fd"
 
-alias l="exa -l"
-alias la="exa -la"
-alias ll="exa -lah"
-alias ls="exa -l"
-alias tree="et --icons"
+alias ls="ls --color=auto -lah"
+alias ll="ls"
+alias la="ll"
 
 alias f="fzf"
 alias nano="nvim"
@@ -98,6 +119,7 @@ else
 fi
 
 source "$DOTDIR/vendor/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$DOTDIR/vendor/zsh-fzf/zsh-fzf-history-search.zsh"
 
 # Helper function to maintain dotfiles
 dotfiles() {
