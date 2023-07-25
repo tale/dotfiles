@@ -10,6 +10,9 @@ return {
 		oil.setup({
 			delete_to_trash = true,
 			trash_command = "trash",
+			view_options = {
+				show_hidden = true
+			},
 			keymaps = {
 				["<C-x>"] = function() oil.select({ horizontal = true, close = true }) end,
 				["<C-v>"] = function() oil.select({ vertical = true, close = true }) end,
