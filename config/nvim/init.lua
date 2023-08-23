@@ -74,6 +74,9 @@ vim.opt.autoread = true
 vim.opt.autowrite = true
 vim.opt.fillchars.diff = "/"
 vim.opt.fillchars:append("eob: ")
+
+-- Disable mouse support and set the font
+vim.opt.mouse = nil
 vim.opt.guifont = "JetBrainsMonoNL Nerd Font Mono:h13"
 
 vim.g.bind_keys({
@@ -97,7 +100,7 @@ vim.g.bind_keys({
 })
 
 -- Hack for invoking Neogit via the command line
-vim.api.nvim_create_user_command('NeogitThenQuit', function()
+vim.api.nvim_create_user_command("NeogitThenQuit", function()
 	require("neogit").open()
 
 	local function watch_quit()
@@ -109,4 +112,9 @@ vim.api.nvim_create_user_command('NeogitThenQuit', function()
 	end
 
 	vim.defer_fn(watch_quit, 100)
+end, {})
+
+-- Paired Programming "Mode"
+vim.api.nvim_create_user_command("Pair", function()
+	os.execute("zed " .. vim.fn.getcwd())
 end, {})
