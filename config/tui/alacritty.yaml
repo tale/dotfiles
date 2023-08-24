@@ -30,8 +30,7 @@ font:
     style: Bold Italic
 
 bell:
-  duration: 10
-  animation: EaseOutExpo
+  duration: 0
 
 colors:
   primary:
