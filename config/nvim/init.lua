@@ -77,7 +77,6 @@ vim.opt.fillchars:append("eob: ")
 
 -- Disable mouse support and set the font
 vim.opt.mouse = nil
-vim.opt.guifont = "JetBrainsMonoNL Nerd Font Mono:h13"
 
 vim.g.bind_keys({
 	-- Indentation using Tab and Shift Tab
