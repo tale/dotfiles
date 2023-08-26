@@ -10,7 +10,6 @@ export HOMEBREW_NO_ENV_HINTS=1
 export PATH="$HOMEBREW_PREFIX/opt/gnu-tar/libexec/gnubin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/findutils/libexec/gnubin:$PATH"
-export PATH="$HOMEBREW_PREFIX/opt/gnu-which/libexec/gnubin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/make/libexec/gnubin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/curl/bin:$PATH"
 export PATH="$HOMEBREW_PREFIX/opt/ruby/bin:$PATH"
@@ -30,10 +29,6 @@ export d="$HOME/Developer"
 function plsdns() {
 	command sudo dscacheutil -flushcache
 	command sudo killall -HUP mDNSResponder
-}
-
-function brewdump() {
-	command brew bundle dump --force
 }
 
 # Start gpg-agent for SSH
@@ -58,11 +53,3 @@ if [ -f '/Users/tale/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/tale
 
 command launchctl setenv PATH "$PATH"
 command launchctl setenv SSH_AUTH_SOCK "$SSH_AUTH_SOCK"
-
-# If ALACRITTY_SOCKET is set, we are running in Alacritty
-# Automatically attach to a tmux session in Alacritty
-if [[ -n "$ALACRITTY_SOCKET" ]]; then
-	if [[ -z "$TMUX" ]]; then
-		launch
-	fi
-fi
