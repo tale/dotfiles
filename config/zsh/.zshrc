@@ -37,21 +37,21 @@ setopt prompt_subst
 setopt globdots
 setopt cd_silent
 
-function zvm_config() {
-	ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
-}
-
-source "$DOTDIR/vendor/zsh-vi-mode/zsh-vi-mode.plugin.zsh" # Source vim style keybindings
 source "$HOME/.cargo/env" # Rust environment
+bindkey '^k' up-line-or-history
+bindkey '^j' down-line-or-history
 
 zstyle ":completion:*" use-cache on
 zstyle ":completion:*" menu select
-zstyle ":completion:*" file-list all
 zstyle ":completion:*" completer _extensions _complete _approximate
+
+zstyle ":completion:*" file-list list=20
+
 
 zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
 zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
 zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 if [[ "$OS" == "Darwin" ]]; then # Different cache path for macOS
 	zstyle ":completion:*" cache-path "$HOME/Library/Caches/zsh/.zcompcache"
@@ -74,11 +74,10 @@ alias c="cargo"
 alias cat="bat"
 alias d="docker"
 alias k="kubectl"
-alias find="fd"
 
 alias ls="ls --color=auto -lah"
 alias ll="ls"
-alias la="ll"
+alias la="ls"
 
 alias f="fzf"
 alias nano="nvim"
@@ -89,6 +88,7 @@ alias htop="btop"
 alias mk="minikube"
 alias devc="devcontainer"
 alias mkmk="minikube start --driver=docker --kubernetes-version=v1.25.0"
+alias nix-reload="home-manager switch -b bak --flake $DOTDIR"
 
 launch() {
 	if [[ -z $TMUX ]]; then
@@ -110,6 +110,7 @@ fi
 
 # Load completions and suggestions at the end
 fpath+=($DOTDIR/vendor/zsh-completions/src)
+fpath+=($DOTDIR/config/zsh/completions)
 autoload -Uz compinit
 
 if [ $(date +"%j") != $COMPINIT_STAT ]; then
@@ -119,7 +120,6 @@ else
 fi
 
 source "$DOTDIR/vendor/zsh-autosuggestions/zsh-autosuggestions.zsh"
-source "$DOTDIR/vendor/zsh-fzf/zsh-fzf-history-search.zsh"
 
 # Helper function to maintain dotfiles
 dotfiles() {
