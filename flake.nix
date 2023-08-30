@@ -25,6 +25,7 @@
             programs.home-manager.enable = true;
 
             imports = [
+              ./config/packages.nix
               ./config/zsh
               ./config/git
             ];
