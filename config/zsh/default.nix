@@ -39,6 +39,7 @@
       mk = "minikube";
       mkmk = "minikube start --driver=docker --kubernetes-version=v1.27.0";
       nix-reload = "home-manager switch -b bak --flake $DOTDIR";
+      nix-gc = "nix-collect-garbage --delete-old";
     };
 
     sessionVariables = {
