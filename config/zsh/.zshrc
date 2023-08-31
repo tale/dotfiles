@@ -20,17 +20,7 @@ PROMPT='${user_host}%F{cyan}%~%f ${vcs_info_msg_0_}%f➜ '
 
 source "$DOTDIR/config/zsh/lscolors.zsh"
 
-# Enable shared history
-HISTSIZE=50000
-SAVEHIST=10000
-setopt appendhistory
-setopt extendedhistory
-setopt sharehistory
-setopt incappendhistory
-setopt hist_ignore_dups
-setopt hist_ignore_space
-
-setopt autocd
+setopt append_history
 setopt interactive_comments
 setopt complete_in_word
 setopt prompt_subst
@@ -44,10 +34,7 @@ bindkey '^j' down-line-or-history
 zstyle ":completion:*" use-cache on
 zstyle ":completion:*" menu select
 zstyle ":completion:*" completer _extensions _complete _approximate
-
 zstyle ":completion:*" file-list list=20
-
-
 zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
 zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
 zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
@@ -58,37 +45,6 @@ if [[ "$OS" == "Darwin" ]]; then # Different cache path for macOS
 else
 	zstyle ":completion:*" cache-path "$HOME/.cache/zsh/.zcompcache"
 fi
-
-# Random Globals
-export BAT_THEME="TwoDark"
-
-# Laziness
-export dd="$DOTDIR"
-export gpg="$HOME/.gnupg"
-
-# Aliases
-alias g="git"
-alias t="task"
-alias p="pnpm"
-alias c="cargo"
-alias cat="bat"
-alias d="docker"
-alias k="kubectl"
-
-alias ls="ls --color=auto -lah"
-alias ll="ls"
-alias la="ls"
-
-alias f="fzf"
-alias nano="nvim"
-alias vim="nvim"
-alias code="nvim"
-alias htop="btop"
-
-alias mk="minikube"
-alias devc="devcontainer"
-alias mkmk="minikube start --driver=docker --kubernetes-version=v1.25.0"
-alias nix-reload="home-manager switch -b bak --flake $DOTDIR"
 
 launch() {
 	if [[ -z $TMUX ]]; then
@@ -118,8 +74,6 @@ if [ $(date +"%j") != $COMPINIT_STAT ]; then
 else
 	compinit -C
 fi
-
-source "$DOTDIR/vendor/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # Helper function to maintain dotfiles
 dotfiles() {

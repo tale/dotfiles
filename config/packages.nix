@@ -22,5 +22,9 @@
     yubikey-manager
     tmux
     tmate
+    gnutar
+    coreutils
+    findutils
+    ripgrep
   ];
 }
