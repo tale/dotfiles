@@ -26,6 +26,5 @@
     coreutils
     findutils
     ripgrep
-    pinentry_mac
   ];
 }
