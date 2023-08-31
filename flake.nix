@@ -28,6 +28,7 @@
               ./config/packages.nix
               ./config/zsh
               ./config/git
+              ./config/gnupg
             ];
           }
         ];
