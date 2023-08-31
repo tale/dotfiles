@@ -29,6 +29,7 @@
               ./config/zsh
               ./config/git
               ./config/gnupg
+              ./config/launchd
             ];
           }
         ];
