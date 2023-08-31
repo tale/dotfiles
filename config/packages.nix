@@ -28,38 +28,42 @@ let
   };
 in
 {
-  home.packages = with pkgs;
-    [
-      bat
-      zstd
-      kubectl
-      kubernetes-helm
-      jq
-      yq
-      curl
-      wget
-      caddy
-      btop
-      cmake
-      exa
-      fzf
-      delta
-      rsync
-      s3cmd
-      neovim
-      minikube
-      gnumake
-      yubikey-manager
-      tmux
-      tmate
-      gnutar
-      coreutils
-      findutils
-      ripgrep
-      go-task
-      restic
-      ldid
-      libusbmuxd
-      macos-trash
-    ];
+
+  fonts.fontconfig.enable = true;
+  home.packages = with pkgs; [
+    bat
+    zstd
+    kubectl
+    kubernetes-helm
+    jq
+    yq
+    curl
+    wget
+    caddy
+    btop
+    cmake
+    exa
+    fzf
+    delta
+    rsync
+    s3cmd
+    neovim
+    minikube
+    gnumake
+    yubikey-manager
+    yubikey-personalization
+    tmux
+    tmate
+    gnutar
+    coreutils
+    findutils
+    ripgrep
+    go-task
+    restic
+    ldid
+    libusbmuxd
+    macos-trash
+    temurin-bin-17
+    (nerdfonts.override { fonts = [ "Mononoki" ]; })
+  ];
 }
