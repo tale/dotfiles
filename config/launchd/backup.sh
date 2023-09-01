@@ -5,7 +5,7 @@ export RESTIC_PASSWORD=$(security find-generic-password -s restic-pass -w)
 export B2_ACCOUNT_ID=$(security find-generic-password -s b2-id -w)
 export B2_ACCOUNT_KEY=$(security find-generic-password -s b2-key -w)
 
-RESTIC_EXCLUDE="$DOTDIR/config/restic/excludes.txt"
+# RESTIC_EXCLUDE is supplied by Launchd
 RESTIC_PATHS=(
 	"$HOME/Developer"
 	"$HOME/Documents"

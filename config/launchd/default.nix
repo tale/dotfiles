@@ -1,21 +1,19 @@
 { lib, pkgs, config, ... }:
-let dotdir = "${config.home.homeDirectory}/.config/dotfiles";
+let launchDir = "${config.home.homeDirectory}/.config/dotfiles/config/launchd";
 in
 {
   launchd.agents.backup = {
     enable = true;
     config = {
       Label = "me.tale.backup";
-      Program = "${dotdir}/launchd/me.tale.backup.sh";
+      Program = "${launchDir}/backup.sh";
       EnvironmentVariables = {
-        PATH = "${pkgs.coreutils}/bin:${pkgs.restic}/bin";
-        DOTDIR = dotdir;
+        PATH = "${pkgs.coreutils}/bin:${pkgs.restic}/bin:${pkgs.zsh}/bin:/usr/bin";
+        RESTIC_EXCLUDE = "${launchDir}/backup_excludes.txt";
       };
       StandardOutPath = "/tmp/launchd/backup.log";
       StandardErrorPath = "/tmp/launchd/backup.log";
-      StartCalendarInterval = [{
-        Minute = 0;
-      }];
+      StartInterval = 3600; # 1 hour
     };
   };
 
@@ -23,9 +21,9 @@ in
     enable = true;
     config = {
       Label = "me.tale.cleanup";
-      Program = "${dotdir}/launchd/me.tale.cleanup.sh";
+      Program = "${launchDir}/cleanup.sh";
       EnvironmentVariables = {
-        PATH = "${pkgs.coreutils}/bin:/opt/homebrew/bin";
+        PATH = "${pkgs.coreutils}/bin:${pkgs.zsh}/bin:/opt/homebrew/bin";
       };
       StandardOutPath = "/tmp/launchd/cleanup.log";
       StandardErrorPath = "/tmp/launchd/cleanup.log";
