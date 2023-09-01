@@ -3,13 +3,24 @@
 
   programs.zsh = {
     enable = true;
+
+    # Compile scripts for faster loading times
+    loginExtra = builtins.readFile ./.zlogin;
+
+    # Re-inject the nix-daemon.sh script into the shell
+    # This only applies on macOS updates where /etc/zshrc is reset
+    profileExtra = ''
+      # Handles a case where macOS updates and removes this from /etc/zshrc
+      if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+        . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+      fi
+    '';
+
+    initExtra = builtins.readFile ./.zshrc;
     dotDir = ".config/zsh";
     autocd = true;
     defaultKeymap = "viins";
     enableAutosuggestions = true;
-    initExtra = builtins.readFile ./.zshrc;
-    profileExtra = builtins.readFile ./.zprofile;
-    loginExtra = builtins.readFile ./.zlogin;
     history = {
       expireDuplicatesFirst = true;
       extended = true;
