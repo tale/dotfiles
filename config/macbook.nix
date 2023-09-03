@@ -4,12 +4,14 @@
 
   homebrew = {
     enable = true;
+    # TODO: MAS & Things3 + Other App Store
     casks = [
       "1password"
       "alacritty"
       "aldente"
       "bartender"
       "cleanmymac"
+      "craft"
       "datagrip"
       "discord"
       "google-chrome"
