@@ -7,7 +7,7 @@ if [[ -z $d || ! -d $d ]]; then
 fi
 
 # Add an option for raw folders
-dirs=$(fd -d 2 -t d . $d)
+dirs=$(find $d -maxdepth 2 -type d)
 dirs="- dotfiles\n$dirs"
 
 # Open the fzf menu in the developer directory
