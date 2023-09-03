@@ -54,11 +54,9 @@
       LESSHISTFILE = "-";
       OS = "$(uname -s)";
       dd = "$DOTDIR";
-      gpg = "$HOME/.gnupg";
 
       PNPM_HOME = if pkgs.stdenv.isDarwin then "$HOME/Library/pnpm" else null;
       BUN_INSTALL = if pkgs.stdenv.isDarwin then "$HOME/.bun" else null;
-      SSH_AUTH_SOCK = if pkgs.stdenv.isDarwin then "$GNUPGHOME/S.gpg-agent.ssh" else null;
       THEOS = if pkgs.stdenv.isDarwin then "$HOME/Library/Theos" else null;
       d = if pkgs.stdenv.isDarwin then "$HOME/Developer" else null;
       GPG_TTY = if pkgs.stdenv.isLinux then "$(tty)" else null;
