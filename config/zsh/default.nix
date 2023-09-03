@@ -1,6 +1,8 @@
 { pkgs, lib, ... }: {
   home.activation = {
-    zshRecompile = lib.hm.dag.entryAfter [ "writeBoundary" ] "HM_REBUILD=1 ${pkgs.zsh}/bin/zsh -l -c 'exit'";
+    zshRecompile = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      HM_REBUILD=1 $DRY_RUN_CMD ${pkgs.zsh}/bin/zsh -l -c 'exit'
+    '';
   };
 
   programs.zsh = {
