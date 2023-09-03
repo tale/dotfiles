@@ -45,12 +45,8 @@
   };
 
   networking = {
-    computerName = "Aarnav's MacBook Pro";
-    localHostName = "Aarnavs-MBP";
-    hostName = "Aarnavs-MBP";
     knownNetworkServices = [
       "Wi-Fi"
-      "Ethernet Adaptor"
     ];
     dns = [
       "1.1.1.1"
