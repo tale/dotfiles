@@ -3,6 +3,7 @@ let
   alacritty_font = "Mononoki Nerd Font Mono";
 in
 {
+  imports = [ ./tmux.nix ];
   programs.alacritty = {
     enable = true;
     package = pkgs.zsh; # This is just a dummy placeholder since brew cask installs Alacritty

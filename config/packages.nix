@@ -51,8 +51,6 @@ in
     gnumake
     yubikey-manager
     yubikey-personalization
-    tmux
-    tmate
     gnutar
     coreutils
     findutils
