@@ -56,6 +56,7 @@
   };
 
   home-manager.useUserPackages = true;
+  home-manager.useGlobalPkgs = true;
   home-manager.users.tale = { pkgs, ... }: {
     home.stateVersion = "23.05";
 
@@ -66,6 +67,7 @@
       ./git
       ./gnupg
       ./launchd
+      ./tui
     ];
   };
 }
