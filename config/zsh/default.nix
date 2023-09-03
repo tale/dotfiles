@@ -1,26 +1,22 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   home.packages = with pkgs; [ zsh ];
+
+  home.activation = {
+    zshRecompile = lib.hm.dag.entryAfter [ "writeBoundary" ] "HM_REBUILD=1 ${pkgs.zsh}/bin/zsh -l -c 'exit'";
+  };
 
   programs.zsh = {
     enable = true;
 
     # Compile scripts for faster loading times
     loginExtra = builtins.readFile ./.zlogin;
-
-    # Re-inject the nix-daemon.sh script into the shell
-    # This only applies on macOS updates where /etc/zshrc is reset
-    profileExtra = ''
-      # Handles a case where macOS updates and removes this from /etc/zshrc
-      if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-        . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-      fi
-    '';
-
     initExtra = builtins.readFile ./.zshrc;
+
     dotDir = ".config/zsh";
     autocd = true;
     defaultKeymap = "viins";
     enableAutosuggestions = true;
+    enableCompletion = false; # Manually enabled later
     history = {
       expireDuplicatesFirst = true;
       extended = true;
@@ -49,7 +45,7 @@
 
       mk = "minikube";
       mkmk = "minikube start --driver=docker --kubernetes-version=v1.27.0";
-      nix-reload = "home-manager switch -b bak --flake $DOTDIR";
+      nix-reload = "darwin-rebuild switch --flake .";
       nix-gc = "nix-collect-garbage --delete-old";
     };
 
@@ -68,7 +64,6 @@
       PNPM_HOME = "${if pkgs.stdenv.isDarwin then "$HOME/Library/pnpm" else null}";
       BUN_INSTALL = "${if pkgs.stdenv.isDarwin then "$HOME/.bun" else null}";
       d = "${if pkgs.stdenv.isDarwin then "$HOME/Developer" else null}";
-      PATH = "${if pkgs.stdenv.isDarwin then "$PNPM_HOME:$BUN_INSTALL/bin:$PATH" else "$PATH"}";
     };
   };
 }

@@ -1,5 +1,6 @@
 export "SSH_AUTH_SOCK=${HOME}/.gnupg/S.gpg-agent.ssh"
 export THEOS="$HOME/Library/Theos"
+export PATH="$PNPM_HOME:$BUN_INSTALL/bin:$PATH"
 
 # Configure brew shellenv
 eval "$(/opt/homebrew/bin/brew shellenv)"

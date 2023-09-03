@@ -3,6 +3,11 @@ autoload -Uz vcs_info
 zstyle ":vcs_info:git:*" check-for-changes true
 zstyle ":vcs_info:git:*" formats "%F{red}(%b) "
 
+# Handles a case where macOS updates and removes the source to /etc/static/zshrc
+if test -e /etc/static/zshrc; then
+	. /etc/static/zshrc;
+fi
+
 # Open the tmux session launcher if not in a tmux session
 precmd() {
 	if [[ -z $TMUX ]]; then
@@ -21,6 +26,7 @@ PROMPT='${user_host}%F{cyan}%~%f ${vcs_info_msg_0_}%f➜ '
 source "$DOTDIR/config/zsh/lscolors.zsh"
 
 setopt append_history
+setopt share_history
 setopt interactive_comments
 setopt complete_in_word
 setopt prompt_subst

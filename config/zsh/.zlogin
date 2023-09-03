@@ -3,8 +3,20 @@
 {
 	setopt extended_glob
 	hot_compile() {
-		if [[ -s "$1" && (! -s "${1}.zwc" || "$1" -nt "${1}.zwc") ]]; then
+		if [[ ! -s "$1" ]]; then
+			return
+		fi
+
+		if [[ ! -s "$1.zwc" ]]; then
+			[[ -v HM_REBUILD ]] && echo "Compiling $1"
 			zcompile "$1"
+			return
+		fi
+
+		if find "$1" -prune -newer "$1.zwc" | grep -q '^'; then
+			[[ -v HM_REBUILD ]] && echo "Recompiling $1"
+			zcompile "$1"
+			return
 		fi
 	}
 
