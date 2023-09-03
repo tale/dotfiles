@@ -3,7 +3,7 @@
 let pinentry-mac = "${pkgs.pinentry_mac}/Applications/pinentry-mac.app/Contents/MacOS/pinentry-mac";
 in
 {
-  home.packages = with pkgs; [ gnupg pinentry_mac ];
+  home.packages = with pkgs; [ pinentry_mac ];
 
   programs.gpg = {
     enable = true;

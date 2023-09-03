@@ -1,6 +1,4 @@
 { pkgs, lib, ... }: {
-  home.packages = with pkgs; [ zsh ];
-
   home.activation = {
     zshRecompile = lib.hm.dag.entryAfter [ "writeBoundary" ] "HM_REBUILD=1 ${pkgs.zsh}/bin/zsh -l -c 'exit'";
   };
