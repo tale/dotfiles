@@ -3,30 +3,30 @@
 notify "Configuring macOS dotfiles"
 source "$HOME/.zshenv"
 
-command mkdir -p "$HOME/.config/alacritty"
-command ln -sf "$DOTDIR/config/tui/alacritty.yaml" "$HOME/.config/alacritty/alacritty.yml"
-command ln -sf "$DOTDIR/config/.theosrc" "$HOME/.theosrc"
+mkdir -p "$HOME/.config/alacritty"
+ln -sf "$DOTDIR/config/tui/alacritty.yaml" "$HOME/.config/alacritty/alacritty.yml"
+ln -sf "$DOTDIR/config/.theosrc" "$HOME/.theosrc"
 
 notify "Installing Homebrew"
-command curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
-command brew tap homebrew/bundle
+curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
+brew tap homebrew/bundle
 
 notify "Installing Homebrew packages"
-command brew bundle --no-lock --file "$DOTDIR/Brewfile"
+brew bundle --no-lock --file "$DOTDIR/Brewfile"
 
 notify "Installing bun"
-command curl -fsSL https://bun.sh/install | bash
+curl -fsSL https://bun.sh/install | bash
 tail -n 3 "$ZDOTDIR/.zshrc" | wc -c | xargs -I {} truncate "$ZDOTDIR/.zshrc" -s -{} # Cut last 3 lines that bun adds
 
 notify "Configuring GnuPG"
-command mkdir -p "$HOME/.gnupg"
-command chown -R $(whoami) "$HOME/.gnupg"
-command chmod 600 "$HOME/.gnupg/*"
-command chmod 700 "$HOME/.gnupg"
+mkdir -p "$HOME/.gnupg"
+chown -R $(whoami) "$HOME/.gnupg"
+chmod 600 "$HOME/.gnupg/*"
+chmod 700 "$HOME/.gnupg"
 
-command ln -sf "$DOTDIR/config/gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
-command ln -sf "$DOTDIR/config/gnupg/dirmngr.conf" "$HOME/.gnupg/dirmngr.conf"
-command ln -sf "$DOTDIR/config/gnupg/gpg.conf" "$HOME/.gnupg/gpg.conf"
+ln -sf "$DOTDIR/config/gnupg/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
+ln -sf "$DOTDIR/config/gnupg/dirmngr.conf" "$HOME/.gnupg/dirmngr.conf"
+ln -sf "$DOTDIR/config/gnupg/gpg.conf" "$HOME/.gnupg/gpg.conf"
 
 notify "Installing Theos"
 THEOS="$HOME/Library/Theos"
@@ -59,19 +59,19 @@ if [[ $SUDO == "UNSET" ]]; then
 fi
 
 notify "Linking Launch Agents"
-command mkdir -p "$HOME/Library/LaunchAgents"
+mkdir -p "$HOME/Library/LaunchAgents"
 
-command ln -sf "$DOTDIR/launchd/me.tale.cleanup.plist" "$HOME/Library/LaunchAgents/me.tale.cleanup.plist"
-command chmod +x "$DOTDIR/launchd/me.tale.cleanup.sh"
+ln -sf "$DOTDIR/launchd/me.tale.cleanup.plist" "$HOME/Library/LaunchAgents/me.tale.cleanup.plist"
+chmod +x "$DOTDIR/launchd/me.tale.cleanup.sh"
 
-command ln -sf "$DOTDIR/launchd/me.tale.backup.plist" "$HOME/Library/LaunchAgents/me.tale.backup.plist"
-command chmod +x "$DOTDIR/launchd/me.tale.backup.sh"
+ln -sf "$DOTDIR/launchd/me.tale.backup.plist" "$HOME/Library/LaunchAgents/me.tale.backup.plist"
+chmod +x "$DOTDIR/launchd/me.tale.backup.sh"
 
-command launchctl unload "$HOME/Library/LaunchAgents/me.tale.cleanup.plist"
-command launchctl load "$HOME/Library/LaunchAgents/me.tale.cleanup.plist"
+launchctl unload "$HOME/Library/LaunchAgents/me.tale.cleanup.plist"
+launchctl load "$HOME/Library/LaunchAgents/me.tale.cleanup.plist"
 
-command launchctl unload "$HOME/Library/LaunchAgents/me.tale.backup.plist"
-command launchctl load "$HOME/Library/LaunchAgents/me.tale.backup.plist"
+launchctl unload "$HOME/Library/LaunchAgents/me.tale.backup.plist"
+launchctl load "$HOME/Library/LaunchAgents/me.tale.backup.plist"
 
 # Defaults
 notify "Configuring macOS defaults"
@@ -83,7 +83,7 @@ defaults write com.apple.Dock showhidden -bool TRUE
 
 # Application Settings
 notify "Configuring macOS application defaults"
-command ln -sf "$DOTDIR/config/alacritty.yaml" "$HOME/.alacritty.yml"
+ln -sf "$DOTDIR/config/alacritty.yaml" "$HOME/.alacritty.yml"
 
 # Finish
 killall Dock
