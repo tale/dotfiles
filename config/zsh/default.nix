@@ -3,6 +3,12 @@
     zshRecompile = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       HM_REBUILD=1 $DRY_RUN_CMD ${pkgs.zsh}/bin/zsh -l -c 'exit'
     '';
+    zshSwitch =
+      if pkgs.stdenv.isLinux then
+        lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+          $DRY_RUN_CMD /usr/bin/sudo chsh -s ${pkgs.zsh}/bin/zsh $USER
+        ''
+      else "";
   };
 
   programs.zsh = {
@@ -34,7 +40,7 @@
       d = "docker";
       k = "kubectl";
 
-      cat = if pkgs.stdenv.isDarwin then "bat" else "batcat";
+      cat = "bat";
       ls = "ls --color=auto -lah";
       ll = "ls --color=auto -lah";
       la = "ls --color=auto -lah";

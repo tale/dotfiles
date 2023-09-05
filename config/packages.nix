@@ -53,10 +53,8 @@ let
       license = lib.licenses.asl20;
     };
   };
-in
-{
-  fonts.fontconfig.enable = true;
-  home.packages = with pkgs; [
+
+  packages = with pkgs; [
     bat
     zstd
     kubectl
@@ -65,6 +63,7 @@ in
     yq
     curl
     wget
+    xz
     caddy
     btop
     cmake
@@ -82,15 +81,23 @@ in
     findutils
     ripgrep
     go-task
-    restic
-    ldid
-    libusbmuxd
-    macos-trash
-    iconset
     temurin-bin-17
-    (nerdfonts.override { fonts = [ "Mononoki" ]; })
   ];
 
+in
+{
+  fonts.fontconfig.enable = if pkgs.stdenv.isDarwin then true else false;
+  home.packages = with pkgs; if pkgs.stdenv.isDarwin then packages ++ [
+    libusbmuxd
+    ldid
+    restic
+    macos-trash
+    iconset
+    (nerdfonts.override { fonts = [ "Mononoki" ]; })
+  ] else packages ++ [
+    trashy
+    gcc
+  ];
 
   # TODO: Include the application icons in this repository
   home.activation =

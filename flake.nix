@@ -22,5 +22,20 @@
         ./config/macbook.nix
       ];
     };
+
+    # Meant for Linux systems since I don't use NixOS and only need an environment
+    homeConfigurations."tale-aarch64" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages."aarch64-linux";
+      modules = [
+        ./config/linux.nix
+      ];
+    };
+
+    homeConfigurations."tale-x86_64" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      modules = [
+        ./config/linux.nix
+      ];
+    };
   };
 }

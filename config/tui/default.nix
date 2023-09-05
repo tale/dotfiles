@@ -5,7 +5,7 @@ in
 {
   imports = [ ./tmux.nix ];
   programs.alacritty = {
-    enable = true;
+    enable = if pkgs.stdenv.isDarwin then true else false;
     package = pkgs.zsh; # This is just a dummy placeholder since brew cask installs Alacritty
     settings = {
       shell = {

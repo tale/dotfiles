@@ -8,15 +8,6 @@ if test -e /etc/static/zshrc; then
 	. /etc/static/zshrc;
 fi
 
-# Open the tmux session launcher if not in a tmux session
-precmd() {
-	if [[ -z $TMUX ]]; then
-		"$dd/config/tui/tmux_launch.sh"
-	else
-		vcs_info
-	fi
-}
-
 # Register the tmux launch command
 launch() {
 	if [[ -z $TMUX ]]; then
@@ -41,7 +32,8 @@ setopt prompt_subst
 setopt globdots
 setopt cd_silent
 
-source "$HOME/.cargo/env" # Rust environment
+# TODO: Fix
+# source "$HOME/.cargo/env" # Rust environment
 source "$DOTDIR/config/zsh/lscolors.zsh" # LS_COLORS
 
 # Completion Styling
@@ -67,6 +59,15 @@ if [[ "$OS" == "Darwin" ]]; then
 	function plsdns() {
 		command sudo dscacheutil -flushcache
 		command sudo killall -HUP mDNSResponder
+	}
+
+	# Open the tmux session launcher if not in a tmux session
+	precmd() {
+		if [[ -z $TMUX ]]; then
+			"$dd/config/tui/tmux_launch.sh"
+		else
+			vcs_info
+		fi
 	}
 fi
 
