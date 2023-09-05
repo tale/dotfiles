@@ -130,6 +130,7 @@
       ./git
       ./gnupg
       ./launchd
+      ./nvim
       ./tui
     ];
   };

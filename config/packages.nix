@@ -73,7 +73,6 @@ in
     delta
     rsync
     s3cmd
-    neovim
     minikube
     gnumake
     yubikey-manager
