@@ -57,6 +57,7 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 if [[ "$OS" == "Darwin" ]]; then
 	# On macOS ~/Library/Caches is the recommended location for caches
 	zstyle ":completion:*" cache-path "$HOME/Library/Caches/zsh/.zcompcache"
+	export PATH="$PNPM_HOME:$PATH"
 
 	# Inject the SSH authentication socket into launchd
 	command launchctl setenv SSH_AUTH_SOCK "$SSH_AUTH_SOCK"
