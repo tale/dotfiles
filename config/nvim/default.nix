@@ -1,20 +1,14 @@
-{ pkgs, lib, ... }: {
+{ pkgs, config, ... }:
+let nvimDir = "${config.home.homeDirectory}/.config/dotfiles/config/nvim";
+in
+{
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    extraLuaConfig = builtins.readFile ./init.lua;
   };
 
-  home.file = {
-    NvimLazyLock = {
-      source = ./lazy-lock.json;
-      target = ".config/nvim/lazy-lock.json";
-    };
-
-    NvimLuaFolder = {
-      source = ./lua;
-      target = ".config/nvim/lua";
-      recursive = true;
-    };
+  home.file.".config/nvim" = {
+    source = config.lib.file.mkOutOfStoreSymlink nvimDir;
+    recursive = true;
   };
 }
