@@ -52,7 +52,6 @@
 
     sessionVariables = {
       DOTDIR = "$HOME/.config/dotfiles";
-      EDITOR = "nvim";
       LESSHISTFILE = "-";
       OS = "$(uname -s)";
       dd = "$DOTDIR";
