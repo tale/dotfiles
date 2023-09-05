@@ -21,6 +21,7 @@
       "maccy"
       "microsoft-excel"
       "microsoft-outlook"
+      "microsoft-powerpoint"
       "microsoft-remote-desktop"
       "microsoft-teams"
       "microsoft-word"
