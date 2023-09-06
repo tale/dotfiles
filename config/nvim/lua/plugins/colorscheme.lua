@@ -1,5 +1,8 @@
 return {
 	"projekt0n/github-nvim-theme",
+	dependencies = {
+		"f-person/auto-dark-mode.nvim"
+	},
 	lazy = false,
 	priority = 1000,
 	config = function()
@@ -24,6 +27,16 @@ return {
 			}
 		})
 
-		vim.cmd.colorscheme("github_dark_tritanopia")
+		require("auto-dark-mode").setup({
+			update_interval = 1000,
+			set_dark_mode = function()
+				vim.cmd.colorscheme("github_dark_tritanopia")
+				vim.api.nvim_set_option("background", "dark")
+			end,
+			set_light_mode = function()
+				vim.cmd.colorscheme("github_light")
+				vim.api.nvim_set_option("background", "light")
+			end
+		})
 	end
 }
