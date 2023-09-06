@@ -18,6 +18,7 @@
 
   imports = [
     ./packages.nix
+    ./env
     ./zsh
     ./git
     ./gnupg

@@ -51,7 +51,10 @@
 
       mk = "minikube";
       mkmk = "minikube start --driver=docker --kubernetes-version=v1.27.0";
-      nix-rebuild = "darwin-rebuild switch --flake .";
+      nix-rebuild =
+        if pkgs.stdenv.isDarwin
+        then "darwin-rebuild switch --flake $DOTDIR"
+        else "home-manager switch -b bak --flake $DOTDIR#tale-$(arch)";
       nix-gc = "nix-collect-garbage --delete-old";
       motd = if pkgs.stdenv.isLinux then "cat /run/motd.dynamic" else "";
     };

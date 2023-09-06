@@ -127,6 +127,7 @@
     programs.home-manager.enable = true;
     imports = [
       ./packages.nix
+      ./env
       ./zsh
       ./git
       ./gnupg
