@@ -1,7 +1,10 @@
 { lib, pkgs, config, ... }:
-let launchDir = "${config.home.homeDirectory}/.config/dotfiles/config/launchd";
+let
+  launchDir = "${config.home.homeDirectory}/.config/dotfiles/config/launchd";
 in
 {
+  imports = [ ./color.nix ];
+
   launchd.agents.backup = {
     enable = true;
     config = {

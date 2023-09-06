@@ -1,0 +1,51 @@
+import:
+  - "{alacritty_state}"
+
+shell:
+  program: "{zsh_path}"
+  args:
+    - -l
+
+env:
+  TERM: xterm-256color
+
+window:
+  startup_mode: Maximized
+  decorations_theme_variant: Dark
+  decorations: buttonless
+  option_as_alt: OnlyLeft
+  padding:
+    x: 16
+    y: 16
+
+bell:
+  duration: 0
+
+font:
+  normal:
+    family: "{alacritty_font}"
+    style: Regular
+  bold:
+    family: "{alacritty_font}"
+    style: Bold
+  italic:
+    family: "{alacritty_font}"
+    style: Italic
+  bold_italic:
+    family: "{alacritty_font}"
+    style: Bold Italic
+  size: 15.0
+
+cursor:
+  style:
+    shape: Block
+    blinking: On
+  blink_interval: 500
+  unfocused_hollow: true
+
+key_bindings:
+  - { key: V, mods: Command, action: Paste }
+  - { key: C, mods: Command, action: Copy }
+  - { key: F, mods: Command, action: SearchForward }
+  - { key: F, mods: Command|Shift, action: SearchBackward }
+
