@@ -4,6 +4,7 @@ let
   launchhDir = "${dotDir}/config/launchd";
   snippetFile = "${dotDir}/config/tui/colors.yaml";
   stateFile = "${config.home.homeDirectory}/.local/state/alacritty.yaml";
+  tmuxFile = "${dotDir}/config/tui/tmux";
 
   dark_listener = pkgs.stdenv.mkDerivation rec {
     pname = "dark_listener";
@@ -59,6 +60,8 @@ in
         "${dark_listener}/bin/dark_listener"
         snippetFile
         stateFile
+        tmuxFile
+        "${pkgs.tmux}/bin/tmux"
       ];
       StandardOutPath = "/tmp/launchd/background.log";
       StandardErrorPath = "/tmp/launchd/background.log";
