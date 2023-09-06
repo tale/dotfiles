@@ -74,6 +74,7 @@ let
     s3cmd
     minikube
     gnumake
+    tree-sitter
     yubikey-manager
     yubikey-personalization
     gnutar
@@ -86,7 +87,8 @@ let
 
 in
 {
-  fonts.fontconfig.enable = if pkgs.stdenv.isDarwin then true else false;
+  fonts.fontconfig.enable =
+    if pkgs.stdenv.isDarwin then true else false;
   home.packages = with pkgs; if pkgs.stdenv.isDarwin then packages ++ [
     libusbmuxd
     ldid
