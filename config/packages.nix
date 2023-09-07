@@ -53,10 +53,6 @@ let
       license = lib.licenses.asl20;
     };
   };
-
-  packages = with pkgs; [
-  ];
-
 in
 {
   fonts.fontconfig.enable = true;
@@ -73,7 +69,6 @@ in
     caddy
     btop
     cmake
-    exa
     fzf
     delta
     rsync
@@ -94,6 +89,9 @@ in
     restic
     macos-trash
     iconset
+    nodejs_18
+    nodePackages.pnpm
+    gradle
     (nerdfonts.override { fonts = [ "Mononoki" ]; })
   ];
 

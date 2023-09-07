@@ -55,8 +55,6 @@
       OS = "$(uname -s)";
       dd = "$DOTDIR";
 
-      PNPM_HOME = "$HOME/Library/pnpm";
-      BUN_INSTALL = "$HOME/.bun";
       THEOS = "$HOME/Library/Theos";
       d = "$HOME/Developer";
     };

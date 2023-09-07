@@ -120,8 +120,14 @@
 
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
-  home-manager.users.tale = { pkgs, ... }: {
+  home-manager.users.tale = { pkgs, lib, ... }: {
     home.stateVersion = "23.05";
+    home.activation = {
+      # nix-darwin doesn't set defaults when running as sudo
+      smartCardDisablePairing = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        $DRY_RUN_CMD /usr/bin/sudo /usr/bin/defaults write /Library/Preferences/com.apple.security.smartcard UserPairing -bool false
+      '';
+    };
 
     programs.home-manager.enable = true;
     imports = [
