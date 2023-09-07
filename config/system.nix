@@ -88,7 +88,6 @@
   # Will reset on macOS updates
   security.pam.enableSudoTouchIdAuth = true;
 
-  # TODO: Maybe look into services.dnsmasq? Or just do it per project
   system.defaults = {
     SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
     dock = {

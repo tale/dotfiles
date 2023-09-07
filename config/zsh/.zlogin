@@ -26,8 +26,6 @@
 	done
 
 	hot_compile "${ZDOTDIR:-$HOME}/.zshrc"
-	hot_compile "$DOTDIR/config/zsh/macos.zsh"
-	hot_compile "$DOTDIR/config/zsh/linux.zsh"
 	hot_compile "$DOTDIR/config/zsh/lscolors.zsh"
 } &!
 

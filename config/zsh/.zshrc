@@ -17,11 +17,8 @@ launch() {
 	fi
 }
 
-# Show the username and hostname on SSH connections
-[[ $SSH_CONNECTION ]] && local user_host="%F{green}%n@%m%f "
-
 setopt prompt_subst
-PROMPT='${user_host}%F{cyan}%~%f ${vcs_info_msg_0_}%f➜ '
+PROMPT='%F{cyan}%~%f ${vcs_info_msg_0_}%f➜ '
 
 # Useful shell options
 setopt append_history
@@ -32,8 +29,6 @@ setopt prompt_subst
 setopt globdots
 setopt cd_silent
 
-# TODO: Fix
-# source "$HOME/.cargo/env" # Rust environment
 source "$DOTDIR/config/zsh/lscolors.zsh" # LS_COLORS
 
 # Completion Styling
@@ -46,46 +41,33 @@ zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
 zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
-if [[ "$OS" == "Darwin" ]]; then
-	# On macOS ~/Library/Caches is the recommended location for caches
-	zstyle ":completion:*" cache-path "$HOME/Library/Caches/zsh/.zcompcache"
-	export PATH="$BUN_INSTALL/bin:$PNPM_HOME:/opt/homebrew/bin:$PATH"
+# On macOS ~/Library/Caches is the recommended location for caches
+zstyle ":completion:*" cache-path "$HOME/Library/Caches/zsh/.zcompcache"
 
-	# Inject the SSH authentication socket into launchd
-	command launchctl setenv SSH_AUTH_SOCK "$SSH_AUTH_SOCK"
-	command launchctl setenv PATH "$PATH"
+export PATH="$BUN_INSTALL/bin:$PNPM_HOME:/opt/homebrew/bin:$PATH"
 
-	# Workaround a dumb DNS cache lifetime issue
-	function plsdns() {
-		command sudo dscacheutil -flushcache
-		command sudo killall -HUP mDNSResponder
-	}
+# Inject the SSH authentication socket into launchd
+command launchctl setenv SSH_AUTH_SOCK "$SSH_AUTH_SOCK"
+command launchctl setenv PATH "$PATH"
 
-	# Open the tmux session launcher if not in a tmux session
-	precmd() {
-		if [[ -z $TMUX ]]; then
-			"$dd/config/tui/tmux_launch.sh"
-		else
-			vcs_info
-		fi
-	}
-fi
+# Workaround a dumb DNS cache lifetime issue
+function plsdns() {
+	command sudo dscacheutil -flushcache
+	command sudo killall -HUP mDNSResponder
+}
 
-if [[ "$OS" == "Linux" ]]; then
-	zstyle ":completion:*" cache-path "$HOME/.cache/zsh/.zcompcache"
-fi
-
-# Stat works different on BSD and GNU
-local stat_command() {
-	if [[ "$OS" == "Darwin" ]]; then
-		/usr/bin/stat -f "%Sm" -t "%j" $1
+# Open the tmux session launcher if not in a tmux session
+precmd() {
+	if [[ -z $TMUX ]]; then
+		"$dd/config/tui/tmux_launch.sh"
 	else
-		/usr/bin/stat -c "%Y" $1 | date +"%j"
+		vcs_info
 	fi
 }
 
 if [[ -f $ZDOTDIR/.zcompdump ]]; then
-	COMPINIT_STAT=$(stat_command $ZDOTDIR/.zcompdump)
+	# Hardcoded to use BSD stat
+	COMPINIT_STAT=$(/usr/bin/stat -f "%Sm" -t "%j" $ZDOTDIR/.zcompdump)
 fi
 
 autoload -Uz compinit

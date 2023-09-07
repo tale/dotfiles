@@ -55,6 +55,12 @@ let
   };
 
   packages = with pkgs; [
+  ];
+
+in
+{
+  fonts.fontconfig.enable = true;
+  home.packages = with pkgs; [
     bat
     zstd
     kubectl
@@ -83,30 +89,19 @@ let
     ripgrep
     go-task
     temurin-bin-17
-  ];
-
-in
-{
-  fonts.fontconfig.enable =
-    if pkgs.stdenv.isDarwin then true else false;
-  home.packages = with pkgs; if pkgs.stdenv.isDarwin then packages ++ [
     libusbmuxd
     ldid
     restic
     macos-trash
     iconset
     (nerdfonts.override { fonts = [ "Mononoki" ]; })
-  ] else packages ++ [
-    trashy
-    gcc
   ];
 
   # TODO: Include the application icons in this repository
-  home.activation =
-    if pkgs.stdenv.isDarwin then {
-      # Sudo can be hardcoded here since this runs on macOS
-      iconsetRun = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        $DRY_RUN_CMD /usr/bin/sudo ${iconset}/bin/iconset folder $HOME/Pictures/appicons
-      '';
-    } else { };
+  home.activation = {
+    # Sudo can be hardcoded here since this runs on macOS
+    iconsetRun = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      $DRY_RUN_CMD /usr/bin/sudo ${iconset}/bin/iconset folder $HOME/Pictures/appicons
+    '';
+  };
 }

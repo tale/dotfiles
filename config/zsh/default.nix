@@ -3,12 +3,6 @@
     zshRecompile = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       HM_REBUILD=1 $DRY_RUN_CMD ${pkgs.zsh}/bin/zsh -l -c 'exit'
     '';
-    zshSwitch =
-      if pkgs.stdenv.isLinux then
-        lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-          $DRY_RUN_CMD /usr/bin/sudo chsh -s ${pkgs.zsh}/bin/zsh $USER
-        ''
-      else "";
   };
 
   programs.zsh = {
@@ -51,12 +45,8 @@
 
       mk = "minikube";
       mkmk = "minikube start --driver=docker --kubernetes-version=v1.27.0";
-      nix-rebuild =
-        if pkgs.stdenv.isDarwin
-        then "darwin-rebuild switch --flake $DOTDIR"
-        else "home-manager switch -b bak --flake $DOTDIR#tale-$(arch)";
+      nix-rebuild = "darwin-rebuild switch --flake $DOTDIR";
       nix-gc = "nix-collect-garbage --delete-old";
-      motd = if pkgs.stdenv.isLinux then "cat /run/motd.dynamic" else "";
     };
 
     sessionVariables = {
@@ -65,11 +55,10 @@
       OS = "$(uname -s)";
       dd = "$DOTDIR";
 
-      PNPM_HOME = if pkgs.stdenv.isDarwin then "$HOME/Library/pnpm" else null;
-      BUN_INSTALL = if pkgs.stdenv.isDarwin then "$HOME/.bun" else null;
-      THEOS = if pkgs.stdenv.isDarwin then "$HOME/Library/Theos" else null;
-      d = if pkgs.stdenv.isDarwin then "$HOME/Developer" else null;
-      GPG_TTY = if pkgs.stdenv.isLinux then "$(tty)" else null;
+      PNPM_HOME = "$HOME/Library/pnpm";
+      BUN_INSTALL = "$HOME/.bun";
+      THEOS = "$HOME/Library/Theos";
+      d = "$HOME/Developer";
     };
   };
 }
