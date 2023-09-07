@@ -127,8 +127,8 @@
     imports = [
       ./packages.nix
       ./env
+      ./gitconfig
       ./zsh
-      ./git
       ./gnupg
       ./launchd
       ./nvim
