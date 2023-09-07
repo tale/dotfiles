@@ -65,7 +65,6 @@ in
     yq
     curl
     wget
-    xz
     caddy
     btop
     cmake
@@ -83,15 +82,10 @@ in
     findutils
     ripgrep
     go-task
-    temurin-bin-17
     libusbmuxd
-    ldid
     restic
     macos-trash
     iconset
-    nodejs_18
-    nodePackages.pnpm
-    gradle
     (nerdfonts.override { fonts = [ "Mononoki" ]; })
   ];
 
