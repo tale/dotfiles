@@ -50,8 +50,24 @@ cd "$HOME"
 # Don't waste time with sudo until requirements pass
 acquire_sudo
 
+# Install Homebrew if not already installed
+# This also installs Xcode Command Line Tools
+if ! command -v /opt/homebrew/bin/brew &>/dev/null; then
+	notify "Installing Homebrew (required by Nix)"
+	curl -fsSL "$BREW_SCRIPT" | NONINTERACTIVE=1 bash
+	eval $(/opt/homebrew/bin/brew shellenv)
+else
+	warn "Homebrew is already installed (skipping...)"
+fi
+
+# Various setups
+$SUDO scutil --set LocalHostName Aarnavs-MBP
+dscacheutil -flushcache
+mkdir -p "$HOME/Developer"
+$SUDO softwareupdate --install-rosetta --agree-to-license
+
 notify "Dotfiles: $DOTDIR"
-if [[ -v "SKIP_CLONE" ]]; then
+if [[ ! -z "$SKIP_CLONE" ]]; then
 	warn "Skipping clone because \$SKIP_CLONE is set"
 else
 	# Check if dotfiles are already installed
@@ -72,15 +88,7 @@ if ! launchctl print system/org.nixos.nix-daemon &>/dev/null; then
 	source /etc/zshrc
 else
 	warn "Nix is already installed (skipping...)"
-fi
-
-# Install Homebrew if not already installed
-if ! command -v brew &>/dev/null; then
-	notify "Installing Homebrew (required by Nix)"
-	curl -fsSL "$BREW_SCRIPT" | NONINTERACTIVE=1 bash
-	source "/opt/homebrew/bin/brew shellenv"
-else
-	warn "Homebrew is already installed (skipping...)"
+	source /etc/static/zshrc
 fi
 
 # Build and configure nix-darwin
@@ -101,9 +109,10 @@ if ! command -v darwin-rebuild &>/dev/null; then
 	fi
 
 	# Run nix-darwin's rebuild command
-	./result/sw/bin/darwin-rebuild switch --flake .
+	$DOTDIR/result/sw/bin/darwin-rebuild switch --flake $DOTDIR
 else
 	warn "nix-darwin is already installed (skipping...)"
 fi
 
+git -C $DOTDIR remote set-url origin git@github.com:tale/dotfiles.git
 notify "It's probably a good idea to reboot now"

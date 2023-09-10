@@ -52,9 +52,12 @@
   };
 
   home.activation = {
-    installTheos = ''
+    installTheos = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       THEOS="$HOME/Library/Theos"
       [ -d "$THEOS" ] || $DRY_RUN_CMD ${pkgs.git}/bin/git clone --recursive https://github.com/theos/theos.git "$THEOS"
     '';
+    configureRust = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+	  $DRY_RUN_CMD ${pkgs.rustup}/bin/rustup default stable
+	'';
   };
 }

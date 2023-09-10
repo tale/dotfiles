@@ -5,6 +5,9 @@
   homebrew = {
     enable = true;
     # TODO: MAS & Things3 + Other App Store
+    caskArgs = {
+      no_quarantine = true;
+    };
     casks = [
       "1password"
       "alacritty"
