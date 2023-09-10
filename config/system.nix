@@ -14,6 +14,7 @@
       "aldente"
       "bartender"
       "cleanmymac"
+      "cleanshot"
       "craft"
       "datagrip"
       "discord"

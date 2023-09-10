@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: {
+{ pkgs, lib, config, ... }: {
   home.packages = with pkgs; [
     rustup
     temurin-bin-17
@@ -57,7 +57,7 @@
       [ -d "$THEOS" ] || $DRY_RUN_CMD ${pkgs.git}/bin/git clone --recursive https://github.com/theos/theos.git "$THEOS"
     '';
     configureRust = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-	  $DRY_RUN_CMD ${pkgs.rustup}/bin/rustup default stable
-	'';
+      	  $DRY_RUN_CMD ${pkgs.rustup}/bin/rustup default stable
+      	'';
   };
 }
