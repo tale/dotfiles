@@ -27,9 +27,9 @@ let
     '';
 
     buildPhase = ''
-      # Check for Xcode and fail if it's not installed
-      if ! /usr/bin/xcodebuild -version &> /dev/null; then
-        echo "Please install Xcode from the App Store."
+      # Check for Xcode CLT and fail if it's not installed
+      if [ ! -d /Library/Developer/CommandLineTools ]; then
+        echo "Please install Xcode Command Line Tools."
         exit 1
       fi
 
