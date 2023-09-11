@@ -114,5 +114,14 @@ else
 	warn "nix-darwin is already installed (skipping...)"
 fi
 
+
+# Open apps that need to be enabled at login
+open -a "Raycast"
+open -a "AlDente"
+open -a "Cleanshot X"
+open -a "Maccy"
+open -a "Bartender 4"
+open -a "MonitorControl"
+
 git -C $DOTDIR remote set-url origin git@github.com:tale/dotfiles.git
 notify "It's probably a good idea to reboot now"
