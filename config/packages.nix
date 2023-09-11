@@ -1,5 +1,6 @@
-{ lib, stendv, pkgs, ... }:
+{ lib, stendv, pkgs, config, ... }:
 let
+  iconFolder = "${config.home.homeDirectory}/.config/dotfiles/config/icons";
   macos-trash = pkgs.stdenv.mkDerivation rec {
     pname = "macos-trash";
     version = "1.2.0";
@@ -94,7 +95,7 @@ in
   home.activation = {
     # Sudo can be hardcoded here since this runs on macOS
     iconsetRun = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      $DRY_RUN_CMD /usr/bin/sudo ${iconset}/bin/iconset folder $HOME/Pictures/appicons
+      $DRY_RUN_CMD /usr/bin/sudo ${iconset}/bin/iconset folder ${iconFolder}
     '';
 
     dockFixup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
