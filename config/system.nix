@@ -93,12 +93,18 @@
   security.pam.enableSudoTouchIdAuth = true;
 
   system.defaults = {
+    CustomUserPreferences = {
+      "com.apple.dock" = {
+        show-recent-count = 1;
+      };
+    };
     SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
     dock = {
       autohide = true;
       autohide-delay = 0.0;
       autohide-time-modifier = 0.5;
       showhidden = true;
+      show-recents = true;
       wvous-tl-corner = 12; # Notification Center
       wvous-tr-corner = 12;
       wvous-bl-corner = 11; # Launchpad

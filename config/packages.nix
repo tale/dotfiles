@@ -86,6 +86,7 @@ in
     restic
     macos-trash
     iconset
+    dockutil
     (nerdfonts.override { fonts = [ "Mononoki" ]; })
   ];
 
@@ -94,6 +95,18 @@ in
     # Sudo can be hardcoded here since this runs on macOS
     iconsetRun = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       $DRY_RUN_CMD /usr/bin/sudo ${iconset}/bin/iconset folder $HOME/Pictures/appicons
+    '';
+
+    dockFixup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      $DRY_RUN_CMD ${pkgs.dockutil}/bin/dockutil --remove all --no-restart $HOME
+      $DRY_RUN_CMD ${pkgs.dockutil}/bin/dockutil --add /Applications/Google\ Chrome.app --no-restart $HOME
+      $DRY_RUN_CMD ${pkgs.dockutil}/bin/dockutil --add /System/Applications/Messages.app --no-restart $HOME
+      $DRY_RUN_CMD ${pkgs.dockutil}/bin/dockutil --add /System/Applications/Calendar.app --no-restart $HOME
+      $DRY_RUN_CMD ${pkgs.dockutil}/bin/dockutil --add /Applications/Microsoft\ Outlook.app --no-restart $HOME
+      $DRY_RUN_CMD ${pkgs.dockutil}/bin/dockutil --add /Applications/Things3.app --no-restart $HOME
+      $DRY_RUN_CMD ${pkgs.dockutil}/bin/dockutil --add /Applications/Spotify.app --no-restart $HOME
+      $DRY_RUN_CMD ${pkgs.dockutil}/bin/dockutil --add '~/Downloads' --view grid --display folder --section others --no-restart $HOME
+      $DRY_RUN_CMD /usr/bin/killall Dock
     '';
   };
 }
