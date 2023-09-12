@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-regex="^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test){1}(!)?: (.*)$"
+regex="^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test){1}(\([\w\-\.]+\))?(!)?: (.*)$"
 
 if [[ "$(cat "$1")" =~ $regex ]]; then
 	exit 0

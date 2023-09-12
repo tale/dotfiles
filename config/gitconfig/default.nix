@@ -38,9 +38,6 @@
     lfs.enable = true;
     delta.enable = true;
     extraConfig = {
-      tag = {
-        forceSignAnnotated = true;
-      };
       core = {
         editor = "${pkgs.neovim}/bin/nvim";
       };
