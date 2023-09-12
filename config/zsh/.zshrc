@@ -30,6 +30,7 @@ setopt globdots
 setopt cd_silent
 
 source "$DOTDIR/config/zsh/lscolors.zsh" # LS_COLORS
+eval $(/opt/homebrew/bin/brew shellenv) # Homebrew
 
 # Completion Styling
 zstyle ":completion:*" use-cache on
