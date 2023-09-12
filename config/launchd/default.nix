@@ -1,22 +1,72 @@
 { lib, pkgs, config, ... }:
 let
-  launchDir = "${config.home.homeDirectory}/.config/dotfiles/config/launchd";
+  dotDir = "${config.home.homeDirectory}/.config/dotfiles";
+  launchDir = "${dotDir}/config/launchd";
+  snippetFile = "${dotDir}/config/tui/colors.yaml";
+  stateFile = "${config.home.homeDirectory}/.local/state/alacritty.yaml";
+  tmuxFile = "${dotDir}/config/tui/tmux";
+
+  dark_listener = pkgs.stdenv.mkDerivation rec {
+    pname = "dark_listener";
+    version = "0.1.0";
+
+    src = [
+      ./dark_listener.swift
+    ];
+
+    dontPatch = true;
+    dontFixup = true;
+    dontConfigure = true;
+
+    unpackPhase = ''
+      for srcFile in $src; do
+            # Copy file into build dir
+            local tgt=$(echo $srcFile | cut --delimiter=- --fields=2-)
+            cp $srcFile $tgt
+          done
+    '';
+
+    buildPhase = ''
+      # Check for Xcode CLT and fail if it's not installed
+      if [ ! -d /Library/Developer/CommandLineTools ]; then
+        echo "Please install Xcode Command Line Tools."
+        exit 1
+      fi
+
+      export SDKROOT=$(/usr/bin/xcrun --sdk macosx --show-sdk-path)
+      export SWIFTC=$(/usr/bin/xcrun -f swiftc)
+      $SWIFTC -o dark_listener dark_listener.swift
+    '';
+
+    installPhase = ''
+      mkdir -p $out/bin
+      install -m 0755 dark_listener $out/bin
+    '';
+
+    meta = {
+      description = "A daemon to listen for dark mode changes";
+      platforms = lib.platforms.darwin;
+      license = lib.licenses.mit;
+    };
+  };
 in
 {
-  imports = [ ./color.nix ];
+  home.packages = [ dark_listener ];
 
-  launchd.agents.backup = {
+  launchd.agents.color = {
     enable = true;
     config = {
-      Label = "me.tale.backup";
-      Program = "${launchDir}/backup.sh";
-      EnvironmentVariables = {
-        PATH = "${pkgs.coreutils}/bin:${pkgs.restic}/bin:${pkgs.zsh}/bin:/usr/bin";
-        RESTIC_EXCLUDE = "${launchDir}/backup_excludes.txt";
-      };
-      StandardOutPath = "/tmp/launchd/backup.log";
-      StandardErrorPath = "/tmp/launchd/backup.log";
-      StartInterval = 3600; # 1 hour
+      Label = "me.tale.color";
+      ProgramArguments = [
+        "${dark_listener}/bin/dark_listener"
+        snippetFile
+        stateFile
+        tmuxFile
+        "${pkgs.tmux}/bin/tmux"
+      ];
+      StandardOutPath = "/tmp/launchd/background.log";
+      StandardErrorPath = "/tmp/launchd/background.log";
+      KeepAlive = true;
     };
   };
 

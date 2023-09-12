@@ -41,6 +41,7 @@
       "soulver"
       "spotify"
       "steam"
+      "syncthing"
       "tailscale"
       "the-unarchiver"
       "xcodes"

@@ -59,6 +59,7 @@ in
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     bat
+    syncthing
     zstd
     kubectl
     kubernetes-helm
@@ -84,7 +85,6 @@ in
     ripgrep
     go-task
     libusbmuxd
-    restic
     macos-trash
     iconset
     dockutil
