@@ -18,6 +18,13 @@ return {
 			}
 		})
 
+		local lsp_defaults = require("lspconfig").util.default_config
+		lsp_defaults.capabilities = vim.tbl_deep_extend(
+			"force",
+			lsp_defaults.capabilities,
+			require("cmp_nvim_lsp").default_capabilities()
+		)
+
 		-- Force rounded borders on hover and signature help
 		vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
 			vim.lsp.handlers.hover,

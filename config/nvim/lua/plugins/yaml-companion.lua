@@ -7,14 +7,6 @@ return {
 		"nvim-telescope/telescope.nvim"
 	},
 	config = function()
-		require("lspconfig").yamlls.setup({
-			settings = {
-				yaml = {
-					keyOrdering = false
-				}
-			}
-		})
-
 		require("yaml-companion").setup({
 			builtin_matchers = {
 				kubernetes = { enabled = true }

@@ -78,9 +78,11 @@ in
     gnumake
     tree-sitter
     yubikey-manager
+    postgresql_jit
     yubikey-personalization
     gnutar
     coreutils
+    fd
     findutils
     ripgrep
     go-task
@@ -88,6 +90,11 @@ in
     macos-trash
     iconset
     dockutil
+    rnix-lsp
+    lua-language-server
+    nodePackages_latest.svelte-language-server
+    nodePackages_latest.vscode-langservers-extracted
+    nodePackages_latest.yaml-language-server
     (nerdfonts.override { fonts = [ "Mononoki" ]; })
   ];
 

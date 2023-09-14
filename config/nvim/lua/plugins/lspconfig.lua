@@ -2,49 +2,67 @@ return {
 	"neovim/nvim-lspconfig",
 	event = "VimEnter",
 	dependencies = {
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
 		"pmizio/typescript-tools.nvim",
-		{
-			"folke/neodev.nvim",
-			config = function()
-				require("neodev").setup({
-					override = function(root_dir, library)
-						if require("neodev.util").has_file(root_dir, "config/dotfiles") then
-							library.enabled = true
-							library.plugins = true
-						end
-					end
-				})
-			end
-		}
 	},
 	config = function()
-		require("mason").setup({
-			ui = {
-				border = "rounded"
+		local lspconfig = require("lspconfig")
+
+		-- Load Lua LSP for Neovim
+		lspconfig.lua_ls.setup({
+			on_init = function(client)
+				local path = client.workspace_folders[1].name
+				if not vim.loop.fs_stat(path .. "/.luarc.json") and not vim.loop.fs_stat(path .. "/.luarc.jsonc") then
+					client.config.settings = vim.tbl_deep_extend("force", client.config.settings, {
+						Lua = {
+							runtime = {
+								version = "LuaJIT"
+							},
+							workspace = {
+								checkThirdParty = false,
+								library = vim.api.nvim_get_runtime_file("", true)
+							}
+						}
+					})
+
+					client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+				end
+
+				return true
+			end
+		})
+
+		-- Load Nix LSP for nix-darwin
+		lspconfig.rnix.setup({})
+
+		-- Handles tsserver in binary format
+		require("typescript-tools").setup({})
+		lspconfig.cssls.setup({})
+		lspconfig.html.setup({})
+		lspconfig.svelte.setup({})
+
+		-- Adds EslintFixAll
+		lspconfig.eslint.setup({
+			settings = {
+				packageManager = "pnpm"
 			}
 		})
 
-		require("typescript-tools").setup({})
+		-- Native Languages
+		lspconfig.clangd.setup({})
+		lspconfig.sourcekit.setup({})
+		lspconfig.rust_analyzer.setup({})
 
-		require("mason-lspconfig").setup({
-			automatic_installation = true
+		-- Manifests
+		lspconfig.jsonls.setup({})
+		lspconfig.yamlls.setup({
+			settings = {
+				yaml = {
+					keyOrdering = false
+				}
+			}
 		})
 
-		require("mason-lspconfig").setup_handlers({
-			function(server_name)
-				require("lspconfig")[server_name].setup {}
-			end
-		})
-
-		local lsp_defaults = require("lspconfig").util.default_config
-		lsp_defaults.capabilities = vim.tbl_deep_extend(
-			"force",
-			lsp_defaults.capabilities,
-			require("cmp_nvim_lsp").default_capabilities()
-		)
-
+		-- Format code on save unless written with :Wf
 		vim.api.nvim_create_autocmd("BufWritePre", {
 			desc = "Format on Save",
 			callback = function()

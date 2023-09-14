@@ -22,6 +22,10 @@ vim.g.bind_keys = function(bindings)
 	end
 end
 
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_node_provider = 0
+
 -- Plugins use the bind_keys() function and mapleader
 vim.g.mapleader = " "
 require("lazy").setup({
@@ -29,8 +33,7 @@ require("lazy").setup({
 		{ import = "plugins" }
 	},
 	install = {
-		missing = true,
-		colorscheme = { "github_dark" }
+		missing = true
 	},
 	checker = {
 		enabled = true,
