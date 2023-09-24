@@ -51,6 +51,7 @@ return {
 		lspconfig.clangd.setup({})
 		lspconfig.sourcekit.setup({})
 		lspconfig.rust_analyzer.setup({})
+		lspconfig.jdtls.setup({})
 
 		-- Manifests
 		lspconfig.jsonls.setup({})
