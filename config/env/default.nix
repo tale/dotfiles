@@ -4,7 +4,7 @@
     temurin-bin-17
     gradle
     nodejs_18
-    nodePackages.pnpm
+    nodePackages_latest.pnpm
     ldid
     xz
   ];

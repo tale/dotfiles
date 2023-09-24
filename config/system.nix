@@ -10,6 +10,7 @@
     };
     casks = [
       "1password"
+      "adobe-acrobat-reader"
       "alacritty"
       "aldente"
       "bartender"
@@ -21,6 +22,7 @@
       "google-chrome"
       "iina"
       "imageoptim"
+      "jetbrains-gateway"
       "keycastr"
       "maccy"
       "microsoft-excel"
