@@ -1,12 +1,12 @@
-{ pkgs, lib, config, ... }: {
-  home.packages = with pkgs; [
-    rustup
-    temurin-bin-17
-    gradle
-    nodejs_18
-    nodePackages_latest.pnpm
-    ldid
-    xz
+{ pkgs, pkgs-unstable, lib, config, ... }: {
+  home.packages = [
+    pkgs.rustup
+    pkgs.temurin-bin-17
+    pkgs.gradle
+    pkgs-unstable.nodejs_18
+    pkgs-unstable.nodePackages_latest.pnpm
+    pkgs.ldid
+    pkgs.xz
   ];
 
   programs.ssh = {
