@@ -84,6 +84,7 @@ in
     coreutils
     fd
     findutils
+    pam-reattach
     ripgrep
     go-task
     libusbmuxd

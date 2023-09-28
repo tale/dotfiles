@@ -92,9 +92,6 @@
     enableCompletion = false; # Handled by local zshrc after zcompile runs
   };
 
-  # Will reset on macOS updates
-  security.pam.enableSudoTouchIdAuth = true;
-
   system.defaults = {
     CustomUserPreferences = {
       "com.apple.dock" = {
@@ -154,4 +151,19 @@
       ./tui
     ];
   };
+
+  system.patches = [
+    (pkgs.writeText "pam_tid.patch" ''
+      --- /etc/pam.d/sudo	2023-09-28 09:27:50
+      +++ /etc/pam.d/sudo	2023-09-28 09:27:54
+      @@ -1,4 +1,6 @@
+       # sudo: auth account password session
+      +auth       optional       ${pkgs.pam-reattach}/lib/pam/pam_reattach.so
+      +auth       sufficient     pam_tid.so
+       auth       include        sudo_local
+       auth       sufficient     pam_smartcard.so
+       auth       required       pam_opendirectory.so
+    '')
+  ];
 }
+
