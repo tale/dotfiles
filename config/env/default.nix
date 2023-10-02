@@ -5,6 +5,8 @@
     pkgs.gradle
     pkgs-unstable.nodejs_18
     pkgs-unstable.nodePackages_latest.pnpm
+    pkgs-unstable.prettierd
+    pkgs.certbot
     pkgs.ldid
     pkgs.xz
   ];
