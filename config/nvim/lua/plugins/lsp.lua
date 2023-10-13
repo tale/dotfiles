@@ -73,7 +73,7 @@ return {
 		},
 		config = function()
 			-- Manually declaring LSP servers that I need instead of auto-installing
-			lsp({ "clangd", "cssls", "html", "jdtls", "rnix", "sourcekit", "svelte" })
+			lsp({ "clangd", "cssls", "html", "rnix", "sourcekit", "svelte" })
 
 			require("typescript-tools").setup({})
 			require("rust-tools").setup({})
@@ -86,6 +86,14 @@ return {
 
 			lsp("lua_ls", {
 				on_init = nvim_lsp,
+			})
+
+			lsp("jdtls", {
+				cmd = {
+					"jdt-language-server",
+					"-data",
+					vim.fn.expand("~/.cache/jdtls/workspace"),
+				},
 			})
 
 			lsp("jsonls", {
