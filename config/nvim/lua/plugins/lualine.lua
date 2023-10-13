@@ -1,11 +1,33 @@
 return {
 	"nvim-lualine/lualine.nvim",
-	event = "VimEnter",
+	lazy = false,
+	priority = 10,
 	dependencies = {
+		"projekt0n/github-nvim-theme",
 		"nvim-tree/nvim-web-devicons",
 		"linrongbin16/lsp-progress.nvim",
 	},
 	config = function()
+		local Color = require("github-theme.lib.color")
+		local spec = require("github-theme.spec").load(vim.g.colors_name == nil and "github_dark_tritanopia" or vim.g.colors_name)
+
+		local tint = function(color)
+			return {
+				a = {
+					bg = color,
+					fg = spec.bg1
+				},
+				b = {
+					bg = Color(spec.bg1):blend(Color(color), 0.2):to_css(),
+					fg = Color(spec.bg1):blend(Color(color), 0.8):to_css()
+				},
+				c = {
+					bg = nil,
+					fg = Color(spec.bg1):blend(Color(color), 0.6):to_css()
+				},
+			}
+		end
+
 		require("lsp-progress").setup({
 			client_format = function(client_name, spinner, series_messages)
 				if #series_messages == 0 then
@@ -22,6 +44,8 @@ return {
 				return table.concat(client_messages, " ")
 			end,
 		})
+
+
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
@@ -37,11 +61,20 @@ return {
 					"NeogitStatus",
 					""
 				},
+				theme = {
+					normal = tint(spec.palette.blue.base),
+					insert = tint(spec.palette.green.base),
+					command = tint(spec.palette.magenta.bright),
+					visual = tint(spec.palette.yellow.base),
+					replace = tint(spec.palette.red.base),
+					terminal = tint(spec.palette.orange),
+					inactive = tint('NONE')
+				},
 				component_separators = "|",
 				section_separators = {
 					left = "",
 					right = ""
-				},
+				}
 			},
 			sections = {
 				lualine_a = {
@@ -87,8 +120,7 @@ return {
 						sections = { "error", "warn", "info", "hint" },
 						colored = true,
 						update_in_insert = true,
-					},
-					-- "filetype"
+					}
 				},
 				lualine_z = {
 					{
@@ -111,11 +143,7 @@ return {
 
 							return true
 						end,
-						color = {
-							fg = "#ea6c6d",
-							bg = "#2d2d2d",
-							gui = "bold",
-						},
+						color = tint(spec.palette.red.base).b
 					},
 				}
 			},
