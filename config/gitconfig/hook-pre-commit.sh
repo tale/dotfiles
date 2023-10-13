@@ -15,6 +15,6 @@ command echo "$($PROGRAM --list-keys $KEY)" | grep "<$EMAIL>" > /dev/null 2>&1
 STATUS=$?
 
 if [[ ! $STATUS == "0" ]]; then
-echo -e "\033[0;31m[x]\033[0m Mismatch between git email and GPG email"
+	echo "\033[0;31m[x]\033[0m Mismatch between git email and GPG email"
 	exit 1
 fi
