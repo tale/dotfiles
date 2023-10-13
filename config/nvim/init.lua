@@ -22,38 +22,36 @@ vim.g.bind_keys = function(bindings)
 	end
 end
 
+vim.g.mapleader = " "
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_node_provider = 0
 
--- Plugins use the bind_keys() function and mapleader
-vim.g.mapleader = " "
 require("lazy").setup({
 	spec = {
-		{ import = "plugins" }
+		{ import = "plugins" },
 	},
 	install = {
-		missing = true
-	},
-	checker = {
-		enabled = true,
-		notify = false
+		missing = true,
 	},
 	change_detection = {
 		enabled = true,
-		notify = false
+		notify = true,
 	},
 	rtp = {
 		disabled_plugins = {
 			"netrwPlugin",
 			"tohtml",
-			"tutor"
-		}
+			"tutor",
+		},
 	},
 	ui = {
-		border = "rounded"
-	}
+		border = "rounded",
+	},
 })
+
+vim.cmd.colorscheme("github_dark_tritanopia")
+vim.api.nvim_set_option("background", "dark")
 
 -- Set tab size to 4 and show cursor line highlight
 vim.opt.tabstop = 4
@@ -64,6 +62,7 @@ vim.opt.cursorline = true
 -- Relative line numbers
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.signcolumn = "yes"
 
 -- Split buffers onto the second child (right and bottom)
 vim.opt.splitbelow = true
@@ -83,22 +82,22 @@ vim.opt.mouse = nil
 
 vim.g.bind_keys({
 	-- Indentation using Tab and Shift Tab
-	{ { "n" },      "<Tab>",   ">>" },
-	{ { "n" },      "<S-Tab>", "<<" },
-	{ { "i" },      "<Tab>",   "<C-t>" },
-	{ { "i" },      "<S-Tab>", "<C-d>" },
-	{ { "v" },      "<Tab>",   ">gv" },
-	{ { "v" },      "<S-Tab>", "<gv" },
+	{ { "n" }, "<Tab>", ">>" },
+	{ { "n" }, "<S-Tab>", "<<" },
+	{ { "i" }, "<Tab>", "<C-t>" },
+	{ { "i" }, "<S-Tab>", "<C-d>" },
+	{ { "v" }, "<Tab>", ">gv" },
+	{ { "v" }, "<S-Tab>", "<gv" },
 
 	-- Center the cursor on the screen so the code scrolls instead
-	{ { "n", "v" }, "k",       "kzz" },
-	{ { "n", "v" }, "j",       "jzz" },
-	{ { "n", "v" }, "<C-d>",   "<C-d>zz" },
-	{ { "n", "v" }, "<C-u>",   "<C-u>zz" },
-	{ { "n" },      "n",       "nzzzv" },
-	{ { "n" },      "N",       "Nzzzv" },
-	{ { "n" },      "u",       "uzz" },
-	{ { "n" },      "<C-r>",   "<C-r>zz" }
+	{ { "n", "v" }, "k", "kzz" },
+	{ { "n", "v" }, "j", "jzz" },
+	{ { "n", "v" }, "<C-d>", "<C-d>zz" },
+	{ { "n", "v" }, "<C-u>", "<C-u>zz" },
+	{ { "n" }, "n", "nzzzv" },
+	{ { "n" }, "N", "Nzzzv" },
+	{ { "n" }, "u", "uzz" },
+	{ { "n" }, "<C-r>", "<C-r>zz" },
 })
 
 -- Hack for invoking Neogit via the command line
