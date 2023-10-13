@@ -11,7 +11,6 @@
     casks = [
       "1password"
       "adobe-acrobat-reader"
-      "alacritty"
       "aldente"
       "bartender"
       "cleanmymac"
@@ -146,7 +145,6 @@
       ./gitconfig
       ./zsh
       ./gnupg
-      ./launchd
       ./nvim
       ./tui
     ];
