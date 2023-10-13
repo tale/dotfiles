@@ -14,7 +14,7 @@ dirs="- dotfiles\n$dirs"
 dir=$(echo $dirs | fzf --ansi \
 	--border none \
 	--no-scrollbar \
-	--preview-window border-left:"40%"
+	--preview-window border-left:40% \
 	--preview "tmux list-sessions -F \"#{session_name} #{window_name} #{window_panes} #{window_active} #{window_flags}\" | \
 		awk '
 		BEGIN {
