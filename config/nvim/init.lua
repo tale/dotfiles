@@ -12,46 +12,30 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 
+vim.g.mapleader = " " -- Lazy needs this beforehand
 vim.opt.rtp:prepend(lazypath)
 
--- Create a global function to easily bind keys
-vim.g.bind_keys = function(bindings)
-	for _, binding in ipairs(bindings) do
-		local opts = { noremap = true, silent = true }
-		vim.keymap.set(binding[1], binding[2], binding[3], opts)
-	end
-end
-
-vim.g.mapleader = " "
-vim.g.loaded_ruby_provider = 0
-vim.g.loaded_perl_provider = 0
-vim.g.loaded_node_provider = 0
-
 require("lazy").setup({
-	spec = {
-		{ import = "plugins" },
-	},
-	install = {
-		missing = true,
-	},
+	spec = { { import = "plugins" } },
+	install = { missing = true },
+	ui = { border = "rounded" },
 	change_detection = {
 		enabled = true,
-		notify = true,
+		notify = false,
 	},
-	rtp = {
-		disabled_plugins = {
-			"netrwPlugin",
-			"tohtml",
-			"tutor",
-		},
-	},
-	ui = {
-		border = "rounded",
-	},
+	rtp = { disabled_plugins = {
+		"netrwPlugin",
+		"tohtml",
+		"tutor",
+	} },
 })
 
 vim.cmd.colorscheme("github_dark_tritanopia")
 vim.api.nvim_set_option("background", "dark")
+
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_node_provider = 0
 
 -- Set tab size to 4 and show cursor line highlight
 vim.opt.tabstop = 4
@@ -76,11 +60,16 @@ vim.opt.autoread = true
 vim.opt.autowrite = true
 vim.opt.fillchars.diff = "/"
 vim.opt.fillchars:append("eob: ")
-
--- Disable mouse support and set the font
 vim.opt.mouse = nil
 
-vim.g.bind_keys({
+local function bind_keys(bindings)
+	for _, binding in ipairs(bindings) do
+		local opts = { noremap = true, silent = true }
+		vim.keymap.set(binding[1], binding[2], binding[3], opts)
+	end
+end
+
+bind_keys({
 	-- Indentation using Tab and Shift Tab
 	{ { "n" }, "<Tab>", ">>" },
 	{ { "n" }, "<S-Tab>", "<<" },
@@ -99,21 +88,6 @@ vim.g.bind_keys({
 	{ { "n" }, "u", "uzz" },
 	{ { "n" }, "<C-r>", "<C-r>zz" },
 })
-
--- Hack for invoking Neogit via the command line
-vim.api.nvim_create_user_command("NeogitThenQuit", function()
-	require("neogit").open()
-
-	local function watch_quit()
-		if vim.bo.filetype:match("^Neogit") or vim.bo.filetype:match("^Diffview") then
-			vim.defer_fn(watch_quit, 100)
-		else
-			vim.cmd("qa!")
-		end
-	end
-
-	vim.defer_fn(watch_quit, 100)
-end, {})
 
 -- Paired Programming "Mode"
 vim.api.nvim_create_user_command("Pair", function()
