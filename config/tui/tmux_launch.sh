@@ -14,26 +14,26 @@ dirs="- dotfiles\n$dirs"
 dir=$(echo $dirs | fzf --ansi \
 	--border none \
 	--no-scrollbar \
-	--preview-window border-left:40% \
+	--preview-window border-left:"40%"
 	--preview "tmux list-sessions -F \"#{session_name} #{window_name} #{window_panes} #{window_active} #{window_flags}\" | \
-		awk ' 
-		BEGIN { 
-			FS=\" \" 
-			ORS=\"\" 
-		} 
-		{ 
-			if (\$4 == 1) { 
-				print \"\033[1;32m\" 
-			} else { 
-				print \"\033[0;37m\" 
-			} 
-			print \$1 
-			print \"\033[0m\" 
-			print \" - \" 
-			print \$2 
-			print \" (\" 
+		awk '
+		BEGIN {
+			FS=\" \"
+			ORS=\"\"
+		}
+		{
+			if (\$4 == 1) {
+				print \"\033[1;32m\"
+			} else {
+				print \"\033[0;37m\"
+			}
+			print \$1
+			print \"\033[0m\"
+			print \" - \"
+			print \$2
+			print \" (\"
 			print \$3
-			print \")\n\" 
+			print \")\n\"
 		}'")
 
 
@@ -73,4 +73,3 @@ fi
 
 # Attach to session if tmux client is running
 tmux switch-client -t "$session_name"
-

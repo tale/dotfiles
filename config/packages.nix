@@ -59,6 +59,7 @@ in
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     bat
+    cloudflared
     syncthing
     zstd
     kubectl
@@ -98,7 +99,7 @@ in
     nodePackages_latest.svelte-language-server
     nodePackages_latest.vscode-langservers-extracted
     nodePackages_latest.yaml-language-server
-    (nerdfonts.override { fonts = [ "Mononoki" ]; })
+    (nerdfonts.override { fonts = [ "IosevkaTerm" ]; })
   ];
 
   # TODO: Include the application icons in this repository

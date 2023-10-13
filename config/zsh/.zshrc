@@ -55,13 +55,8 @@ function plsdns() {
 	command sudo killall -HUP mDNSResponder
 }
 
-# Open the tmux session launcher if not in a tmux session
 precmd() {
-	if [[ -z $TMUX ]]; then
-		"$dd/config/tui/tmux_launch.sh"
-	else
-		vcs_info
-	fi
+	vcs_info
 }
 
 if [[ -f $ZDOTDIR/.zcompdump ]]; then
@@ -71,3 +66,13 @@ fi
 
 autoload -Uz compinit
 [ $(date +"%j") != $COMPINIT_STAT ] && compinit || compinit -C
+
+if [[ -z $TMUX ]]; then
+	# If tmux list-sessions says tmux isn't running, invoke launch
+	# Otherwise tmux is most likely running and can reattach
+	if [[ -z $(tmux list-sessions 2>/dev/null) ]]; then
+		launch
+	else
+		tmux attach
+	fi
+fi

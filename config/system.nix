@@ -45,6 +45,7 @@
       "syncthing"
       "tailscale"
       "the-unarchiver"
+	  "wezterm"
       "xcodes"
       "yubico-yubikey-manager"
       "zed"
@@ -164,4 +165,3 @@
     '')
   ];
 }
-

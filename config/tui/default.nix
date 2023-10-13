@@ -1,10 +1,7 @@
-{ pkgs, lib, config, ... }:
-let
-  alacritty_font = "Mononoki Nerd Font Mono";
-  alacritty_state = "${config.home.homeDirectory}/.local/state/alacritty.yaml";
-in
-{
+{ pkgs, lib, config, ... }: {
   home.packages = with pkgs; [ tmate ];
+  home.file.".config/wezterm/wezterm.lua".text = builtins.readFile ./wezterm.lua;
+
   programs.tmux = {
     enable = true;
     prefix = "C-space";
@@ -18,11 +15,5 @@ in
     keyMode = "vi";
     extraConfig = builtins.readFile ./tmux.conf;
   };
-
-  home.file.".config/alacritty/alacritty.yml".text = builtins.replaceStrings
-    [ "{alacritty_state}" "{alacritty_font}" "{zsh_path}" ]
-    [ alacritty_state alacritty_font "${pkgs.zsh}/bin/zsh" ]
-    (builtins.readFile ./alacritty.yaml);
 }
-
 
