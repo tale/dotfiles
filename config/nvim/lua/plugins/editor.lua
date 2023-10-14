@@ -65,7 +65,7 @@ return {
 		},
 		event = "VimEnter",
 		keys = {
-			{ "<Leader>gt", "<CMD>Telescope find_files<CR>", desc = "Find files" },
+			{ "<Leader>gt", "<CMD>Telescope find_files hidden=true<CR>", desc = "Find files" },
 			{ "<Leader>ff", "<CMD>Telescope find_files<CR>", desc = "Find files" },
 			{ "<Leader>fi", "<CMD>Telescope live_grep<CR>", desc = "Search within files" },
 			{ "<Leader>gr", "<CMD>Telescope lsp_references<CR>", desc = "Find references" },
