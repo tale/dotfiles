@@ -57,6 +57,16 @@ function plsdns() {
 
 precmd() {
 	vcs_info
+
+	if [[ -z $TMUX ]]; then
+		# If tmux list-sessions says tmux isn't running, invoke launch
+		# Otherwise tmux is most likely running and can reattach
+		if [[ -z $(tmux list-sessions 2>/dev/null) ]]; then
+			launch
+		else
+			tmux attach
+		fi
+	fi
 }
 
 if [[ -f $ZDOTDIR/.zcompdump ]]; then
