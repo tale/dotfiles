@@ -92,13 +92,6 @@ in
     macos-trash
     iconset
     dockutil
-    rnix-lsp
-    awscli2
-    lua-language-server
-    jdt-language-server
-    nodePackages_latest.svelte-language-server
-    nodePackages_latest.vscode-langservers-extracted
-    nodePackages_latest.yaml-language-server
     (nerdfonts.override { fonts = [ "IosevkaTerm" ]; })
   ];
 

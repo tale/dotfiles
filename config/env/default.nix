@@ -5,10 +5,19 @@
     pkgs.gradle
     pkgs-unstable.nodejs_18
     pkgs-unstable.nodePackages_latest.pnpm
+    pkgs-unstable.nodePackages_latest.eslint_d
     pkgs-unstable.prettierd
     pkgs.certbot
     pkgs.ldid
+    pkgs.awscli2
     pkgs.xz
+    pkgs-unstable.rnix-lsp
+    pkgs-unstable.lua-language-server
+    pkgs-unstable.jdt-language-server
+    pkgs.nodePackages_latest.svelte-language-server
+    pkgs-unstable.nodePackages_latest.vscode-langservers-extracted
+    pkgs-unstable.nodePackages_latest.yaml-language-server
+    pkgs-unstable.stylua
   ];
 
   programs.ssh = {
