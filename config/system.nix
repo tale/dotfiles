@@ -4,9 +4,11 @@
 
   homebrew = {
     enable = true;
-    # TODO: MAS & Things3 + Other App Store
     caskArgs = {
       no_quarantine = true;
+    };
+    masApps = {
+      Things = 904280696;
     };
     casks = [
       "1password"
@@ -45,7 +47,7 @@
       "syncthing"
       "tailscale"
       "the-unarchiver"
-	  "wezterm"
+      "wezterm"
       "xcodes"
       "yubico-yubikey-manager"
       "zed"
