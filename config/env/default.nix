@@ -7,8 +7,12 @@
     pkgs-unstable.nodePackages_latest.pnpm
     pkgs-unstable.nodePackages_latest.eslint_d
     pkgs-unstable.prettierd
+    pkgs.nmap
+    pkgs.mongosh
+    pkgs.mongodb-tools
     pkgs.certbot
     pkgs.ldid
+    pkgs.gh
     pkgs.awscli2
     pkgs.xz
     pkgs-unstable.rnix-lsp

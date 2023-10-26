@@ -23,24 +23,17 @@
       "google-chrome"
       "iina"
       "imageoptim"
-      "jetbrains-gateway"
-      "keycastr"
       "maccy"
       "microsoft-excel"
-      "microsoft-outlook"
-      "microsoft-powerpoint"
-      "microsoft-remote-desktop"
-      "microsoft-teams"
       "microsoft-word"
       "minecraft"
       "monitorcontrol"
       "mullvadvpn"
       "orbstack"
-      "parsec"
       "postman"
       "raycast"
+      "rectangle"
       "sensei"
-      "slack"
       "soulver"
       "spotify"
       "steam"
@@ -49,10 +42,7 @@
       "the-unarchiver"
       "wezterm"
       "xcodes"
-      "yubico-yubikey-manager"
-      "zed"
       "zoom"
-      "zotero"
     ];
   };
 
@@ -99,6 +89,17 @@
       "com.apple.dock" = {
         show-recent-count = 1;
       };
+      # "com.knollsoft.Rectangle" = {
+      #   leftHalf.modifierFlags = 1179648;
+      #   rightHalf.modifierFlags = 1179648;
+      #   center.modifierFlags = 1179648;
+      #   maximize.modifierFlags = 1179648;
+      #
+      #   leftHalf.keyCode = 4;
+      #   rightHalf.keyCode = 37;
+      #   center.keyCode = 38;
+      #   maximize.keyCode = 40;
+      # };
     };
     SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
     dock = {
