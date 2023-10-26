@@ -52,6 +52,16 @@ return {
 				virt_text_pos = "eol",
 				delay = 250,
 			},
+			signs = {
+				add = { text = "+" },
+				change = { text = "~" },
+				delete = { text = "_" },
+				topdelete = { text = "‾" },
+				changedelete = { text = "~" },
+			},
+			yadm = {
+				enable = false,
+			},
 		},
 	},
 	{
@@ -65,12 +75,12 @@ return {
 		},
 		event = "VimEnter",
 		keys = {
-			{ "<Leader>gt", "<CMD>Telescope find_files hidden=true<CR>", desc = "Find files" },
-			{ "<Leader>ff", "<CMD>Telescope find_files<CR>", desc = "Find files" },
-			{ "<Leader>fi", "<CMD>Telescope live_grep<CR>", desc = "Search within files" },
-			{ "<Leader>gr", "<CMD>Telescope lsp_references<CR>", desc = "Find references" },
-			{ "<Leader>gi", "<CMD>Telescope lsp_implementations<CR>", desc = "Find implementations" },
-			{ "<Leader>gd", "<CMD>Telescope lsp_definitions<CR>", desc = "Find definitions" },
+			{ "gt",         "<CMD>Telescope find_files hidden=true<CR>", desc = "Find files" },
+			{ "gr",         "<CMD>Telescope lsp_references<CR>",         desc = "Find references" },
+			{ "gd",         "<CMD>Telescope lsp_definitions<CR>",        desc = "Find definitions" },
+			{ "<Leader>ff", "<CMD>Telescope find_files<CR>",             desc = "Find files" },
+			{ "<Leader>fi", "<CMD>Telescope live_grep<CR>",              desc = "Search within files" },
+			{ "<Leader>gi", "<CMD>Telescope lsp_implementations<CR>",    desc = "Find implementations" },
 		},
 		opts = {
 			defaults = {
@@ -123,7 +133,7 @@ return {
 			},
 		},
 		opts = {
-			delete_to_trash = true,
+			delete_to_trash = os.execute("trash --version") == 0,
 			trash_command = "trash",
 			view_options = {
 				show_hidden = true,

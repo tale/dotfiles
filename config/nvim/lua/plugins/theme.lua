@@ -8,9 +8,15 @@ return {
 			options = {
 				transparent = true,
 				dim_inactive = false,
+				hide_end_of_buffer = true,
+				hide_nc_statusline = true,
 				styles = {
 					comments = "italic",
 					keywords = "bold",
+
+				},
+				darken = {
+					floats = false
 				},
 				modules = {
 					"cmp",
@@ -24,159 +30,107 @@ return {
 					"neogit",
 				},
 			},
+			groups = {
+				all = {
+					StatusLine = { bg = 'NONE', fg = 'fg0' },
+					StatusLineNC = { bg = 'NONE', fg = 'bg1', sp = 'bg0' },
+					StatusLineTerm = { link = 'StatusLine' },
+					StatusLineTermNC = { link = 'StatusLineNC' }
+				}
+			}
 		},
-	},
-	{
-		"nvim-lualine/lualine.nvim",
-		lazy = false,
-		priority = 10,
-		dependencies = {
-			"linrongbin16/lsp-progress.nvim",
-		},
-		config = function()
-			local Color = require("github-theme.lib.color")
-			local spec = require("github-theme.spec").load("github_dark_tritanopia")
+		config = function(_, opts)
+			require("github-theme").setup(opts)
 
-			local tint = function(color)
-				return {
-					a = {
-						bg = color,
-						fg = spec.bg1,
-					},
-					b = {
-						bg = Color(spec.bg1):blend(Color(color), 0.2):to_css(),
-						fg = Color(spec.bg1):blend(Color(color), 0.8):to_css(),
-					},
-					c = {
-						bg = nil,
-						fg = Color(spec.bg1):blend(Color(color), 0.6):to_css(),
-					},
+			local function mode()
+				local current_mode = vim.api.nvim_get_mode().mode
+				return string.format(" %s ", current_mode:upper())
+			end
+
+			local function file()
+				local fpath = vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.:h")
+				local fname = vim.fn.expand "%:t"
+
+				if fpath == "" or fpath == "." then
+					fpath = ""
+				end
+
+				if fname == "" then
+					fname = ""
+				end
+
+				return string.format(" %%<%s/%s", fpath, fname)
+			end
+
+			local function lsp()
+				local count = {}
+				local levels = {
+					errors = "Error",
+					warnings = "Warn",
+					info = "Info",
+					hints = "Hint",
+				}
+
+				for k, level in pairs(levels) do
+					count[k] = vim.tbl_count(vim.diagnostic.get(0, { severity = level }))
+				end
+
+				local errors = ""
+				local warnings = ""
+				local hints = ""
+				local info = ""
+
+				if count["errors"] ~= 0 then
+					errors = " %#DiagnosticSignError# " .. count["errors"]
+				end
+				if count["warnings"] ~= 0 then
+					warnings = " %#DiagnosticSignWarning# " .. count["warnings"]
+				end
+				if count["hints"] ~= 0 then
+					hints = " %#DiagnosticSignHint# " .. count["hints"]
+				end
+				if count["info"] ~= 0 then
+					info = " %#DiagnosticSignInformation# " .. count["info"]
+				end
+
+				return errors .. warnings .. hints .. info .. "%#Normal#"
+			end
+
+			local function filetype()
+				local icon, color = require("nvim-web-devicons").get_icon_by_filetype(vim.bo.filetype)
+
+				if icon ~= nil and color ~= nil then
+					return string.format(" %%#%s#%s %s ", color, icon, vim.bo.filetype)
+				end
+
+				return string.format(" %s ", vim.bo.filetype)
+			end
+
+			local function lineinfo()
+				if vim.bo.filetype == "alpha" then
+					return ""
+				end
+
+				return "%l:%c"
+			end
+
+			Statusline = function()
+				return table.concat {
+					"%#Statusline#",
+					mode(),
+					"%#Statusline# ",
+					file(),
+					"%#Statusline#",
+					lsp(),
+					"%=%#StatusLineExtra#",
+					filetype(),
+					"%#Statusline#",
+					lineinfo(),
 				}
 			end
 
-			require("lsp-progress").setup({
-				client_format = function(client_name, spinner, series_messages)
-					if #series_messages == 0 then
-						return client_name
-					end
-
-					return (client_name .. " (" .. spinner .. " " .. table.concat(series_messages, ", ")) .. ")"
-				end,
-				format = function(client_messages)
-					if #client_messages == 0 then
-						return ""
-					end
-
-					return table.concat(client_messages, " ")
-				end,
-			})
-
-			require("lualine").setup({
-				options = {
-					icons_enabled = true,
-					disabled_filetypes = {
-						"oil",
-						"terminal",
-						"NeogitCommitMessage",
-						"NeogitCommitView",
-						"NeogitLog",
-						"NeogitMergeMessage",
-						"NeogitRebaseTodo",
-						"NeogitStatus",
-						"",
-					},
-					theme = {
-						normal = tint(spec.palette.blue.base),
-						insert = tint(spec.palette.green.base),
-						command = tint(spec.palette.magenta.bright),
-						visual = tint(spec.palette.yellow.base),
-						replace = tint(spec.palette.red.base),
-						terminal = tint(spec.palette.orange),
-						inactive = tint("NONE"),
-					},
-					component_separators = "|",
-					section_separators = {
-						left = "",
-						right = "",
-					},
-				},
-				sections = {
-					lualine_a = {
-						{
-							"mode",
-							fmt = function(string)
-								return string:sub(1, 1)
-							end,
-						},
-					},
-					lualine_b = {
-						{
-							"filename",
-							path = 1,
-							shorting_target = 50,
-						},
-					},
-					lualine_c = {},
-					lualine_x = {},
-					lualine_y = {
-						{
-							function()
-								return require("lsp-progress").progress()
-							end,
-							cond = function()
-								local filetype = vim.api.nvim_buf_get_option(0, "filetype")
-								local clients = vim.lsp.get_active_clients()
-								if next(clients) == nil then
-									return false
-								end
-
-								for _, client in ipairs(clients) do
-									local filetypes = client.config.filetypes
-									if filetypes and vim.fn.index(filetypes, filetype) ~= -1 then
-										return true
-									end
-								end
-
-								return false
-							end,
-						},
-						{
-							"diagnostics",
-							sources = { "nvim_lsp" },
-							sections = { "error", "warn", "info", "hint" },
-							colored = true,
-							update_in_insert = true,
-						},
-					},
-					lualine_z = {
-						{
-							function()
-								return "No LSP"
-							end,
-							cond = function()
-								local filetype = vim.api.nvim_buf_get_option(0, "filetype")
-								local clients = vim.lsp.get_active_clients()
-								if next(clients) == nil then
-									return true
-								end
-
-								for _, client in ipairs(clients) do
-									local filetypes = client.config.filetypes
-									if filetypes and vim.fn.index(filetypes, filetype) ~= -1 then
-										return false
-									end
-								end
-
-								return true
-							end,
-							color = tint(spec.palette.red.base).b,
-						},
-					},
-				},
-				inactive_sections = {},
-				tabline = {},
-				extensions = {},
-			})
+			vim.o.statusline = "%!v:lua.Statusline()"
+			vim.cmd.colorscheme("github_dark_dimmed")
 		end,
-	},
+	}
 }

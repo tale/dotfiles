@@ -33,13 +33,14 @@ end
 return {
 	{
 		"neovim/nvim-lspconfig",
-		event = "VimEnter",
+		event = "BufReadPre",
 		lazy = true,
 		dependencies = {
 			{
 				"stevearc/conform.nvim",
 				event = "BufWritePre",
 				cmd = "ConformInfo",
+				enabled = false,
 				opts = {
 					format_on_save = {
 						timeout_ms = 500,
@@ -47,10 +48,10 @@ return {
 					},
 
 					formatters_by_ft = {
-						javascript = { "eslint_d" },
-						typescript = { "eslint_d" },
-						javascriptreact = { "eslint_d" },
-						typescriptreact = { "eslint_d" },
+						javascript = { "eslint" },
+						typescript = { "eslint" },
+						javascriptreact = { "eslint" },
+						typescriptreact = { "eslint" },
 						lua = { "stylua" },
 
 						["*"] = { "trim_whitespace", "trim_newlines" },
@@ -63,13 +64,13 @@ return {
 			"b0o/schemastore.nvim",
 		},
 		keys = {
-			{ "<Leader>vca", vim.lsp.buf.code_action, desc = "View code actions" },
-			{ "<Leader>vca", vim.lsp.buf.range_code_action, desc = "View code actions", mode = "v" },
-			{ "<Leader>rn", vim.lsp.buf.rename, desc = "Rename symbol" },
-			{ "<Leader>go", vim.lsp.buf.type_definition, desc = "Go to type definition" },
-			{ "K", vim.lsp.buf.hover, desc = "View symbol information as popup" },
-			{ "]d", vim.diagnostic.goto_prev, desc = "Go to previous LSP diagnostic" },
-			{ "[d", vim.diagnostic.goto_next, desc = "Go to next LSP diagnostic" },
+			{ "<Leader>vca", vim.lsp.buf.code_action,       desc = "View code actions" },
+			{ "<Leader>vca", vim.lsp.buf.range_code_action, desc = "View code actions",               mode = "v" },
+			{ "<Leader>rn",  vim.lsp.buf.rename,            desc = "Rename symbol" },
+			{ "<Leader>go",  vim.lsp.buf.type_definition,   desc = "Go to type definition" },
+			{ "K",           vim.lsp.buf.hover,             desc = "View symbol information as popup" },
+			{ "]d",          vim.diagnostic.goto_prev,      desc = "Go to previous LSP diagnostic" },
+			{ "[d",          vim.diagnostic.goto_next,      desc = "Go to next LSP diagnostic" },
 		},
 		config = function()
 			-- Manually declaring LSP servers that I need instead of auto-installing
@@ -115,6 +116,21 @@ return {
 				},
 			})
 
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				desc = "Format on Save",
+				callback = function()
+					local client = vim.lsp.get_active_clients({ name = "eslint" })
+
+					if client and #client > 0 then
+						vim.cmd("silent! EslintFixAll")
+					else
+						vim.lsp.buf.format({ async = false })
+						vim.cmd("silent! write")
+					end
+				end,
+				pattern = { "*" },
+			})
+
 			-- Command to save without formatting
 			vim.api.nvim_create_user_command("Wf", function()
 				vim.opt.eventignore = { "BufWritePre" }
@@ -127,21 +143,9 @@ return {
 			local lsp_defaults = require("lspconfig").util.default_config.capabilities
 			lsp_defaults.capabilities = vim.tbl_deep_extend("force", lsp_defaults, cmp_defaults)
 
-			local function border_pls(handler)
-				return vim.lsp.with(vim.lsp.handlers[handler], { border = "rounded" })
-			end
-
-			-- Clean up some UI things for consistency
-			vim.lsp.handlers["textDocument/hover"] = border_pls("hover")
-			vim.lsp.handlers["textDocument/signatureHelp"] = border_pls("signature_help")
-			vim.lsp.handlers["textDocument/inlayHint"] = border_pls("inlay_hint")
-			vim.opt.completeopt = { "menu", "menuone", "noselect" }
 			vim.diagnostic.config({
 				virtual_text = true,
-				float = {
-					border = "rounded",
-					source = "always",
-				},
+				float = { source = "always" }
 			})
 		end,
 	},
@@ -183,9 +187,9 @@ return {
 					end,
 				},
 				sources = {
-					{ name = "path" },
 					{ name = "nvim_lsp" },
-					{ name = "buffer", keyword_length = 2 },
+					{ name = "path" },
+					{ name = "buffer",  keyword_length = 2 },
 				},
 				formatting = {
 					fields = { "menu", "abbr", "kind" },
@@ -198,8 +202,6 @@ return {
 				mapping = {
 					["<CR>"] = cmp.mapping.confirm({ select = false }),
 					["<C-y>"] = cmp.mapping.confirm({ select = true }),
-					["<Up>"] = cmp.mapping.select_prev_item(select_opts),
-					["<Down>"] = cmp.mapping.select_next_item(select_opts),
 					["<C-p>"] = cmp.mapping.select_prev_item(select_opts),
 					["<C-n>"] = cmp.mapping.select_next_item(select_opts),
 					["<C-u>"] = cmp.mapping.scroll_docs(-4),
