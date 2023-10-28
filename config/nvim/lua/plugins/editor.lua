@@ -44,6 +44,9 @@ return {
 	{
 		"lewis6991/gitsigns.nvim",
 		event = "BufRead",
+		keys = {
+			{ "<Leader>gp", "<CMD>Gitsigns preview_hunk_inline<CR>", desc = "Preview hunk" },
+		},
 		opts = {
 			signcolumn = true,
 			current_line_blame = true,
