@@ -24,5 +24,9 @@ bind_keys({
 	{ { "n" },      "n",       "nzzzv" },
 	{ { "n" },      "N",       "Nzzzv" },
 	{ { "n" },      "u",       "uzz" },
-	{ { "n" },      "<C-r>",   "<C-r>zz" }
+	{ { "n" },      "<C-r>",   "<C-r>zz" },
+
+	-- Easy moves
+	{ { "v" },      "J",       ":m '>+1<CR>gv=gv" },
+	{ { "v" },      "K",       ":m '<-2<CR>gv=gv" }
 })
