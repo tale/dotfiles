@@ -81,16 +81,16 @@ return {
 				local info = ""
 
 				if count["errors"] ~= 0 then
-					errors = " %#DiagnosticSignError# " .. count["errors"]
+					errors = " %#DiagnosticSignError# " .. count["errors"]
 				end
 				if count["warnings"] ~= 0 then
-					warnings = " %#DiagnosticSignWarning# " .. count["warnings"]
+					warnings = " %#DiagnosticSignWarn# " .. count["warnings"]
 				end
 				if count["hints"] ~= 0 then
-					hints = " %#DiagnosticSignHint# " .. count["hints"]
+					hints = " %#DiagnosticSignHint# " .. count["hints"]
 				end
 				if count["info"] ~= 0 then
-					info = " %#DiagnosticSignInformation# " .. count["info"]
+					info = " %#DiagnosticSignInfo#󰋼 " .. count["info"]
 				end
 
 				return errors .. warnings .. hints .. info .. "%#Normal#"
