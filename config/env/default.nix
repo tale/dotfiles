@@ -15,6 +15,10 @@
     pkgs.gh
     pkgs.awscli2
     pkgs.xz
+    pkgs.goreleaser
+    pkgs.go
+    pkgs-unstable.meson
+    pkgs-unstable.ninja
     pkgs-unstable.rnix-lsp
     pkgs-unstable.lua-language-server
     pkgs-unstable.jdt-language-server
