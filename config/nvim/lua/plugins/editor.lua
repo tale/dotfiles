@@ -42,6 +42,24 @@ return {
 		end,
 	},
 	{
+		"zbirenbaum/copilot.lua",
+		opts = {
+			panel = { enabled = false },
+			suggestion = {
+				auto_trigger = true,
+				keymap = {
+					accept = "<M-CR>",
+					accept_word = false,
+					accept_line = false,
+					next = "<M-]>",
+					prev = "<M-[>",
+					dismiss = "<C-]>",
+				},
+			},
+			filetypes = { yaml = true, markdown = true },
+		},
+	},
+	{
 		"lewis6991/gitsigns.nvim",
 		event = "BufRead",
 		keys = {
