@@ -25,6 +25,7 @@
       "imageoptim"
       "maccy"
       "microsoft-excel"
+      "microsoft-powerpoint"
       "microsoft-word"
       "minecraft"
       "monitorcontrol"

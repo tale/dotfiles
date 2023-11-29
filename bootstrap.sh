@@ -120,7 +120,7 @@ open -a "Raycast"
 open -a "AlDente"
 open -a "Cleanshot X"
 open -a "Maccy"
-open -a "Bartender 4"
+open -a "Bartender 5"
 open -a "MonitorControl"
 
 git -C $DOTDIR remote set-url origin git@github.com:tale/dotfiles.git
