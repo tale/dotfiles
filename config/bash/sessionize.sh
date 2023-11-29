@@ -1,17 +1,27 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
-# Check if $d is set and is a directory
-if [[ -z $d || ! -d $d ]]; then
-	echo "Developer directory ($d) is not set correctly"
+if [[ -z "$d" || ! -d "$d" ]]; then
+    echo "Developer directory (\$d) is not set correctly"
+    exit 1
+fi
+
+if ! command -v fzf &>/dev/null; then
+	echo "Could not find 'fzf'"
 	exit 1
 fi
 
-# Add an option for raw folders
-dirs=$(find $d -maxdepth 2 -type d)
-dirs="- dotfiles\n$dirs"
+if ! command -v tmux &>/dev/null; then
+	echo "Could not find 'tmux'"
+	exit 1
+fi
+
+dirs=("dotfiles")
+while IFS= read -r dir; do
+	dirs+=("${dir//$d/\~}")
+done < <(find "$d" -maxdepth 2 -type d);
 
 # Open the fzf menu in the developer directory
-dir=$(echo $dirs | fzf --ansi \
+dir=$(printf "%s\n" "${dirs[@]}" | fzf --ansi \
 	--border none \
 	--no-scrollbar \
 	--preview-window border-left:40% \
@@ -42,7 +52,7 @@ if [[ -z $dir ]]; then
 fi
 
 # Custom session names
-if [[ $dir == "- dotfiles" ]]; then
+if [[ $dir == "dotfiles" ]]; then
 	session_name="main"
 	dir="$dd"
 else
@@ -73,3 +83,4 @@ fi
 
 # Attach to session if tmux client is running
 tmux switch-client -t "$session_name"
+

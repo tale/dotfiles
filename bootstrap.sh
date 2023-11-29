@@ -85,10 +85,10 @@ cd "$DOTDIR"
 if ! launchctl print system/org.nixos.nix-daemon &>/dev/null; then
 	notify "Installing Nix"
 	curl -L "$NIX_SCRIPT" | sh -s -- --daemon
-	source /etc/zshrc
+	source /etc/bashrc
 else
 	warn "Nix is already installed (skipping...)"
-	source /etc/static/zshrc
+	source /etc/static/bashrc
 fi
 
 # Build and configure nix-darwin

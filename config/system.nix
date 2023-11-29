@@ -77,11 +77,10 @@
     enableSSHSupport = true;
   };
 
-  # TODO: programs.ssh & services.openssh
-  programs.zsh = {
+  environment.shells = [ pkgs.bashInteractive ];
+  programs.bash = {
     enable = true;
-    promptInit = "";
-    enableCompletion = false; # Handled by local zshrc after zcompile runs
+    enableCompletion = true;
   };
 
   system.defaults = {
@@ -129,6 +128,7 @@
   users.users.tale = {
     name = "tale";
     home = "/Users/tale";
+    shell = pkgs.bashInteractive;
   };
 
   home-manager.useUserPackages = true;
@@ -136,6 +136,10 @@
   home-manager.users.tale = { pkgs, lib, ... }: {
     home.stateVersion = "23.05";
     home.activation = {
+      bashShell = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        		$DRY_RUN_CMD /usr/bin/sudo /usr/bin/chsh -s "/run/current-system/sw${pkgs.bashInteractive.shellPath}" tale
+        	'';
+
       # nix-darwin doesn't set defaults when running as sudo
       smartCardDisablePairing = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         $DRY_RUN_CMD /usr/bin/sudo /usr/bin/defaults write /Library/Preferences/com.apple.security.smartcard UserPairing -bool false
@@ -145,12 +149,11 @@
     programs.home-manager.enable = true;
     imports = [
       ./packages.nix
+      ./bash
       ./env
       ./gitconfig
-      ./zsh
       ./gnupg
       ./nvim
-      ./tui
     ];
   };
 

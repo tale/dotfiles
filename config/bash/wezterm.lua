@@ -10,15 +10,18 @@ end)
 config.enable_tab_bar = false
 config.check_for_updates = false
 config.color_scheme = 'GitHub Dark'
+
+-- Disable ligatures because they're annoying
+config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 config.font = wezterm.font('IosevkaTerm Nerd Font Mono', {
 	weight = 'Regular'
 })
 
 config.window_padding = {
-  left = 0,
-  right = 0,
-  top = 0,
-  bottom = 0, -- Tmux already has stupid padding
+	left = 0,
+	right = 0,
+	top = 0,
+	bottom = 0, -- Tmux already has stupid padding
 }
 
 config.font_size = 15.0
@@ -49,6 +52,11 @@ config.keys = {
 	{
 		key = 'Enter',
 		mods = 'META',
+		action = wezterm.action.DisableDefaultAssignment
+	},
+	{
+		key = 'Space',
+		mods = 'CTRL | SHIFT',
 		action = wezterm.action.DisableDefaultAssignment
 	}
 }
