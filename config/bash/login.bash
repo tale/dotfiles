@@ -10,12 +10,7 @@ export THEOS="$HOME/Library/Theos"
 export d="$HOME/Developer"
 export dd="$DOTDIR"
 
-# Load Homebrew and Nix paths
-# eval $(/opt/homebrew/bin/brew shellenv)
-# if test -e /etc/static/bashrc; then
-# 	. /etc/static/bashrc
-# fi
-
+eval $(/opt/homebrew/bin/brew shellenv)
 launchctl setenv SSH_AUTH_SOCK "$SSH_AUTH_SOCK"
 launchctl setenv PATH "$PATH"
 
