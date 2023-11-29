@@ -1,31 +1,32 @@
 { pkgs, pkgs-unstable, lib, config, ... }: {
-  home.packages = [
-    pkgs.rustup
-    pkgs.temurin-bin-17
-    pkgs.gradle
-    pkgs-unstable.nodejs_18
-    pkgs-unstable.nodePackages_latest.pnpm
-    pkgs-unstable.nodePackages_latest.eslint_d
-    pkgs-unstable.prettierd
-    pkgs.nmap
-    pkgs.mongosh
-    pkgs.mongodb-tools
-    pkgs.certbot
-    pkgs.ldid
-    pkgs.gh
-    pkgs.awscli2
-    pkgs.xz
-    pkgs.goreleaser
-    pkgs.go
-    pkgs-unstable.meson
-    pkgs-unstable.ninja
-    pkgs-unstable.rnix-lsp
-    pkgs-unstable.lua-language-server
-    pkgs-unstable.jdt-language-server
-    pkgs.nodePackages_latest.svelte-language-server
-    pkgs-unstable.nodePackages_latest.vscode-langservers-extracted
-    pkgs-unstable.nodePackages_latest.yaml-language-server
-    pkgs-unstable.stylua
+  # All my developer tooling can use nixpkgs-unstable
+  home.packages = with pkgs-unstable; [
+    rustup
+    temurin-bin-17
+    gradle
+    nodejs_20
+    nodePackages_latest.pnpm
+    mongosh
+    ldid
+    gh
+    awscli2
+    xz
+    goreleaser
+    go
+    cmake
+    ninja
+    python312
+    xh
+
+    # Language servers
+    jdt-language-server
+    lua-language-server
+    nodePackages_latest.svelte-language-server
+    nodePackages_latest.typescript-language-server
+    nodePackages_latest.vscode-langservers-extracted
+    nodePackages_latest.yaml-language-server
+    nodePackages_latest."@astrojs/language-server"
+    rnix-lsp
   ];
 
   programs.ssh = {

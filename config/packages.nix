@@ -58,7 +58,6 @@ in
 {
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-    bat
     cloudflared
     syncthing
     zstd
@@ -70,7 +69,6 @@ in
     wget
     caddy
     btop
-    cmake
     fzf
     delta
     rsync
@@ -80,7 +78,6 @@ in
     tree-sitter
     yubikey-manager
     postgresql_jit
-    yubikey-personalization
     gnutar
     coreutils
     fd
