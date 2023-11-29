@@ -89,17 +89,6 @@
       "com.apple.dock" = {
         show-recent-count = 1;
       };
-      # "com.knollsoft.Rectangle" = {
-      #   leftHalf.modifierFlags = 1179648;
-      #   rightHalf.modifierFlags = 1179648;
-      #   center.modifierFlags = 1179648;
-      #   maximize.modifierFlags = 1179648;
-      #
-      #   leftHalf.keyCode = 4;
-      #   rightHalf.keyCode = 37;
-      #   center.keyCode = 38;
-      #   maximize.keyCode = 40;
-      # };
     };
     SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
     dock = {
@@ -141,10 +130,23 @@
         		$DRY_RUN_CMD /usr/bin/sudo /usr/bin/chsh -s "/run/current-system/sw${pkgs.bashInteractive.shellPath}" tale
         	'';
 
+      # system.defaults.CustomUserPreferences doesn't support dicts
+      rectangleDefaults = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        		$DRY_RUN_CMD /usr/bin/defaults write com.knollsoft.Rectangle center -dict-add keyCode -int 38
+        		$DRY_RUN_CMD /usr/bin/defaults write com.knollsoft.Rectangle leftHalf -dict-add keyCode -int 4
+        		$DRY_RUN_CMD /usr/bin/defaults write com.knollsoft.Rectangle maximize -dict-add keyCode -int 40
+        		$DRY_RUN_CMD /usr/bin/defaults write com.knollsoft.Rectangle rightHalf -dict-add keyCode -int 37
+
+        		$DRY_RUN_CMD /usr/bin/defaults write com.knollsoft.Rectangle center -dict-add modifierFlags -int 393216
+        		$DRY_RUN_CMD /usr/bin/defaults write com.knollsoft.Rectangle leftHalf -dict-add modifierFlags -int 393216
+        		$DRY_RUN_CMD /usr/bin/defaults write com.knollsoft.Rectangle maximize -dict-add modifierFlags -int 393216
+        		$DRY_RUN_CMD /usr/bin/defaults write com.knollsoft.Rectangle rightHalf -dict-add modifierFlags -int 393216
+        	  '';
+
       # nix-darwin doesn't set defaults when running as sudo
       smartCardDisablePairing = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        $DRY_RUN_CMD /usr/bin/sudo /usr/bin/defaults write /Library/Preferences/com.apple.security.smartcard UserPairing -bool false
-      '';
+        		$DRY_RUN_CMD /usr/bin/sudo /usr/bin/defaults write /Library/Preferences/com.apple.security.smartcard UserPairing -bool false
+        	  '';
     };
 
     programs.home-manager.enable = true;
