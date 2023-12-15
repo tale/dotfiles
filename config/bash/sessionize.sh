@@ -57,6 +57,7 @@ if [[ $dir == "dotfiles" ]]; then
 	dir="$dd"
 else
 	# Takes the directory and creates a session name from the last 2 parts
+	dir="${dir//\~/$d}"
 	session_dir_prefix=$(basename "$(dirname "$dir")")
 	session_name="$session_dir_prefix-$(basename "$dir")"
 fi
