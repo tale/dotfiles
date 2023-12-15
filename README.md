@@ -12,12 +12,10 @@ All of the files with the dots in them, but with a few requirements:
 - Open Neogit (magit clone) from wherever you are
 - More sane bindings for pane layout and management
 
-#### Zsh
-- Custom prompt and all the compiled `zwc` magic
-- Autosuggestions and better history across sessions
-- Better looking `LS_COLORS` and shell styling options
-- That random `compinit` script we copied from 2016
-- A proper harness to always stay within Tmux
+#### Bash
+- Very basic shell utilizing `$__git_ps1` for branch info
+- Simple aliases and functions for common tasks
+- Fuzzy finding history using `fzf`
 
 #### Neovim
 - The insane amount of boilerplate for LSP and completions
@@ -25,14 +23,15 @@ All of the files with the dots in them, but with a few requirements:
 - My dislike for file explorers led me to [oil.nvim](https://github.com/stevearc/oil.nvim)
 - Virtual git blames and status indicators in the gutter
 
-#### Nix
+#### System
 - Utilizing `nix-darwin` and `home-manager` for configuration
 - Stable `nixpkgs` for all the system packages that I need
 - All the boilerplate that comes with Nix (it's a feature)
+- Hammerspoon for quick keybinds and window management on macOS
 
 #### Git
 - Hooks for conventional commits and email mismatch checks
-- Implemnts a workaround to use global hooks with Husky enabled
+- Implements a workaround to use global hooks with Husky enabled
 
 #### Toolchain
 - A managed installation of `rust` and friends.
