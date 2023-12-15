@@ -122,6 +122,7 @@ open -a "Cleanshot X"
 open -a "Maccy"
 open -a "Bartender 5"
 open -a "MonitorControl"
+open -a "Hammerspoon"
 
 git -C $DOTDIR remote set-url origin git@github.com:tale/dotfiles.git
 notify "It's probably a good idea to reboot now"
