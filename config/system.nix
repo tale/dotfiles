@@ -123,7 +123,7 @@
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.users.tale = { pkgs, lib, ... }: {
-    home.stateVersion = "23.05";
+    home.stateVersion = "23.11";
     home.activation = {
       bashShell = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         		$DRY_RUN_CMD /usr/bin/sudo /usr/bin/chsh -s "/run/current-system/sw${pkgs.bashInteractive.shellPath}" tale
