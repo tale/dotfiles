@@ -154,7 +154,7 @@ return {
 			},
 		},
 		opts = {
-			delete_to_trash = os.execute("trash --version") == 0,
+			delete_to_trash = os.execute("command -v trash >/dev/null 2>&1") == 0,
 			trash_command = "trash",
 			view_options = {
 				show_hidden = true,
