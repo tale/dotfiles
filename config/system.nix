@@ -10,9 +10,13 @@
     masApps = {
       Things = 904280696;
     };
+    taps = [
+      "nikitabobko/tap"
+    ];
     casks = [
       "1password"
       "adobe-acrobat-reader"
+      "aerospace"
       "aldente"
       "bartender"
       "cleanmymac"
@@ -21,7 +25,6 @@
       "datagrip"
       "discord"
       "google-chrome"
-      "hammerspoon"
       "iina"
       "imageoptim"
       "maccy"
@@ -84,7 +87,13 @@
   };
 
   system.defaults = {
+    NSGlobalDomain = {
+      NSAutomaticWindowAnimationsEnabled = false;
+    };
     CustomUserPreferences = {
+      NSGlobalDomain = {
+        NSWindowShouldDragOnGesture = true;
+      };
       "com.apple.dock" = {
         show-recent-count = 1;
       };
