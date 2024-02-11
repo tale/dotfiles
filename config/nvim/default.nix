@@ -1,14 +1,12 @@
-{ pkgs, config, ... }:
-let nvimDir = "${config.home.homeDirectory}/.config/dotfiles/config/nvim";
-in
-{
+{ pkgs, config, ... }: {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
   };
 
   home.file.".config/nvim" = {
-    source = config.lib.file.mkOutOfStoreSymlink nvimDir;
+    source = config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/Developer/personal/dotfiles/config/nvim";
     recursive = true;
   };
 }

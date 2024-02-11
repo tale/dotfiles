@@ -6,7 +6,7 @@ option_as_alt = "OnlyLeft"
 history = 0
 
 [font]
-size = 15.0
+size = 16.0
 normal = { family = "IosevkaTerm Nerd Font Mono", style = "Regular" }
 bold = { family = "IosevkaTerm Nerd Font Mono", style = "Bold" }
 italic = { family = "IosevkaTerm Nerd Font Mono", style = "Italic" }
