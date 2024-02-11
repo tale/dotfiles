@@ -20,12 +20,12 @@ else
 fi
 
 if [[ -z $(pgrep tmux) ]] || ! tmux has-session -t "$session_name" 2>/dev/null; then
-	tmux new-session -s "$session_name" -c "$dir"
+	tmux new-session -ds "$session_name" -c "$dir"
+fi
+
+if [[ -z $TMUX ]]; then
+	tmux attach -t "$session_name"
 else
-	if [[ -z $TMUX ]]; then
-		tmux attach -t "$session_name"
-	else
-		tmux switch-client -t "$session_name"
-	fi
+	tmux switch-client -t "$session_name"
 fi
 
