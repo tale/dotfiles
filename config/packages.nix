@@ -1,33 +1,6 @@
-{ lib, stendv, pkgs, config, ... }:
+{ lib, pkgs, unstable, config, ... }:
 let
   iconFolder = "${config.home.homeDirectory}/.config/dotfiles/config/icons";
-  macos-trash = pkgs.stdenv.mkDerivation rec {
-    pname = "macos-trash";
-    version = "1.2.0";
-
-    src = pkgs.fetchzip {
-      url = "https://github.com/sindresorhus/macos-trash/releases/download/v1.2.0/trash.zip";
-      sha256 = "sha256-JMbGMIy0DFLFYcyLbh7M0l60k8+w8Dgx3GianjgZTv0=";
-    };
-
-    dontPatch = true;
-    dontConfigure = true;
-    dontBuild = true;
-    dontFixup = true;
-
-    installPhase = ''
-      mkdir -p $out/bin
-      install -m 0755 trash $out/bin
-    '';
-
-    meta = {
-      homepage = "https://github.com/sindresorhus/macos-trash";
-      description = "Move files and folders to the trash";
-      platforms = lib.platforms.darwin;
-      license = lib.licenses.mit;
-    };
-  };
-
   iconset = pkgs.stdenv.mkDerivation rec {
     pname = "iconset";
     version = "1.0.0";
@@ -56,48 +29,59 @@ let
   };
 in
 {
-  fonts.fontconfig.enable = true;
-  home.packages = with pkgs; [
-    cloudflared
-    syncthing
-    zstd
-    kubectl
-    kubernetes-helm
-    jq
-    yq
-    curl
-    wget
-    caddy
-    btop
-    fzf
-    delta
-    rsync
-    s3cmd
-    minikube
-    gnumake
-    tree-sitter
-    yubikey-manager
-    postgresql_jit
-    gnutar
-    coreutils
-    fd
-    findutils
-    pam-reattach
-    ripgrep
-    go-task
-    libusbmuxd
-    macos-trash
-    iconset
-    dockutil
-    (nerdfonts.override { fonts = [ "IosevkaTerm" ]; })
-  ];
+  home.packages =
+    (with pkgs; [
+      caddy
+      coreutils
+      curl
+      darwin.trash
+      delta
+      dockutil
+      fd
+      findutils
+      fzf
+      git
+      gnused
+      gnutar
+      go-task
+      gnumake
+      htop
+      iconset
+      (nerdfonts.override { fonts = [ "IosevkaTerm" ]; })
+      jq
+      kubectl
+      pam-reattach
+      postgresql_jit
+      ripgrep
+      rsync
+      wget
+      zstd
+    ])
+    ++
+    (with unstable; [
+      awscli2
+      cmake
+      goreleaser
+      go
+      lua-language-server
+      mongosh
+      nodejs_20
+      nodePackages_latest.pnpm
+      nodePackages_latest.svelte-language-server
+      nodePackages_latest.typescript-language-server
+      nodePackages_latest.vscode-langservers-extracted
+      nodePackages_latest.yaml-language-server
+      ninja
+      python312
+      rnix-lsp
+      rustup
+    ]);
 
-  # TODO: Include the application icons in this repository
   home.activation = {
     # Sudo can be hardcoded here since this runs on macOS
-    iconsetRun = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      $DRY_RUN_CMD /usr/bin/sudo ${iconset}/bin/iconset folder ${iconFolder}
-    '';
+    #iconsetRun = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    #  $DRY_RUN_CMD /usr/bin/sudo ${iconset}/bin/iconset folder ${iconFolder}
+    #'';
 
     dockFixup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       $DRY_RUN_CMD ${pkgs.dockutil}/bin/dockutil --remove all --no-restart $HOME

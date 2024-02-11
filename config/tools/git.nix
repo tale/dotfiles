@@ -1,4 +1,4 @@
-{ pkgs, config, ... }: {
+{ pkgs, ... }: {
   programs.git = {
     enable = true;
     userEmail = "aarnavtale@icloud.com";
@@ -61,4 +61,14 @@
       };
     };
   };
+
+  home.file.".huskyrc".text = ''
+    HOOKS_DIR=$(git config --global core.hooksPath)
+    HOOK_PATH="$HOOKS_DIR/$hook_name"
+
+    # hook_name is from the husky script
+    if [ -f "$HOOK_PATH" ]; then
+      source "$HOOK_PATH"
+    fi
+  '';
 }

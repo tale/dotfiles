@@ -1,37 +1,25 @@
 {
-  description = "Home Manager Configuration";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-23.11-darwin";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    pkgs.url = "github:nixos/nixpkgs/nixpkgs-23.11-darwin";
+    u_pkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    hm.url = "github:nix-community/home-manager/release-23.11";
+    os.url = "github:lnl7/nix-darwin";
 
-    home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    darwin = {
-      url = "github:lnl7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    hm.inputs.nixpkgs.follows = "pkgs";
+    os.inputs.nixpkgs.follows = "pkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, darwin, nixpkgs-unstable, ... }:
-    let
-      pkgs = nixpkgs.legacyPackages."aarch64-darwin";
-      pkgs-unstable = nixpkgs-unstable.legacyPackages."aarch64-darwin";
-    in
+  outputs = { self, pkgs, u_pkgs, hm, os }:
+    let unstable = u_pkgs.legacyPackages."aarch64-darwin"; in
     {
-      darwinConfigurations."Aarnavs-MBP" = darwin.lib.darwinSystem {
-        inherit pkgs;
+      darwinConfigurations."Aarnavs-MBP" = os.lib.darwinSystem {
         system = "aarch64-darwin"; # M1 Max
         modules = [
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.extraSpecialArgs = {
-              inherit pkgs-unstable;
-            };
-          }
+          hm.darwinModules.home-manager
+          { home-manager.extraSpecialArgs = { inherit unstable; }; }
           ./config/system.nix
+          ./config/brew.nix
+          ./config/home.nix
         ];
       };
     };
