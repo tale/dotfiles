@@ -27,3 +27,47 @@ fi
 
 # Invoking this will install the default toolchain
 $DRY_RUN_CMD $(which rustup) show active-toolchain
+
+kill_dock=0
+dockutil=$(which dockutil)
+
+if ! $dockutil --find 'Google Chrome' &> /dev/null; then
+	$DRY_RUN_CMD $dockutil --add /Applications/Google\ Chrome.app -p 0 --no-restart $HOME
+	kill_dock=1
+fi
+
+if ! $dockutil --find 'Messages' &> /dev/null; then
+	$DRY_RUN_CMD $dockutil --add /System/Applications/Messages.app -p 1 --no-restart $HOME
+	kill_dock=1
+fi
+
+if ! $dockutil --find 'Calendar' &> /dev/null; then
+	$DRY_RUN_CMD $dockutil --add /System/Applications/Calendar.app -p 2 --no-restart $HOME
+	kill_dock=1
+fi
+
+if ! $dockutil --find 'Mail' &> /dev/null; then
+	$DRY_RUN_CMD $dockutil --add /System/Applications/Mail.app -p 3 --no-restart $HOME
+	kill_dock=1
+fi
+
+if ! $dockutil --find 'Things3' &> /dev/null; then
+	$DRY_RUN_CMD $dockutil --add /Applications/Things3.app -p 4 --no-restart $HOME
+	kill_dock=1
+fi
+
+if ! $dockutil --find 'Spotify' &> /dev/null; then
+	$DRY_RUN_CMD $dockutil --add /Applications/Spotify.app -p 5 --no-restart $HOME
+	kill_dock=1
+fi
+
+if ! $dockutil --find 'Downloads' &> /dev/null; then
+	$DRY_RUN_CMD $dockutil --add '~/Downloads' -p 6 \
+		--view grid --display folder \
+		--section others --no-restart $HOME
+	kill_dock=1
+fi
+
+if [[ $kill_dock -eq 1 ]]; then
+	$DRY_RUN_CMD killall Dock
+fi
