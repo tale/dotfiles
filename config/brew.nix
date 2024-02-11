@@ -13,6 +13,7 @@
     casks = [
       "1password"
       "aerospace"
+      "alacritty"
       "aldente"
       "bartender"
       "cleanmymac"

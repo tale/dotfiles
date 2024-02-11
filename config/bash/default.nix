@@ -1,5 +1,5 @@
 { pkgs, lib, ... }: {
-  home.file.".config/wezterm/wezterm.lua".text = builtins.readFile ./wezterm.lua;
+  home.file.".config/alacritty/alacritty.toml".text = builtins.readFile ./alacritty.toml;
   home.file.".aerospace.toml".text = builtins.readFile ./aerospace.toml;
 
   programs.tmux = {

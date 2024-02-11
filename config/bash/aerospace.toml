@@ -2,8 +2,15 @@ start-at-login = true
 enable-normalization-flatten-containers = false
 enable-normalization-opposite-orientation-for-nested-containers = false
 
+gaps.inner.horizontal = 2
+gaps.inner.vertical = 2
+gaps.outer.left = 2
+gaps.outer.bottom = 2
+gaps.outer.top = 2
+gaps.outer.right = 2
+
 [mode.main.binding]
-alt-space = "exec-and-forget open -a WezTerm"
+alt-space = "exec-and-forget open -a Alacritty"
 
 alt-h = "focus left"
 alt-j = "focus down"
@@ -29,9 +36,6 @@ alt-3 = "workspace 3"
 alt-4 = "workspace 4"
 alt-5 = "workspace 5"
 alt-6 = "workspace 6"
-alt-7 = "workspace 7"
-alt-8 = "workspace 8"
-alt-9 = "workspace 9"
 
 alt-shift-1 = "move-node-to-workspace 1"
 alt-shift-2 = "move-node-to-workspace 2"
@@ -39,9 +43,6 @@ alt-shift-3 = "move-node-to-workspace 3"
 alt-shift-4 = "move-node-to-workspace 4"
 alt-shift-5 = "move-node-to-workspace 5"
 alt-shift-6 = "move-node-to-workspace 6"
-alt-shift-7 = "move-node-to-workspace 7"
-alt-shift-8 = "move-node-to-workspace 8"
-alt-shift-9 = "move-node-to-workspace 9"
 
 alt-r = "mode resize"
 
@@ -54,7 +55,7 @@ enter = "mode main"
 esc = "mode main"
 
 [[on-window-detected]]
-if.app-id = "com.github.wez.wezterm"
+if.app-id = "org.alacritty"
 run = "move-node-to-workspace 1"
 
 [[on-window-detected]]

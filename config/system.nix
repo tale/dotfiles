@@ -38,6 +38,9 @@
         NSWindowShouldDragOnGesture = true;
         NSAutomaticWindowAnimationsEnabled = false;
       };
+      "org.alacritty" = {
+        AppleFontSmoothing = 0;
+      };
     };
     dock = {
       autohide = true;
