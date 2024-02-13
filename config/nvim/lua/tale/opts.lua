@@ -35,3 +35,17 @@ o.completeopt = "menuone,noselect" -- Completion options
 vim.g.loaded_ruby_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_node_provider = 0
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = { "*.m" },
+	callback = function()
+		vim.bo.filetype = "objc"
+	end
+})
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = { "*.h" },
+	callback = function()
+		vim.bo.filetype = "c"
+	end
+})
