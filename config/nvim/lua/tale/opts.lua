@@ -5,6 +5,7 @@ o.softtabstop = 4                  -- Tabs are 4 spaces (soft edition)
 o.shiftwidth = 4                   -- The number of spaces for each indentation
 o.shiftround = true                -- Round indent to multiple of shiftwidth
 o.expandtab = false                -- Use tabs instead of spaces
+o.colorcolumn = "80"               -- Highlight the 80th column
 
 o.relativenumber = true            -- Relative line numbers
 o.signcolumn = "yes"               -- Always show the sign column
@@ -44,8 +45,8 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 })
 
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-	pattern = { "*.h" },
+	pattern = { "*.plist" },
 	callback = function()
-		vim.bo.filetype = "c"
+		vim.bo.filetype = "xml"
 	end
 })
