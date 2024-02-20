@@ -37,6 +37,7 @@
       NSGlobalDomain = {
         NSWindowShouldDragOnGesture = true;
         NSAutomaticWindowAnimationsEnabled = false;
+        AppleFontSmoothing = 1;
       };
       "org.alacritty" = {
         AppleFontSmoothing = 0;
