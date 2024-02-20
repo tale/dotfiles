@@ -24,6 +24,7 @@
       ripgrep
       rsync
       wget
+      yq
       zstd
     ])
     ++
@@ -41,6 +42,7 @@
       nodePackages_latest.vscode-langservers-extracted
       nodePackages_latest.yaml-language-server
       ninja
+      oci-cli
       python312
       rnix-lsp
       rustup
