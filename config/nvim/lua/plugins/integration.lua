@@ -4,24 +4,26 @@ return {
 		event = "BufRead",
 		build = ":TSUpdate",
 		opts = {
-			auto_install = true,
-			highlight = {
-				enable = true,
-				additional_vim_regex_highlighting = false,
+			ts = {
+				auto_install = true,
+				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = false,
+				},
+				incremental_selection = {
+					enable = true,
+				},
+				autotag = {
+					enable = true,
+				}
 			},
-			incremental_selection = {
-				enable = true,
-			},
-			autotag = {
-				enable = true,
-			},
-			context_commentstring = {
-				enable = true,
+			comment = {
 				enable_autocmd = false,
 			}
 		},
 		config = function(_, opts)
-			require("nvim-treesitter.configs").setup(opts)
+			require("nvim-treesitter.configs").setup(opts.ts)
+			require("ts_context_commentstring").setup(opts.comment)
 		end,
 	},
 	{

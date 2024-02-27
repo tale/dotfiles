@@ -6,6 +6,7 @@ o.shiftwidth = 4                   -- The number of spaces for each indentation
 o.shiftround = true                -- Round indent to multiple of shiftwidth
 o.expandtab = false                -- Use tabs instead of spaces
 o.colorcolumn = "80"               -- Highlight the 80th column
+o.updatetime = 100                 -- Apparently this improves performance
 
 o.relativenumber = true            -- Relative line numbers
 o.signcolumn = "yes"               -- Always show the sign column

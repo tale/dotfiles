@@ -23,41 +23,9 @@ return {
 			vim.g.lsp_zero_extend_lspconfig = 0
 		end
 	},
-	-- {
-	-- 	"hrsh7th/nvim-cmp",
-	-- 	event = "InsertEnter",
-	-- 	dependencies = {
-	-- 		"hrsh7th/cmp-buffer",
-	-- 		"hrsh7th/cmp-path",
-	-- 		"L3MON4D3/LuaSnip",
-	-- 	},
-	-- 	config = function()
-	-- 		local lsp_zero = require("lsp-zero")
-	-- 		local cmp = require("cmp")
-	-- 		lsp_zero.extend_cmp()
-	--
-	-- 		cmp.setup({
-	-- 			sources = {
-	-- 				{ name = "nvim_lsp" },
-	-- 				{ name = "path" },
-	-- 				{ name = "buffer",  keyword_length = 2 },
-	-- 			},
-	-- 			mapping = {
-	-- 				["<CR>"] = cmp.mapping.confirm({ select = false }),
-	-- 				["<C-y>"] = cmp.mapping.confirm({ select = true }),
-	-- 				["<C-p>"] = cmp.mapping.select_prev_item(),
-	-- 				["<C-n>"] = cmp.mapping.select_next_item(),
-	-- 				["<C-u>"] = cmp.mapping.scroll_docs(-4),
-	-- 				["<C-d>"] = cmp.mapping.scroll_docs(4),
-	-- 				["<C-e>"] = cmp.mapping.abort(),
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
 	{
 		"neovim/nvim-lspconfig",
 		event = "BufReadPre",
-		-- dependencies = { "hrsh7th/cmp-nvim-lsp" },
 		keys = {
 			{ "<Leader>vca", vim.lsp.buf.code_action,       desc = "View code actions" },
 			{ "<Leader>vca", vim.lsp.buf.range_code_action, desc = "View code actions",               mode = "v" },
@@ -76,7 +44,7 @@ return {
 				float = { source = "always" }
 			})
 
-			lsp({ "astro", "clangd", "cssls", "html", "rnix", "svelte", "tsserver" })
+			lsp({ "clangd", "cssls", "html", "rnix", "svelte", "tsserver" })
 
 			lsp("eslint", {
 				settings = {
