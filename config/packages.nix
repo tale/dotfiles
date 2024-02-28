@@ -30,6 +30,7 @@
     ++
     (with unstable; [
       awscli2
+      cloudflared
       cmake
       goreleaser
       go
