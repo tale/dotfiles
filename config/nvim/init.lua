@@ -18,11 +18,11 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
-		{ "nvim-tree/nvim-web-devicons", lazy = true },
 		{ "stevearc/dressing.nvim",      event = "VeryLazy" },
+		{ "nvim-tree/nvim-web-devicons", lazy = true },
 		{ "nvim-lua/plenary.nvim",       lazy = true }
 	},
-	install = { colorscheme = { "github_dark_dimmed" } },
+	install = { colorscheme = { "lunaperche" } },
 	change_detection = { notify = false },
 	rtp = {
 		disabled_plugins = {

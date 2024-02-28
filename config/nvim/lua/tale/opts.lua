@@ -51,3 +51,61 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 		vim.bo.filetype = "xml"
 	end
 })
+
+SLActive = function()
+	local fpath = vim.fn.fnamemodify(vim.fn.expand("%"), ":~:.:h")
+	local fname = vim.fn.expand "%:t"
+
+	if fpath == "" or fpath == "." then
+		fpath = ""
+	end
+
+	if fname == "" then
+		fname = ""
+	end
+
+	local file = string.format("%%<%s/%s", fpath, fname)
+	local lsp = ""
+
+	local levels = {
+		errors = { name = "Error", icon = "" },
+		warnings = { name = "Warn", icon = "" },
+		info = { name = "Info", icon = "" },
+		hints = { name = "Hint", icon = "" },
+	}
+
+	for i in pairs(levels) do
+		local level = levels[i]
+		local diag_count = vim.tbl_count(vim.diagnostic.get(0, {
+			severity = level.name
+		}))
+
+		if diag_count > 0 then
+			lsp = lsp ..
+				" %#" ..
+				"DiagnosticSign" ..
+				level.name:sub(1, 1):upper() ..
+				level.name:sub(2) .. "#" .. level.icon .. " " .. diag_count
+		end
+	end
+
+	return table.concat({ "%#StatusLineExtra#", file, "%=%#StatusLineExtra#", lsp })
+end
+
+vim.cmd.colorscheme("lunaperche")
+vim.cmd.hi("Normal guibg=NONE ctermbg=NONE")
+vim.cmd.hi("StatusLineExtra guibg=NONE guifg=NONE")
+
+vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
+	pattern = "*",
+	callback = function()
+		vim.wo.statusline = "%!v:lua.SLActive()"
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
+	pattern = "*",
+	callback = function()
+		vim.wo.statusline = "%#StatusLineExtra#"
+	end,
+})
