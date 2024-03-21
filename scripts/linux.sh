@@ -1,15 +1,6 @@
 #!/usr/bin/env bash
 
 base_pkgs=(curl git openssl 'dnf-command(config-manager)')
-if ! command -v sudo &>/dev/null; then
-	if [ $EUID -ne 0 ]; then
-		echo "Unable to install packages without sudo"
-		exit 1
-	fi
-
-	dnf install -y sudo
-fi
-
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes

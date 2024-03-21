@@ -69,8 +69,6 @@ ensure_remote() {
 }
 
 setup_dotfiles() {
-	ensure_remote
-
 	decrypt_file $PWD/files/.ssh/id_ed25519
 	unset DECRYPT_PASS
 
@@ -94,9 +92,22 @@ setup_dotfiles() {
 case $OS in
 	Linux)
 		[ -f /etc/redhat-release ] || error "Unsupported Linux"
+		if ! command -v sudo &>/dev/null; then
+			if [ $EUID -ne 0 ]; then
+				echo "Unable to install packages without sudo"
+				exit 1
+			fi
+
+			dnf install -y sudo git
+		else
+			sudo dnf install -y git
+		fi
+
+		ensure_remote
 		. ./scripts/linux.sh
 		;;
 	Darwin)
+		ensure_remote
 		. ./scripts/mac.sh
 		;;
 	*)
