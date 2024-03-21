@@ -46,6 +46,9 @@ ensure_remote() {
 
 	if [ -d .git ]; then
 		if git remote -v | grep -q $DOTFILES; then
+			git stash .
+			git pull
+			git stash pop
 			echo $PWD
 			return
 		fi
@@ -54,6 +57,9 @@ ensure_remote() {
 	if [ -d dotfiles/.git ]; then
 		if git -C dotfiles remote -v | grep -q $DOTFILES; then
 			cd dotfiles
+			git stash .
+			git pull
+			git stash pop
 			echo $PWD
 			return
 		fi
