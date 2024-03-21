@@ -11,6 +11,10 @@ get_pass() {
 }
 
 decrypt_file() {
+	if [ -z $DECRYPT_PASS ]; then
+		get_pass
+	fi
+
     local file_path="$1"
     local user_password
 
@@ -19,13 +23,10 @@ decrypt_file() {
 		return
 	fi
 
-    read -sp "Enter your password: " user_password
-    echo
-
 	echo "Decrypting the RSA key with the user password..."
 	openssl enc \
 		-d -pbkdf2 -iter 10000000 -salt -md sha512 \
-		-aes-256-cbc -pass pass:"$user_password" \
+		-aes-256-cbc -pass env:DECRYPT_PASS \
 		-in $file_path.blob.key -out $file_path.key
 
 	echo "Decrypting the file with the RSA key..."
