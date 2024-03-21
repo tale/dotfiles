@@ -39,6 +39,7 @@
       "steam"
       "syncthing"
       "tailscale"
+      "visual-studio-code"
       "xcodes"
       "zoom"
     ];

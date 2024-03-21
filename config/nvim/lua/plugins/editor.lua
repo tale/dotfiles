@@ -1,29 +1,11 @@
 return {
-	{
-		"wakatime/vim-wakatime",
-		event = "BufRead",
-	},
-	{
-		"mg979/vim-visual-multi",
-		event = "BufRead",
-	},
-	{
-		"nmac427/guess-indent.nvim",
-		event = "BufRead",
-	},
+	"wakatime/vim-wakatime",
+	"mg979/vim-visual-multi",
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufRead",
 		name = "ibl",
-		opts = {
-			indent = {
-				char = "▏",
-			},
-			scope = {
-				show_start = false,
-				show_end = false,
-			},
-		},
+		opts = {}
 	},
 	{
 		"numToStr/Comment.nvim",
@@ -47,14 +29,7 @@ return {
 			panel = { enabled = false },
 			suggestion = {
 				auto_trigger = true,
-				keymap = {
-					accept = "<M-CR>",
-					accept_word = false,
-					accept_line = false,
-					next = "<M-]>",
-					prev = "<M-[>",
-					dismiss = "<C-]>",
-				},
+				keymap = { accept = "<M-CR>" },
 			},
 			filetypes = { yaml = true, markdown = true },
 		},
@@ -68,21 +43,14 @@ return {
 		opts = {
 			signcolumn = true,
 			current_line_blame = true,
-			current_line_blame_opts = {
-				virt_text = true,
-				virt_text_pos = "eol",
-				delay = 250,
-			},
+			current_line_blame_opts = { delay = 250 },
 			signs = {
 				add = { text = "+" },
 				change = { text = "~" },
 				delete = { text = "_" },
 				topdelete = { text = "‾" },
 				changedelete = { text = "~" },
-			},
-			yadm = {
-				enable = false,
-			},
+			}
 		},
 	},
 	{
@@ -94,14 +62,11 @@ return {
 				build = "make",
 			},
 		},
-		event = "VimEnter",
 		keys = {
-			{ "gt",         "<CMD>Telescope find_files hidden=true<CR>", desc = "Find files" },
-			{ "gr",         "<CMD>Telescope lsp_references<CR>",         desc = "Find references" },
-			{ "gd",         "<CMD>Telescope lsp_definitions<CR>",        desc = "Find definitions" },
-			{ "<Leader>ff", "<CMD>Telescope find_files<CR>",             desc = "Find files" },
-			{ "<Leader>fi", "<CMD>Telescope live_grep<CR>",              desc = "Search within files" },
-			{ "<Leader>gi", "<CMD>Telescope lsp_implementations<CR>",    desc = "Find implementations" },
+			{ "<C-p>", "<CMD>Telescope find_files<CR>",      desc = "Find files" },
+			{ "<C-[>", "<CMD>Telescope live_grep<CR>",       desc = "Find text" },
+			{ "gr",    "<CMD>Telescope lsp_references<CR>",  desc = "Find references" },
+			{ "gd",    "<CMD>Telescope lsp_definitions<CR>", desc = "Find definitions" },
 		},
 		opts = {
 			defaults = {
@@ -109,11 +74,6 @@ return {
 					i = {
 						["<esc>"] = "close",
 					},
-				},
-				file_ignore_patterns = {
-					".git/",
-					"node_modules/",
-					"%.class",
 				},
 				pickers = {
 					find_files = {
@@ -138,7 +98,6 @@ return {
 	},
 	{
 		"stevearc/oil.nvim",
-		event = "VimEnter",
 		keys = {
 			{
 				"<C-e>",
@@ -154,8 +113,6 @@ return {
 			},
 		},
 		opts = {
-			delete_to_trash = os.execute("command -v trash >/dev/null 2>&1") == 0,
-			trash_command = "trash",
 			view_options = {
 				show_hidden = true,
 			},

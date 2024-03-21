@@ -95,6 +95,10 @@ end
 vim.cmd.colorscheme("lunaperche")
 vim.cmd.hi("Normal guibg=NONE ctermbg=NONE")
 vim.cmd.hi("StatusLineExtra guibg=NONE guifg=NONE")
+vim.cmd.hi("GitSignsAdd guibg=NONE guifg=#50fa7b gui=bold")
+vim.cmd.hi("GitSignsChange guibg=NONE guifg=#f1fa8c gui=bold")
+vim.cmd.hi("GitSignsDelete guibg=NONE guifg=#ff5555 gui=bold")
+vim.cmd.hi("GitSignsChangeDelete guibg=NONE guifg=#8be9fd gui=bold")
 
 vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
 	pattern = "*",

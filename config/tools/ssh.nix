@@ -3,8 +3,7 @@
     enable = true;
     compression = true;
     controlMaster = "auto";
-    controlPath = "/tmp/ssh_socket-%r@%h:%p";
-    controlPersist = "60m";
+    controlPath = "/tmp/ssh-%C";
     forwardAgent = true;
     includes = [
       "${config.home.homeDirectory}/.ssh/private.config"

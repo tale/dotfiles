@@ -18,7 +18,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
-		{ "stevearc/dressing.nvim",      event = "VeryLazy" },
 		{ "nvim-tree/nvim-web-devicons", lazy = true },
 		{ "nvim-lua/plenary.nvim",       lazy = true }
 	},

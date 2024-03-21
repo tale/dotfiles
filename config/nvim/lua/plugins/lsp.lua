@@ -44,7 +44,7 @@ return {
 				float = { source = "always" }
 			})
 
-			lsp({ "clangd", "cssls", "html", "rnix", "svelte", "tsserver" })
+			lsp({ "clangd", "cssls", "html", "rnix", "svelte", "tsserver", "rust_analyzer" })
 
 			lsp("eslint", {
 				settings = {
