@@ -1,5 +1,5 @@
 # Dotfiles
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/tale/dotfiles/main/scripts/setup.sh | bash -
+bash <(curl https://raw.githubusercontent.com/tale/dotfiles/main/scripts/setup.sh)
 ```
