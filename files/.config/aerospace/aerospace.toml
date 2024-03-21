@@ -1,0 +1,88 @@
+start-at-login = true
+enable-normalization-flatten-containers = false
+enable-normalization-opposite-orientation-for-nested-containers = false
+
+gaps.inner.horizontal = 2
+gaps.inner.vertical = 2
+gaps.outer.left = 2
+gaps.outer.bottom = 2
+gaps.outer.top = 2
+gaps.outer.right = 2
+
+[mode.main.binding]
+alt-space = "exec-and-forget open -a Alacritty"
+
+alt-h = "focus left"
+alt-j = "focus down"
+alt-k = "focus up"
+alt-l = "focus right"
+
+alt-shift-h = "move-through left"
+alt-shift-j = "move-through down"
+alt-shift-k = "move-through up"
+alt-shift-l = "move-through right"
+
+ctrl-alt-shift-space = "move-workspace-to-monitor --wrap-around next"
+
+alt-v = "split vertical"
+alt-x = "split horizontal"
+alt-shift-t = "layout floating"
+alt-f = "fullscreen"
+
+alt-shift-space = "layout floating tiling"
+alt-e = "layout tiles horizontal vertical"
+
+alt-1 = "workspace 1"
+alt-2 = "workspace 2"
+alt-3 = "workspace 3"
+alt-4 = "workspace 4"
+alt-5 = "workspace 5"
+alt-6 = "workspace 6"
+
+alt-shift-1 = "move-node-to-workspace 1"
+alt-shift-2 = "move-node-to-workspace 2"
+alt-shift-3 = "move-node-to-workspace 3"
+alt-shift-4 = "move-node-to-workspace 4"
+alt-shift-5 = "move-node-to-workspace 5"
+alt-shift-6 = "move-node-to-workspace 6"
+
+alt-r = "mode resize"
+
+[mode.resize.binding]
+h = "resize width +30"
+j = "resize height +30"
+k = "resize height -30"
+l = "resize width -30"
+enter = "mode main"
+esc = "mode main"
+
+[[on-window-detected]]
+if.app-id = "org.alacritty"
+run = "move-node-to-workspace 1"
+
+[[on-window-detected]]
+if.app-id = "com.google.Chrome"
+run = "move-node-to-workspace 2"
+
+[[on-window-detected]]
+if.app-id = "com.culturedcode.ThingsMac"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.1password.1password"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.apple.MobileSMS"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.apple.finder"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.apple.systempreferences"
+if.app-name-regex-substring = "settings"
+if.window-title-regex-substring = "substring"
+run = "layout floating"
+

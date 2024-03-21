@@ -1,0 +1,32 @@
+[user]
+	name = "Aarnav Tale"
+	email = "aarnavtale@icloud.com"
+	signingKey = "AA804838ACF0909C1713F4283205E18CEDD2C007"
+[core]
+	editor = "nvim"
+	pager = "delta"
+	excludesfile = "~/.gitignore"
+[alias]
+	redo = "commit --amend -S"
+[commit]
+	gpgSign = true
+[tag]
+	gpgSign = true
+[interactive]
+	diffFilter = "delta --color-only"
+[merge]
+	conflictstyle = "diff3"
+[protocol]
+	version = 2
+[pull]
+	rebase = true
+[submodule]
+	fetchJobs = 4
+[filter "lfs"]
+	required = true
+	clean = "git-lfs clean -- %f"
+	smudge = "git-lfs smudge -- %f"
+	process = "git-lfs filter-process"
+[delta]
+	features = "color-only"
+	zero-style = "dim syntax"
