@@ -11,6 +11,7 @@ export LESSHISTFILE="$HOME/.local/state/.less_history"
 # export dd="$DOTDIR"
 
 if [ $OS = "Darwin" ]; then
+	export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
 	export d="$HOME/Developer"
 	. $HOME/.cargo/env
 
@@ -19,7 +20,6 @@ if [ $OS = "Darwin" ]; then
 	launchctl setenv PATH "$PATH"
 else
 	. /etc/bashrc
-	eval $(ssh-agent -s) &>/dev/null
 fi
 
 # Interactive stuff below
@@ -80,30 +80,5 @@ __fzf_history () {
 		bind '"\er":'
 		bind '"\e^":'
 	fi
-}
-
-encrypt_file() {
-    local file_path="$1"
-    local user_password
-
-    read -sp "Enter your password: " user_password
-    echo
-
-	echo "Generating RSA key for encryption..."
-	openssl genrsa -out $file_path.key 8192
-
-	echo "Encrypting the file with the RSA key..."
-	openssl pkeyutl \
-		-encrypt -inkey $file_path.key \
-		-in $file_path -out $file_path.blob
-
-	echo "Encrypting the RSA key with the user password..."
-    openssl enc \
-		-pbkdf2 -iter 10000000 -salt -md sha512 \
-		-aes-256-cbc -pass pass:"$user_password" \
-		-in $file_path.key -out $file_path.blob.key
-
-	rm -f $file_path.key
-	unset user_password
 }
 

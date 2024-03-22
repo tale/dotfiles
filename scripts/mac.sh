@@ -87,3 +87,9 @@ fi
 sudo scutil --set ComputerName "Aarnav's MacBook Pro"
 sudo scutil --set HostName "Aarnavs-MBP"
 dscacheutil -flushcache
+
+open -a "1Password"
+mkdir -p ~/.1password
+ln -s \
+	~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock \
+	~/.1password/agent.sock

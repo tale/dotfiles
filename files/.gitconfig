@@ -1,13 +1,15 @@
 [user]
 	name = "Aarnav Tale"
 	email = "aarnavtale@icloud.com"
-	signingKey = "AA804838ACF0909C1713F4283205E18CEDD2C007"
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL9d0H09lymx1EuydWAHYSd0pQLMRBf0ohSQSVCiBGRB
 [core]
 	editor = "nvim"
 	pager = "delta"
 	excludesfile = "~/.gitignore"
 [alias]
 	redo = "commit --amend -S"
+[gpg]
+	format = ssh
 [commit]
 	gpgSign = true
 [tag]
