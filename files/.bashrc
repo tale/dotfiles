@@ -6,16 +6,20 @@ shopt -s cmdhist # Save multiline commands as one entry
 export EDITOR="nvim"
 export OS=$(uname -s)
 
-# export DOTDIR="$HOME/Developer/personal/dotfiles"
-export LESSHISTFILE="$HOME/.local/state/.less_history"
-# export dd="$DOTDIR"
-
 if [ $OS = "Darwin" ]; then
-	export SSH_AUTH_SOCK="$HOME/.1password/agent.sock"
+	export SSH_AUTH_SOCK="$HOME/.config/1Password/agent.sock"
 	export d="$HOME/Developer"
 	. $HOME/.cargo/env
 
 	eval $(/opt/homebrew/bin/brew shellenv)
+    for bindir in "${HOMEBREW_PREFIX}/opt/"*"/libexec/gnubin"; do
+		export PATH=$bindir:$PATH;
+	done
+
+    for mandir in "${HOMEBREW_PREFIX}/opt/"*"/libexec/gnuman"; do
+		export MANPATH=$mandir:$MANPATH;
+	done
+
 	launchctl setenv SSH_AUTH_SOCK "$SSH_AUTH_SOCK"
 	launchctl setenv PATH "$PATH"
 else
