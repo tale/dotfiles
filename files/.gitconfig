@@ -1,7 +1,7 @@
 [user]
 	name = "Aarnav Tale"
 	email = "aarnavtale@icloud.com"
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL9d0H09lymx1EuydWAHYSd0pQLMRBf0ohSQSVCiBGRB
+	signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL9d0H09lymx1EuydWAHYSd0pQLMRBf0ohSQSVCiBGRB"
 [core]
 	editor = "nvim"
 	pager = "delta"
