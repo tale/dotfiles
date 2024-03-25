@@ -1,7 +1,5 @@
 \.DS_Store
 \.git
-\.gitignore
 ^/README.*
 ^/LICENSE.*
 ^/COPYING
-.*\.blob

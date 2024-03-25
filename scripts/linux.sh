@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-base_pkgs=(curl git openssl 'dnf-command(config-manager)')
+base_pkgs=(1password-cli curl git openssl 'dnf-command(config-manager)')
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
@@ -8,6 +8,15 @@ baseurl=https://pkgs.k8s.io/core:/stable:/v1.29/rpm/
 enabled=1
 gpgcheck=1
 gpgkey=https://pkgs.k8s.io/core:/stable:/v1.29/rpm/repodata/repomd.xml.key
+EOF
+
+cat <<EOF | sudo tee /etc/yum.repos.d/1password.repo
+[1password]
+name=1Password Stable
+baseurl=https://downloads.1password.com/linux/rpm/stable/\$basearch
+enabled=1
+gpgcheck=1
+gpgkey=https://downloads.1password.com/linux/keys/1password.asc
 EOF
 
 pkgs_list=(
@@ -65,3 +74,19 @@ esac
 
 sudo dnf install -y --allowerasing "${pkgs_list[@]}"
 setup_dotfiles
+
+read -s -p "Enter 1Password Service Token: " token
+export OP_SERVICE_ACCOUNT_TOKEN=$token
+echo
+
+# Check for the status code of op whoami
+if ! op whoami; then
+	echo "Invalid service token"
+	exit 1
+fi
+
+op read "op://Developer/Key/private key?ssh-format=openssh" > ~/.ssh/id_ed25519
+op read "op://Developer/Key/public key" > ~/.ssh/id_ed25519.pub
+
+chmod 600 ~/.ssh/id_ed25519
+chmod 644 ~/.ssh/id_ed25519.pub

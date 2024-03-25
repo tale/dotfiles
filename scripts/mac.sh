@@ -89,7 +89,7 @@ sudo scutil --set HostName "Aarnavs-MBP"
 dscacheutil -flushcache
 
 open -a "1Password"
-mkdir -p ~/.1password
+mkdir -p ~/.config/1Password
 ln -s \
 	~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock \
-	~/.1password/agent.sock
+	~/.config/1Password/agent.sock
