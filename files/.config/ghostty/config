@@ -1,0 +1,12 @@
+font-size = 24
+font-family = Iosevka Term
+theme = Duotone Dark
+background-opacity = 0.95
+background-blur-radius = 20
+confirm-close-surface = false
+
+shell-integration-features = cursor,sudo,title
+macos-option-as-alt = left
+grapheme-width-method = unicode
+remote-tcp-socket = tcp://0.0.0.0:9090
+

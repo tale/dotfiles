@@ -1,3 +1,7 @@
+if [ -n "$GHOSTTY_RESOURCES_DIR" ]; then
+    builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/bash/ghostty.bash"
+fi
+
 shopt -s dotglob # Include dotfiles in globbing
 shopt -s cdspell # Correct spelling errors in cd
 shopt -s histappend # Append to history instead of overwriting
