@@ -46,33 +46,24 @@ return {
 	},
 	{
 		"NeogitOrg/neogit",
-		cmd = "NeogitThenQuit",
+		cmd = "Neogit",
 		opts = {
 			disable_hint = true,
-			disable_context_highlighting = false,
-			kind = "replace",
-			signs = {
-				hunk = { "", "" },
-				item = { "", "" },
-				section = { "", "" },
-			},
+			kind = "replace"
 		},
 		config = function(_, options)
-			-- Hack for invoking Neogit via the command line with the tmux popup
-			vim.api.nvim_create_user_command("NeogitThenQuit", function()
-				require("neogit").setup(options)
-				require("neogit").open()
+			require("neogit").setup(options)
+			require("neogit").open()
 
-				local function watch_quit()
-					if vim.bo.filetype:match("^Neogit") then
-						vim.defer_fn(watch_quit, 100)
-					else
-						vim.cmd("silent! qa!")
-					end
+			local function watch_quit()
+				if vim.bo.filetype:match("^Neogit") then
+					vim.defer_fn(watch_quit, 100)
+				else
+					vim.cmd("silent! qa!")
 				end
+			end
 
-				vim.defer_fn(watch_quit, 100)
-			end, {})
+			vim.defer_fn(watch_quit, 100)
 		end,
 	},
 }

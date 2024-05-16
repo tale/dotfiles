@@ -2,6 +2,18 @@ return {
 	"wakatime/vim-wakatime",
 	"mg979/vim-visual-multi",
 	{
+		"navarasu/onedark.nvim",
+		lazy = false,
+		opts = {
+			style = 'darker',
+			transparent = true,
+		},
+		config = function(_, opts)
+			require("onedark").setup(opts)
+			vim.cmd.colorscheme("onedark")
+		end,
+	},
+	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "BufRead",
 		name = "ibl",
@@ -69,24 +81,35 @@ return {
 			{ "gd",    "<CMD>Telescope lsp_definitions<CR>", desc = "Find definitions" },
 		},
 		opts = {
+			pickers = {
+				find_files = {
+					smart_cwd = true,
+					find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" }
+				},
+			},
+			extensions = {
+				fzf = {
+					fuzzy = true,
+					override_generic_sorter = false,
+					override_file_sorter = true,
+					case_mode = "smart_case",
+				},
+			},
 			defaults = {
+				vimgrep_arguments = {
+					"rg",
+					"--color=never",
+					"--no-heading",
+					"--with-filename",
+					"--line-number",
+					"--column",
+					"--smart-case",
+					"--hidden",
+					"--glob", "!**/.git/*",
+				},
 				mappings = {
 					i = {
 						["<esc>"] = "close",
-					},
-				},
-				pickers = {
-					find_files = {
-						hidden = true,
-						smart_cwd = true,
-					},
-				},
-				extensions = {
-					fzf = {
-						fuzzy = true,
-						override_generic_sorter = false,
-						override_file_sorter = true,
-						case_mode = "smart_case",
 					},
 				},
 			},

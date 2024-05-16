@@ -21,6 +21,7 @@ o.splitbelow = true                -- Split buffers onto the second child vertic
 o.splitright = true                -- Split buffers onto the second child horizontally
 o.ignorecase = true                -- Ignore case when searching for a pattern
 o.smartcase = true                 -- Disable ignorecase when searching with uppercase
+o.scrolloff = 999999               -- Keep the cursor in the middle of the screen
 
 o.mouse = nil                      -- Disable the mouse
 o.termguicolors = true             -- Enable 24-bit RGB colors
@@ -91,15 +92,6 @@ SLActive = function()
 
 	return table.concat({ "%#StatusLineExtra#", file, "%=%#StatusLineExtra#", lsp })
 end
-
-vim.cmd.colorscheme("lunaperche")
-vim.cmd.hi("Normal guibg=NONE ctermbg=NONE")
-vim.cmd.hi("StatusLineExtra guibg=NONE guifg=NONE")
-vim.cmd.hi("GitSignsAdd guibg=NONE guifg=#50fa7b gui=bold")
-vim.cmd.hi("GitSignsChange guibg=NONE guifg=#f1fa8c gui=bold")
-vim.cmd.hi("GitSignsDelete guibg=NONE guifg=#ff5555 gui=bold")
-vim.cmd.hi("GitSignsChangeDelete guibg=NONE guifg=#8be9fd gui=bold")
-vim.cmd.hi("MatchParen guifg=#c5e7c5 guibg=#000000 gui=bold cterm=bold")
 
 vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
 	pattern = "*",
