@@ -62,12 +62,14 @@ fi
 
 # Aliases and functions
 alias g="git"
+alias b="brew"
 alias t="task"
 alias p="pnpm"
 alias d="docker"
 alias k="kubectl"
 
-alias ls="ls --color=auto -lah"
+alias la="ls --color=auto -lLah"
+alias ls="ls --color=auto -Lh"
 alias grep="grep --color=auto"
 
 alias vim="nvim"
