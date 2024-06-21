@@ -47,7 +47,7 @@ setup_dotfiles() {
 	key="3205E18CEDD2C007"
 	if ! gpg --list-keys $key &> /dev/null; then
 		gpg --recv-keys $key
-		echo -e "5\ny\n" | gpg --command-fd 0 --expert --edit-key $key trust
+		echo -e "5\ny\n" | gpg --batch --yes --command-fd 0 --expert --edit-key $key trust
 	fi
 }
 
