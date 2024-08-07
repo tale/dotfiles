@@ -1,29 +1,55 @@
 return {
-	"wakatime/vim-wakatime",
-	"mg979/vim-visual-multi",
 	{
-		"navarasu/onedark.nvim",
+		"nvim-tree/nvim-web-devicons",
+		lazy = true
+	},
+	{
+		"nvim-lua/plenary.nvim",
+		lazy = true
+	},
+	{
+		"mg979/vim-visual-multi",
+		event = { "BufRead", "BufNewFile" },
+	},
+	{
+		"wakatime/vim-wakatime",
 		lazy = false,
+	},
+	{
+		"EdenEast/nightfox.nvim",
+		lazy = false,
+		priority = 1000,
 		opts = {
-			style = 'darker',
 			transparent = true,
 		},
 		config = function(_, opts)
-			require("onedark").setup(opts)
-			vim.cmd.colorscheme("onedark")
+			require("nightfox").setup({ options = opts })
+			vim.cmd.colorscheme("carbonfox")
 		end,
 	},
 	{
-		"lukas-reineke/indent-blankline.nvim",
-		event = "BufRead",
-		name = "ibl",
-		opts = {}
+		'echasnovski/mini.indentscope',
+		version = "*",
+		event = { "BufRead", "BufNewFile" },
+		opts = {
+			symbol = "▎",
+			draw = {
+				delay = 0,
+				animation = function()
+					return 0
+				end,
+			}
+		}
 	},
 	{
 		"numToStr/Comment.nvim",
+		tag = "v0.8.0",
 		event = "BufRead",
 		dependencies = {
-			"JoosepAlviste/nvim-ts-context-commentstring",
+			{
+				"JoosepAlviste/nvim-ts-context-commentstring",
+				commit = "6c30f3c8915d7b31c3decdfe6c7672432da1809d"
+			}
 		},
 		config = function()
 			local ft = require("Comment.ft")
@@ -37,6 +63,7 @@ return {
 	},
 	{
 		"zbirenbaum/copilot.lua",
+		event = { "LspAttach", "BufRead", "BufNewFile" },
 		opts = {
 			panel = { enabled = false },
 			suggestion = {
@@ -48,14 +75,13 @@ return {
 	},
 	{
 		"lewis6991/gitsigns.nvim",
+		tag = "v0.8.1",
 		event = "BufRead",
 		keys = {
 			{ "<Leader>gp", "<CMD>Gitsigns preview_hunk_inline<CR>", desc = "Preview hunk" },
 		},
 		opts = {
 			signcolumn = true,
-			current_line_blame = true,
-			current_line_blame_opts = { delay = 250 },
 			signs = {
 				add = { text = "+" },
 				change = { text = "~" },
@@ -67,7 +93,7 @@ return {
 	},
 	{
 		"nvim-telescope/telescope.nvim",
-		branch = "0.1.x",
+		tag = "0.1.6",
 		dependencies = {
 			{
 				"nvim-telescope/telescope-fzf-native.nvim",

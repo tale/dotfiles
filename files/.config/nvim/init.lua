@@ -3,7 +3,7 @@ require("tale.keys")
 
 -- Clone lazy.nvim if it doesn't exist before harness
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
 		"clone",
@@ -16,11 +16,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
-	spec = {
-		{ import = "plugins" },
-		{ "nvim-tree/nvim-web-devicons", lazy = true },
-		{ "nvim-lua/plenary.nvim",       lazy = true }
-	},
+	spec = { { import = "plugins" } },
 	install = { colorscheme = { "lunaperche" } },
 	change_detection = { notify = false },
 	rtp = {

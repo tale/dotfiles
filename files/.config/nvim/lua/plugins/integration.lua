@@ -1,11 +1,21 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		tag = "v0.9.1",
+		cmd = "TSUpdate",
 		event = "BufRead",
 		build = ":TSUpdate",
 		opts = {
 			ts = {
-				auto_install = true,
+				ensure_installed = {
+					"bash", "c", "cpp", "css", "dockerfile", "git_config",
+					"git_rebase", "gitattributes", "gitcommit", "gitignore",
+					"go", "html", "java", "javascript", "json", "lua", "markdown",
+					"objc", "python", "regex", "rust", "sql", "toml", "tsx",
+					"typescript", "vim", "vimdoc", "xml", "yaml", "zig"
+				},
+				sync_install = vim.fn.filereadable("/.dockerenv"),
+				auto_install = not vim.fn.filereadable("/.dockerenv"),
 				highlight = {
 					enable = true,
 					additional_vim_regex_highlighting = false,

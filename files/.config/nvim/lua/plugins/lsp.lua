@@ -44,30 +44,13 @@ return {
 				float = { source = "always" }
 			})
 
-			lsp({ "clangd", "cssls", "html", "svelte", "tsserver", "rust_analyzer", "gopls", "zls" })
+			lsp({ "astro", "clangd", "tsserver", "rust_analyzer", "gopls" })
 
 			lsp("eslint", {
 				settings = {
 					packageManager = "pnpm",
 				},
 			})
-
-			lsp("jdtls", {
-				cmd = {
-					"jdt-language-server",
-					"-data",
-					vim.fn.expand("~/.cache/jdtls/workspace"),
-				},
-			})
-
-			lsp("yamlls", {
-				settings = {
-					yaml = {
-						keyOrdering = false,
-					},
-				},
-			})
-
 
 			lsp("lua_ls", {
 				settings = {
