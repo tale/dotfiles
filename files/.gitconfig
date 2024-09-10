@@ -9,7 +9,7 @@
 [alias]
 	redo = "commit --amend -S"
 [gpg]
-	format = ssh
+	format = "ssh"
 [commit]
 	gpgSign = true
 [tag]
@@ -18,17 +18,8 @@
 	diffFilter = "delta --color-only"
 [merge]
 	conflictstyle = "diff3"
-[protocol]
-	version = 2
 [pull]
 	rebase = true
-[submodule]
-	fetchJobs = 4
-[filter "lfs"]
-	required = true
-	clean = "git-lfs clean -- %f"
-	smudge = "git-lfs smudge -- %f"
-	process = "git-lfs filter-process"
 [delta]
 	features = "color-only"
 	zero-style = "dim syntax"

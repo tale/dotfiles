@@ -29,7 +29,6 @@ fi
 defaults write -g NSWindowShouldDragOnGesture -bool true
 defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
 defaults write -g AppleFontSmoothing -int 1
-defaults write org.alacritty AppleFontSmoothing -int 0
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock autohide-delay -float 1000.0
 defaults write com.apple.dock wvous-tl-corner -int 12
@@ -39,50 +38,43 @@ defaults write com.apple.dock wvous-br-corner -int 11
 defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder ShowStatusBar -bool true
 defaults write com.apple.menuextra.clock ShowSeconds -bool true
+defaults write com.apple.spaces spans-displays -bool true
+defaults write com.apple.dock expose-group-apps -bool true
 
-kill_dock=0
 dockutil=$(which dockutil)
 
 if ! $dockutil --find 'Google Chrome' &> /dev/null; then
-	$DRY_RUN_CMD $dockutil --add /Applications/Google\ Chrome.app -p 0 --no-restart $HOME
-	kill_dock=1
+	$dockutil --add /Applications/Google\ Chrome.app -p 0 --no-restart $HOME
 fi
 
 if ! $dockutil --find 'Messages' &> /dev/null; then
-	$DRY_RUN_CMD $dockutil --add /System/Applications/Messages.app -p 1 --no-restart $HOME
-	kill_dock=1
+$DRY_RUN_CMD $dockutil --add /System/Applications/Messages.app -p 1 --no-restart $HOME
 fi
 
 if ! $dockutil --find 'Calendar' &> /dev/null; then
-	$DRY_RUN_CMD $dockutil --add /System/Applications/Calendar.app -p 2 --no-restart $HOME
-	kill_dock=1
+	$dockutil --add /System/Applications/Calendar.app -p 2 --no-restart $HOME
 fi
 
 if ! $dockutil --find 'Mail' &> /dev/null; then
-	$DRY_RUN_CMD $dockutil --add /System/Applications/Mail.app -p 3 --no-restart $HOME
-	kill_dock=1
+	$dockutil --add /System/Applications/Mail.app -p 3 --no-restart $HOME
 fi
 
 if ! $dockutil --find 'Things3' &> /dev/null; then
-	$DRY_RUN_CMD $dockutil --add /Applications/Things3.app -p 4 --no-restart $HOME
-	kill_dock=1
+	$dockutil --add /Applications/Things3.app -p 4 --no-restart $HOME
 fi
 
 if ! $dockutil --find 'Spotify' &> /dev/null; then
-	$DRY_RUN_CMD $dockutil --add /Applications/Spotify.app -p 5 --no-restart $HOME
-	kill_dock=1
+	$dockutil --add /Applications/Spotify.app -p 5 --no-restart $HOME
 fi
 
 if ! $dockutil --find 'Downloads' &> /dev/null; then
-	$DRY_RUN_CMD $dockutil --add '~/Downloads' -p 6 \
+	$dockutil --add '~/Downloads' -p 6 \
 		--view grid --display folder \
 		--section others --no-restart $HOME
-	kill_dock=1
 fi
 
-if [[ $kill_dock -eq 1 ]]; then
-	$DRY_RUN_CMD killall Dock
-fi
+killall SystemUIServer
+killall Dock
 
 sudo scutil --set ComputerName "Aarnav's MacBook Pro"
 sudo scutil --set HostName "Aarnavs-MBP"

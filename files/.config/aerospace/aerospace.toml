@@ -9,9 +9,9 @@ gaps.outer.bottom = 2
 gaps.outer.top = 2
 gaps.outer.right = 2
 
-[mode.main.binding]
-alt-space = "exec-and-forget open -a Alacritty"
+on-focused-monitor-changed = ["move-mouse monitor-lazy-center"]
 
+[mode.main.binding]
 alt-h = "focus left"
 alt-j = "focus down"
 alt-k = "focus up"
@@ -57,7 +57,7 @@ enter = "mode main"
 esc = "mode main"
 
 [[on-window-detected]]
-if.app-id = "org.alacritty"
+if.app-id = "com.mitchellh.ghostty"
 run = "move-node-to-workspace 1"
 
 [[on-window-detected]]

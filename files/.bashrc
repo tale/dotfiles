@@ -1,11 +1,8 @@
-if [ -n "$GHOSTTY_RESOURCES_DIR" ]; then
-    builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/bash/ghostty.bash"
-fi
-
-shopt -s dotglob # Include dotfiles in globbing
-shopt -s cdspell # Correct spelling errors in cd
-shopt -s histappend # Append to history instead of overwriting
-shopt -s cmdhist # Save multiline commands as one entry
+shopt -s dotglob  # Include dotfiles in globbing
+shopt -s cdspell  # Correct spelling errors in cd
+shopt -s cmdhist  # Save multiline commands as one entry
+shopt -s extglob  # Enable extended globbing
+shopt -s globstar # Enable ** for recursive globbing
 
 export EDITOR="nvim"
 export OS=$(uname -s)
@@ -13,7 +10,6 @@ export OS=$(uname -s)
 if [ $OS = "Darwin" ]; then
 	export SSH_AUTH_SOCK="$HOME/.config/1Password/agent.sock"
 	export d="$HOME/Developer"
-	. $HOME/.cargo/env
 
 	eval $(/opt/homebrew/bin/brew shellenv)
     for bindir in "${HOMEBREW_PREFIX}/opt/"*"/libexec/gnubin"; do
@@ -24,40 +20,49 @@ if [ $OS = "Darwin" ]; then
 		export MANPATH=$mandir:$MANPATH;
 	done
 
+	export PNPM_HOME="$HOME/Library/pnpm"
+	export PATH="$(go env GOPATH)/bin:$PNPM_HOME:$PATH"
+	source "$HOME/.cargo/env"
+
 	launchctl setenv SSH_AUTH_SOCK "$SSH_AUTH_SOCK"
 	launchctl setenv PATH "$PATH"
 else
-	. /etc/bashrc
+	source "/etc/bashrc"
 fi
 
 # Interactive stuff below
 [[ $- == *i* ]] || return
 
-export HISTSIZE=10000
-export HISTFILESIZE=10000
+export HISTSIZE=100000
+export HISTFILESIZE=100000
 export HISTFILE="$HOME/.local/state/.bash_history"
-export HISTIGNORE="history -r:history -a"
+export HISTCONTROL="ignoredups:erasedups"
 
 shopt -s histappend
 shopt -s checkwinsize
-shopt -s extglob
-shopt -s globstar
 shopt -s checkjobs
 
-. $HOME/.config/bash/ls_colors.sh
+export PS1="\[\033[36m\]\w\[\033[31m\]\$(__git_ps1) \[\033[37m\]> \[\033[00m\]"
+export PROMPT_COMMAND=__prompt_command
 
-export PS1="\[\033[36m\]\w\[\033[31m\]\$(__git_ps1) \[\033[37m\]➜ \[\033[00m\]"
+__prompt_command() {
+	history -a;
+	history -c;
+	history -r;
+	if [ $OS = "Darwin" ]; then
+		[[ -z $TMUX ]] && $HOME/.config/bash/sessionize.sh || true;
+	fi
+}
 
 if [ $OS = "Darwin" ]; then
-	. "/opt/homebrew/etc/bash_completion.d/git-prompt.sh"
-	export PROMPT_COMMAND="history -a; history -r; [[ -z \$TMUX ]] && \$HOME/.config/bash/sessionize.sh || true;"
+	source "/opt/homebrew/etc/bash_completion.d/git-prompt.sh"
 
 	function plsdns() {
 		command sudo dscacheutil -flushcache
 		command sudo killall -HUP mDNSResponder
 	}
 else
-	. "/usr/share/git-core/contrib/completion/git-prompt.sh"
+	source "/usr/share/git-core/contrib/completion/git-prompt.sh"
 fi
 
 # Aliases and functions
@@ -77,18 +82,20 @@ alias vi="nvim"
 
 # Use fzf for history search (Ctrl-R)
 bind '"\C-r": "\C-x1\e^\er"'
-bind -x '"\C-x1": __fzf_history';
+bind -x '"\C-x1": __history';
 
-__fzf_history () {
-	entry=$(history | fzf --tac --tiebreak=index | cut -d' ' -f2- | awk '{$1=$1};1')
-	if [[ -n $entry ]]; then
+__history() {
+	history -a;
+    history -c;
+    history -r;
+	e=$(history | fzf --tac --tiebreak=index | cut -d' ' -f2- | awk '{$1=$1};1')
+	if [[ -n $e ]]; then
 		bind '"\er": redraw-current-line'
 		bind '"\e^": magic-space'
-		READLINE_LINE="$entry"
-		READLINE_POINT=${#entry}
+		READLINE_LINE="$e"
+		READLINE_POINT=${#e}
 	else
 		bind '"\er":'
 		bind '"\e^":'
 	fi
 }
-
