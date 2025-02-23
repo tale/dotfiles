@@ -1,0 +1,35 @@
+[
+	{
+		"context": "Workspace",
+		"bindings": {
+			"ctrl-e": "workspace::ToggleRightDock",
+			"ctrl-[": "pane::DeploySearch",
+			"ctrl-p": "file_finder::Toggle"
+		}
+	},
+	{
+		"context": "Picker && !FileFinder",
+		"bindings": {
+			"ctrl-n": "menu::SelectNext",
+			"ctrl-p": "menu::SelectPrev"
+		}
+	},
+	{
+		"context": "Pane > Editor && !showing_code_actions",
+		"bindings": {
+			"ctrl-e": "workspace::ToggleRightDock",
+			"ctrl-[": "pane::DeploySearch",
+			"ctrl-p": "file_finder::Toggle",
+			"ctrl-enter": "editor::ToggleCodeActions"
+		}
+	},
+	{
+		"context": "FileFinder > Picker > Editor",
+		"bindings": {
+			"ctrl-x": "pane::SplitDown",
+			"ctrl-v": "pane::SplitRight",
+			"ctrl-p": "file_finder::Toggle",
+			"ctrl-shift-p": "menu::SelectPrev"
+		}
+	}
+]

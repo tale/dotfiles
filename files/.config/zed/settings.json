@@ -1,0 +1,45 @@
+{
+	"icon_theme": "Catppuccin Macchiato",
+	"theme": {
+		"mode": "system",
+		"light": "Rosé Pine Dawn",
+		"dark": "Rosé Pine"
+	},
+	"vim_mode": true,
+	"buffer_font_size": 20,
+	"formatter": "language_server",
+	"buffer_font_family": "Iosevka",
+	"ui_font_family": "Iosevka",
+	"toolbar": {
+		"quick_actions": false,
+		"selections_menu": false
+	},
+	"project_panel": {
+		"button": true,
+		"dock": "right"
+	},
+	"outline_panel": {
+		"button": false
+	},
+	"collaboration_panel": {
+		"button": false
+	},
+	"chat_panel": {
+		"button": "never"
+	},
+	"assistant": {
+		"version": "2",
+		"enabled": false
+	},
+	"enable_language_server": true,
+	"vertical_scrolling_margin": 999,
+	"wrap_guides": [
+		80
+	],
+	"hard_tabs": true,
+	"tab_size": 4,
+	"max_tabs": 1,
+	"tab_bar": {
+		"show": false
+	}
+}

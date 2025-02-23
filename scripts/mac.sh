@@ -85,3 +85,24 @@ mkdir -p ~/.config/1Password
 ln -s \
 	~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock \
 	~/.config/1Password/agent.sock
+
+yabai_path=$(which yabai)
+if [ -z $yabai_path ]; then
+	echo "Could not find yabai, not modifying sudoers.d"
+	exit 1
+fi
+
+yabai_sum=$(shasum -a 256 $yabai_path | cut -d " " -f 1)
+echo "$USER ALL=(root) NOPASSWD: sha256:$yabai_sum $yabai_path --load-sa" | \
+	sudo tee /etc/sudoers.d/yabai
+
+# Setup yabai + skhd
+skhd --start-service
+yabai --start-service
+echo "----------------------------------------"
+echo "Reboot into recovery mode and run the following command:"
+echo "csrutil enable --without fs --without debug --without nvram"
+echo "Then reboot and run the following command:"
+echo "sudo nvram boot-args=-arm64e_preview_abi"
+echo "Then reboot again.
+echo "----------------------------------------"

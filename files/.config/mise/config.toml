@@ -1,0 +1,13 @@
+[tools]
+go = "1"
+helm = "3"
+java = "temurin-21"
+kubectl = "1.30"
+#neovim = "0.10"
+neovim = "nightly"
+node = "22"
+oci = "3"
+pnpm = "10"
+python = "3.12"
+rust = "1.80"
+zig = "0.13"
