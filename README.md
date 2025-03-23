@@ -13,4 +13,5 @@ bash <(curl https://raw.githubusercontent.com/tale/dotfiles/main/scripts/setup.s
 - Git, Zsh, Neovim, GPG/SSH configs, all the goodies
 - [Ghostty](https://ghostty.org): a new terminal emulator with insane performance
 - [Mise](https://mise.jdx.dev): per-directory and global devtools (like `asdf`)
+- [Yabai](https://github.com/koekeishiya/yabai): Tiling WM for macOS
 - [Zed](https://zed.dev): VS-code but Rust and fast

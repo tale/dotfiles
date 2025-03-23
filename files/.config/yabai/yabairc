@@ -1,5 +1,5 @@
-sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
 
 yabai -m config \
 	layout						bsp \
@@ -11,26 +11,12 @@ yabai -m config \
 	right_padding				2 \
 	window_gap					2
 
-function bootstrap_space {
-	idx="$1"
-	name="$2"
-	space=$(yabai -m query --spaces --space "$idx")
-	if [ -z "$space" ]; then
-		yabai -m space --create
-	fi
+# The display rebalance script defines space labels
+# We need to explicitly wait for it but we cannot use exec or it exits early
+${HOME}/.config/yabai/display_rebalance.sh 'yabai_start' &
+wait $!
 
-	yabai -m space "$idx" --label "$name"
-}
-
-bootstrap_space 1 zed
-bootstrap_space 2 chrome
-bootstrap_space 3 discord
-bootstrap_space 4 ghostty
-bootstrap_space 5 mail
-bootstrap_space 6 spotify
-bootstrap_space 7 extra
-
-yabai -m rule --add app="^Zed$" space=zed
+yabai -m rule --add app="^Zed$" space=main
 yabai -m rule --add app="^Ghostty$" space=ghostty
 yabai -m rule --add app="^Chrome$" space=chrome
 yabai -m rule --add app="^Discord$" space=discord
@@ -47,3 +33,6 @@ yabai -m rule --add app="settings" manage=off
 
 yabai -m signal --add app='^Ghostty$' event=window_created action='yabai -m space --layout bsp'
 yabai -m signal --add app='^Ghostty$' event=window_destroyed action='yabai -m space --layout bsp'
+yabai -m signal --add event=display_added action='~/.config/yabai/display_rebalance.sh display_added'
+yabai -m signal --add event=display_removed action='~/.config/yabai/display_rebalance.sh display_removed'
+yabai -m signal --add event=space_changed action='~/.config/yabai/space_reorder.sh'
