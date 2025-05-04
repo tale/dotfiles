@@ -1,0 +1,101 @@
+start-at-login = true
+
+[gaps]
+inner.horizontal = 4
+inner.vertical = 4
+outer.left = 4
+outer.right = 4
+outer.bottom = 4
+outer.top = 4
+
+[mode.main.binding]
+alt-h = "focus left"
+alt-j = "focus down"
+alt-k = "focus up"
+alt-l = "focus right"
+
+alt-minus = 'resize smart -50'
+alt-equal = 'resize smart +50'
+alt-shift-equal = 'balance-sizes'
+
+alt-shift-h = "move-through left"
+alt-shift-j = "move-through down"
+alt-shift-k = "move-through up"
+alt-shift-l = "move-through right"
+alt-f = "fullscreen"
+alt-shift-space = "layout floating tiling"
+ctrl-alt-shift-space = "move-workspace-to-monitor --wrap-around next"
+alt-e = "layout tiles horizontal vertical"
+
+alt-shift-semicolon = 'mode service'
+cmd-alt-ctrl-r = 'reload-config'
+
+alt-1 = "workspace 1"
+alt-2 = "workspace 2"
+alt-3 = "workspace 3"
+alt-4 = "workspace 4"
+alt-a = "workspace A"
+alt-s = "workspace S"
+alt-d = "workspace D"
+
+alt-shift-1 = ["move-node-to-workspace 1", "workspace 1"]
+alt-shift-2 = ["move-node-to-workspace 2", "workspace 2"]
+alt-shift-3 = ["move-node-to-workspace 3", "workspace 3"]
+alt-shift-4 = ["move-node-to-workspace 4", "workspace 4"]
+alt-shift-a = ["move-node-to-workspace A", "workspace A"]
+alt-shift-s = ["move-node-to-workspace S", "workspace S"]
+alt-shift-d = ["move-node-to-workspace D", "workspace D"]
+
+[[on-window-detected]]
+if.app-id = "com.mitchellh.ghostty"
+run = ["layout floating", "move-node-to-workspace 4"]
+
+[[on-window-detected]]
+if.app-id = "dev.zed.Zed"
+run = "move-node-to-workspace 1"
+
+[[on-window-detected]]
+if.app-id = "com.google.Chrome"
+run = "move-node-to-workspace 2"
+
+[[on-window-detected]]
+if.app-id = "com.hnc.Discord"
+run = "move-node-to-workspace 3"
+
+[[on-window-detected]]
+if.app-id = "com.apple.iCal"
+run = "move-node-to-workspace A"
+
+[[on-window-detected]]
+if.app-id = "com.spotify.client"
+run = "move-node-to-workspace S"
+
+[[on-window-detected]]
+if.app-id = "com.apple.mail"
+run = "move-node-to-workspace D"
+
+[[on-window-detected]]
+if.app-id = "com.culturedcode.ThingsMac"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.1password.1password"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.apple.MobileSMS"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.apple.finder"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = 'com.valvesoftware.steam.helper'
+run = 'layout tiling'
+
+[[on-window-detected]]
+if.app-id = "com.apple.systempreferences"
+if.app-name-regex-substring = "settings"
+if.window-title-regex-substring = "substring"
+run = "layout floating"

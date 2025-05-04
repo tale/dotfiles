@@ -29,8 +29,8 @@ alias d=docker
 alias k=kubectl
 alias vim=nvim
 
-alias ls='lsd -l'
-alias la='lsd -la'
+alias ls='eza -l'
+alias la='eza -la'
 alias grep='grep --color=auto'
 
 # History stuff
@@ -51,7 +51,7 @@ HISTIGNORE='ls*'
 __fzf_history() {
 	local sel=$(fc -rl 1 | fzf --tiebreak=index --height=50%)
 	if [[ -n $sel ]]; then
-		sel=$(echo $sel | sed -E 's/^[[:space:]]*[0-9]+[[:space:]]+//')
+		sel=$(echo $sel | sed -E 's/^[[:space:]]*[0-9]+[*+]?[[:space:]]+//')
 		LBUFFER=$sel
 	fi
 

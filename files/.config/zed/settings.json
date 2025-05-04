@@ -1,15 +1,20 @@
 {
+	"features": {
+		"edit_prediction_provider": "copilot"
+	},
 	"icon_theme": "Catppuccin Macchiato",
 	"theme": {
 		"mode": "system",
-		"light": "Rosé Pine Dawn",
-		"dark": "Rosé Pine"
+		"light": "Catppuccin Latte",
+		"dark": "Catppuccin Frappé"
 	},
 	"vim_mode": true,
 	"buffer_font_size": 20,
 	"formatter": "language_server",
 	"buffer_font_family": "Iosevka",
-	"ui_font_family": "Iosevka",
+	"file_finder": {
+		"modal_max_width": "medium"
+	},
 	"toolbar": {
 		"quick_actions": false,
 		"selections_menu": false

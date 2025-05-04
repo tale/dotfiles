@@ -1,35 +1,57 @@
 [
 	{
-		"context": "Workspace",
 		"bindings": {
-			"ctrl-e": "workspace::ToggleRightDock",
-			"ctrl-[": "pane::DeploySearch",
-			"ctrl-p": "file_finder::Toggle"
+			"ctrl-p": "menu::SelectNext",
+			"ctrl-n": "menu::SelectPrevious"
 		}
 	},
 	{
-		"context": "Picker && !FileFinder",
+		"context": "VimControl && !menu",
 		"bindings": {
-			"ctrl-n": "menu::SelectNext",
-			"ctrl-p": "menu::SelectPrev"
+			"[ d": "editor::GoToDiagnostic",
+			"] d": "editor::GoToPreviousDiagnostic"
 		}
 	},
 	{
-		"context": "Pane > Editor && !showing_code_actions",
+		"context": "Editor && vim_mode == normal && !VimWaiting && !menu",
 		"bindings": {
-			"ctrl-e": "workspace::ToggleRightDock",
+			"ctrl-e": "project_panel::ToggleFocus",
 			"ctrl-[": "pane::DeploySearch",
 			"ctrl-p": "file_finder::Toggle",
-			"ctrl-enter": "editor::ToggleCodeActions"
+			"ctrl-enter": "editor::ToggleCodeActions",
+			"ctrl-space r": "editor::Rename",
+			"ctrl-h": "workspace::ActivatePaneLeft",
+			"ctrl-l": "workspace::ActivatePaneRight",
+			"ctrl-k": "workspace::ActivatePaneUp",
+			"ctrl-j": "workspace::ActivatePaneDown"
+		}
+	},
+	{
+		"context": "ProjectPanel && not_editing",
+		"bindings": {
+			"ctrl-e": "workspace::ToggleRightDock",
+			"o": "project_panel::NewFile",
+			"x": "project_panel::Cut",
+			"y y": "project_panel::Copy",
+			"p": "project_panel::Paste",
+			"shift-r": "project_panel::Rename",
+			"shift-d": [
+				"project_panel::Trash",
+				{
+					"skip_prompt": true
+				}
+			],
+			"ctrl-h": "workspace::ActivatePaneLeft",
+			"ctrl-l": "workspace::ActivatePaneRight",
+			"ctrl-k": "workspace::ActivatePaneUp",
+			"ctrl-j": "workspace::ActivatePaneDown"
 		}
 	},
 	{
 		"context": "FileFinder > Picker > Editor",
 		"bindings": {
 			"ctrl-x": "pane::SplitDown",
-			"ctrl-v": "pane::SplitRight",
-			"ctrl-p": "file_finder::Toggle",
-			"ctrl-shift-p": "menu::SelectPrev"
+			"ctrl-v": "pane::SplitRight"
 		}
 	}
 ]
