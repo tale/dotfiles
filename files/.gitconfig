@@ -8,6 +8,11 @@
 	excludesfile = "~/.gitignore"
 [alias]
 	redo = "commit --amend -S"
+	p = "pull"
+	pu = "push"
+	poh = "push origin HEAD"
+	a = "add -p"
+	s = "status -sb"
 [gpg]
 	format = "ssh"
 [commit]
@@ -23,3 +28,10 @@
 [delta]
 	features = "color-only"
 	zero-style = "dim syntax"
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[includeIf "gitdir:~/code/gh/spear-ai"]
+	path = ~/.config/git/work.gitconfig

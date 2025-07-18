@@ -1,4 +1,22 @@
 {
+	"ssh_connections": [
+		{
+			"host": "orb",
+			"username": "tale",
+			"projects": [
+				{
+					"paths": [
+						"/Users/tale/code/gh/tale/rootbeer"
+					]
+				},
+				{
+					"paths": [
+						"~/code"
+					]
+				}
+			]
+		}
+	],
 	"features": {
 		"edit_prediction_provider": "copilot"
 	},
@@ -32,12 +50,23 @@
 	"chat_panel": {
 		"button": "never"
 	},
-	"assistant": {
-		"version": "2",
-		"enabled": false
+	"agent": {
+		"enabled": true,
+		"default_model": {
+			"provider": "zed.dev",
+			"model": "claude-sonnet-4"
+		}
+	},
+	"lsp": {
+		"biome": {
+			"settings": {
+				"require_config_file": true
+			}
+		}
 	},
 	"enable_language_server": true,
-	"vertical_scrolling_margin": 999,
+	"vertical_scroll_margin": 999,
+	"relative_line_numbers": true,
 	"wrap_guides": [
 		80
 	],

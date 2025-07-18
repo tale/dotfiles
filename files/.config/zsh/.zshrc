@@ -11,26 +11,63 @@ precmd() {
 }
 
 setopt prompt_subst
+if [ $IS_DEV_VM = true ]; then
+	function set_dynamic_prompt() {
+		local path="$PWD"
+		local label=""
+
+		if [ "$IS_DEV_VM" = true ]; then
+			case "$path" in
+				(/Users/$USER/*)
+				path="~${path#/Users/$USER}"
+				;;
+			esac
+			label="%F{yellow}(dev)%f "
+		fi
+
+		PS1="${label}%F{cyan}${path}%f%F{red}\${vcs_info_msg_0_}%f %F{white}>%f "
+	}
+
+	autoload -Uz add-zsh-hook
+	add-zsh-hook precmd set_dynamic_prompt
+fi
+
 PS1='%F{cyan}%~%f%F{red}${vcs_info_msg_0_}%f %F{white}>%f '
 
 if [ $OS = Darwin ]; then
+	d=$HOME/code
+
 	plsdns() {
 		sudo dscacheutil -flushcache
 		sudo killall -HUP mDNSResponder
 	}
 
-	d=$HOME/code
+	alias ls='eza -l'
+	alias la='eza -la'
+elif [ $IS_DEV_VM = true ]; then
+	d=/Users/$USER/code
+	RP=$(which realpath)
+	MAC=$(which mac)
+
+	zed() {
+		local remote="ssh://orb"
+		local path="${1:-$PWD}"
+
+		$MAC zed "$remote$($RP "$path")"
+	}
+
+	alias ls='lsd -l'
+	alias la='lsd -la'
 fi
 
 alias g=git
 alias b=brew
 alias p=pnpm
+alias y=yarn
 alias d=docker
 alias k=kubectl
 alias vim=nvim
 
-alias ls='eza -l'
-alias la='eza -la'
 alias grep='grep --color=auto'
 
 # History stuff
@@ -62,3 +99,4 @@ zle -N __fzf_history
 bindkey '^R' __fzf_history
 
 eval "$(mise activate zsh)"
+source $ZDOTDIR/completions.zsh

@@ -11,7 +11,7 @@ if [ $OS = Darwin ]; then
 
 	export PATH=$gnupath:$PATH
 	export MANPATH=$gnuman:$MANPATH
-	
+
 	. $HOME/.cargo/env
 	. $HOME/.orbstack/shell/init.zsh
 fi

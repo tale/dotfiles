@@ -13,10 +13,18 @@
 		}
 	},
 	{
+		"context": "Workspace",
+		"bindings": {
+			"ctrl-p": "file_finder::Toggle",
+			"ctrl-e": "project_panel::ToggleFocus",
+			"ctrl-[": "pane::DeploySearch"
+		}
+	},
+	{
 		"context": "Editor && vim_mode == normal && !VimWaiting && !menu",
 		"bindings": {
 			"ctrl-e": "project_panel::ToggleFocus",
-			"ctrl-[": "pane::DeploySearch",
+			"ctrl-[": "project_search::ToggleFocus",
 			"ctrl-p": "file_finder::Toggle",
 			"ctrl-enter": "editor::ToggleCodeActions",
 			"ctrl-space r": "editor::Rename",

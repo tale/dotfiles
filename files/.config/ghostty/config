@@ -1,7 +1,8 @@
 font-size = 24
 font-family = Iosevka Term
-theme = light:iTerm2 Tango Light, dark:iTerm2 Tango Dark
-confirm-close-surface = false
+window-title-font-family = Iosevka Term
+theme = light:catppuccin-latte, dark:catppuccin-frappe
+macos-titlebar-style = tabs
 window-save-state = always
 
 keybind = ctrl+space>t=new_tab

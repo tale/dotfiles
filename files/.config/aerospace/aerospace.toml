@@ -91,6 +91,10 @@ if.app-id = "com.apple.finder"
 run = "layout floating"
 
 [[on-window-detected]]
+if.app-id = "ch.protonvpn.mac"
+run = "layout floating"
+
+[[on-window-detected]]
 if.app-id = 'com.valvesoftware.steam.helper'
 run = 'layout tiling'
 
