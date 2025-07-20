@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+{{ if eq .chezmoi.os "darwin" -}}
+
+echo "Applying macOS defaults"
+defaults write -g NSWindowShouldDragOnGesture -bool true
+defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+defaults write -g AppleFontSmoothing -int 1
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock autohide-delay -float 1000.0
+defaults write com.apple.dock wvous-tl-corner -int 12
+defaults write com.apple.dock wvous-tr-corner -int 12
+defaults write com.apple.dock wvous-bl-corner -int 11
+defaults write com.apple.dock wvous-br-corner -int 11
+defaults write com.apple.finder ShowPathbar -bool true
+defaults write com.apple.finder ShowStatusBar -bool true
+defaults write com.apple.menuextra.clock ShowSeconds -bool true
+defaults write com.apple.spaces spans-displays -bool true
+defaults write com.apple.dock expose-group-apps -bool true
+
+if [ -L ~/.config/1Password/agent.sock ]; then
+	echo "1Password agent socket already symlinked, skipping"
+else
+	echo "Symlinking 1Password agent socket to ~/.config/1Password/agent.sock"
+	mkdir -p ~/.config/1Password
+	ln -s \
+		~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock \
+		~/.config/1Password/agent.sock
+fi
+
+{{- if not .workLaptop }}
+if [[ $(scutil --get ComputerName) != "Aarnav's MacBook Pro" ]]; then
+	echo "Setting up computer name and hostname"
+	sudo scutil --set ComputerName "Aarnav's MacBook Pro"
+	sudo scutil --set HostName "Aarnavs-MBP"
+	dscacheutil -flushcache
+else
+	echo "Computer name and hostname already set, skipping"
+fi
+{{- end }}
+{{- end }}

@@ -1,0 +1,8 @@
+export EDITOR=nvim
+export VISUAL=$EDITOR
+export OS=$(uname -s)
+
+{{- if and (not .workLaptop) (eq .chezmoi.os "darwin") }}
+export SSH_AUTH_SOCK={{ joinPath .chezmoi.homeDir ".config/1Password/agent.sock" }}
+export IS_DEV_VM=$(test -d /opt/orbstack-guest && echo true || echo false)
+{{- end }}

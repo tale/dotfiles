@@ -1,3 +1,5 @@
+" TODO: Switch to pckr.nvim and Lua
+
 let data_dir = stdpath('data') . '/site'
 if empty(glob(data_dir . '/autoload/plug.vim'))
 	silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs

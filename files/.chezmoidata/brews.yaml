@@ -1,0 +1,69 @@
+brews:
+  formulae:
+    - chezmoi
+    - xz
+    - curl
+    - fzf
+    - git
+    - git-delta
+    - git-lfs
+    - jq
+    - lsd
+    - make
+    - mise
+    - mkcert
+    - neovim
+    - ripgrep
+    - rsync
+    - telnet
+    - tokei
+    - wget
+    - yq
+
+  casks:
+    common:
+      - 1password
+      - 1password-cli
+      - betterdisplay
+      - cleanshot
+      - datagrip
+      - font-iosevka
+      - ghostty
+      - imageoptim
+      - nikitabobko/tap/aerospace
+      - notion
+      - notion-calendar
+      - orbstack
+      - postman
+      - raycast
+      - spotify
+      - zed
+    personal:
+      - craft
+      - discord
+      - librewolf
+      - modrinth
+      - protonvpn
+      - signal
+      - soulver
+      - steam
+      - syncthing-app
+      - tailscale-app
+      - the-unarchiver
+      - trader-workstation
+      - zoom
+    work:
+      - notion-mail
+      - slack
+
+  mas:
+    common:
+      - name: Xcode
+        id: 497799835
+    personal:
+      - name: AdGuard for Safari
+        id: 1440147259
+      - name: Streaks
+        id: 963034692
+      - name: Things
+        id: 904280696

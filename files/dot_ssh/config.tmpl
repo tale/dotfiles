@@ -1,6 +1,10 @@
-Include ~/.ssh/private.config
+{{- if and (eq .chezmoi.os "darwin") (joinPath .chezmoi.homeDir ".orbstack/ssh/config" | lstat) -}}
 Include ~/.orbstack/ssh/config
+{{- end }}
 
+# TODO: Move private.config to 1Password
+
+Include ~/.ssh/private.config
 Host *
 	IdentityAgent "SSH_AUTH_SOCK"
 	ForwardAgent yes
@@ -12,4 +16,3 @@ Host *
 	ControlMaster auto
 	ControlPath /tmp/ssh-%C
 	ControlPersist yes
-

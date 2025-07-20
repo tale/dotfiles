@@ -1,0 +1,16 @@
+{
+	"file_types": {
+		"Shell Script": [
+			"dot_zprofile.tmpl",
+			"dot_zshrc.tmpl",
+			"dot_zshenv.tmpl",
+			"*.sh.tmpl"
+		]
+	},
+	"languages": {
+		"YAML": {
+			"tab_size": 2,
+			"hard_tabs": false
+		}
+	}
+}

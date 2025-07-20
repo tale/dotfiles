@@ -11,6 +11,9 @@ precmd() {
 }
 
 setopt prompt_subst
+
+{{- if not .workLaptop }}
+# Our Orbstack dev VM has a prefix in the prompt
 if [ $IS_DEV_VM = true ]; then
 	function set_dynamic_prompt() {
 		local path="$PWD"
@@ -31,6 +34,7 @@ if [ $IS_DEV_VM = true ]; then
 	autoload -Uz add-zsh-hook
 	add-zsh-hook precmd set_dynamic_prompt
 fi
+{{- end }}
 
 PS1='%F{cyan}%~%f%F{red}${vcs_info_msg_0_}%f %F{white}>%f '
 
@@ -41,9 +45,7 @@ if [ $OS = Darwin ]; then
 		sudo dscacheutil -flushcache
 		sudo killall -HUP mDNSResponder
 	}
-
-	alias ls='eza -l'
-	alias la='eza -la'
+{{- if not .workLaptop }}
 elif [ $IS_DEV_VM = true ]; then
 	d=/Users/$USER/code
 	RP=$(which realpath)
@@ -55,10 +57,10 @@ elif [ $IS_DEV_VM = true ]; then
 
 		$MAC zed "$remote$($RP "$path")"
 	}
-
-	alias ls='lsd -l'
-	alias la='lsd -la'
 fi
+{{- else }}
+fi
+{{- end }}
 
 alias g=git
 alias b=brew
@@ -67,8 +69,8 @@ alias y=yarn
 alias d=docker
 alias k=kubectl
 alias vim=nvim
-
-alias grep='grep --color=auto'
+alias ls='lsd -l --group-directories-first'
+alias la='lsd -la --group-directories-first'
 
 # History stuff
 setopt APPEND_HISTORY

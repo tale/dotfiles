@@ -1,17 +1,18 @@
 # Dotfiles
-Many files with dots before them! 🎉
-These dotfiles are mostly for my personal use, but feel free to use them as inspiration for your own dotfiles.
-I don't have a very complicated setup and I definitely emphasize macOS over Linux. Components are listed below.
+Many files with dots before them! 🎉 These dotfiles are solely intended for my
+own personal use on macOS, but you are welcome to adapt them for your own needs.
 
 ```sh
-bash <(curl https://raw.githubusercontent.com/tale/dotfiles/main/scripts/setup.sh)
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply tale
 ```
 
 ### Whats Inside?
-- Support for both macOS and any Enterprise Linux (RHEL, Fedora, Oracle, etc)
-- Easy installation that it can be executed via a `curl` command
-- Git, Zsh, Neovim, GPG/SSH configs, all the goodies
-- [Ghostty](https://ghostty.org): a new terminal emulator with insane performance
+- Support for macOS
+- Easy installation using [chezmoi](https://chezmoi.io)
+- Separated configs based on an device type (work, personal, etc.)
+- Load secrets from [1Password](https://1password.com) using the CLI.
+- Git, Zsh, Neovim, SSH configs, all the goodies
+- [Ghostty](https://ghostty.org): a new terminal emulator with good performance
 - [Mise](https://mise.jdx.dev): per-directory and global devtools (like `asdf`)
-- [Yabai](https://github.com/koekeishiya/yabai): Tiling WM for macOS
+- [AeroSpace](https://github.com/nikitabobko/AeroSpace): Tiling WM for macOS
 - [Zed](https://zed.dev): VS-code but Rust and fast

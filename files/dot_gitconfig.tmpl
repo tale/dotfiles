@@ -1,17 +1,22 @@
 [user]
 	name = "Aarnav Tale"
+	{{- if not .workLaptop }}
 	email = "aarnavtale@icloud.com"
-	signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL9d0H09lymx1EuydWAHYSd0pQLMRBf0ohSQSVCiBGRB"
+	{{- else }}
+	email = "atale@spear.ai"
+	{{- end }}
+	signingkey = {{ onepasswordRead "op://Development/GitHub Key/public key" }}
 [core]
 	editor = "nvim"
 	pager = "delta"
 	excludesfile = "~/.gitignore"
 [alias]
-	redo = "commit --amend -S"
-	p = "pull"
-	pu = "push"
-	poh = "push origin HEAD"
 	a = "add -p"
+	c = "commit"
+	p = "pull"
+	poh = "push origin HEAD"
+	pu = "push"
+	redo = "commit --amend -S"
 	s = "status -sb"
 [gpg]
 	format = "ssh"
@@ -33,5 +38,3 @@
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
-[includeIf "gitdir:~/code/gh/spear-ai"]
-	path = ~/.config/git/work.gitconfig

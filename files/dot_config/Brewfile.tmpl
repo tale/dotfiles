@@ -1,0 +1,35 @@
+{{- if eq .chezmoi.os "darwin" -}}
+{{- range $formula := .brews.formulae }}
+brew "{{ $formula }}"
+{{- end -}}
+
+{{- range $cask := .brews.casks.common }}
+cask "{{ $cask }}"
+{{- end -}}
+
+{{- if not .workLaptop -}}
+
+{{- range $cask := .brews.casks.personal }}
+cask "{{ $cask }}"
+{{- end -}}
+
+{{- else -}}
+
+{{- range $cask := .brews.casks.work }}
+cask "{{ $cask }}"
+{{- end -}}
+
+{{- end -}}
+
+{{- range $mas := .brews.mas.common }}
+mas "{{ $mas.name }}", id: {{ $mas.id }}
+{{- end }}
+
+{{- if not .workLaptop -}}
+
+{{- range $mas := .brews.mas.personal }}
+mas "{{ $mas.name }}", id: {{ $mas.id }}
+{{- end -}}
+
+{{- end -}}
+{{- end }}

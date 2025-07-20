@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+{{ if eq .chezmoi.os "darwin" -}}
+
+if [[ ! $(command -v op) ]]; then
+	echo "Installing 1Password CLI"
+	eval "$(/opt/homebrew/bin/brew shellenv)" # Temporarily add brew to PATH
+	brew install 1password-cli
+else
+	echo "1Password CLI is already installed"
+fi
+
+if [[ ! -d /Applications/1Password.app ]]; then
+	echo "Installing 1Password app"
+	brew install --cask 1password
+else
+	echo "1Password app is already installed"
+fi
+
+# Check if op account list is empty and wait until it is not
+if [[ -z $(op account list 2>/dev/null) ]]; then
+	echo "Please enable CLI integration in the 1Password app. Waiting...."
+	open -a "1Password"
+
+	while [[ -z $(op account list) ]]; do
+		sleep 5
+	done
+
+	echo "1Password account is now set up"
+else
+	echo "1Password account is already set up"
+fi
+
+{{- else }}
+
+{{- end }}

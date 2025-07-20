@@ -2,19 +2,7 @@
 	"ssh_connections": [
 		{
 			"host": "orb",
-			"username": "tale",
-			"projects": [
-				{
-					"paths": [
-						"/Users/tale/code/gh/tale/rootbeer"
-					]
-				},
-				{
-					"paths": [
-						"~/code"
-					]
-				}
-			]
+			"username": "tale"
 		}
 	],
 	"features": {
