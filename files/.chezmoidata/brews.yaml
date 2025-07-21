@@ -30,6 +30,7 @@ brews:
       - font-iosevka
       - ghostty
       - imageoptim
+      - jordanbaird-ice
       - nikitabobko/tap/aerospace
       - notion
       - notion-calendar
