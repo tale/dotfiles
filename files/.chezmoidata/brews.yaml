@@ -58,13 +58,11 @@ brews:
       - slack
 
   mas:
-    common:
-      - name: Xcode
-        id: 497799835
-    personal:
-      - name: AdGuard for Safari
-        id: 1440147259
-      - name: Streaks
-        id: 963034692
-      - name: Things
-        id: 904280696
+    - name: AdGuard for Safari
+      id: 1440147259
+    - name: Streaks
+      id: 963034692
+    - name: Things
+      id: 904280696
+    - name: Xcode
+      id: 497799835
