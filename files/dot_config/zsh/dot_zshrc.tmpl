@@ -62,15 +62,9 @@ fi
 fi
 {{- end }}
 
-alias g=git
-alias b=brew
-alias p=pnpm
-alias y=yarn
-alias d=docker
-alias k=kubectl
-alias vim=nvim
-alias ls='lsd -l --group-directories-first'
-alias la='lsd -la --group-directories-first'
+{{ range $alias, $command := .aliases -}}
+alias {{ $alias }}='{{ $command }}'
+{{ end }}
 
 # History stuff
 setopt APPEND_HISTORY

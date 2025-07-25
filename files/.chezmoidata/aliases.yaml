@@ -1,0 +1,25 @@
+aliases:
+  b: brew
+  d: docker
+  k: kubectl
+  p: pnpm
+  vim: nvim
+  y: yarn
+
+  ls: lsd -l --group-directories-first
+  la: lsd -la --group-directories-first
+
+  g: git
+  ga: git add -p
+  gb: git branch -M
+  gc: git commit
+  gco: git checkout
+  gp: git pull
+  gpoh: git push origin HEAD
+  gr: git restore
+  gredo: git commit --amend -S
+  gs: git status
+
+
+
+
