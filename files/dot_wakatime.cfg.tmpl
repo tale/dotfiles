@@ -6,8 +6,8 @@ ignore =
     MERGE_MSG$
     TAG_EDITMSG$
 
-api_url = {{ onepasswordRead "op://Development/WakaTime Key/url" }}
-api_key = {{ onepasswordRead "op://Development/WakaTime Key/credential" }}
+api_url = "{{ onepasswordRead "op://Development/WakaTime Key/url" }}"
+api_key = "{{ onepasswordRead "op://Development/WakaTime Key/credential" }}"
 
 {{ if .workLaptop -}}
 hide_file_names = true
