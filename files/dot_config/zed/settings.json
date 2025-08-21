@@ -1,4 +1,22 @@
 {
+	"auto_install_extensions": {
+		"astro": true,
+		"biome": true,
+		"catppuccin": true,
+		"catppuccin-icons": true,
+		"dockerfile": true,
+		"git-firefly": true,
+		"html": true,
+		"java": true,
+		"just": true,
+		"lua": true,
+		"make": true,
+		"meson": true,
+		"sql": true,
+		"toml": true,
+		"wakatime": true,
+		"xml": true
+	},
 	"ssh_connections": [
 		{
 			"host": "orb",
