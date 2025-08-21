@@ -12,7 +12,6 @@ brews:
     - make
     - mise
     - mkcert
-    - neovim
     - ripgrep
     - rsync
     - telnet
@@ -24,6 +23,7 @@ brews:
     common:
       - 1password
       - 1password-cli
+      - aldente
       - betterdisplay
       - cleanshot
       - datagrip
@@ -32,7 +32,6 @@ brews:
       - imageoptim
       - jordanbaird-ice
       - nikitabobko/tap/aerospace
-      - notion
       - notion-calendar
       - orbstack
       - postman
@@ -51,9 +50,9 @@ brews:
       - syncthing-app
       - tailscale-app
       - the-unarchiver
-      - trader-workstation
       - zoom
     work:
+      - notion
       - notion-mail
       - slack
 
