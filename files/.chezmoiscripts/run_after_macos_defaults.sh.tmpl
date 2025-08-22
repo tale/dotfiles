@@ -36,5 +36,8 @@ if [[ $(scutil --get ComputerName) != "Aarnav's MacBook Pro" ]]; then
 else
 	echo "Computer name and hostname already set, skipping"
 fi
+
+# Add our pam_tid patch into sudo
+echo "auth       sufficient     pam_tid.so" | sudo tee /etc/pam.d/sudo_local
 {{- end }}
 {{- end }}
