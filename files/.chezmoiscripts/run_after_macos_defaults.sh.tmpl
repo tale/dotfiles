@@ -37,7 +37,12 @@ else
 	echo "Computer name and hostname already set, skipping"
 fi
 
-# Add our pam_tid patch into sudo
-echo "auth       sufficient     pam_tid.so" | sudo tee /etc/pam.d/sudo_local
+# Add our pam_tid patch into sudo if its not already there
+if grep -qF pam_tid.so /etc/pam.d/sudo_local; then
+	echo "pam_tid.so already present, skipping"
+else
+	echo "auth       sufficient     pam_tid.so" | sudo tee /etc/pam.d/sudo_local
+fi
+
 {{- end }}
 {{- end }}

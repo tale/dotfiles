@@ -15,7 +15,6 @@ brews:
     - ripgrep
     - rsync
     - telnet
-    - tokei
     - wget
     - yq
 
@@ -25,9 +24,10 @@ brews:
       - 1password-cli
       - aldente
       - betterdisplay
+      - brave-browser
       - cleanshot
       - datagrip
-      - font-iosevka
+      - font-input
       - ghostty
       - imageoptim
       - jordanbaird-ice
@@ -57,19 +57,9 @@ brews:
       - notion-mail
 
   mas:
-    - name: 1Password for Safari
-      id: 1569813296
-    - name: CSE
-      id: 6445840140
-    - name: Noir
-      id: 1592917505
-    - name: Refined GitHub
-      id: 1519867270
     - name: Streaks
       id: 963034692
     - name: Things
       id: 904280696
-    - name: uBlock Origin Lite
-      id: 6745342698
     - name: Xcode
       id: 497799835
