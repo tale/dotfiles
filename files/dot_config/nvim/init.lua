@@ -1,19 +1,3 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-	if vim.v.shell_error ~= 0 then
-		vim.api.nvim_echo({
-			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out,                            "WarningMsg" },
-			{ "\nPress any key to exit..." },
-		}, true, {})
-		vim.fn.getchar()
-		os.exit(1)
-	end
-end
-vim.opt.rtp:prepend(lazypath)
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
@@ -46,81 +30,84 @@ vim.opt.smartcase = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
-require("lazy").setup({
-	spec = {
-		{
-			"catppuccin/nvim",
-			name = "catppuccin",
-			priority = 1000,
-			lazy = false,
-			config = function()
-				vim.cmd.colorscheme("catppuccin")
-			end,
-		},
-		{
-			"wakatime/vim-wakatime",
-			lazy = false,
-		},
-		{
-			"zbirenbaum/copilot.lua",
-			cmd = "Copilot",
-			event = "InsertEnter",
-			opts = {
-				panel = {
-					enabled = false,
-				}
-			}
-		},
-		{
-			"lewis6991/gitsigns.nvim",
-			opts = {}
-		},
-		{
-			"mg979/vim-visual-multi",
-			event = "BufEnter",
-		},
-		{
-			"ibhagwan/fzf-lua",
-			dependencies = { "echasnovski/mini.icons" },
-			opts = {},
-			keys = {
-				{ "<C-p>", "<cmd>FzfLua files<CR>",     desc = "FzfLua Files" },
-				{ "<C-[>", "<cmd>FzfLua live_grep<CR>", desc = "FzfLua Live Grep" },
-			}
-		},
-		{
-			'stevearc/oil.nvim',
-			opts = {
-				view_options = {
-					show_hidden = true,
-				},
-				keymaps = {
-					["<C-v>"] = { "actions.select", opts = { vertical = true } },
-					["<C-x>"] = { "actions.select", opts = { horizontal = true } },
-				},
-			},
-			dependencies = { { "echasnovski/mini.icons", opts = {} } },
-			lazy = false,
-			keys = {
-				{
-					"<C-e>",
-					function()
-						if vim.bo.filetype == "oil" then
-							require("oil").close()
-						else
-							require("oil").open()
-						end
-					end,
-					desc = "Toggle Oil"
-				},
-			}
+vim.pack.add({
+	"https://github.com/zenbones-theme/zenbones.nvim",
+	"https://github.com/wakatime/vim-wakatime",
+	"https://github.com/zbirenbaum/copilot.lua",
+	"https://github.com/lewis6991/gitsigns.nvim",
+	"https://github.com/mg979/vim-visual-multi",
+	"https://github.com/ibhagwan/fzf-lua",
+	"https://github.com/echasnovski/mini.icons",
+
+	"https://github.com/mason-org/mason.nvim",
+	"https://github.com/mason-org/mason-lspconfig.nvim",
+	"https://github.com/neovim/nvim-lspconfig",
+	{
+		src = "https://github.com/saghen/blink.cmp",
+		version = vim.version.range("^1")
+	}
+})
+
+
+vim.g.zenbones_compat = 1
+vim.cmd.colorscheme("zenbones")
+
+vim.g.netrw_liststyle = 1
+vim.g.netrw_banner = 0
+vim.g.netrw_localcopydircmd = "cp -r"
+
+vim.api.nvim_set_hl(0, "netrwMarkFile", {})
+vim.api.nvim_set_hl(0, "netrwMarkFile", { link = "Search" })
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "netrw",
+	callback = function()
+		local opts = { buffer = true, remap = true, silent = true }
+		vim.keymap.set("n", "<C-e>", "<cmd>bd<CR>", opts)
+		vim.keymap.set("n", "<Tab>", "mf", opts)
+		vim.keymap.set("n", "<S-Tab>", "mF", opts)
+		vim.keymap.set("n", "<C-x>", "<cmd>split<CR><cmd>normal! gf<CR>", opts)
+		vim.keymap.set("n", "<C-v>", "<cmd>vsplit<CR><cmd>normal! gf<CR>", opts)
+	end
+});
+
+require("gitsigns").setup({})
+require("fzf-lua").setup({})
+vim.keymap.set("n", "<C-p>", "<cmd>FzfLua files<CR>")
+vim.keymap.set("n", "<C-[>", "<cmd>FzfLua live_grep<CR>")
+vim.keymap.set("n", "<C-e>", "<cmd>Explore %:p:h<CR>")
+
+require("copilot").setup({
+	suggestion = {
+		auto_trigger = true,
+		hide_during_completion = false,
+		keymap = {
+			accept = "<M-CR>"
 		}
 	},
-	install = {
-		missing = true,
-		colorscheme = { "catppuccin" },
-	},
-	checker = {
-		enabled = true,
-	},
+	panel = {
+		enabled = false
+	}
+})
+
+vim.diagnostic.config({ virtual_text = true })
+require("mason").setup({})
+require("mason-lspconfig").setup({
+	ensure_installed = {
+		"biome",
+		"clangd",
+		"docker_language_server",
+		"eslint",
+		"gopls",
+		"graphql",
+		"rust_analyzer",
+		"tailwindcss",
+		"ts_ls",
+		"yamlls"
+	}
+})
+
+require("blink.cmp").setup({
+	signature = {
+		enabled = true
+	}
 })
