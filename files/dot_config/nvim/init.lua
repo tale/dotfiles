@@ -42,6 +42,8 @@ vim.pack.add({
 	"https://github.com/mason-org/mason.nvim",
 	"https://github.com/mason-org/mason-lspconfig.nvim",
 	"https://github.com/neovim/nvim-lspconfig",
+	"https://github.com/stevearc/conform.nvim",
+	"https://github.com/zapling/mason-conform.nvim",
 	{
 		src = "https://github.com/saghen/blink.cmp",
 		version = vim.version.range("^1")
@@ -104,6 +106,48 @@ require("mason-lspconfig").setup({
 		"ts_ls",
 		"yamlls"
 	}
+})
+
+require("conform").setup({
+	formatters_by_ft = {
+		javascript = { "prettierd" },
+		typescript = { "prettierd" },
+		typescriptreact = { "prettierd" }
+	},
+	format_on_save = function(bufnr)
+		if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+			return
+		end
+
+		return { timeout_ms = 500, lsp_format = "fallback" }
+	end
+})
+
+require("mason-conform").setup({})
+vim.api.nvim_create_user_command("FormatEnable", function(args)
+	if args.bang then
+		vim.b.disable_autoformat = false
+		print("Enabled format on save for this buffer")
+	else
+		vim.g.disable_autoformat = false
+		print("Enabled format on save")
+	end
+end, {
+	desc = "Enable format on save",
+	bang = true
+})
+
+vim.api.nvim_create_user_command("FormatDisable", function(args)
+	if args.bang then
+		vim.b.disable_autoformat = true
+		print("Disabled format on save for this buffer")
+	else
+		vim.g.disable_autoformat = true
+		print("Disabled format on save")
+	end
+end, {
+	desc = "Disable format on save",
+	bang = true
 })
 
 require("blink.cmp").setup({
