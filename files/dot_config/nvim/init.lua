@@ -31,7 +31,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 vim.pack.add({
-	"https://github.com/zenbones-theme/zenbones.nvim",
+	"https://github.com/savq/melange-nvim",
 	"https://github.com/wakatime/vim-wakatime",
 	"https://github.com/zbirenbaum/copilot.lua",
 	"https://github.com/lewis6991/gitsigns.nvim",
@@ -51,8 +51,7 @@ vim.pack.add({
 })
 
 
-vim.g.zenbones_compat = 1
-vim.cmd.colorscheme("zenbones")
+vim.cmd.colorscheme("melange")
 
 vim.g.netrw_liststyle = 1
 vim.g.netrw_banner = 0
@@ -100,7 +99,6 @@ require("mason-lspconfig").setup({
 		"docker_language_server",
 		"eslint",
 		"gopls",
-		"graphql",
 		"rust_analyzer",
 		"tailwindcss",
 		"ts_ls",
@@ -120,7 +118,23 @@ require("conform").setup({
 		end
 
 		return { timeout_ms = 500, lsp_format = "fallback" }
-	end
+	end,
+	formatters = {
+		prettierd = {
+			condition = function(self, ctx)
+				local root
+
+				if type(self.cwd) == "function" then
+					root = self.cwd(self, ctx)
+				elseif type(self.cwd) == "string" then
+					root = self.cwd
+				end
+
+				local ok = root ~= nil and root ~= false and root ~= ""
+				return ok
+			end,
+		}
+	}
 })
 
 require("mason-conform").setup({})
@@ -155,3 +169,9 @@ require("blink.cmp").setup({
 		enabled = true
 	}
 })
+
+vim.keymap.set("n", "<C-CR>", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+vim.keymap.set("v", "<C-CR>", "<cmd>lua vim.lsp.buf.range_code_action()<CR>")
+vim.keymap.set("n", "<S-r>", "<cmd>lua vim.lsp.buf.rename()<CR>")
+vim.keymap.set("n", "<Leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
+vim.keymap.set("n", "<Leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>")

@@ -1,7 +1,7 @@
 font-size = 20
 font-family = Input Mono Condensed
 window-title-font-family = Input mono Condensed
-theme = light:Zenbones Light, dark:Zenbones Dark
+theme = light:Melange Light, dark:Melange Dark
 window-save-state = always
 macos-option-as-alt = left
 macos-titlebar-style = tabs
