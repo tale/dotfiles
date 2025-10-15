@@ -42,17 +42,16 @@ brews:
     personal:
       - craft
       - discord
-      - librewolf
       - modrinth
       - protonvpn
       - signal
       - soulver
       - steam
-      - syncthing-app
       - tailscale-app
       - the-unarchiver
       - zoom
     work:
+      - linear-linear
       - notion
       - notion-mail
 

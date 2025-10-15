@@ -38,6 +38,7 @@ vim.pack.add({
 	"https://github.com/mg979/vim-visual-multi",
 	"https://github.com/ibhagwan/fzf-lua",
 	"https://github.com/echasnovski/mini.icons",
+	"https://github.com/stevearc/oil.nvim",
 
 	"https://github.com/mason-org/mason.nvim",
 	"https://github.com/mason-org/mason-lspconfig.nvim",
@@ -53,29 +54,33 @@ vim.pack.add({
 
 vim.cmd.colorscheme("melange")
 
-vim.g.netrw_liststyle = 1
-vim.g.netrw_banner = 0
-vim.g.netrw_localcopydircmd = "cp -r"
-
-vim.api.nvim_set_hl(0, "netrwMarkFile", {})
-vim.api.nvim_set_hl(0, "netrwMarkFile", { link = "Search" })
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "netrw",
-	callback = function()
-		local opts = { buffer = true, remap = true, silent = true }
-		vim.keymap.set("n", "<C-e>", "<cmd>bd<CR>", opts)
-		vim.keymap.set("n", "<Tab>", "mf", opts)
-		vim.keymap.set("n", "<S-Tab>", "mF", opts)
-		vim.keymap.set("n", "<C-x>", "<cmd>split<CR><cmd>normal! gf<CR>", opts)
-		vim.keymap.set("n", "<C-v>", "<cmd>vsplit<CR><cmd>normal! gf<CR>", opts)
-	end
-});
-
-require("gitsigns").setup({})
+require("gitsigns").setup({
+	current_line_blame = true,
+	current_line_blame_opts = {
+		delay = 500
+	}
+})
 require("fzf-lua").setup({})
 vim.keymap.set("n", "<C-p>", "<cmd>FzfLua files<CR>")
 vim.keymap.set("n", "<C-[>", "<cmd>FzfLua live_grep<CR>")
-vim.keymap.set("n", "<C-e>", "<cmd>Explore %:p:h<CR>")
+
+require("oil").setup({
+	view_options = {
+		show_hidden = true
+	},
+	keymaps = {
+		["<C-v>"] = "actions.select_vsplit",
+		["<C-x>"] = "actions.select_split",
+	}
+})
+
+vim.keymap.set("n", "<C-e>", function()
+	if vim.bo.filetype == "oil" then
+		require("oil").close()
+	else
+		require("oil").open()
+	end
+end)
 
 require("copilot").setup({
 	suggestion = {
@@ -117,7 +122,7 @@ require("conform").setup({
 			return
 		end
 
-		return { timeout_ms = 500, lsp_format = "fallback" }
+		return { timeout_ms = 500, lsp_format = "first" }
 	end,
 	formatters = {
 		prettierd = {
@@ -170,8 +175,10 @@ require("blink.cmp").setup({
 	}
 })
 
+vim.keymap.set("n", "<Leader>k", "<cmd>lua vim.diagnostic.open_float()<CR>")
 vim.keymap.set("n", "<C-CR>", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 vim.keymap.set("v", "<C-CR>", "<cmd>lua vim.lsp.buf.range_code_action()<CR>")
 vim.keymap.set("n", "<S-r>", "<cmd>lua vim.lsp.buf.rename()<CR>")
 vim.keymap.set("n", "<Leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
 vim.keymap.set("n", "<Leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>")
+vim.keymap.set("n", "<Leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")

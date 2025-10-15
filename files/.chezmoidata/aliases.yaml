@@ -11,15 +11,13 @@ aliases:
 
   g: git
   ga: git add -p
-  gb: git branch -M
+  gad: git add
+  gb: git branch
   gc: git commit
   gco: git checkout
+  gm: git merge
   gp: git pull
   gpoh: git push origin HEAD
   gr: git restore
   gredo: git commit --amend -S
   gs: git status
-
-
-
-
