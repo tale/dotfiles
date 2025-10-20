@@ -83,6 +83,12 @@ vim.keymap.set("n", "<C-e>", function()
 end)
 
 require("copilot").setup({
+	filetypes = {
+		["*"] = true,
+		["help"] = false,
+		["gitcommit"] = false,
+		["oil"] = false
+	},
 	suggestion = {
 		auto_trigger = true,
 		hide_during_completion = false,
