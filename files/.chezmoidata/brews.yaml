@@ -27,6 +27,7 @@ brews:
       - brave-browser
       - cleanshot
       - datagrip
+      - dimentium/autoraise/autoraiseapp
       - font-input
       - ghostty
       - imageoptim

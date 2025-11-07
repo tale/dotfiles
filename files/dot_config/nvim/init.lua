@@ -105,6 +105,7 @@ vim.diagnostic.config({ virtual_text = true })
 require("mason").setup({})
 require("mason-lspconfig").setup({
 	ensure_installed = {
+		"astro",
 		"biome",
 		"clangd",
 		"docker_language_server",
@@ -117,11 +118,24 @@ require("mason-lspconfig").setup({
 	}
 })
 
+local cwd_check = function(self, ctx)
+	local root
+
+	if type(self.cwd) == "function" then
+		root = self.cwd(self, ctx)
+	elseif type(self.cwd) == "string" then
+		root = self.cwd
+	end
+
+	local ok = root ~= nil and root ~= false and root ~= ""
+	return ok
+end
+
 require("conform").setup({
 	formatters_by_ft = {
-		javascript = { "prettierd" },
-		typescript = { "prettierd" },
-		typescriptreact = { "prettierd" }
+		javascript = { "prettierd", "biome-check" },
+		typescript = { "prettierd", "biome-check" },
+		typescriptreact = { "prettierd", "biome-check" },
 	},
 	format_on_save = function(bufnr)
 		if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
@@ -131,20 +145,8 @@ require("conform").setup({
 		return { timeout_ms = 500, lsp_format = "first" }
 	end,
 	formatters = {
-		prettierd = {
-			condition = function(self, ctx)
-				local root
-
-				if type(self.cwd) == "function" then
-					root = self.cwd(self, ctx)
-				elseif type(self.cwd) == "string" then
-					root = self.cwd
-				end
-
-				local ok = root ~= nil and root ~= false and root ~= ""
-				return ok
-			end,
-		}
+		["biome-check"] = { condition = cwd_check },
+		prettierd = { condition = cwd_check }
 	}
 })
 
