@@ -142,7 +142,7 @@ require("conform").setup({
 			return
 		end
 
-		return { timeout_ms = 500, lsp_format = "first" }
+		return { timeout_ms = 2500, lsp_format = "first" }
 	end,
 	formatters = {
 		["biome-check"] = { condition = cwd_check },
@@ -176,6 +176,12 @@ end, {
 	desc = "Disable format on save",
 	bang = true
 })
+
+vim.api.nvim_create_user_command("W", function()
+	vim.b.disable_autoformat = true
+	vim.cmd.write()
+	vim.b.disable_autoformat = false
+end, { desc = "Write file without formatting" })
 
 require("blink.cmp").setup({
 	signature = {

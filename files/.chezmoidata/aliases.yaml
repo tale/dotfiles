@@ -15,6 +15,7 @@ aliases:
   gb: git branch
   gc: git commit
   gco: git checkout
+  gf: git fetch
   gm: git merge
   gp: git pull
   gpoh: git push origin HEAD
