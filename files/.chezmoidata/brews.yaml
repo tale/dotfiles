@@ -12,6 +12,7 @@ brews:
     - make
     - mise
     - mkcert
+    - opencode
     - ripgrep
     - rsync
     - telnet
@@ -27,7 +28,6 @@ brews:
       - brave-browser
       - cleanshot
       - datagrip
-      - dimentium/autoraise/autoraiseapp
       - font-input
       - ghostty
       - imageoptim

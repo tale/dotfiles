@@ -1,5 +1,6 @@
 font-size = 20
 font-family = Input Mono Condensed
+auto-update-channel = tip
 window-title-font-family = Input mono Condensed
 theme = light:Melange Light, dark:Melange Dark
 window-save-state = always

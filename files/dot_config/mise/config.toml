@@ -14,5 +14,15 @@ uv = "0"
 yarn = "4"
 zig = "0.13"
 
+# LSP & Formatters
+"go:golang.org/x/tools/gopls" = "latest"
+"npm:@astrojs/language-server" = "latest"
+"npm:@biomejs/biome" = "latest"
+"npm:@fsouza/prettierd" = "latest"
+"npm:@tailwindcss/language-server" = "latest"
+"npm:@typescript/native-preview" = "latest"
+"npm:vscode-langservers-extracted" = "latest"
+"npm:yaml-language-server" = "latest"
+
 [settings]
 idiomatic_version_file_enable_tools = ["python"]

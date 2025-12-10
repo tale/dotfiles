@@ -27,7 +27,6 @@ alt-shift-space = "layout floating tiling"
 ctrl-alt-shift-space = "move-workspace-to-monitor --wrap-around next"
 alt-e = "layout tiles horizontal vertical"
 
-alt-shift-semicolon = 'mode service'
 cmd-alt-ctrl-r = 'reload-config'
 
 alt-1 = "workspace 1"
@@ -48,7 +47,7 @@ alt-shift-d = ["move-node-to-workspace D", "workspace D"]
 
 [[on-window-detected]]
 if.app-id = "com.mitchellh.ghostty"
-run = ["layout floating", "move-node-to-workspace 1"]
+run = ["layout floating", "move-node-to-workspace 1", "fullscreen"]
 
 [[on-window-detected]]
 if.app-id = "com.brave.Browser"
@@ -105,6 +104,10 @@ run = "layout floating"
 {{ if not .workLaptop -}}
 [[on-window-detected]]
 if.app-id = "com.culturedcode.ThingsMac"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.todoist.mac.Todoist"
 run = "layout floating"
 
 [[on-window-detected]]

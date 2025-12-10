@@ -30,29 +30,28 @@ vim.opt.smartcase = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
+vim.cmd.filetype("plugin indent on")
+vim.opt.completeopt = "fuzzy,menu,menuone,noselect,popup"
+
 vim.pack.add({
 	"https://github.com/savq/melange-nvim",
 	"https://github.com/wakatime/vim-wakatime",
 	"https://github.com/zbirenbaum/copilot.lua",
 	"https://github.com/lewis6991/gitsigns.nvim",
 	"https://github.com/mg979/vim-visual-multi",
-	"https://github.com/ibhagwan/fzf-lua",
-	"https://github.com/echasnovski/mini.icons",
+	"https://github.com/nvim-mini/mini.icons",
 	"https://github.com/stevearc/oil.nvim",
-
-	"https://github.com/mason-org/mason.nvim",
-	"https://github.com/mason-org/mason-lspconfig.nvim",
 	"https://github.com/neovim/nvim-lspconfig",
 	"https://github.com/stevearc/conform.nvim",
-	"https://github.com/zapling/mason-conform.nvim",
+	"https://github.com/folke/snacks.nvim",
 	{
 		src = "https://github.com/saghen/blink.cmp",
 		version = vim.version.range("^1")
 	}
 })
 
-
 vim.cmd.colorscheme("melange")
+require("mini.icons").setup()
 
 require("gitsigns").setup({
 	current_line_blame = true,
@@ -60,27 +59,22 @@ require("gitsigns").setup({
 		delay = 500
 	}
 })
-require("fzf-lua").setup({})
-vim.keymap.set("n", "<C-p>", "<cmd>FzfLua files<CR>")
-vim.keymap.set("n", "<C-[>", "<cmd>FzfLua live_grep<CR>")
 
+require("snacks").setup({ picker = { enabled = true } })
+vim.keymap.set("n", "<C-[>", Snacks.picker.grep)
+vim.keymap.set("n", "<C-p>", function()
+	Snacks.picker.files({ hidden = true })
+end)
+
+vim.keymap.set("n", "<C-e>", "<cmd>Oil<CR>")
 require("oil").setup({
-	view_options = {
-		show_hidden = true
-	},
+	view_options = { show_hidden = true },
 	keymaps = {
-		["<C-v>"] = "actions.select_vsplit",
-		["<C-x>"] = "actions.select_split",
+		["<C-v>"] = { "actions.select", opts = { vertical = true } },
+		["<C-s>"] = { "actions.select", opts = { horizontal = true } },
+		["<C-e>"] = { "actions.close", mode = "n" },
 	}
 })
-
-vim.keymap.set("n", "<C-e>", function()
-	if vim.bo.filetype == "oil" then
-		require("oil").close()
-	else
-		require("oil").open()
-	end
-end)
 
 require("copilot").setup({
 	filetypes = {
@@ -97,25 +91,28 @@ require("copilot").setup({
 		}
 	},
 	panel = {
-		enabled = false
+		enabled = false,
+		keymap = {
+			open = "<M-l>"
+		}
 	}
 })
 
-vim.diagnostic.config({ virtual_text = true })
-require("mason").setup({})
-require("mason-lspconfig").setup({
-	ensure_installed = {
-		"astro",
-		"biome",
-		"clangd",
-		"docker_language_server",
-		"eslint",
-		"gopls",
-		"rust_analyzer",
-		"tailwindcss",
-		"ts_ls",
-		"yamlls"
-	}
+vim.diagnostic.config({
+	virtual_text = true,
+	virtual_lines = { current_line = true },
+})
+
+vim.lsp.enable({
+	"astro",
+	"biome",
+	"clangd",
+	"eslint",
+	"gopls",
+	"rust_analyzer",
+	"tailwindcss",
+	"tsgo",
+	"yamlls"
 })
 
 local cwd_check = function(self, ctx)
@@ -133,30 +130,30 @@ end
 
 require("conform").setup({
 	formatters_by_ft = {
-		javascript = { "prettierd", "biome-check" },
-		typescript = { "prettierd", "biome-check" },
-		typescriptreact = { "prettierd", "biome-check" },
+		javascript = { "oxfmt", "prettierd", "biome-check" },
+		typescript = { "oxfmt", "prettierd", "biome-check" },
+		typescriptreact = { "oxfmt", "prettierd", "biome-check" },
+		json = { "oxfmt" },
+		yaml = { "oxfmt" },
 	},
 	format_on_save = function(bufnr)
-		if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-			return
+		if not vim.g.no_format and not vim.b[bufnr].no_format then
+			return { timeout_ms = 2500, lsp_format = "first" }
 		end
-
-		return { timeout_ms = 2500, lsp_format = "first" }
 	end,
 	formatters = {
-		["biome-check"] = { condition = cwd_check },
-		prettierd = { condition = cwd_check }
+		prettierd = { require_cwd = true },
+		["biome-check"] = { require_cwd = true },
+		oxfmt = { require_cwd = true }
 	}
 })
 
-require("mason-conform").setup({})
 vim.api.nvim_create_user_command("FormatEnable", function(args)
 	if args.bang then
-		vim.b.disable_autoformat = false
+		vim.b.no_format = false
 		print("Enabled format on save for this buffer")
 	else
-		vim.g.disable_autoformat = false
+		vim.g.no_format = false
 		print("Enabled format on save")
 	end
 end, {
@@ -166,10 +163,10 @@ end, {
 
 vim.api.nvim_create_user_command("FormatDisable", function(args)
 	if args.bang then
-		vim.b.disable_autoformat = true
+		vim.b.no_format = true
 		print("Disabled format on save for this buffer")
 	else
-		vim.g.disable_autoformat = true
+		vim.g.no_format = true
 		print("Disabled format on save")
 	end
 end, {
@@ -183,12 +180,6 @@ vim.api.nvim_create_user_command("W", function()
 	vim.b.disable_autoformat = false
 end, { desc = "Write file without formatting" })
 
-require("blink.cmp").setup({
-	signature = {
-		enabled = true
-	}
-})
-
 vim.keymap.set("n", "<Leader>k", "<cmd>lua vim.diagnostic.open_float()<CR>")
 vim.keymap.set("n", "<C-CR>", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 vim.keymap.set("v", "<C-CR>", "<cmd>lua vim.lsp.buf.range_code_action()<CR>")
@@ -196,3 +187,5 @@ vim.keymap.set("n", "<S-r>", "<cmd>lua vim.lsp.buf.rename()<CR>")
 vim.keymap.set("n", "<Leader>gd", "<cmd>lua vim.lsp.buf.definition()<CR>")
 vim.keymap.set("n", "<Leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>")
 vim.keymap.set("n", "<Leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
+
+require("blink.cmp").setup({ signature = { enabled = true } })
