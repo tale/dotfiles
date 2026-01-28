@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+{{ if eq .chezmoi.os "darwin" -}}
+{{- if not .workLaptop -}}
+{{- if joinPath .chezmoi.homeDir ".amp/bin" | lstat }}
+echo "Amp is already installed, skipping"
+{{- else }}
+echo "Installing Amp"
+curl -fsSL https://ampcode.com/install.sh | bash
+{{- end }}
+{{- end }}
+{{- end }}

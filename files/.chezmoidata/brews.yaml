@@ -24,6 +24,7 @@ brews:
       - 1password
       - 1password-cli
       - aldente
+      - bartender
       - betterdisplay
       - brave-browser
       - cleanshot
@@ -31,7 +32,7 @@ brews:
       - font-input
       - ghostty
       - imageoptim
-      - jordanbaird-ice
+      - logi-options+
       - nikitabobko/tap/aerospace
       - notion-calendar
       - orbstack
@@ -39,7 +40,6 @@ brews:
       - raycast
       - slack
       - spotify
-      - zed
     personal:
       - craft
       - discord
@@ -50,6 +50,7 @@ brews:
       - steam
       - tailscale-app
       - the-unarchiver
+      - todoist-app
       - zoom
     work:
       - linear-linear
