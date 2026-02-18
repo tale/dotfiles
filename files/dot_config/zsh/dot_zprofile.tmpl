@@ -3,9 +3,7 @@ eval $(/opt/homebrew/bin/brew shellenv)
 
 {{- if joinPath .chezmoi.homeDir ".orbstack/shell/init.zsh" | lstat }}
 . {{ joinPath .chezmoi.homeDir ".orbstack/shell/init.zsh" }}
-{{- end -}}
+{{- end }}
 
-{{- if joinPath .chezmoi.homeDir ".amp/bin" | lstat }}
 export PATH="$HOME/.amp/bin:$PATH"
-{{- end -}}
 {{- end }}

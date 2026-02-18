@@ -34,7 +34,7 @@ vim.cmd.filetype("plugin indent on")
 vim.opt.completeopt = "fuzzy,menu,menuone,noselect,popup"
 
 vim.pack.add({
-	"https://github.com/savq/melange-nvim",
+	"https://github.com/EdenEast/nightfox.nvim",
 	"https://github.com/wakatime/vim-wakatime",
 	"https://github.com/zbirenbaum/copilot.lua",
 	"https://github.com/lewis6991/gitsigns.nvim",
@@ -50,7 +50,7 @@ vim.pack.add({
 	}
 })
 
-vim.cmd.colorscheme("melange")
+vim.cmd.colorscheme("carbonfox")
 require("mini.icons").setup()
 
 require("gitsigns").setup({
@@ -109,24 +109,12 @@ vim.lsp.enable({
 	"clangd",
 	"eslint",
 	"gopls",
+	"jdtls",
 	"rust_analyzer",
 	"tailwindcss",
 	"tsgo",
 	"yamlls"
 })
-
-local cwd_check = function(self, ctx)
-	local root
-
-	if type(self.cwd) == "function" then
-		root = self.cwd(self, ctx)
-	elseif type(self.cwd) == "string" then
-		root = self.cwd
-	end
-
-	local ok = root ~= nil and root ~= false and root ~= ""
-	return ok
-end
 
 require("conform").setup({
 	formatters_by_ft = {

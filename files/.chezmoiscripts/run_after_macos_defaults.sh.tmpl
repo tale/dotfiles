@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-{{ if eq .chezmoi.os "darwin" -}}
+{{- if eq .chezmoi.os "darwin" }}
 
 echo "Applying macOS defaults"
 defaults write -g NSWindowShouldDragOnGesture -bool true
@@ -17,9 +17,7 @@ defaults write com.apple.menuextra.clock ShowSeconds -bool true
 defaults write com.apple.spaces spans-displays -bool true
 defaults write com.apple.dock expose-group-apps -bool true
 
-if [ -L ~/.config/1Password/agent.sock ]; then
-	echo "1Password agent socket already symlinked, skipping"
-else
+if [ ! -L ~/.config/1Password/agent.sock ]; then
 	echo "Symlinking 1Password agent socket to ~/.config/1Password/agent.sock"
 	mkdir -p ~/.config/1Password
 	ln -s \
@@ -33,8 +31,6 @@ if [[ $(scutil --get ComputerName) != "Aarnav's MacBook Pro" ]]; then
 	sudo scutil --set ComputerName "Aarnav's MacBook Pro"
 	sudo scutil --set HostName "Aarnavs-MBP"
 	dscacheutil -flushcache
-else
-	echo "Computer name and hostname already set, skipping"
 fi
 
 # Add our pam_tid patch into sudo if its not already there
