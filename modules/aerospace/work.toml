@@ -61,8 +61,6 @@ run = "move-node-to-workspace A"
 if.app-id = "com.spotify.client"
 run = "move-node-to-workspace S"
 
-{{- if .workLaptop }}
-
 [[on-window-detected]]
 if.app-id = "com.tinyspeck.slackmacgap"
 run = "move-node-to-workspace 3"
@@ -78,16 +76,6 @@ run = "move-node-to-workspace S"
 [[on-window-detected]]
 if.app-id = "notion.mail.id"
 run = "move-node-to-workspace D"
-{{- else }}
-
-[[on-window-detected]]
-if.app-id = "com.hnc.Discord"
-run = "move-node-to-workspace 3"
-
-[[on-window-detected]]
-if.app-id = "com.apple.mail"
-run = "move-node-to-workspace D"
-{{- end }}
 
 [[on-window-detected]]
 if.app-id = "com.1password.1password"
@@ -96,28 +84,6 @@ run = "layout floating"
 [[on-window-detected]]
 if.app-id = "com.apple.finder"
 run = "layout floating"
-
-[[on-window-detected]]
-if.app-id = "com.apple.MobileSMS"
-run = "layout floating"
-
-{{ if not .workLaptop -}}
-[[on-window-detected]]
-if.app-id = "com.culturedcode.ThingsMac"
-run = "layout floating"
-
-[[on-window-detected]]
-if.app-id = "com.todoist.mac.Todoist"
-run = "layout floating"
-
-[[on-window-detected]]
-if.app-id = "ch.protonvpn.mac"
-run = "layout floating"
-
-[[on-window-detected]]
-if.app-id = "com.valvesoftware.steam.helper"
-run = "layout tiling"
-{{- end }}
 
 [[on-window-detected]]
 if.app-id = "com.apple.systempreferences"
