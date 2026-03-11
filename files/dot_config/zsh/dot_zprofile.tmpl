@@ -1,9 +1,0 @@
-{{- if eq .chezmoi.os "darwin" -}}
-eval $(/opt/homebrew/bin/brew shellenv)
-
-{{- if joinPath .chezmoi.homeDir ".orbstack/shell/init.zsh" | lstat }}
-. {{ joinPath .chezmoi.homeDir ".orbstack/shell/init.zsh" }}
-{{- end }}
-
-export PATH="$HOME/.amp/bin:$PATH"
-{{- end }}
