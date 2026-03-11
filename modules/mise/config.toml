@@ -1,0 +1,24 @@
+[tools]
+go = "1.24"
+helm = "3"
+kubectl = "1.30"
+"asdf:richin13/asdf-neovim" = "nightly"
+node = "24"
+pnpm = "10"
+python = "3.12"
+rust = "1.93"
+uv = "0"
+
+# LSP & Formatters
+"go:golang.org/x/tools/gopls" = "latest"
+"npm:@astrojs/language-server" = "latest"
+"npm:@tailwindcss/language-server" = "latest"
+"npm:@typescript/native-preview" = "latest"
+"npm:vscode-langservers-extracted" = "latest"
+"npm:yaml-language-server" = "latest"
+"lua-language-server" = "latest"
+"stylua" = "latest"
+
+[settings]
+experimental = true
+idiomatic_version_file_enable_tools = ["python"]
