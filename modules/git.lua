@@ -6,7 +6,7 @@ git.config({
   user = {
     name = "Aarnav Tale",
     email = profile.select({
-      default = "aarnavtale@icloud.com",
+      default = "git@tale.me",
       work = "atale@spear.ai",
     }),
   },
