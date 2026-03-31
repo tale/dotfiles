@@ -83,6 +83,7 @@ zsh.config({
     ls = "lsd -l --group-directories-first",
     p = "pnpm",
     vim = "nvim",
+    -- withenv = "env $(grep -v '^#' .env | xargs) ",
     y = "yarn",
   },
   history = {

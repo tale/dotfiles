@@ -111,6 +111,7 @@ vim.lsp.enable({
   "gopls",
   "jdtls",
   "lua_ls",
+  "oxlint",
   "rust_analyzer",
   "tailwindcss",
   "tsgo",
@@ -119,9 +120,9 @@ vim.lsp.enable({
 
 require("conform").setup({
   formatters_by_ft = {
-    javascript = { "oxlint", "oxfmt", "prettierd" },
-    typescript = { "oxlint", "oxfmt", "prettierd" },
-    typescriptreact = { "oxlint", "oxfmt", "prettierd" },
+    javascript = { "oxfmt", "prettierd" },
+    typescript = { "oxfmt", "prettierd" },
+    typescriptreact = { "oxfmt", "prettierd" },
     json = { "oxfmt" },
     yaml = { "oxfmt" },
     lua = { "stylua" },

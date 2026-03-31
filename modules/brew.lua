@@ -15,7 +15,6 @@ local common_casks = {
   "imageoptim",
   "logi-options+",
   "nikitabobko/tap/aerospace",
-  "notion-calendar",
   "orbstack",
   "postman",
   "raycast",
@@ -27,8 +26,8 @@ local extra_casks = profile.select({
   personal = {
     "craft",
     "discord",
+    "fantastical",
     "modrinth",
-    "signal",
     "soulver",
     "steam",
     "tailscale-app",
@@ -38,6 +37,7 @@ local extra_casks = profile.select({
   work = {
     "linear-linear",
     "notion",
+    "notion-calendar",
     "notion-mail",
   },
 })
@@ -69,7 +69,6 @@ brew.config({
   mas = profile.select({
     default = nil,
     personal = {
-      { name = "Streaks", id = 963034692 },
       { name = "Things", id = 904280696 },
       { name = "Xcode", id = 497799835 },
     },

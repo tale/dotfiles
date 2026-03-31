@@ -54,20 +54,20 @@ if.app-id = "com.brave.Browser"
 run = "move-node-to-workspace 2"
 
 [[on-window-detected]]
-if.app-id = "com.cron.electron"
-run = "move-node-to-workspace A"
-
-[[on-window-detected]]
-if.app-id = "com.spotify.client"
-run = "move-node-to-workspace S"
-
-[[on-window-detected]]
 if.app-id = "com.tinyspeck.slackmacgap"
 run = "move-node-to-workspace 3"
 
 [[on-window-detected]]
 if.app-id = "com.linear"
 run = "move-node-to-workspace 4"
+
+[[on-window-detected]]
+if.app-id = "com.cron.electron"
+run = "move-node-to-workspace A"
+
+[[on-window-detected]]
+if.app-id = "com.spotify.client"
+run = "move-node-to-workspace S"
 
 [[on-window-detected]]
 if.app-id = "notion.id"
