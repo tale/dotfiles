@@ -25,7 +25,10 @@ if is_mac then
   login = {
     evals = { "/opt/homebrew/bin/brew shellenv" },
     sources = sources,
-    path_prepend = { "$HOME/.amp/bin" },
+    path_prepend = {
+      "$HOME/.amp/bin",
+      "$HOME/.rootbeer/bin",
+    },
   }
 end
 

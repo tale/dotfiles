@@ -13,3 +13,6 @@ if rb.host.os == "macos" then
   require("modules.aerospace.config")
   require("modules.macos.config")
 end
+
+-- Ensure after setup we use SSH for git operations
+rb.remote("git@github.com:tale/dotfiles.git")
