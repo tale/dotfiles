@@ -1,6 +1,16 @@
 local rb = require("rootbeer")
 
+rb.profile.define({
+  strategy = "command",
+  profiles = {
+    -- Iru is endpoint security for work
+    work = { "iru" },
+    personal = {},
+  },
+})
+
 require("modules.git")
+require("modules.ripgrep")
 require("modules.ssh")
 require("modules.zsh")
 require("modules.secrets")

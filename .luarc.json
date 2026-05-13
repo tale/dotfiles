@@ -1,5 +1,10 @@
 {
+  "runtime.version": "LuaJIT",
+  "diagnostics.globals": ["vim"],
+  "workspace.checkThirdParty": false,
   "workspace.library": [
-    "/Users/tale/.local/share/rootbeer/typedefs"
+    "/Users/tale/.local/share/rootbeer/typedefs",
+    "${env:VIMRUNTIME}",
+    "${env:HOME}/.local/share/nvim/site/pack/core/opt"
   ]
 }

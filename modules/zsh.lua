@@ -8,6 +8,7 @@ local env = {
   EDITOR = "nvim",
   VISUAL = "$EDITOR",
   OS = "$(uname -s)",
+  RIPGREP_CONFIG_PATH = "$HOME/.config/ripgrep/rc",
 }
 
 if is_mac then

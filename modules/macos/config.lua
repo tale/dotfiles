@@ -43,7 +43,7 @@ mac.defaults({
     domain = "com.apple.spaces",
     key = "spans-displays",
     type = "bool",
-    value = true,
+    value = false,
   },
   {
     domain = "com.apple.dock",
