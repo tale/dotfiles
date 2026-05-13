@@ -29,6 +29,7 @@ if is_mac then
     path_prepend = {
       "$HOME/.amp/bin",
       "$HOME/.rootbeer/bin",
+      "$HOME/.local/bin",
     },
   }
 end
