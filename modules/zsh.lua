@@ -49,6 +49,46 @@ if [[ -n $sel ]]; then
 	LBUFFER=$sel
 fi
 zle redisplay]=],
+
+  git_rebase_upstream = [=[
+local base
+if [[ -n "$1" ]]; then
+	base="$1"
+else
+	base=$(gh pr view --json baseRefName -q .baseRefName 2>/dev/null)
+fi
+
+if [[ -z "$base" ]]; then
+	echo "No PR found and no base specified, falling back to 'main'"
+	base="main"
+fi
+
+echo "Rebasing onto origin/$base..."
+git fetch origin "$base"
+git rebase --committer-date-is-author-date "origin/$base"
+]=],
+
+  git_stack_new = [=[
+local new_branch="${1:?Usage: git-stack-new <new-branch> [base|pr/<number>]}"
+local base_arg="$2"
+local base
+
+if [[ -z "$base_arg" ]]; then
+	base=$(gh pr view --json headRefName -q .headRefName 2>/dev/null)
+	if [[ -z "$base" ]]; then
+		base=$(git branch --show-current)
+	fi
+elif [[ "$base_arg" == pr/* ]]; then
+	local pr_number="${base_arg#pr/}"
+	base=$(gh pr view "$pr_number" --json headRefName -q .headRefName)
+else
+	base="$base_arg"
+fi
+
+echo "Stacking onto $base"
+git fetch origin "$base"
+git checkout "origin/$base" -b "$new_branch"
+]=],
 }
 
 if is_mac then
@@ -83,6 +123,8 @@ zsh.config({
     gr = "git restore",
     gredo = "git commit --amend -S",
     gs = "git status",
+    gsn = "git_stack_new",
+    gsu = "git_rebase_upstream",
     k = "kubectl",
     la = "lsd -la --group-directories-first",
     ls = "lsd -l --group-directories-first",
