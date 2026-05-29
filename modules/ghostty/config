@@ -1,6 +1,6 @@
 font-size = 20
-font-family = Input Mono Condensed
-window-title-font-family = Input Mono Condensed
+font-family = Iosevka Term SS14
+window-title-font-family = Iosevka Fixed SS14
 auto-update-channel = tip
 theme = light:Dayfox, dark:Carbonfox
 window-save-state = always
