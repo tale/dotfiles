@@ -12,7 +12,7 @@ rb.profile.define({
 require("modules.git")
 require("modules.ripgrep")
 require("modules.ssh")
-require("modules.zsh")
+require("modules.zsh.config")
 require("modules.secrets")
 require("modules.ghostty.config")
 require("modules.nvim.config")
