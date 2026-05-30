@@ -29,7 +29,7 @@ vim.opt.splitright = true
 vim.opt.completeopt = "fuzzy,menu,menuone,noselect,popup"
 
 vim.pack.add({
-  "https://github.com/EdenEast/nightfox.nvim",
+  "https://github.com/sainnhe/everforest",
   "https://github.com/wakatime/vim-wakatime",
   "https://github.com/zbirenbaum/copilot.lua",
   "https://github.com/lewis6991/gitsigns.nvim",
@@ -45,15 +45,9 @@ vim.pack.add({
   },
 })
 
-local function set_theme()
-  vim.cmd.colorscheme(vim.o.background == "light" and "dayfox" or "carbonfox")
-end
-
-set_theme()
-vim.api.nvim_create_autocmd("OptionSet", {
-  pattern = "background",
-  callback = set_theme,
-})
+vim.g.everforest_transparent_background = 2
+vim.g.everforest_background = "soft"
+vim.cmd.colorscheme("everforest")
 
 require("mini.icons").setup()
 require("gitsigns").setup({
@@ -86,9 +80,19 @@ vim.diagnostic.config({
   virtual_lines = { current_line = true },
 })
 
+-- Big monorepos choke Neovim's libuv-based file watcher. Every enabled LSP
+-- server has its own watcher, so disabling dynamic registration here removes
+-- the duplicate work that was causing rust-analyzer / tsgo to hang or die.
+vim.lsp.config("*", {
+  capabilities = {
+    workspace = {
+      didChangeWatchedFiles = { dynamicRegistration = false },
+    },
+  },
+})
+
 vim.lsp.enable({
   "astro",
-  "biome",
   "clangd",
   "eslint",
   "gopls",
@@ -105,6 +109,7 @@ vim.lsp.enable({
 require("conform").setup({
   formatters_by_ft = {
     javascript = { "oxlint", "oxfmt" },
+    javascriptreact = { "oxlint", "oxfmt" },
     typescript = { "oxlint", "oxfmt" },
     typescriptreact = { "oxlint", "oxfmt" },
     json = { "oxfmt" },
@@ -112,9 +117,10 @@ require("conform").setup({
     markdown = { "oxfmt" },
     lua = { "stylua" },
   },
+  default_format_opts = { timeout_ms = 1000, lsp_format = "fallback" },
   format_on_save = function(bufnr)
     if not vim.b[bufnr].no_format then
-      return { timeout_ms = 2500, lsp_format = "first" }
+      return {}
     end
   end,
   formatters = {
