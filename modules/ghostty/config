@@ -1,8 +1,8 @@
 font-size = 20
-font-family = Iosevka Term SS14
-window-title-font-family = Iosevka Fixed SS14
+font-family = Ioskeley Mono Semi-Condensed
+window-title-font-family = Ioskeley Mono Semi-Condensed
 auto-update-channel = tip
-theme = light:Everforest Light Med, dark:Everforest Dark Hard
+theme = light:Dayfox, dark:Carbonfox
 window-save-state = always
 macos-option-as-alt = left
 macos-titlebar-style = tabs

@@ -8,7 +8,7 @@ local common_casks = {
   "betterdisplay",
   "cleanshot",
   "datagrip",
-  "font-iosevka-ss14",
+  "font-ioskeley-mono",
   "ghostty",
   "helium-browser",
   "imageoptim",
