@@ -31,3 +31,11 @@ rb.file("~/.config/sops/age/keys.txt", table.concat({
   "# public key: " .. rb.secret.op("op://Development/AGE Key/username"),
   "AGE-SECRET-KEY-" .. rb.secret.op("op://Development/AGE Key/password"),
 }, "\n") .. "\n")
+
+-- Load Berkeley Mono Variable font on macOS
+if rb.host.os == "macos" then
+  rb.secret.op_document(
+    "Berkeley Mono Variable",
+    "~/Library/Fonts/Berkeley Mono Variable.otf"
+  )
+end

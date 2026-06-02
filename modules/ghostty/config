@@ -1,6 +1,7 @@
 font-size = 20
-font-family = Ioskeley Mono Semi-Condensed
-window-title-font-family = Ioskeley Mono Semi-Condensed
+font-variation = wdth=90
+font-family = Berkeley Mono Variable
+window-title-font-family = Berkeley Mono Variable
 auto-update-channel = tip
 theme = light:Dayfox, dark:Carbonfox
 window-save-state = always
