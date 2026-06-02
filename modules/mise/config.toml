@@ -1,9 +1,9 @@
 [tools]
 go = "1.24"
-helm = "3"
-kubectl = "1.30"
+helm = "4"
+kubectl = "1.33"
 node = "24"
-pnpm = "10"
+pnpm = "11"
 python = "3.12"
 rust = "1.93"
 uv = "0"

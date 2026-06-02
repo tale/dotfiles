@@ -58,6 +58,7 @@ brew.config({
     "mise",
     "mkcert",
     "neovim",
+    "rage",
     "ripgrep",
     "rsync",
     "telnet",
