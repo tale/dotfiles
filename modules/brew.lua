@@ -5,17 +5,17 @@ local common_casks = {
   "1password",
   "1password-cli",
   "aldente",
+  "bartender",
   "betterdisplay",
   "cleanshot",
   "datagrip",
-  "font-ioskeley-mono",
   "ghostty",
   "helium-browser",
   "imageoptim",
   "logi-options+",
   "nikitabobko/tap/aerospace",
+  "notion-calendar",
   "orbstack",
-  "postman",
   "raycast",
   "slack",
   "spotify",
@@ -23,9 +23,7 @@ local common_casks = {
 
 local extra_casks = profile.select({
   personal = {
-    "craft",
     "discord",
-    "fantastical",
     "modrinth",
     "soulver",
     "steam",
@@ -34,9 +32,8 @@ local extra_casks = profile.select({
     "zoom",
   },
   work = {
-    "linear-linear",
+    "linear",
     "notion",
-    "notion-calendar",
     "notion-mail",
   },
 })

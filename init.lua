@@ -20,7 +20,7 @@ require("modules.mise.config")
 
 if rb.host.os == "macos" then
   require("modules.brew")
-  require("modules.aerospace.config")
+  require("modules.aerospace")
   require("modules.macos.config")
 end
 
