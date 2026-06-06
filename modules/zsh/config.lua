@@ -9,6 +9,7 @@ end
 
 local functions = {
   __fzf_history = fn("__fzf_history"),
+  __ghostty_sessionizer = fn("__ghostty_sessionizer"),
   git_rebase_upstream = fn("git_rebase_upstream"),
   git_stack_new = fn("git_stack_new"),
 }
@@ -93,9 +94,13 @@ zsh.config({
     },
   },
   functions = functions,
-  widgets = { "__fzf_history" },
+  widgets = {
+    "__fzf_history",
+    "__ghostty_sessionizer",
+  },
   keybindings = {
     ["^R"] = "__fzf_history",
+    ["^F"] = "__ghostty_sessionizer",
   },
   evals = {
     "mise activate zsh",
