@@ -9,9 +9,11 @@ end
 
 local functions = {
   __fzf_history = fn("__fzf_history"),
+  __ghostty_open = fn("__ghostty_open"),
   __ghostty_sessionizer = fn("__ghostty_sessionizer"),
   git_rebase_upstream = fn("git_rebase_upstream"),
   git_stack_new = fn("git_stack_new"),
+  git_worktree = fn("git_worktree"),
 }
 
 if is_mac then
@@ -65,6 +67,8 @@ zsh.config({
     gs = "git status",
     gsn = "git_stack_new",
     gsu = "git_rebase_upstream",
+    gwt = "git_worktree",
+    gwtn = "git_worktree -n",
     k = "kubectl",
     la = "lsd -la --group-directories-first",
     ls = "lsd -l --group-directories-first",
