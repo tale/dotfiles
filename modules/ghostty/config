@@ -6,7 +6,6 @@ auto-update-channel = tip
 theme = light:Dayfox, dark:Carbonfox
 window-save-state = always
 macos-option-as-alt = left
-macos-titlebar-style = tabs
 
 keybind = ctrl+space>t=new_tab
 keybind = ctrl+space>q=close_surface

@@ -37,6 +37,7 @@ vim.pack.add({
   "https://github.com/nvim-mini/mini.icons",
   "https://github.com/stevearc/oil.nvim",
   "https://github.com/neovim/nvim-lspconfig",
+  "https://github.com/mfussenegger/nvim-jdtls",
   "https://github.com/stevearc/conform.nvim",
   "https://github.com/ibhagwan/fzf-lua",
   {
@@ -91,12 +92,56 @@ vim.lsp.config("*", {
   },
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "java",
+  callback = function(args)
+    local jdtls = require("jdtls")
+    local root_dir = vim.fs.root(args.buf, {
+      "gradlew",
+      "settings.gradle",
+      "build.gradle",
+      ".git",
+    })
+
+    if not root_dir then
+      return
+    end
+
+    local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
+    local workspace_dir = vim.fn.stdpath("cache") .. "/jdtls/" .. project_name
+    local extended_client_capabilities = vim.deepcopy(jdtls.extendedClientCapabilities or {})
+    extended_client_capabilities.classFileContentsSupport = true
+
+    jdtls.start_or_attach({
+      cmd = { "jdtls", "-data", workspace_dir },
+      root_dir = root_dir,
+      capabilities = {
+        workspace = {
+          didChangeWatchedFiles = { dynamicRegistration = false },
+        },
+      },
+      init_options = {
+        extendedClientCapabilities = extended_client_capabilities,
+      },
+      settings = {
+        java = {
+          import = {
+            gradle = { enabled = true },
+          },
+          configuration = {
+            updateBuildConfiguration = "automatic",
+          },
+        },
+      },
+    })
+  end,
+})
+
 vim.lsp.enable({
   "astro",
   "clangd",
   "eslint",
   "gopls",
-  "jdtls",
   "lua_ls",
   "oxlint",
   "rust_analyzer",
@@ -108,6 +153,7 @@ vim.lsp.enable({
 
 require("conform").setup({
   formatters_by_ft = {
+    java = { "palantir-java-format" },
     javascript = { "oxlint", "oxfmt" },
     javascriptreact = { "oxlint", "oxfmt" },
     typescript = { "oxlint", "oxfmt" },

@@ -20,4 +20,4 @@ uv = "0"
 
 [settings]
 experimental = true
-idiomatic_version_file_enable_tools = ["python"]
+idiomatic_version_file_enable_tools = ["java", "node", "python"]
