@@ -9,6 +9,7 @@ rb.profile.define({
   },
 })
 
+require("modules.claude.config")
 require("modules.git")
 require("modules.ripgrep")
 require("modules.ssh")
