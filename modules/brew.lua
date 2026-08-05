@@ -1,5 +1,6 @@
 local brew = require("rootbeer.brew")
 local profile = require("rootbeer.profile")
+local rb = require("rootbeer")
 
 local common_casks = {
   "1password",
@@ -46,6 +47,7 @@ brew.config({
     "xz",
     "curl",
     "fzf",
+    "gh",
     "git",
     "git-delta",
     "git-lfs",
@@ -70,3 +72,7 @@ brew.config({
     },
   }),
 })
+
+if not rb.path_exists("~/.local/share/gh/extensions/gh-stack") then
+  rb.exec("gh", { "extension", "install", "github/gh-stack" })
+end
