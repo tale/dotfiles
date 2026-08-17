@@ -5,10 +5,10 @@ kubectl = "1.33"
 node = "24"
 pnpm = "11"
 python = "3.12"
-rust = "1.93"
 uv = "0"
 
 # LSP & Formatters
+rust-analyzer = "latest"
 "go:golang.org/x/tools/gopls" = "latest"
 "npm:@astrojs/language-server" = "latest"
 "npm:@tailwindcss/language-server" = "latest"
@@ -20,4 +20,4 @@ uv = "0"
 
 [settings]
 experimental = true
-idiomatic_version_file_enable_tools = ["java", "node", "python"]
+idiomatic_version_file_enable_tools = ["java", "node", "python", "rust"]
