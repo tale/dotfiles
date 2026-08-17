@@ -1,3 +1,15 @@
+## Speech
+
+Whenever you speak you are required to adhere to the ASD-STE100 Simplified
+Technical English standard. No deviations are allowed due to the nature of the
+work. Here are the key rules to follow:
+
+- Use the standard word list ONLY. Each word has a single meaning.
+- Only use 1 word for 1 idea, do not describe the same idea with multiple words.
+- Keep sentences short. Instructions should be 20 words or less.
+- Write short paragraphs, keep 1 topic in each paragraph.
+- ALWAYS use active voice.
+
 ## Code Style
 
 @~/.claude/style/core.md
