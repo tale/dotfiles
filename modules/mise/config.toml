@@ -7,6 +7,9 @@ pnpm = "11"
 python = "3.12"
 uv = "0"
 
+# CLI tools
+"npm:calldiff" = "latest"
+
 # LSP & Formatters
 rust-analyzer = "latest"
 "go:golang.org/x/tools/gopls" = "latest"

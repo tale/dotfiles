@@ -1,53 +1,33 @@
 ## Speech
 
-Whenever you speak you are required to adhere to the ASD-STE100 Simplified
-Technical English standard. No deviations are allowed due to the nature of the
-work. Here are the key rules to follow:
+- Be concise. Short answers for short questions. No walls of text.
+- Terminal reader: no heavy headers/sections for simple answers, optimize for
+  scrolling. Perfect grammar not required, getting to the point is.
 
-- Use the standard word list ONLY. Each word has a single meaning.
-- Only use 1 word for 1 idea, do not describe the same idea with multiple words.
-- Keep sentences short. Instructions should be 20 words or less.
-- Write short paragraphs, keep 1 topic in each paragraph.
-- ALWAYS use active voice.
+## Code style
 
-## Code Style
+- Flat control flow: guard clauses, early returns. No deep nesting.
+- Blank lines between logical steps. Guards packed at top.
+- Near-zero comments. Why-only, 1-2 lines. Doc comments on public API only.
+- Lean deps: stdlib first. No speculative abstraction or one-impl interfaces.
+- No emoji. Unicode typography (`→ —`) fine.
+- Never: placeholder stubs, fake data, comments that echo the chat.
 
-@~/.claude/style/core.md
+## Naming
 
-## Programming
+- Predicate booleans: is/has/can/should. Disambiguate: `created_datetime`.
+- [work] No abbreviations. Collections suffixed (`labelList`). Acronyms `Id`.
+- [personal] `opts`/`ctx`/`pkg` fine. Acronyms `ID`/`URL`.
 
-Apply these criteria to any code you write:
+## Commits
 
-- Value simplicity and cleanliness over cleverness. Control flow should be very
-  easy to follow for both your operator and others who maintain the codebase. Do
-  not compromise readability for the sake of brevity, nor should you compromise
-  functionality for the sake of simplicity. There is a balance
+- [personal] `type(scope): lowercase imperative`. [work] Sentence-case, no
+  prefix.
+- Bodies rare: one WHY sentence. Surgical diffs, no drive-by cleanup.
 
-- When making edits, imagine you are a surgeon with a scalpel. Make precise,
-  minimal edits to achieve outcomes. Avoid large, sweeping changes since they
-  can introduce bugs and make it harder to review (unless explicitly asked).
+## Workflow
 
-- Do not add spurious comments. When writing code, it should generally be self-
-  commenting. Only in cases where the intent may be unclear, or where there are
-  non-obvious tradeoffs, should you add comments. Be concise and to the point in
-  them. If you are unsure, err on the side of not adding a comment.
-
-## Tools
-- [work] Branches will typically follow the format `tale/<ticket>-<desc>`. For
-  example, `tale/HZN-1234-do-something`. You should always rely on Linear MCP to
-  extract ticket information, which you derive from the branch name. Do this
-  before writing any code.
-
-- The operator will paste in GitHub links all the time, you should rely on the
-  GitHub CLI `gh` to aid in acting upon those links as they are private.
-
-## Rules
-- The operator is Vim-focused and works solely in the terminal. When asked to
-  summarize, plan, or explain, you should do so in a way that is concise, gets
-  to the point, does not necessarily adhere to perfect grammar, and is optimized
-  for scrolling and reading in a terminal because it's tedious to do so.
-
-- You may think to check lints and tests, but please ignore them in the middle
-  of your work and run them at the end. Things like ESLint and Oxlint failing
-  and needing manual correction can be deferred to the operator, don't waste 
-  time and tokens on them.
+- [work] Branches: `tale/<ticket>-<desc>`. Pull ticket via Linear MCP before
+  writing code.
+- Use `gh` for GitHub links (repos are private).
+- Defer lint/test fixes to the end; don't churn on them mid-task.
