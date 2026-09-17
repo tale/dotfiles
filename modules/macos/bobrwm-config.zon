@@ -1,0 +1,57 @@
+.{
+    .start_at_login = true,
+    .layout = .bsp,
+    .dimmed_inactive = .{
+        .enabled = true,
+        .level = 0.25,
+    },
+    .gaps = .{
+        .inner = 4,
+        .outer = .{ .left = 4, .right = 4, .top = 4, .bottom = 4 },
+    },
+
+    .workspace_names = .{ "term", "web", "chat", "4", "cal", "music", "mail" },
+    .keybinds = .{
+        .{ .key = "1", .mods = .{ .alt = true }, .action = .focus_workspace, .arg = 1 },
+        .{ .key = "2", .mods = .{ .alt = true }, .action = .focus_workspace, .arg = 2 },
+        .{ .key = "3", .mods = .{ .alt = true }, .action = .focus_workspace, .arg = 3 },
+        .{ .key = "4", .mods = .{ .alt = true }, .action = .focus_workspace, .arg = 4 },
+        .{ .key = "a", .mods = .{ .alt = true }, .action = .focus_workspace, .arg = 5 },
+        .{ .key = "s", .mods = .{ .alt = true }, .action = .focus_workspace, .arg = 6 },
+        .{ .key = "d", .mods = .{ .alt = true }, .action = .focus_workspace, .arg = 7 },
+
+        .{ .key = "1", .mods = .{ .alt = true, .shift = true }, .action = .move_to_workspace, .arg = 1 },
+        .{ .key = "2", .mods = .{ .alt = true, .shift = true }, .action = .move_to_workspace, .arg = 2 },
+        .{ .key = "3", .mods = .{ .alt = true, .shift = true }, .action = .move_to_workspace, .arg = 3 },
+        .{ .key = "4", .mods = .{ .alt = true, .shift = true }, .action = .move_to_workspace, .arg = 4 },
+        .{ .key = "a", .mods = .{ .alt = true, .shift = true }, .action = .move_to_workspace, .arg = 5 },
+        .{ .key = "s", .mods = .{ .alt = true, .shift = true }, .action = .move_to_workspace, .arg = 6 },
+        .{ .key = "d", .mods = .{ .alt = true, .shift = true }, .action = .move_to_workspace, .arg = 7 },
+
+        .{ .key = "h", .mods = .{ .alt = true }, .action = .focus_left },
+        .{ .key = "j", .mods = .{ .alt = true }, .action = .focus_down },
+        .{ .key = "k", .mods = .{ .alt = true }, .action = .focus_up },
+        .{ .key = "l", .mods = .{ .alt = true }, .action = .focus_right },
+
+        .{ .key = "e", .mods = .{ .alt = true }, .action = .toggle_split },
+        .{ .key = "f", .mods = .{ .alt = true }, .action = .toggle_fullscreen },
+        .{ .key = "space", .mods = .{ .alt = true, .shift = true }, .action = .toggle_float },
+        .{ .key = "space", .mods = .{ .alt = true, .shift = true, .ctrl = true }, .action = .move_workspace_to_display, .arg = 0 },
+    },
+
+    .app_rules = .{
+        .{ .app_id = "{{private_value}}", .workspace = 1 },
+        .{ .app_id = "net.imput.helium", .workspace = 2 },
+        .{ .app_id = "com.hnc.Discord", .workspace = 3 },
+        .{ .app_id = "com.copilot.production", .workspace = 4 },
+        .{ .app_id = "com.cron.electron", .workspace = 5 },
+        .{ .app_id = "com.spotify.client", .workspace = 6 },
+        .{ .app_id = "com.apple.mail", .workspace = 7 },
+        .{ .app_id = "com.1password.1password", .float = true },
+        .{ .app_id = "com.apple.finder", .float = true },
+        .{ .app_id = "com.apple.systempreferences", .float = true },
+        .{ .app_id = "com.apple.MobileSMS", .float = true },
+        .{ .app_id = "com.culturedcode.ThingsMac", .float = true },
+    },
+}
+

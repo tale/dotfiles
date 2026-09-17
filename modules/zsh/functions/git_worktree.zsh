@@ -16,7 +16,7 @@ local hash=$(printf '%s' "$branch" | shasum -a 256 | cut -c1-7)
 local dir="${main_root:h}/${main_root:t}-${hash}"
 
 if [[ -d "$dir" ]]; then
-	__ghostty_open "$dir"
+	__session_open "$dir"
 	return
 fi
 
@@ -33,4 +33,4 @@ else
 	git worktree add --track -b "$branch" "$dir" "origin/$branch" || return 1
 fi
 
-__ghostty_open "$dir"
+__session_open "$dir"

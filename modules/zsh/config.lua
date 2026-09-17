@@ -2,15 +2,27 @@ local rb = require("rootbeer")
 local zsh = require("rootbeer.zsh")
 
 local is_mac = rb.host.os == "macos"
+local package_env = rb.env_export("sh")
+local package_bin = rb.bin_dir()
 
 local function fn(name)
   return rb.read_file("modules/zsh/functions/" .. name .. ".zsh")
 end
 
+local function secret(name)
+  return rb.secret.age("private/" .. name .. ".age", {
+    identity = "~/.config/sops/age/keys.txt",
+  })
+end
+
 local functions = {
+  __rootbeer_path = string.format([[
+local package_bin=%q
+path=("$package_bin" "${(@)path:#$package_bin}")
+]], package_bin),
   __fzf_history = fn("__fzf_history"),
-  __ghostty_open = fn("__ghostty_open"),
-  __ghostty_sessionizer = fn("__ghostty_sessionizer"),
+  __session_open = secret("alpha-open.zsh"),
+  __sessionizer = secret("alpha-sessionizer.zsh"),
   git_worktree = fn("git_worktree"),
 }
 
@@ -23,6 +35,8 @@ zsh.config({
     EDITOR = "nvim",
     VISUAL = "$EDITOR",
     OS = "$(uname -s)",
+    OP_BIOMETRIC_UNLOCK_ENABLED = is_mac and "true" or nil,
+    PATH = is_mac and secret("alpha-path") or nil,
     RIPGREP_CONFIG_PATH = "$HOME/.config/ripgrep/rc",
     SSH_AUTH_SOCK = is_mac and "$HOME/.config/1Password/agent.sock" or nil,
   },
@@ -35,8 +49,10 @@ zsh.config({
       "$HOME/.amp/bin",
       "$HOME/.rootbeer/bin",
       "$HOME/.local/bin",
+      package_bin,
     },
   } or nil,
+  sources = { package_env },
   keybind_mode = "emacs",
   options = { "CORRECT", "EXTENDED_GLOB" },
   variables = is_mac and { d = "$HOME/code" } or {},
@@ -57,6 +73,7 @@ zsh.config({
     gd = "git diff",
     gdc = "git diff --cached",
     gf = "git fetch",
+    gl = "git log --oneline --graph --decorate --all",
     gm = "git merge",
     gp = "git pull",
     gpfh = "git push --force-with-lease origin HEAD",
@@ -104,13 +121,18 @@ zsh.config({
   functions = functions,
   widgets = {
     "__fzf_history",
-    "__ghostty_sessionizer",
+    "__sessionizer",
   },
   keybindings = {
     ["^R"] = "__fzf_history",
-    ["^F"] = "__ghostty_sessionizer",
+    ["^F"] = "__sessionizer",
   },
   evals = {
-    "mise activate zsh",
+    rb.bin_path("mise") .. " activate zsh",
+  },
+  extra = {
+    "add-zsh-hook precmd __rootbeer_path",
+    "add-zsh-hook chpwd __rootbeer_path",
+    "__rootbeer_path",
   },
 })

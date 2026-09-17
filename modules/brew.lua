@@ -4,7 +4,6 @@ local rb = require("rootbeer")
 
 local common_casks = {
   "1password",
-  "1password-cli",
   "aldente",
   "bartender",
   "betterdisplay",
@@ -14,7 +13,6 @@ local common_casks = {
   "helium-browser",
   "imageoptim",
   "logi-options+",
-  "nikitabobko/tap/aerospace",
   "notion-calendar",
   "orbstack",
   "raycast",
@@ -39,30 +37,10 @@ local extra_casks = profile.select({
   },
 })
 
-local casks = table.move(common_casks, 1, #common_casks, 1, extra_casks)
+local casks =
+  table.move(extra_casks, 1, #extra_casks, #common_casks + 1, common_casks)
 
 brew.config({
-  formulae = {
-    "chezmoi",
-    "xz",
-    "curl",
-    "fzf",
-    "gh",
-    "git",
-    "git-delta",
-    "git-lfs",
-    "jq",
-    "lsd",
-    "make",
-    "mise",
-    "mkcert",
-    "neovim",
-    "rage",
-    "ripgrep",
-    "rsync",
-    "telnet",
-    "wget",
-  },
   casks = casks,
   mas = profile.select({
     default = {},
@@ -74,5 +52,10 @@ brew.config({
 })
 
 if not rb.path_exists("~/.local/share/gh/extensions/gh-stack") then
-  rb.exec("gh", { "extension", "install", "github/gh-stack" })
+  rb.exec("sh", {
+    "-c",
+    '. "$1"; exec gh extension install github/gh-stack',
+    "rootbeer-gh",
+    rb.env_export("sh"),
+  })
 end

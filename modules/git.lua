@@ -15,10 +15,11 @@ git.config({
   signing = {
     key = rb.secret.op("op://Development/GitHub Key/public key"),
     format = "ssh",
+    allowed_signers = { "git@tale.me", "atale@spear.ai" },
   },
   lfs = true,
   pull_rebase = true,
-  merge_conflictstyle = "diff3",
+  merge_conflictstyle = "zdiff3",
   ignores = {
     ".DS_Store",
     ".AppleDouble",
@@ -38,10 +39,6 @@ git.config({
     "Temporary Items",
     ".apdisk",
     "*~",
-    ".fuse_hidden*",
-    ".directory",
-    ".Trash-*",
-    ".nfs*",
   },
   extra = {
     delta = {
@@ -51,5 +48,29 @@ git.config({
     interactive = {
       diffFilter = "delta --color-only",
     },
+    rerere = {
+      enabled = true,
+      autoUpdate = true,
+    },
+    rebase = {
+      autoStash = true,
+      autoSquash = true,
+      updateRefs = true,
+    },
+    fetch = {
+      prune = true,
+      pruneTags = true,
+    },
+    diff = {
+      algorithm = "histogram",
+      colorMoved = "default",
+      mnemonicPrefix = true,
+      renames = "copies",
+    },
+    tag = { sort = "-version:refname" },
+    branch = { sort = "-committerdate" },
+    column = { ui = "auto" },
+    init = { defaultBranch = "main" },
+    push = { followTags = true },
   },
 })

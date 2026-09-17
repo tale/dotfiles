@@ -1,14 +1,16 @@
 local rb = require("rootbeer")
 
 rb.profile.define({
-  strategy = "command",
+  strategy = function(ctx)
+    return ctx.cli() or "personal"
+  end,
   profiles = {
-    -- Iru is endpoint security for work
-    work = { "iru" },
+    work = {},
     personal = {},
   },
 })
 
+require("modules.packages")
 require("modules.claude.config")
 require("modules.git")
 require("modules.ripgrep")
@@ -21,7 +23,6 @@ require("modules.mise.config")
 
 if rb.host.os == "macos" then
   require("modules.brew")
-  require("modules.aerospace")
   require("modules.macos.config")
 end
 

@@ -1,26 +1,22 @@
 vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
 vim.opt.updatetime = 100
 vim.opt.clipboard = "unnamedplus"
 vim.opt.scrolloff = 99999
-vim.opt.termguicolors = true
-vim.opt.autoread = true
 vim.opt.undofile = true
 vim.opt.swapfile = false
-vim.opt.backup = false
 vim.opt.colorcolumn = "80"
+vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 vim.opt.showmode = false
 vim.opt.showcmd = false
 vim.opt.ruler = false
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.shiftround = true
-vim.opt.expandtab = false
-vim.opt.incsearch = true
+vim.opt.expandtab = true
 vim.opt.hlsearch = false
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -33,11 +29,10 @@ vim.pack.add({
   "https://github.com/wakatime/vim-wakatime",
   "https://github.com/zbirenbaum/copilot.lua",
   "https://github.com/lewis6991/gitsigns.nvim",
-  "https://github.com/mg979/vim-visual-multi",
   "https://github.com/nvim-mini/mini.icons",
   "https://github.com/stevearc/oil.nvim",
   "https://github.com/neovim/nvim-lspconfig",
-  "https://github.com/mfussenegger/nvim-jdtls",
+  "https://github.com/nvim-treesitter/nvim-treesitter",
   "https://github.com/stevearc/conform.nvim",
   "https://github.com/ibhagwan/fzf-lua",
   {
@@ -76,65 +71,59 @@ require("copilot").setup({
   panel = { enabled = false, keymap = { open = "<M-l>" } },
 })
 
+local ts = require("nvim-treesitter")
+local stable, pending = nil, {}
+
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function(args)
+    local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
+    if not lang then
+      return
+    end
+
+    if vim.treesitter.language.add(lang) then
+      vim.treesitter.start(args.buf, lang)
+      return
+    end
+
+    stable = stable or ts.get_available(1)
+    if pending[lang] or not vim.tbl_contains(stable, lang) then
+      return
+    end
+
+    pending[lang] = true
+    ts.install(lang):await(function(err)
+      vim.schedule(function()
+        if not err and vim.api.nvim_buf_is_valid(args.buf) then
+          vim.treesitter.start(args.buf, lang)
+        end
+      end)
+    end)
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "go", "gomod", "gowork" },
+  callback = function(args)
+    vim.bo[args.buf].expandtab = false
+    vim.bo[args.buf].tabstop = 4
+    vim.bo[args.buf].softtabstop = 4
+    vim.bo[args.buf].shiftwidth = 4
+  end,
+})
+
 vim.diagnostic.config({
   virtual_text = true,
   virtual_lines = { current_line = true },
 })
 
--- Big monorepos choke Neovim's libuv-based file watcher. Every enabled LSP
--- server has its own watcher, so disabling dynamic registration here removes
--- the duplicate work that was causing rust-analyzer / tsgo to hang or die.
-vim.lsp.config("*", {
-  capabilities = {
-    workspace = {
-      didChangeWatchedFiles = { dynamicRegistration = false },
+vim.lsp.config("jdtls", {
+  settings = {
+    java = {
+      import = { gradle = { enabled = true } },
+      configuration = { updateBuildConfiguration = "automatic" },
     },
   },
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "java",
-  callback = function(args)
-    local jdtls = require("jdtls")
-    local root_dir = vim.fs.root(args.buf, {
-      "gradlew",
-      "settings.gradle",
-      "build.gradle",
-      ".git",
-    })
-
-    if not root_dir then
-      return
-    end
-
-    local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
-    local workspace_dir = vim.fn.stdpath("cache") .. "/jdtls/" .. project_name
-    local extended_client_capabilities = vim.deepcopy(jdtls.extendedClientCapabilities or {})
-    extended_client_capabilities.classFileContentsSupport = true
-
-    jdtls.start_or_attach({
-      cmd = { "jdtls", "-data", workspace_dir },
-      root_dir = root_dir,
-      capabilities = {
-        workspace = {
-          didChangeWatchedFiles = { dynamicRegistration = false },
-        },
-      },
-      init_options = {
-        extendedClientCapabilities = extended_client_capabilities,
-      },
-      settings = {
-        java = {
-          import = {
-            gradle = { enabled = true },
-          },
-          configuration = {
-            updateBuildConfiguration = "automatic",
-          },
-        },
-      },
-    })
-  end,
 })
 
 vim.lsp.enable({
@@ -142,18 +131,20 @@ vim.lsp.enable({
   "clangd",
   "eslint",
   "gopls",
+  "jdtls",
   "lua_ls",
   "oxlint",
   "rust_analyzer",
+  "sourcekit",
   "tailwindcss",
-  "tinymist",
   "tsgo",
   "yamlls",
 })
 
 require("conform").setup({
   formatters_by_ft = {
-    java = { "palantir-java-format" },
+    go = { "goimports" },
+    java = { lsp_format = "never" },
     javascript = { "oxlint", "oxfmt" },
     javascriptreact = { "oxlint", "oxfmt" },
     typescript = { "oxlint", "oxfmt" },
@@ -171,7 +162,13 @@ require("conform").setup({
   end,
   formatters = {
     oxfmt = { require_cwd = true },
-    oxlint = { require_cwd = true },
+    oxlint = {
+      require_cwd = true,
+      cwd = require("conform.util").root_file({
+        ".oxlintrc.json",
+        "oxlint.config.ts",
+      }),
+    },
     stylua = { require_cwd = true },
   },
 })
