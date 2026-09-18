@@ -2,10 +2,10 @@ local rb = require("rootbeer")
 
 rb.profile.define({
   strategy = function(ctx)
-    return ctx.cli() or "personal"
+    return ctx.cli() or ctx.command() or "personal"
   end,
   profiles = {
-    work = {},
+    work = { "iru" },
     personal = {},
   },
 })

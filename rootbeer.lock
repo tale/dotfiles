@@ -6,7 +6,7 @@
         "type": "aqua_registry",
         "owner": "aquaproj",
         "repo": "aqua-registry",
-        "rev": "20840318e54171e9013ba86203dff903e7573c6a"
+        "rev": "f8e26c6651b3bd6481fd278ae2162f22ea21c2c1"
       },
       "rootbeer": {
         "type": "official_index",
@@ -15,7 +15,7 @@
       }
     }
   },
-  "input_fingerprint": "c3878931f11dea7248ea8f89ced57f38fd1e5f5ee914f2466099c4ff2e3b8169",
+  "input_fingerprint": "02209201334b47533996803a9d0d0d0f120c9106bbb6141f97c70f583c4ecdd0",
   "resolutions": {
     "011490eaaffa1253df9f89fc6ecefd625acd550d705a3b3d10e3d5eccd8a719b": {
       "package": "ripgrep@15.2.0",
@@ -115,20 +115,6 @@
         "receipt_sha256": "f511c58fb526cf3a396e7c8e57275209cbd755ed50313f86aedba4a1822a7664"
       }
     },
-    "5a14835fff033a113a68a7576584a6cd065bf15e7a9a00831207c95aa9678014": {
-      "package": "mkcert@1.4.4",
-      "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 2,
-        "system": "aarch64-macos",
-        "receipt_sha256": "45c3569da6ce18403aaffe2fd0dc7b00639b6e1a7a545eac7e48729146f50557"
-      }
-    },
     "5d05abba7e23107d0bfe560904d62492f8153086cba8d421d3994c1e5b9f97ef": {
       "package": "tree-sitter@0.27.0",
       "proof": {
@@ -183,20 +169,6 @@
         "revision": 2,
         "system": "aarch64-macos",
         "receipt_sha256": "60fa2a2943f35997e373844d679eefbdfea1d463f2747b0b2f884ca7f966bb55"
-      }
-    },
-    "859eafc5ef38ea1e3b783374ffaac68cd862e5f8534b95ec5615e7e15126c714": {
-      "package": "chezmoi@2.72.2",
-      "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 2,
-        "system": "aarch64-macos",
-        "receipt_sha256": "dabd955da23e99d489e45d461a68c66e261a2c4df944429faa2e544e8fbd6d0e"
       }
     },
     "89f71e560a671fd16a3f4bbb0416cb44187ad125965e40cc3be4895ca74fd209": {
@@ -283,6 +255,48 @@
         "receipt_sha256": "4fa6a68ff994684949f1dbcd0656b5cacaa1d385d3c0bcc74610f704e4d08d1e"
       }
     },
+    "c7a62bc07e063ca09813f01893e6c78ad3d87e1d90d47cc151497d2bd4281802": {
+      "package": "prtui@0.4.0",
+      "proof": {
+        "type": "published_index",
+        "index": {
+          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
+          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
+        },
+        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
+        "revision": 1,
+        "system": "aarch64-macos",
+        "receipt_sha256": "f8e2c7def6255effa101072cee40011bf15979b6ca1f8d97adbec885e3877a27"
+      }
+    },
+    "cd5389cfba8d4a87e873ef4fb638c512127230f08b95942771d95b0db0dbdf63": {
+      "package": "curl@8.22.0",
+      "proof": {
+        "type": "published_index",
+        "index": {
+          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
+          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
+        },
+        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
+        "revision": 2,
+        "system": "aarch64-macos",
+        "receipt_sha256": "df893dce1598b48022052128e9e1d4c267469106850990ccadbbab5323ac85e0"
+      }
+    },
+    "cd98441737b14ff0186b367bcca424fbce29bf0373823e42289f2fb2552d1933": {
+      "package": "git@2.55.0",
+      "proof": {
+        "type": "published_index",
+        "index": {
+          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
+          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
+        },
+        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
+        "revision": 4,
+        "system": "aarch64-macos",
+        "receipt_sha256": "4e5bc174d38a473c06b2979a9c0b0a90002faa59467196ab4797daeebc59288c"
+      }
+    },
     "d2257bd58dd146797c87dc334cc7f5ae6babaf95c236b9b0991f51e4a67359aa": {
       "package": "mise@2026.9.7",
       "proof": {
@@ -297,6 +311,20 @@
         "receipt_sha256": "18ccf3d7a8b188524ebe43b4373c4114ea1776f7d4bb484985e5d1954ad545b0"
       }
     },
+    "d2b41c9a72d1a8aabd23feb5d2b549d433152461527f08128479a935648d767d": {
+      "package": "rsync@3.5.0",
+      "proof": {
+        "type": "published_index",
+        "index": {
+          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
+          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
+        },
+        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
+        "revision": 1,
+        "system": "aarch64-macos",
+        "receipt_sha256": "53c50a192ae33f89bb853a314142d93ba13baa777a8dd8f14d1969588d3c0c53"
+      }
+    },
     "de953d48ff135b1188639fb866ecbaedb88b5c1acb415ae49bc042c665a59afc": {
       "package": "aqua:1password/cli@v2.31.1",
       "proof": {
@@ -306,15 +334,15 @@
           "type": "git_hub_repository",
           "owner": "aquaproj",
           "repo": "aqua-registry",
-          "rev": "20840318e54171e9013ba86203dff903e7573c6a"
+          "rev": "f8e26c6651b3bd6481fd278ae2162f22ea21c2c1"
         },
         "documents": [
           {
-            "url": "https://raw.githubusercontent.com/aquaproj/aqua-registry/20840318e54171e9013ba86203dff903e7573c6a/pkgs/1password/cli/pkg.yaml",
+            "url": "https://raw.githubusercontent.com/aquaproj/aqua-registry/f8e26c6651b3bd6481fd278ae2162f22ea21c2c1/pkgs/1password/cli/pkg.yaml",
             "sha256": "d4a0adf3e2ec6bd9a663e3e9367f2174eef13138c5e7279a64023170841d584c"
           },
           {
-            "url": "https://raw.githubusercontent.com/aquaproj/aqua-registry/20840318e54171e9013ba86203dff903e7573c6a/pkgs/1password/cli/registry.yaml",
+            "url": "https://raw.githubusercontent.com/aquaproj/aqua-registry/f8e26c6651b3bd6481fd278ae2162f22ea21c2c1/pkgs/1password/cli/registry.yaml",
             "sha256": "9d5b57c75a6506fe293553f25d53f44124b23a4789ca3f077860dc97c003e249"
           }
         ]
@@ -406,13 +434,13 @@
       },
       "output_sha256": "93ad53fd3cb75c2f382c855c1bf674a42cd2099a04c1fa9355615a18c6912f89"
     },
-    "chezmoi@2.72.2": {
-      "name": "chezmoi",
-      "version": "2.72.2",
+    "curl@8.22.0": {
+      "name": "curl",
+      "version": "8.22.0",
       "source": {
         "Url": {
-          "url": "https://github.com/twpayne/chezmoi/releases/download/v2.72.2/chezmoi_2.72.2_darwin_arm64.tar.gz",
-          "sha256": "2b0c7e57f3f2da44628fa9f6863b9bd41f0935cfd2416228aa9df6daab6690f5"
+          "url": "ghcr://tale/rootbeer-index/curl@sha256:9e62f3b801a935bde3d78be435c436a1c5f8f2e2a9164e9d15b07a81703441f9",
+          "sha256": "9e62f3b801a935bde3d78be435c436a1c5f8f2e2a9164e9d15b07a81703441f9"
         }
       },
       "install": {
@@ -423,10 +451,11 @@
       },
       "provides": {
         "bins": {
-          "chezmoi": "chezmoi"
+          "curl": "bin/curl",
+          "curl-config": "bin/curl-config"
         }
       },
-      "output_sha256": "ec84150e7787c792a77f1eca66c8e5ecd5e1b1717f0448985f3b0be8994a45d1"
+      "output_sha256": "33b43bfbbae1b283b65193e0d0a6e12b2fa30ad8899ea636fe838477fdc231fe"
     },
     "delta@0.19.2": {
       "name": "delta",
@@ -538,6 +567,31 @@
       },
       "output_sha256": "56f9520d8557f3078a0f04db194f313f6013e439069785284155121e54f4654e"
     },
+    "git@2.55.0": {
+      "name": "git",
+      "version": "2.55.0",
+      "source": {
+        "Url": {
+          "url": "ghcr://tale/rootbeer-index/git@sha256:f3629c24904aa79d9ff1f5361735f26d832321d7d4c68dbe70eec1b72554834e",
+          "sha256": "f3629c24904aa79d9ff1f5361735f26d832321d7d4c68dbe70eec1b72554834e"
+        }
+      },
+      "install": {
+        "Archive": {
+          "format": "TarGz",
+          "strip_prefix": null
+        }
+      },
+      "provides": {
+        "bins": {
+          "git": "bin/git",
+          "git-receive-pack": "bin/git-receive-pack",
+          "git-upload-archive": "bin/git-upload-archive",
+          "git-upload-pack": "bin/git-upload-pack"
+        }
+      },
+      "output_sha256": "2ee28e46ab8503e28dcc8f857b39acbf157a3aabc2a3de9758bb0d2ced0e17fd"
+    },
     "jq@1.8.2": {
       "name": "jq",
       "version": "1.8.2",
@@ -626,27 +680,6 @@
       },
       "output_sha256": "05730c15e89910108c2883ae1cc59114a4b12f1a14fc2c2590c1f6c65b406b19"
     },
-    "mkcert@1.4.4": {
-      "name": "mkcert",
-      "version": "1.4.4",
-      "source": {
-        "Url": {
-          "url": "https://github.com/FiloSottile/mkcert/releases/download/v1.4.4/mkcert-v1.4.4-darwin-arm64",
-          "sha256": "c8af0df44bce04359794dad8ea28d750437411d632748049d08644ffb66a60c6"
-        }
-      },
-      "install": {
-        "Binary": {
-          "path": "mkcert"
-        }
-      },
-      "provides": {
-        "bins": {
-          "mkcert": "mkcert"
-        }
-      },
-      "output_sha256": "310c7584cc8d2dac7e7263277813e519ab29bcc161a20727ecb82531d4bb0052"
-    },
     "neovim@0.12.5": {
       "name": "neovim",
       "version": "0.12.5",
@@ -668,6 +701,28 @@
         }
       },
       "output_sha256": "67af43f834be13f06f19967d7742feb4db3bb0f9bc841ddb79edc0c39eccda03"
+    },
+    "prtui@0.4.0": {
+      "name": "prtui",
+      "version": "0.4.0",
+      "source": {
+        "Url": {
+          "url": "ghcr://tale/rootbeer-index/prtui@sha256:8c67bdd5bddcc714b381f7460bc81892b66f334f13253645e2f450e4e8105b77",
+          "sha256": "8c67bdd5bddcc714b381f7460bc81892b66f334f13253645e2f450e4e8105b77"
+        }
+      },
+      "install": {
+        "Archive": {
+          "format": "TarGz",
+          "strip_prefix": null
+        }
+      },
+      "provides": {
+        "bins": {
+          "prtui": "bin/prtui"
+        }
+      },
+      "output_sha256": "ddd1ec800d03484ad1c040aeaca1ef716218812d6ad3ca851282f3703e04369a"
     },
     "rage@0.12.1": {
       "name": "rage",
@@ -713,6 +768,28 @@
         }
       },
       "output_sha256": "a3997a1d383ac97be0eec9d325c1cd3fd30a0981b05e2e7f40583a3adc59e843"
+    },
+    "rsync@3.5.0": {
+      "name": "rsync",
+      "version": "3.5.0",
+      "source": {
+        "Url": {
+          "url": "ghcr://tale/rootbeer-index/rsync@sha256:40fce5d4e78ba3a095f249bee032d8ee1018bfd972576fec77479c3546e60ec6",
+          "sha256": "40fce5d4e78ba3a095f249bee032d8ee1018bfd972576fec77479c3546e60ec6"
+        }
+      },
+      "install": {
+        "Archive": {
+          "format": "TarGz",
+          "strip_prefix": null
+        }
+      },
+      "provides": {
+        "bins": {
+          "rsync": "bin/rsync"
+        }
+      },
+      "output_sha256": "f1dcd4bc2f5727c534cf6770198cc4da06d98a5d63f81b4d62d5da35318b6882"
     },
     "stylua@2.5.2": {
       "name": "stylua",
