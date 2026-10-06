@@ -40,7 +40,7 @@
     },
 
     .app_rules = .{
-        .{ .app_id = "{{private_value}}", .workspace = 1 },
+        .{ .app_id = "com.superlogical.rex", .workspace = 1 },
         .{ .app_id = "net.imput.helium", .workspace = 2 },
         .{ .app_id = "com.hnc.Discord", .workspace = 3 },
         .{ .app_id = "com.copilot.production", .workspace = 4 },

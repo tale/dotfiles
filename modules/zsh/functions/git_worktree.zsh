@@ -1,3 +1,5 @@
+(( $+commands[rex] )) || { print -u2 'rex is not installed'; return 1; }
+
 local new=0
 if [[ "$1" == "-n" ]]; then
 	new=1
@@ -16,7 +18,7 @@ local hash=$(printf '%s' "$branch" | shasum -a 256 | cut -c1-7)
 local dir="${main_root:h}/${main_root:t}-${hash}"
 
 if [[ -d "$dir" ]]; then
-	__session_open "$dir"
+	rex do sessionizer "cwd=${dir:A}" > /dev/null
 	return
 fi
 
@@ -33,4 +35,4 @@ else
 	git worktree add --track -b "$branch" "$dir" "origin/$branch" || return 1
 fi
 
-__session_open "$dir"
+rex do sessionizer "cwd=${dir:A}" > /dev/null

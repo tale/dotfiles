@@ -2,364 +2,230 @@
   "schema": 2,
   "inputs": {
     "resolvers": {
-      "aqua": {
-        "type": "aqua_registry",
-        "owner": "aquaproj",
-        "repo": "aqua-registry",
-        "rev": "f8e26c6651b3bd6481fd278ae2162f22ea21c2c1"
-      },
       "rootbeer": {
-        "type": "official_index",
-        "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-        "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
+        "type": "repository",
+        "url": "https://pdr.rbpkg.com/v3/current.json",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "root": "6ecad355eba01a8b1114571357fec25585e24907d8e8b158343099a09d964d39"
       }
     }
   },
-  "input_fingerprint": "02209201334b47533996803a9d0d0d0f120c9106bbb6141f97c70f583c4ecdd0",
+  "input_fingerprint": "50b1669092da48706f73a3df5159427e9c47454822e05bf70c869bc7ff95a34f",
   "resolutions": {
     "011490eaaffa1253df9f89fc6ecefd625acd550d705a3b3d10e3d5eccd8a719b": {
       "package": "ripgrep@15.2.0",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 3,
-        "system": "aarch64-macos",
-        "receipt_sha256": "abf7a403e2796bcb66be7ddd28cac88fa46f2e57d3c6c9386e171e8d1bea393a"
+        "type": "package_record",
+        "record": "6f8e5df1082d202e52a0ac2eb769a6971208ba71f4f5fc06581d146847953833",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "0b13d11fd7075b265b0124d3085a65dfac434f5468e1ae34c73cc522de7ad412": {
       "package": "git-lfs@3.8.0",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 2,
-        "system": "aarch64-macos",
-        "receipt_sha256": "19df39ca5014fe77d4b854f51371a2f824e930b3ff82b6fc39bb5e522d633624"
+        "type": "package_record",
+        "record": "66af16f7849f548bace242e6348bb3da3ca3a68801de1a2a144c585b4e3f0f81",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "0f62eb1d653a4122e5a2ba85fa2b8845c2172a5ab60b76f441ffd2328d03738d": {
       "package": "rage@0.12.1",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 2,
-        "system": "aarch64-macos",
-        "receipt_sha256": "364dc64c603812d3481b8e41bb27bb11e1ce782370e520e787f3e0b01870a4c1"
+        "type": "package_record",
+        "record": "0cb2ad2e6d6f92faf97000c76e4d5527ef8df35679d51c55bd916d973d9336b2",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "2553d71629a21678f65e37b5087c05a24219edc13e7e3af27fa7a465d4a69386": {
-      "package": "xz@5.8.3",
+      "package": "xz@5.8.4",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 3,
-        "system": "aarch64-macos",
-        "receipt_sha256": "ef574ac7d1cb279b2541c7885bd59aba5769668c718ea95ca46072b6a93874e4"
+        "type": "package_record",
+        "record": "5daaa6ec86b4dbdef9854224ea01a2021477334bef90c5622a0efff6cda1d47c",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "2b63f5bbb0518d2b45edda074182f3092847cb8f7c099ad2786741732090f124": {
       "package": "neovim@0.12.5",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 2,
-        "system": "aarch64-macos",
-        "receipt_sha256": "5a520a3caac9675170045111214c4e9409d7e47c35414ac9a7f36dadf1591db8"
+        "type": "package_record",
+        "record": "0e34a326eb1cf001ed6e5b815b166fbf12047d44684c35cdac20e7dd6bf34571",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "3a0e768b3fc6844251ddc964e023e07e6e4b486fa5bcc45ab1a42583e486da79": {
       "package": "yq@4.53.6",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 2,
-        "system": "aarch64-macos",
-        "receipt_sha256": "0f84b83c34872118226e49745fe6a73f7810dc6fb145c804420b2dd0edf28f20"
+        "type": "package_record",
+        "record": "62e86d06e231321a419bcff69f52dc9863e0455e0757a837470dd35111b1a340",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "3ae9bbcbac3955a55d34bd6fc6af8ca7991e8c5a216f101f5f3b5f8bdfda8ccd": {
       "package": "bobrwm@0.1.0-main+572265d",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 2,
-        "system": "aarch64-macos",
-        "receipt_sha256": "f511c58fb526cf3a396e7c8e57275209cbd755ed50313f86aedba4a1822a7664"
+        "type": "package_record",
+        "record": "f0332337f7f24eff617373faf358b5c9f1c81848fbb75576de9eb74b1e39c4a8",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "5d05abba7e23107d0bfe560904d62492f8153086cba8d421d3994c1e5b9f97ef": {
       "package": "tree-sitter@0.27.0",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 2,
-        "system": "aarch64-macos",
-        "receipt_sha256": "2aec449f4536d6e201fd5d2559a5e1b18091b7298dc101bcbcf630a6e550c056"
+        "type": "package_record",
+        "record": "4fc5d7a4fc087e2ea6ed58d76abaebee9fdf6df922c48ae3f5dd158c46005bef",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "6054037d32b41cecc5c0e2aa718483e183a6b1077124d9a2d1911359a07308db": {
       "package": "delta@0.19.2",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 1,
-        "system": "aarch64-macos",
-        "receipt_sha256": "e6c55c6b71f454277560f1248e8f4739f7125f865ecb8e16cfcfb6b8aa5662b2"
+        "type": "package_record",
+        "record": "1dddf4be4a070ba95959c51702f5c148657589ccf8204e8194bcd0c7300ea8fc",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "7132fd7c521efd01a3f89e6aed2b13de9c8ef590a5b759380daebdde86c2ae28": {
-      "package": "gh@2.100.0",
+      "package": "gh@2.101.0",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 2,
-        "system": "aarch64-macos",
-        "receipt_sha256": "10032d2bb8eef64fcd7e59f371b9d0c820cd2c6645ec1808f139216cc076a348"
+        "type": "package_record",
+        "record": "0216eb403469ee9748352839f32a893ac2e0a4e34687a792c9af1f6293ea8c94",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "76487f24b783e36b1bbe56a71a2d9217782710abe27e6bde662972594e37d41a": {
       "package": "lsd@1.2.0",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 2,
-        "system": "aarch64-macos",
-        "receipt_sha256": "60fa2a2943f35997e373844d679eefbdfea1d463f2747b0b2f884ca7f966bb55"
+        "type": "package_record",
+        "record": "4afb05dc4aa761b27ab5bed1c8548885a2092096257110fa75197b7a39f4fa0b",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "89f71e560a671fd16a3f4bbb0416cb44187ad125965e40cc3be4895ca74fd209": {
       "package": "age@1.3.1",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 3,
-        "system": "aarch64-macos",
-        "receipt_sha256": "814e752405060261cfe8c6fc76c1f421dc06e3fdfd05584161bdde7310dcfa60"
+        "type": "package_record",
+        "record": "d48ae0d0b1e9eeb9963f1ce968e9055c63c1d8233ad94583b2f15153b6462693",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "8c04170ce484b5767919ff2c2dff6578c3725b87506bc358de613af3a6659cae": {
       "package": "fzf@0.74.4",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 2,
-        "system": "aarch64-macos",
-        "receipt_sha256": "eae46c637efea8ad9179a60b8c4eabde0b1c93c47525715d19028eb0112a50b4"
+        "type": "package_record",
+        "record": "ff6409aa589e05a0bb829fde21801b5dbbe859106f457bd837b02b60f8f4a861",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "8e8e9f53fa71686172c8024d655a991f2df7270c03246ac8fff7051125a071d6": {
-      "package": "uv@0.12.13",
+      "package": "uv@0.12.19",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 2,
-        "system": "aarch64-macos",
-        "receipt_sha256": "8fe9f8284a0b86e6665ed51e5908dc09f770141057cf7c36ff91cd3bda2da4e1"
+        "type": "package_record",
+        "record": "4cf9ffecc8c03b4f8b9e962dab2ead2d95b09743ddd692a6a6c77bad2c5658a4",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "9a8a9bfd621a22b14a9b05541d98cbb291d3591630c3516c6eb1cd1f30258140": {
       "package": "stylua@2.5.2",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 2,
-        "system": "aarch64-macos",
-        "receipt_sha256": "76c4a2eed0451754766839f4b13bc25b059677d95d051ccd43f40b9094bc1bf2"
+        "type": "package_record",
+        "record": "b25f44a888490106f29bd0764aa3b0382b3e4c14371cfa8fc7c93df691f1efb2",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "9dad3c80f4e0fb0267072da217ec7ac268a78e3a1705a144cca93e7c0c56c4e2": {
       "package": "make@4.4.1",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 1,
-        "system": "aarch64-macos",
-        "receipt_sha256": "478edbe825eb3f3ef5144c042c4a8686a24eba589845abed0498ef0f840d7bcc"
+        "type": "package_record",
+        "record": "b67ef5b1c6f4e54886ba7a29a89afc150143ac8b8f109df7535c00888d817d40",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "a93a0a41607c7fe583bf988da35a7f89ec7f57258b992436a5697a754cb9fda6": {
       "package": "jq@1.8.2",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 3,
-        "system": "aarch64-macos",
-        "receipt_sha256": "4fa6a68ff994684949f1dbcd0656b5cacaa1d385d3c0bcc74610f704e4d08d1e"
+        "type": "package_record",
+        "record": "446e908ca876ce01403b93abd98776e144016c58c8c64b1d4668936a8ad8d51d",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
+      }
+    },
+    "c0f5ada28c5f5530de280625a137bb6c5fddd1da65196ac6d868fa1e76bb34ec": {
+      "package": "op@2.39.0",
+      "proof": {
+        "type": "package_record",
+        "record": "f5501a005db91c637d55ed5abb999029c0f12a76554f4e26a416bee3816f8de3",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "c7a62bc07e063ca09813f01893e6c78ad3d87e1d90d47cc151497d2bd4281802": {
       "package": "prtui@0.4.0",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 1,
-        "system": "aarch64-macos",
-        "receipt_sha256": "f8e2c7def6255effa101072cee40011bf15979b6ca1f8d97adbec885e3877a27"
+        "type": "package_record",
+        "record": "e58071150d95accb5b6c8700776af5ac65e1d65266c0a3326e94c01bf1d810b4",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "cd5389cfba8d4a87e873ef4fb638c512127230f08b95942771d95b0db0dbdf63": {
       "package": "curl@8.22.0",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 2,
-        "system": "aarch64-macos",
-        "receipt_sha256": "df893dce1598b48022052128e9e1d4c267469106850990ccadbbab5323ac85e0"
+        "type": "package_record",
+        "record": "004e5438d2001be08a729d565615b46e2209732ee5fa0d62b8e048d157ed96a3",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "cd98441737b14ff0186b367bcca424fbce29bf0373823e42289f2fb2552d1933": {
       "package": "git@2.55.0",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 4,
-        "system": "aarch64-macos",
-        "receipt_sha256": "4e5bc174d38a473c06b2979a9c0b0a90002faa59467196ab4797daeebc59288c"
+        "type": "package_record",
+        "record": "412f891b2f8950f39c01e867bd440de16b116168c4a312e86a3bdeead17de48d",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "d2257bd58dd146797c87dc334cc7f5ae6babaf95c236b9b0991f51e4a67359aa": {
-      "package": "mise@2026.9.7",
+      "package": "mise@2026.9.13",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 2,
-        "system": "aarch64-macos",
-        "receipt_sha256": "18ccf3d7a8b188524ebe43b4373c4114ea1776f7d4bb484985e5d1954ad545b0"
+        "type": "package_record",
+        "record": "72959111913c43a7f7ea2a7cffd751e2fd32ec4f703dead1662fa8729294fa46",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "d2b41c9a72d1a8aabd23feb5d2b549d433152461527f08128479a935648d767d": {
-      "package": "rsync@3.5.0",
+      "package": "rsync@3.5.1",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 1,
-        "system": "aarch64-macos",
-        "receipt_sha256": "53c50a192ae33f89bb853a314142d93ba13baa777a8dd8f14d1969588d3c0c53"
-      }
-    },
-    "de953d48ff135b1188639fb866ecbaedb88b5c1acb415ae49bc042c665a59afc": {
-      "package": "aqua:1password/cli@v2.31.1",
-      "proof": {
-        "type": "snapshot",
-        "resolver": "aqua",
-        "source": {
-          "type": "git_hub_repository",
-          "owner": "aquaproj",
-          "repo": "aqua-registry",
-          "rev": "f8e26c6651b3bd6481fd278ae2162f22ea21c2c1"
-        },
-        "documents": [
-          {
-            "url": "https://raw.githubusercontent.com/aquaproj/aqua-registry/f8e26c6651b3bd6481fd278ae2162f22ea21c2c1/pkgs/1password/cli/pkg.yaml",
-            "sha256": "d4a0adf3e2ec6bd9a663e3e9367f2174eef13138c5e7279a64023170841d584c"
-          },
-          {
-            "url": "https://raw.githubusercontent.com/aquaproj/aqua-registry/f8e26c6651b3bd6481fd278ae2162f22ea21c2c1/pkgs/1password/cli/registry.yaml",
-            "sha256": "9d5b57c75a6506fe293553f25d53f44124b23a4789ca3f077860dc97c003e249"
-          }
-        ]
+        "type": "package_record",
+        "record": "20aaca872af4f1c7ee8df8faa254def562d8a90ebe9033ab5455d831fd6310d8",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     },
     "e871fa761002164dd322698bebdc49173dd617eef12894db84f0b1ccede925bc": {
       "package": "fd@10.4.2",
       "proof": {
-        "type": "published_index",
-        "index": {
-          "url": "https://tale.github.io/rootbeer-index/snapshots/13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a.json",
-          "sha256": "13b68b295c0e2932b6d69d033e9bad23927002b34ed2bbfb751ecbb03c78184a"
-        },
-        "catalog_sha256": "11a9452a456b782f51f96dcb36c4c9755f605098f8a0ec9f5d9118f2319c0f91",
-        "revision": 2,
-        "system": "aarch64-macos",
-        "receipt_sha256": "b608ebb2747c5904cc0c0a1de60b4c6186358ced751805813999d0dff8408017"
+        "type": "package_record",
+        "record": "4ada2e5e15c4f5203636bc2f2de046073e9fee856666740084537d3a5292a53f",
+        "public_key": "028c5b185fb63ea61128a0bf6fb0decc8b700020561db08d82a998c7d0493bc0",
+        "system": "aarch64-macos"
       }
     }
   },
@@ -369,8 +235,8 @@
       "version": "1.3.1",
       "source": {
         "Url": {
-          "url": "https://github.com/FiloSottile/age/releases/download/v1.3.1/age-v1.3.1-darwin-arm64.tar.gz",
-          "sha256": "01120ea2cbf0463d4c6bd767f99f3271bbed1cdc8a9aa718a76ba1fe4f01998b"
+          "url": "ghcr://rootbeer-org/pdr/age@sha256:477209cd8d520027c46728fd4a2eead41aae3b118d3d2592e2187865e668bfaf",
+          "sha256": "477209cd8d520027c46728fd4a2eead41aae3b118d3d2592e2187865e668bfaf"
         }
       },
       "install": {
@@ -381,40 +247,18 @@
       },
       "provides": {
         "bins": {
-          "age": "age/age",
-          "age-keygen": "age/age-keygen"
+          "age": "bin/age",
+          "age-keygen": "bin/age-keygen"
         }
       },
-      "output_sha256": "74caf73dcebbc3b99a3956fe0415dc8016a6d9062e729db75444cbfac5d78e04"
-    },
-    "aqua:1password/cli@v2.31.1": {
-      "name": "1password/cli",
-      "version": "v2.31.1",
-      "source": {
-        "Url": {
-          "url": "https://cache.agilebits.com/dist/1P/op2/pkg/v2.31.1/op_darwin_arm64_v2.31.1.zip",
-          "sha256": "4e9538ee3aeae9a04db7fc59082dff0acc9a10292b68c9515436c15a87c4a7f9"
-        }
-      },
-      "install": {
-        "Archive": {
-          "format": "Zip",
-          "strip_prefix": null
-        }
-      },
-      "provides": {
-        "bins": {
-          "op": "op"
-        }
-      },
-      "output_sha256": "b711d703d7257a3cd7d856ee8413ee06f7f6b64d67bcd87506796a748305c0a5"
+      "output_sha256": "67669687017ee6015303f9c50e651ee165eb63c249ad21f1d0da6b7f2b5cc904"
     },
     "bobrwm@0.1.0-main+572265d": {
       "name": "bobrwm",
       "version": "0.1.0-main+572265d",
       "source": {
         "Url": {
-          "url": "ghcr://tale/rootbeer-index/bobrwm@sha256:7fa8de14035bf72f483a1516696652b06afcada7dea0a435e92732933d149f43",
+          "url": "ghcr://rootbeer-org/pdr/bobrwm@sha256:7fa8de14035bf72f483a1516696652b06afcada7dea0a435e92732933d149f43",
           "sha256": "7fa8de14035bf72f483a1516696652b06afcada7dea0a435e92732933d149f43"
         }
       },
@@ -439,8 +283,8 @@
       "version": "8.22.0",
       "source": {
         "Url": {
-          "url": "ghcr://tale/rootbeer-index/curl@sha256:9e62f3b801a935bde3d78be435c436a1c5f8f2e2a9164e9d15b07a81703441f9",
-          "sha256": "9e62f3b801a935bde3d78be435c436a1c5f8f2e2a9164e9d15b07a81703441f9"
+          "url": "ghcr://rootbeer-org/pdr/curl@sha256:3841d8040c3d09752ac5151f25009897b51d1e8c1e44841179c2f095a4b90b31",
+          "sha256": "3841d8040c3d09752ac5151f25009897b51d1e8c1e44841179c2f095a4b90b31"
         }
       },
       "install": {
@@ -455,15 +299,15 @@
           "curl-config": "bin/curl-config"
         }
       },
-      "output_sha256": "33b43bfbbae1b283b65193e0d0a6e12b2fa30ad8899ea636fe838477fdc231fe"
+      "output_sha256": "3bedc7c78e0364f4606064f11f5f14446c60530c4a89df3e9671ee6b8870afa5"
     },
     "delta@0.19.2": {
       "name": "delta",
       "version": "0.19.2",
       "source": {
         "Url": {
-          "url": "https://github.com/dandavison/delta/releases/download/0.19.2/delta-0.19.2-aarch64-apple-darwin.tar.gz",
-          "sha256": "9be36612a5a13e9e386dc498fb8e50dc87c72ee42b63db0ea05b32f99a72a69a"
+          "url": "ghcr://rootbeer-org/pdr/delta@sha256:526d9f00a59ccdc5750498ad1fe4e34424dde9bf86f435291110a6acca8551e5",
+          "sha256": "526d9f00a59ccdc5750498ad1fe4e34424dde9bf86f435291110a6acca8551e5"
         }
       },
       "install": {
@@ -484,8 +328,8 @@
       "version": "10.4.2",
       "source": {
         "Url": {
-          "url": "https://github.com/sharkdp/fd/releases/download/v10.4.2/fd-v10.4.2-aarch64-apple-darwin.tar.gz",
-          "sha256": "623dc0afc81b92e4d4606b380d7bc91916ba7b97814263e554d50923a39e480a"
+          "url": "ghcr://rootbeer-org/pdr/fd@sha256:5d48a17dda12d7ae51a03e36605e6cf4e33a69c1441d4f00a050fb94590ad1e3",
+          "sha256": "5d48a17dda12d7ae51a03e36605e6cf4e33a69c1441d4f00a050fb94590ad1e3"
         }
       },
       "install": {
@@ -506,8 +350,8 @@
       "version": "0.74.4",
       "source": {
         "Url": {
-          "url": "https://github.com/junegunn/fzf/releases/download/v0.74.4/fzf-0.74.4-darwin_arm64.tar.gz",
-          "sha256": "4f6a113bfc0c7959e0005c78d566a51afc4fcefc956f43735c62a9deb19e92ae"
+          "url": "ghcr://rootbeer-org/pdr/fzf@sha256:702d4cf631b5e329d5668c8515787c4401235bc2d0f04a90a13b6f6a003c6219",
+          "sha256": "702d4cf631b5e329d5668c8515787c4401235bc2d0f04a90a13b6f6a003c6219"
         }
       },
       "install": {
@@ -518,62 +362,62 @@
       },
       "provides": {
         "bins": {
-          "fzf": "fzf"
+          "fzf": "bin/fzf"
         }
       },
-      "output_sha256": "c7539e560b94ddbbcae9b318cba7bda3e50ed168e06188eff296d6f6ab6861bc"
+      "output_sha256": "e815b7e7fbda9bf3b3789042b57fde3c36d8169793a5f9cf267599a5f515df8e"
     },
-    "gh@2.100.0": {
+    "gh@2.101.0": {
       "name": "gh",
-      "version": "2.100.0",
+      "version": "2.101.0",
       "source": {
         "Url": {
-          "url": "https://github.com/cli/cli/releases/download/v2.100.0/gh_2.100.0_macOS_arm64.zip",
-          "sha256": "45f9a62da2f6e641a7fad57e2ce39656dfd7ef331372d80a2a2aed65abb01642"
+          "url": "ghcr://rootbeer-org/pdr/gh@sha256:65e72fee6e7fac0d7c7a80edf012f33f50588f05787117ff5211299c4f8db714",
+          "sha256": "65e72fee6e7fac0d7c7a80edf012f33f50588f05787117ff5211299c4f8db714"
         }
       },
       "install": {
         "Archive": {
-          "format": "Zip",
+          "format": "TarGz",
           "strip_prefix": null
         }
       },
       "provides": {
         "bins": {
-          "gh": "gh_2.100.0_macOS_arm64/bin/gh"
+          "gh": "bin/gh"
         }
       },
-      "output_sha256": "b4a48578a7fba73f4ec2f1c9c7081c6b899c0b706e1f5f68a95ea99d789ec9ae"
+      "output_sha256": "e98baecdba489e6d8ea472218a23c97de5140f76a8def8a4684b95b883bb16ee"
     },
     "git-lfs@3.8.0": {
       "name": "git-lfs",
       "version": "3.8.0",
       "source": {
         "Url": {
-          "url": "https://github.com/git-lfs/git-lfs/releases/download/v3.8.0/git-lfs-darwin-arm64-v3.8.0.zip",
-          "sha256": "caff76a7d070d8160c89bc39b6e85d98f24135b6fed038a3b4de2590d25102d8"
+          "url": "ghcr://rootbeer-org/pdr/git-lfs@sha256:2d0d807860cc17ddfdc3a7ce3b397ccf01fa15d6ba1061e3921c74a4dfa9214c",
+          "sha256": "2d0d807860cc17ddfdc3a7ce3b397ccf01fa15d6ba1061e3921c74a4dfa9214c"
         }
       },
       "install": {
         "Archive": {
-          "format": "Zip",
+          "format": "TarGz",
           "strip_prefix": null
         }
       },
       "provides": {
         "bins": {
-          "git-lfs": "git-lfs-3.8.0/git-lfs"
+          "git-lfs": "bin/git-lfs"
         }
       },
-      "output_sha256": "56f9520d8557f3078a0f04db194f313f6013e439069785284155121e54f4654e"
+      "output_sha256": "b5f243a4479d13e461c07ae54265dcde592dff7c2e2b407cced84b36c119e431"
     },
     "git@2.55.0": {
       "name": "git",
       "version": "2.55.0",
       "source": {
         "Url": {
-          "url": "ghcr://tale/rootbeer-index/git@sha256:f3629c24904aa79d9ff1f5361735f26d832321d7d4c68dbe70eec1b72554834e",
-          "sha256": "f3629c24904aa79d9ff1f5361735f26d832321d7d4c68dbe70eec1b72554834e"
+          "url": "ghcr://rootbeer-org/pdr/git@sha256:512a6c5536adae1fe8c7b61cae8a8ef0f4c458d84e03907191211cdd029f21cb",
+          "sha256": "512a6c5536adae1fe8c7b61cae8a8ef0f4c458d84e03907191211cdd029f21cb"
         }
       },
       "install": {
@@ -590,15 +434,15 @@
           "git-upload-pack": "bin/git-upload-pack"
         }
       },
-      "output_sha256": "2ee28e46ab8503e28dcc8f857b39acbf157a3aabc2a3de9758bb0d2ced0e17fd"
+      "output_sha256": "5bfe99edb6606e85cd76e32f63f46ac38f41b63a0b24707e6706226504c95538"
     },
     "jq@1.8.2": {
       "name": "jq",
       "version": "1.8.2",
       "source": {
         "Url": {
-          "url": "ghcr://tale/rootbeer-index/jq@sha256:800164f52489279ac173d592ccb35e63bb34ea3a77136111bfec67b03b63343e",
-          "sha256": "800164f52489279ac173d592ccb35e63bb34ea3a77136111bfec67b03b63343e"
+          "url": "ghcr://rootbeer-org/pdr/jq@sha256:2e1bc7296142fa759cdb54284f4f3a9f6b0c2282e86db79396ba1ba3107d5678",
+          "sha256": "2e1bc7296142fa759cdb54284f4f3a9f6b0c2282e86db79396ba1ba3107d5678"
         }
       },
       "install": {
@@ -609,18 +453,18 @@
       },
       "provides": {
         "bins": {
-          "jq": "bin/jq"
+          "jq": "jq"
         }
       },
-      "output_sha256": "546f7702444e4afe3b32c0db9090764648f712f8ec958e4dadce8d50df99822f"
+      "output_sha256": "9c30cc24370e1a5f0465fea387bac6a82547290a54eadac68d126ee1a7cc1b05"
     },
     "lsd@1.2.0": {
       "name": "lsd",
       "version": "1.2.0",
       "source": {
         "Url": {
-          "url": "https://github.com/lsd-rs/lsd/releases/download/v1.2.0/lsd-v1.2.0-aarch64-apple-darwin.tar.gz",
-          "sha256": "9e34a5d392ff913302098aad0543dafa1883c531eaf229b82f086c3fca675e3e"
+          "url": "ghcr://rootbeer-org/pdr/lsd@sha256:4700d2a0374c04b442fac29587d6c1b49d35d5e88cb844cb7b6e8bf8ca7e0d4a",
+          "sha256": "4700d2a0374c04b442fac29587d6c1b49d35d5e88cb844cb7b6e8bf8ca7e0d4a"
         }
       },
       "install": {
@@ -641,8 +485,8 @@
       "version": "4.4.1",
       "source": {
         "Url": {
-          "url": "ghcr://tale/rootbeer-index/make@sha256:f1e6e7037e9384bf8a1c29e5d35b1e7e545d23f939e6bb2261da0fb188a92511",
-          "sha256": "f1e6e7037e9384bf8a1c29e5d35b1e7e545d23f939e6bb2261da0fb188a92511"
+          "url": "ghcr://rootbeer-org/pdr/make@sha256:17d3cf1f6f71bc7df4f4e0b810f2c0fdd4082b2232024b19ac75978fb344db07",
+          "sha256": "17d3cf1f6f71bc7df4f4e0b810f2c0fdd4082b2232024b19ac75978fb344db07"
         }
       },
       "install": {
@@ -656,15 +500,15 @@
           "make": "bin/make"
         }
       },
-      "output_sha256": "54dea55fba0bf9c5bf88d5d75ec86eb003187376b4a9db72615344e319fcb0f0"
+      "output_sha256": "51231e57404a16a08d7f50ab3ea8718959b0c3ebb0e31afe637802da3cfc86b4"
     },
-    "mise@2026.9.7": {
+    "mise@2026.9.13": {
       "name": "mise",
-      "version": "2026.9.7",
+      "version": "2026.9.13",
       "source": {
         "Url": {
-          "url": "https://github.com/jdx/mise/releases/download/v2026.9.7/mise-v2026.9.7-macos-arm64.tar.gz",
-          "sha256": "f6810aa1609a475ce7f3fdc83eb1e090ace6231d3b1b5aaead944663c4b4b7f1"
+          "url": "ghcr://rootbeer-org/pdr/mise@sha256:c5c4f3e1e5ef32eaa41e07ce2409a0cc272fbb3f0d9b5bb72328bcd138fd3c81",
+          "sha256": "c5c4f3e1e5ef32eaa41e07ce2409a0cc272fbb3f0d9b5bb72328bcd138fd3c81"
         }
       },
       "install": {
@@ -678,15 +522,15 @@
           "mise": "mise/bin/mise"
         }
       },
-      "output_sha256": "05730c15e89910108c2883ae1cc59114a4b12f1a14fc2c2590c1f6c65b406b19"
+      "output_sha256": "08ad24c89c98cdd5f1073e3baebd06f3bd7109b1a237e28cd1f185d476a568f4"
     },
     "neovim@0.12.5": {
       "name": "neovim",
       "version": "0.12.5",
       "source": {
         "Url": {
-          "url": "https://github.com/neovim/neovim/releases/download/v0.12.5/nvim-macos-arm64.tar.gz",
-          "sha256": "65fb000099e47ca1b762584c484cc833f40e30851a0ec450d4174e16317c1f9b"
+          "url": "ghcr://rootbeer-org/pdr/neovim@sha256:5981b9e082cef7e01bd78fbc273b1512f985a0894c985cf5775803b229373438",
+          "sha256": "5981b9e082cef7e01bd78fbc273b1512f985a0894c985cf5775803b229373438"
         }
       },
       "install": {
@@ -702,13 +546,13 @@
       },
       "output_sha256": "67af43f834be13f06f19967d7742feb4db3bb0f9bc841ddb79edc0c39eccda03"
     },
-    "prtui@0.4.0": {
-      "name": "prtui",
-      "version": "0.4.0",
+    "op@2.39.0": {
+      "name": "op",
+      "version": "2.39.0",
       "source": {
         "Url": {
-          "url": "ghcr://tale/rootbeer-index/prtui@sha256:8c67bdd5bddcc714b381f7460bc81892b66f334f13253645e2f450e4e8105b77",
-          "sha256": "8c67bdd5bddcc714b381f7460bc81892b66f334f13253645e2f450e4e8105b77"
+          "url": "ghcr://rootbeer-org/pdr/op@sha256:b43bb72504c10b8787673f6d5357df461c2abd39347735ed8996f06a943ca9b6",
+          "sha256": "b43bb72504c10b8787673f6d5357df461c2abd39347735ed8996f06a943ca9b6"
         }
       },
       "install": {
@@ -719,18 +563,40 @@
       },
       "provides": {
         "bins": {
-          "prtui": "bin/prtui"
+          "op": "op"
         }
       },
-      "output_sha256": "ddd1ec800d03484ad1c040aeaca1ef716218812d6ad3ca851282f3703e04369a"
+      "output_sha256": "d2bb6ea6fb7ee8a06a3556c66e9dfa7cb5bcab62be2304ef72b263e791686837"
+    },
+    "prtui@0.4.0": {
+      "name": "prtui",
+      "version": "0.4.0",
+      "source": {
+        "Url": {
+          "url": "ghcr://rootbeer-org/pdr/prtui@sha256:a0e6b869e8632eb7907c8aa04dfb1e63fffde400277bd995d27788cd527bd39f",
+          "sha256": "a0e6b869e8632eb7907c8aa04dfb1e63fffde400277bd995d27788cd527bd39f"
+        }
+      },
+      "install": {
+        "Archive": {
+          "format": "TarGz",
+          "strip_prefix": null
+        }
+      },
+      "provides": {
+        "bins": {
+          "prtui": "prtui-v0.4.0-aarch64-apple-darwin/prtui"
+        }
+      },
+      "output_sha256": "01a101cb07a0815db8f96a9b9121c4b19a8e8f0d7160d20cd22063d35f76cfc5"
     },
     "rage@0.12.1": {
       "name": "rage",
       "version": "0.12.1",
       "source": {
         "Url": {
-          "url": "https://github.com/str4d/rage/releases/download/v0.12.1/rage-v0.12.1-arm64-darwin.tar.gz",
-          "sha256": "25478bfca7085c7bf59e9f552907d4d0f4635e8de501b0b3553949edef39053e"
+          "url": "ghcr://rootbeer-org/pdr/rage@sha256:b4426f182f4469c3ce39414c7bd6fe9b6a1f25ce96f28c1ee89eb1b41f99e3ce",
+          "sha256": "b4426f182f4469c3ce39414c7bd6fe9b6a1f25ce96f28c1ee89eb1b41f99e3ce"
         }
       },
       "install": {
@@ -752,8 +618,8 @@
       "version": "15.2.0",
       "source": {
         "Url": {
-          "url": "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-aarch64-apple-darwin.tar.gz",
-          "sha256": "3750b2e93f37e0c692657da574d7019a101c0084da05a790c83fd335bad973e4"
+          "url": "ghcr://rootbeer-org/pdr/ripgrep@sha256:711780359032f11456fa7edc5a99450660ec0479ed273302b744b99f7f6ca10d",
+          "sha256": "711780359032f11456fa7edc5a99450660ec0479ed273302b744b99f7f6ca10d"
         }
       },
       "install": {
@@ -769,13 +635,13 @@
       },
       "output_sha256": "a3997a1d383ac97be0eec9d325c1cd3fd30a0981b05e2e7f40583a3adc59e843"
     },
-    "rsync@3.5.0": {
+    "rsync@3.5.1": {
       "name": "rsync",
-      "version": "3.5.0",
+      "version": "3.5.1",
       "source": {
         "Url": {
-          "url": "ghcr://tale/rootbeer-index/rsync@sha256:40fce5d4e78ba3a095f249bee032d8ee1018bfd972576fec77479c3546e60ec6",
-          "sha256": "40fce5d4e78ba3a095f249bee032d8ee1018bfd972576fec77479c3546e60ec6"
+          "url": "ghcr://rootbeer-org/pdr/rsync@sha256:c974760486debd50111a35709a2f72abcca5aaf5f61fc2172ff648bbca7485af",
+          "sha256": "c974760486debd50111a35709a2f72abcca5aaf5f61fc2172ff648bbca7485af"
         }
       },
       "install": {
@@ -789,20 +655,20 @@
           "rsync": "bin/rsync"
         }
       },
-      "output_sha256": "f1dcd4bc2f5727c534cf6770198cc4da06d98a5d63f81b4d62d5da35318b6882"
+      "output_sha256": "72f9d4252a1ae0490f722a294f19a1c4544801dca1d3a9707d9b43172fc69819"
     },
     "stylua@2.5.2": {
       "name": "stylua",
       "version": "2.5.2",
       "source": {
         "Url": {
-          "url": "https://github.com/JohnnyMorganz/StyLua/releases/download/v2.5.2/stylua-macos-aarch64.zip",
-          "sha256": "92ff0889e16324801bc072692974bb67f8161e62010fc90f96c62a17f81f32c7"
+          "url": "ghcr://rootbeer-org/pdr/stylua@sha256:f6bbbcca0c197f112dbaefc5c0ea5d31c0a62ecda61401ca0848ac9ce146bec2",
+          "sha256": "f6bbbcca0c197f112dbaefc5c0ea5d31c0a62ecda61401ca0848ac9ce146bec2"
         }
       },
       "install": {
         "Archive": {
-          "format": "Zip",
+          "format": "TarGz",
           "strip_prefix": null
         }
       },
@@ -818,13 +684,13 @@
       "version": "0.27.0",
       "source": {
         "Url": {
-          "url": "https://github.com/tree-sitter/tree-sitter/releases/download/v0.27.0/tree-sitter-cli-macos-arm64.zip",
-          "sha256": "f278063d8544160f6f89f7f8dba6ba112cb0dd1669757788d2bb7a8a613d2c58"
+          "url": "ghcr://rootbeer-org/pdr/tree-sitter@sha256:0b2b3ce329e67eeb8e7f045c8cf5088ce86e0758cb8ada5b16f5b7f8f0dbf228",
+          "sha256": "0b2b3ce329e67eeb8e7f045c8cf5088ce86e0758cb8ada5b16f5b7f8f0dbf228"
         }
       },
       "install": {
         "Archive": {
-          "format": "Zip",
+          "format": "TarGz",
           "strip_prefix": null
         }
       },
@@ -835,13 +701,13 @@
       },
       "output_sha256": "9bdf5c5d7afafbfb0f0fc5c98293f71e45a32d6fa53c16d279adb9cfff4ed89c"
     },
-    "uv@0.12.13": {
+    "uv@0.12.19": {
       "name": "uv",
-      "version": "0.12.13",
+      "version": "0.12.19",
       "source": {
         "Url": {
-          "url": "https://github.com/astral-sh/uv/releases/download/0.12.13/uv-aarch64-apple-darwin.tar.gz",
-          "sha256": "7e6ddb9316acc00f2296c82ff4d99977870ee34b2f0ddcae9444d714db9364ed"
+          "url": "ghcr://rootbeer-org/pdr/uv@sha256:e77bee7a80ad1a28a34ca78cdfb29725f3d12241c79f7c212a104b47552bd721",
+          "sha256": "e77bee7a80ad1a28a34ca78cdfb29725f3d12241c79f7c212a104b47552bd721"
         }
       },
       "install": {
@@ -856,15 +722,15 @@
           "uvx": "uv-aarch64-apple-darwin/uvx"
         }
       },
-      "output_sha256": "93f7bebe9dcdfbbb8becd57199b94b02e9ad42f3c69b2d45eb19cef791844f78"
+      "output_sha256": "bfa6248069ff1cffa6256658c607f389e3a2df06510d5acb185a9497e9418c3b"
     },
-    "xz@5.8.3": {
+    "xz@5.8.4": {
       "name": "xz",
-      "version": "5.8.3",
+      "version": "5.8.4",
       "source": {
         "Url": {
-          "url": "ghcr://tale/rootbeer-index/xz@sha256:9da3de51278fca0220fec2a4f11d6cebd66fe4e26d0848a671a6e5ee5b5c8a6b",
-          "sha256": "9da3de51278fca0220fec2a4f11d6cebd66fe4e26d0848a671a6e5ee5b5c8a6b"
+          "url": "ghcr://rootbeer-org/pdr/xz@sha256:732344d359a86517bf8fe470ecf434600d0ca1ee7bca9e617989159343c1b568",
+          "sha256": "732344d359a86517bf8fe470ecf434600d0ca1ee7bca9e617989159343c1b568"
         }
       },
       "install": {
@@ -881,28 +747,29 @@
           "xzdec": "bin/xzdec"
         }
       },
-      "output_sha256": "f6dce20f30783dd484347bd27758d3f2f44a7fa6c445cfe0e32250ba98eed86a"
+      "output_sha256": "5823a427275e878469f0c4599cebc8c598feb61cc8c0ed814cab7a705137a0b6"
     },
     "yq@4.53.6": {
       "name": "yq",
       "version": "4.53.6",
       "source": {
         "Url": {
-          "url": "https://github.com/mikefarah/yq/releases/download/v4.53.6/yq_darwin_arm64",
-          "sha256": "cceb0b8d71ea5294334121f8429f33f92b920e7217d904a2f9f35443968ac424"
+          "url": "ghcr://rootbeer-org/pdr/yq@sha256:58cd1d57f041e9b1b322c1616ceb4dc85f523b7d17143db0d35d88b825486673",
+          "sha256": "58cd1d57f041e9b1b322c1616ceb4dc85f523b7d17143db0d35d88b825486673"
         }
       },
       "install": {
-        "Binary": {
-          "path": "yq"
+        "Archive": {
+          "format": "TarGz",
+          "strip_prefix": null
         }
       },
       "provides": {
         "bins": {
-          "yq": "yq"
+          "yq": "bin/yq"
         }
       },
-      "output_sha256": "bb5aa4b9267c011b662dbf68447d9fd1b5326c6d01a9220c63853262033cabea"
+      "output_sha256": "b9c86a7307bba00865872aed641328e552df4cfcd81969f0fa1841df4b251edb"
     }
   }
 }

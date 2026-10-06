@@ -9,20 +9,12 @@ local function fn(name)
   return rb.read_file("modules/zsh/functions/" .. name .. ".zsh")
 end
 
-local function secret(name)
-  return rb.secret.age("private/" .. name .. ".age", {
-    identity = "~/.config/sops/age/keys.txt",
-  })
-end
-
 local functions = {
   __rootbeer_path = string.format([[
 local package_bin=%q
 path=("$package_bin" "${(@)path:#$package_bin}")
 ]], package_bin),
   __fzf_history = fn("__fzf_history"),
-  __session_open = secret("alpha-open.zsh"),
-  __sessionizer = secret("alpha-sessionizer.zsh"),
   git_worktree = fn("git_worktree"),
 }
 
@@ -36,7 +28,7 @@ zsh.config({
     VISUAL = "$EDITOR",
     OS = "$(uname -s)",
     OP_BIOMETRIC_UNLOCK_ENABLED = is_mac and "true" or nil,
-    PATH = is_mac and secret("alpha-path") or nil,
+    PATH = is_mac and "/Applications/Rex.app/Contents/Helpers:$PATH" or nil,
     RIPGREP_CONFIG_PATH = "$HOME/.config/ripgrep/rc",
     SSH_AUTH_SOCK = is_mac and "$HOME/.config/1Password/agent.sock" or nil,
   },
@@ -121,11 +113,9 @@ zsh.config({
   functions = functions,
   widgets = {
     "__fzf_history",
-    "__sessionizer",
   },
   keybindings = {
     ["^R"] = "__fzf_history",
-    ["^F"] = "__sessionizer",
   },
   evals = {
     rb.bin_path("mise") .. " activate zsh",

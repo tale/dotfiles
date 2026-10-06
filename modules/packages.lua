@@ -14,6 +14,7 @@ rb.packages({
   "make",
   "mise",
   "neovim",
+  "op",
   "prtui",
   "rage",
   "ripgrep",
@@ -23,7 +24,6 @@ rb.packages({
   "uv",
   "xz",
   "yq",
-  "aqua:1password/cli",
 })
 
 if rb.host.os == "macos" then

@@ -9,7 +9,6 @@ local common_casks = {
   "betterdisplay",
   "cleanshot",
   "datagrip",
-  "ghostty",
   "helium-browser",
   "imageoptim",
   "logi-options+",

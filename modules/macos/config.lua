@@ -2,14 +2,7 @@ local mac = require("rootbeer.mac")
 local profile = require("rootbeer.profile")
 local rb = require("rootbeer")
 
-local private_value = rb.secret.age("private/alpha-app.age", {
-  identity = "~/.config/sops/age/keys.txt",
-})
-local bobrwm_config = rb.read_file("modules/macos/bobrwm-config.zon")
-bobrwm_config = bobrwm_config:gsub("{{private_value}}", function()
-  return private_value
-end)
-rb.file("~/.config/bobrwm/config.zon", bobrwm_config)
+rb.link_file("modules/macos/bobrwm-config.zon", "~/.config/bobrwm/config.zon")
 
 rb.link_file(
   "modules/macos/1password-agent.toml",
