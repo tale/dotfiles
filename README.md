@@ -1,21 +1,19 @@
 # Dotfiles
-My personal dotfiles configuration! If you're wondering why it's all configured
-in Lua, it's because I use my own self-built system configuration management
-tool called [rootbeer](https://rootbeer.tale.me). It's pretty cool and is a
-deterministic configuration alternative to tools like Nix's home-manager or
-Chezmoi. Check it out if you're interested!
+My dotfiles for macOS. It has all the usual configurations like my shell, git,
+SSH, and some other tools along with some cool software I use. The repository
+is all managed with [rootbeer](https://rbpkg.com), my own take on a fully
+deterministic packaging and system configuration tool (think Nix).
+
+All of my packages on my system are distributed through rootbeer, so if you want
+to use my dotfiles you'll need to install rootbeer or translate the packages to
+`brew` or something similar.
 
 ```sh
 sh -c "$(curl -fsSL rootbeer.tale.me/rb.sh)" -- init --apply tale/dotfiles
 ```
 
-### Whats Inside?
-- Support for macOS
-- Easy installation using [rootbeer](https://rootbeer.tale.me)
-- Separated configs based on an device type (work, personal, etc.)
-- Load secrets from [1Password](https://1password.com) using the CLI.
-- Git, Zsh, SSH configs, all the goodies
-- [Ghostty](https://ghostty.org): a new terminal emulator with good performance
-- [Mise](https://mise.jdx.dev): per-directory and global devtools (like `asdf`)
-- [AeroSpace](https://github.com/nikitabobko/AeroSpace): Tiling WM for macOS
-- A minimal Neovim configuration using the new nightly `vim.pack` API.
+### Software
+- [bobrwm](https://github.com/bobrwm/bobrwm): A tiling window manager for macOS
+- [Neovim](https://neovim.io/): With a minimal configuration and `vim.pack`
+- [Rex](https://www.superlogical.com/): A terminal multiplexer built on `libghostty`
+- [Rootbeer](https://rbpkg.com): A deterministic package & system configuration manager
