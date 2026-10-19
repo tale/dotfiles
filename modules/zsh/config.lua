@@ -21,6 +21,7 @@ path=("$package_bin" "${(@)path:#$package_bin}")
 ]], package_bin),
   __fzf_history = fn("__fzf_history"),
   git_worktree = fn("git_worktree"),
+  git_worktree_remove = fn("git_worktree_remove"),
 }
 
 if is_mac then
@@ -87,6 +88,7 @@ zsh.config({
     gsw = "gh stack switch",
     gwt = "git_worktree",
     gwtn = "git_worktree -n",
+    gwtr = "git_worktree_remove",
     k = "kubectl",
     la = "lsd -la --group-directories-first",
     ls = "lsd -l --group-directories-first",
