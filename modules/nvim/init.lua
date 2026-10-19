@@ -33,6 +33,7 @@ vim.pack.add({
   "https://github.com/stevearc/oil.nvim",
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/nvim-treesitter/nvim-treesitter",
+  "https://github.com/davidmh/mdx.nvim",
   "https://github.com/stevearc/conform.nvim",
   "https://github.com/ibhagwan/fzf-lua",
   {
