@@ -14,8 +14,12 @@ if [[ -z "$main_root" ]]; then
 	return 1
 fi
 
-local hash=$(printf '%s' "$branch" | shasum -a 256 | cut -c1-7)
-local dir="${main_root:h}/${main_root:t}-${hash}"
+local default=$(git -C "$main_root" symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null)
+default="${${default#origin/}:-main}"
+
+# The main checkout always holds the default branch; work happens in worktrees.
+local dir="${main_root}@${branch//\//-}"
+[[ "$branch" == "$default" ]] && dir="$main_root"
 
 if [[ -d "$dir" ]]; then
 	rex do sessionizer "cwd=${dir:A}" > /dev/null
@@ -25,8 +29,8 @@ fi
 if git show-ref --verify --quiet "refs/heads/$branch"; then
 	git worktree add "$dir" "$branch" || return 1
 elif (( new )); then
-	git fetch origin main || return 1
-	git worktree add -b "$branch" "$dir" origin/main || return 1
+	git fetch origin "$default" || return 1
+	git worktree add -b "$branch" "$dir" "origin/$default" || return 1
 else
 	if ! git fetch origin "$branch"; then
 		echo "Branch $branch not found locally or on origin (use -n to create it)"
