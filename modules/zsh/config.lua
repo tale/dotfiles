@@ -1,6 +1,11 @@
 local rb = require("rootbeer")
 local zsh = require("rootbeer.zsh")
 
+rb.scripts.zsh(
+  "~/.local/bin/git-worktree",
+  rb.read_file("modules/zsh/scripts/git-worktree.zsh")
+)
+
 local is_mac = rb.host.os == "macos"
 local package_env = rb.env_export("sh")
 local package_bin = rb.bin_dir()

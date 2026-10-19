@@ -11,6 +11,7 @@ rb.profile.define({
 })
 
 require("modules.packages")
+require("modules.agents.config")
 require("modules.claude.config")
 require("modules.git")
 require("modules.ripgrep")
