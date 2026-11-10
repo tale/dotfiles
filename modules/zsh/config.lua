@@ -45,7 +45,6 @@ zsh.config({
     } or {},
     path_prepend = {
       "$HOME/.amp/bin",
-      "$HOME/.rootbeer/bin",
       "$HOME/.local/bin",
       package_bin,
     },

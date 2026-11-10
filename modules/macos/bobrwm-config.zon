@@ -5,10 +5,7 @@
         .enabled = true,
         .level = 0.25,
     },
-    .gaps = .{
-        .inner = 4,
-        .outer = .{ .left = 4, .right = 4, .top = 4, .bottom = 4 },
-    },
+    .gaps = .{ .inner = 4, .outer = .{ .left = 4, .right = 4, .top = 4, .bottom = 4 } },
 
     .workspace_names = .{ "term", "web", "chat", "4", "cal", "music", "mail" },
     .keybinds = .{
@@ -53,5 +50,6 @@
         .{ .app_id = "com.apple.MobileSMS", .float = true },
         .{ .app_id = "com.culturedcode.ThingsMac", .float = true },
     },
+    .bsp_split_ratio = 0.5,
 }
 
