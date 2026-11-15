@@ -144,6 +144,7 @@ vim.lsp.enable({
 
 require("conform").setup({
   formatters_by_ft = {
+    astro = { "oxfmt" },
     go = { "goimports" },
     java = { lsp_format = "never" },
     javascript = { "oxlint", "oxfmt" },
