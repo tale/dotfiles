@@ -30,13 +30,15 @@ rex.action({
   title = "Open Project…",
   category = "Projects",
   keywords = "project repository worktree sessionizer",
-  run = function()
-    local project = rex.ui.pick({
-      title = "Open project",
-      placeholder = "Filter projects",
-      confirm = "Open",
-      items = list_projects(),
-    })
+  args = { cwd = "string?" },
+  run = function(_, args)
+    local project = args.cwd and args.cwd:sub(#root + 2)
+      or rex.ui.pick({
+        title = "Open project",
+        placeholder = "Filter projects",
+        confirm = "Open",
+        items = list_projects(),
+      })
 
     if not project then
       return
@@ -63,6 +65,10 @@ rex.action({
           },
         },
       }).session_id
+
+    if args.cwd then
+      return { session_id = session_id }
+    end
 
     rex.client.queue("session.select", { session_id = session_id })
   end,
