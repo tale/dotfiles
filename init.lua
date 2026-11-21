@@ -23,6 +23,7 @@ require("modules.nvim.config")
 require("modules.mise.config")
 
 if rb.host.os == "macos" then
+  require("modules.apps")
   require("modules.brew")
   require("modules.macos.config")
 end

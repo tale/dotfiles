@@ -12,6 +12,51 @@
         ]
       }
     },
+    "aldente": {
+      "aarch64-macos": {
+        "version": "1.40.2",
+        "key": "qalg3cv7ykepfz4dwpsqhgxqifkd45ir",
+        "manifest": "sha256:76cd17f6eec3580526f072359619755868a8a74ce3b5ac0402abc25ba66c25b6",
+        "apps": {
+          "AlDente.app": "AlDente.app"
+        },
+        "app_settings": {
+          "AlDente.app": {
+            "updates": "self"
+          }
+        }
+      }
+    },
+    "bartender": {
+      "aarch64-macos": {
+        "version": "7.2.0",
+        "key": "rx5xghgvu7v5k32snzlh47vrf35ovkv3",
+        "manifest": "sha256:8c4d0f0b50461f76c2a618ff8055979bbf994cc331567ea128df76f14bbbf95d",
+        "apps": {
+          "Bartender 7.app": "Bartender 7.app"
+        },
+        "app_settings": {
+          "Bartender 7.app": {
+            "updates": "self"
+          }
+        }
+      }
+    },
+    "betterdisplay": {
+      "aarch64-macos": {
+        "version": "5.2.1",
+        "key": "az4to2wamfr4cbv6ehtj6ynjku276f3q",
+        "manifest": "sha256:19221f1993c70a41ab4819abdaf2c6b4bcd4657f9f4645e272c79fbcee4f6f52",
+        "apps": {
+          "BetterDisplay.app": "BetterDisplay.app"
+        },
+        "app_settings": {
+          "BetterDisplay.app": {
+            "updates": "self"
+          }
+        }
+      }
+    },
     "bobrwm": {
       "aarch64-macos": {
         "version": "0.1.0-main+6da7e2775ee9",
@@ -22,6 +67,31 @@
         ],
         "apps": {
           "Bobrwm.app": "Bobrwm.app"
+        }
+      }
+    },
+    "cleanshot": {
+      "aarch64-macos": {
+        "version": "5.0.2",
+        "key": "2qtfi4wylcvj632rvzgrsajzkwl2kj6e",
+        "manifest": "sha256:ce030fb67b2827a7f41046dd7fadfdde0edab0765e64d59b6944fd9d1381d07f",
+        "apps": {
+          "CleanShot X.app": "CleanShot X.app"
+        },
+        "app_settings": {
+          "CleanShot X.app": {
+            "updates": "self"
+          }
+        }
+      }
+    },
+    "copilot-money": {
+      "aarch64-macos": {
+        "version": "6.4.4+332-80a7fa78",
+        "key": "h4dlfanbcvuz5l7kaljjvxj3uhzvtspi",
+        "manifest": "sha256:20b116b697e84f1a4e7f12c95db5d77e157138a37dafa2825b81a3637f0d0ea4",
+        "apps": {
+          "Copilot.app": "Copilot.app"
         }
       }
     },
@@ -36,6 +106,21 @@
         ]
       }
     },
+    "datagrip": {
+      "aarch64-macos": {
+        "version": "2026.3+263.7307.216",
+        "key": "vmxiazq6dok7sjxwinjr76ryhtjmrqcb",
+        "manifest": "sha256:30eb095f40540e92c7c795e792a21953345a66df8ecd6aabb07380c5e8ce3f14",
+        "apps": {
+          "DataGrip.app": "DataGrip.app"
+        },
+        "app_settings": {
+          "DataGrip.app": {
+            "updates": "self"
+          }
+        }
+      }
+    },
     "delta": {
       "aarch64-macos": {
         "version": "0.20.1",
@@ -44,6 +129,21 @@
         "bins": [
           "delta"
         ]
+      }
+    },
+    "discord": {
+      "aarch64-macos": {
+        "version": "0.0.423",
+        "key": "3u2kgzfgoacimwskrivpel5wsyeyiud6",
+        "manifest": "sha256:805fe5fdc64e7d3c69d6384fdf5c0afa5b949fac35fc424ef36a75a5eadaa1dd",
+        "apps": {
+          "Discord.app": "Discord.app"
+        },
+        "app_settings": {
+          "Discord.app": {
+            "updates": "self"
+          }
+        }
       }
     },
     "fd": {
@@ -99,6 +199,36 @@
         ]
       }
     },
+    "google-chrome": {
+      "aarch64-macos": {
+        "version": "157.0.8103.51",
+        "key": "xw74yvugcwyfhvvukv6xebvjryqrn33t",
+        "manifest": "sha256:4d521194b021c62a0aecb193f1901e374b12e629faa780e246c6f23b9b773c0f",
+        "apps": {
+          "Google Chrome.app": "Google Chrome.app"
+        },
+        "app_settings": {
+          "Google Chrome.app": {
+            "updates": "self"
+          }
+        }
+      }
+    },
+    "helium": {
+      "aarch64-macos": {
+        "version": "0.22.1.1",
+        "key": "gusrmzglnidu5fhuckkckv2knmlu23rr",
+        "manifest": "sha256:22931cef6e5055b8d16d436acfccd2a3c1d0473503236e8bae321c99961ed229",
+        "apps": {
+          "Helium.app": "Helium.app"
+        },
+        "app_settings": {
+          "Helium.app": {
+            "updates": "self"
+          }
+        }
+      }
+    },
     "jq": {
       "aarch64-macos": {
         "version": "1.8.2",
@@ -107,6 +237,21 @@
         "bins": [
           "jq"
         ]
+      }
+    },
+    "linear": {
+      "aarch64-macos": {
+        "version": "1.32.8",
+        "key": "wmh4p4uhoet4ix4i2aocugcvor55voa2",
+        "manifest": "sha256:939ac72a6cd819708ccbf6b2416fccbe739f852afebb99c1cffe28a8cb6d8db3",
+        "apps": {
+          "Linear.app": "Linear.app"
+        },
+        "app_settings": {
+          "Linear.app": {
+            "updates": "self"
+          }
+        }
       }
     },
     "lsd": {
@@ -149,6 +294,21 @@
         ]
       }
     },
+    "notion-calendar": {
+      "aarch64-macos": {
+        "version": "1.144.0",
+        "key": "wbi3tarjteuldp25udgr5gpeleiolc3h",
+        "manifest": "sha256:6b24d50bf0d97dc9b69c2136cdd7e425aecb983ba32916cf0e48fbb38a4c4967",
+        "apps": {
+          "Notion Calendar.app": "Notion Calendar.app"
+        },
+        "app_settings": {
+          "Notion Calendar.app": {
+            "updates": "self"
+          }
+        }
+      }
+    },
     "op": {
       "aarch64-macos": {
         "version": "2.39.0",
@@ -157,6 +317,21 @@
         "bins": [
           "op"
         ]
+      }
+    },
+    "orbstack": {
+      "aarch64-macos": {
+        "version": "2.2.5+21124",
+        "key": "bsr2cfgqqw2wdukzdz64id3qw4zhpnn2",
+        "manifest": "sha256:83eea2e31da41e514d6b3759cf5c9ab819d8147449dfb0cb286fb9cd298b2b29",
+        "apps": {
+          "OrbStack.app": "OrbStack.app"
+        },
+        "app_settings": {
+          "OrbStack.app": {
+            "updates": "self"
+          }
+        }
       }
     },
     "prtui": {
@@ -200,6 +375,61 @@
         ]
       }
     },
+    "slack": {
+      "aarch64-macos": {
+        "version": "4.53.292",
+        "key": "zucvp5npezrkgk2nbihrxxm3bojxiv44",
+        "manifest": "sha256:33d007dc6df0bff8f78858907a29d6c3a7a3a3396e4e40b0a439545fc969fe34",
+        "apps": {
+          "Slack.app": "Slack.app"
+        },
+        "app_settings": {
+          "Slack.app": {
+            "updates": "self"
+          }
+        }
+      }
+    },
+    "soulver": {
+      "aarch64-macos": {
+        "version": "3.16.3",
+        "key": "6xq6jp7wzqqxlctsxyaqfvfswpst5vfn",
+        "manifest": "sha256:161102d36f90bfeac38b7aab08e02708b9cc7682a1a4f2c1aea43b46a019e5ec",
+        "apps": {
+          "Soulver 3.app": "Soulver 3.app"
+        },
+        "app_settings": {
+          "Soulver 3.app": {
+            "updates": "self"
+          }
+        }
+      }
+    },
+    "spotify": {
+      "aarch64-macos": {
+        "version": "1.3.10.2586",
+        "key": "zp4vzdhk6t4zgpuyewqc4vpbrkf3uzvn",
+        "manifest": "sha256:792317af35422859f244bc8dfccdc0a361bcfaff46b887017d788fba216a9358",
+        "apps": {
+          "Spotify.app": "Spotify.app"
+        },
+        "app_settings": {
+          "Spotify.app": {
+            "updates": "self"
+          }
+        }
+      }
+    },
+    "steam": {
+      "aarch64-macos": {
+        "version": "6.0",
+        "key": "qmocepkbekwuet6jfdqpg5e7xw5w5pqj",
+        "manifest": "sha256:d6e6792dd513f3fbbeedf6d73dd6bb80174d6b8db73f71799b876950c21dceac",
+        "apps": {
+          "Steam.app": "Steam.app"
+        }
+      }
+    },
     "stylua": {
       "aarch64-macos": {
         "version": "2.6.0",
@@ -208,6 +438,26 @@
         "bins": [
           "stylua"
         ]
+      }
+    },
+    "the-unarchiver": {
+      "aarch64-macos": {
+        "version": "4.3.9",
+        "key": "zzidycedm7ivgdgpt2zyp7w2syt6gy4n",
+        "manifest": "sha256:904881eb77e6a467137a506070fec83dd09f52c3e119cf50d9fb2e0fbb45a1c5",
+        "apps": {
+          "The Unarchiver.app": "The Unarchiver.app"
+        }
+      }
+    },
+    "tinycast": {
+      "aarch64-macos": {
+        "version": "0.12.15",
+        "key": "mwp5xv6pfxyrt627cji4b7dik2kujnwb",
+        "manifest": "sha256:4582957d2bfe1253eef70b31aca4dfa61be1de16ce69cce03e4638d091099f88",
+        "apps": {
+          "Tinycast.app": "Tinycast.app"
+        }
       }
     },
     "tree-sitter": {

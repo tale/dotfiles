@@ -2,54 +2,15 @@ local brew = require("rootbeer.brew")
 local profile = require("rootbeer.profile")
 local rb = require("rootbeer")
 
-local common_casks = {
-  "1password",
-  "aldente",
-  "bartender",
-  "betterdisplay",
-  "cleanshot",
-  "datagrip",
-  "helium-browser",
-  "imageoptim",
-  "logi-options+",
-  "notion-calendar",
-  "orbstack",
-  "raycast",
-  "slack",
-  "spotify",
-}
-
-local extra_casks = profile.select({
-  personal = {
-    "discord",
-    "modrinth",
-    "soulver",
-    "steam",
-    "tailscale-app",
-    "the-unarchiver",
-    "zoom",
-  },
-  work = {
-    "linear",
-    "notion",
-    "notion-mail",
-  },
-})
-
-local casks =
-  table.move(extra_casks, 1, #extra_casks, #common_casks + 1, common_casks)
-
+-- These need a system installer, so rb can't install them as apps.
 brew.config({
-  casks = casks,
-  mas = profile.select({
-    default = {},
-    personal = {
-      { name = "Things", id = 904280696 },
-      { name = "Xcode", id = 497799835 },
-    },
+  casks = profile.select({
+    default = { "logi-options+" },
+    personal = { "logi-options+", "tailscale-app" },
   }),
 })
 
+-- TODO: Install Things.app on personal macOS
 if not rb.path_exists("~/.local/share/gh/extensions/gh-stack") then
   rb.exec("sh", {
     "-c",
